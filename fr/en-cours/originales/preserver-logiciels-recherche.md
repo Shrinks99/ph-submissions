@@ -121,17 +121,17 @@ De plus, chaque production de code informatique, y compris dans le cas des scrip
 
 ### Pourquoi citer les logiciels 
 
-Citer un logiciel s'avère nécessaire lorsque celui-ci a joué un rôle déterminant dans la réalisation des travaux de recherche. La question suivante peut servir de repère&nbsp;: dans quelle mesure le logiciel a-t-il un impact direct sur les résultats obtenus&nbsp;? S'il n'est pas pertinent de citer un outil de traitement de texte, il est par exemple judicieux de citer le logiciel de reconnaissance optique de caractères utilisé. Il est courant de voir cité un article décrivant le logiciel plutôt que le logiciel lui-même.  Or, cette pratique n'est pas la plus adaptée car elle ne permet pas d'identifier facilement et avec certitude le logiciel en question, ainsi que le démontre Mike Jackson&nbsp;:
+Citer un logiciel s'avère nécessaire lorsque celui-ci a joué un rôle déterminant dans la réalisation des travaux de recherche. La question suivante peut servir de repère&nbsp;: dans quelle mesure le logiciel a-t-il un impact direct sur les résultats obtenus&nbsp;? S'il n'est pas pertinent de citer un outil de traitement de texte, il est par exemple judicieux de citer le logiciel de reconnaissance optique de caractères utilisé. Il est courant de voir cité un article décrivant le logiciel, plutôt que le logiciel lui-même. Or, cette pratique ne permet pas d'identifier facilement et avec certitude le logiciel en question, ainsi que le démontre Mike Jackson&nbsp;:
 
 > «&nbsp;Les auteurs avaient cité un article de l'OGSA-DAI qui semblait impliquer que la version d'OGSA-DAI qu'ils utilisaient était comprise entre 1 et 6. Plus loin dans leur article, les auteurs mentionnaient un composant spécifique aux versions 2.5 à 6. Cependant, les auteurs ont ensuite mentionné un autre composant qui n'était disponible que dans une version totalement différente du logiciel. Sans ma connaissance approfondie du projet OGSA-DAI, il aurait été impossible de déterminer quel logiciel avait été utilisé.[^6].&nbsp;»
 
 Par ailleurs, il n'existe pas toujours d'article associé au logiciel&nbsp;: il peut avoir été développé en dehors d'une communauté académique, ou simplement, n'avoir jamais été présenté dans une revue. Cela renforce donc le besoin de citer le logiciel lui-même, au même titre qu'une autre ressource académique. Les pratiques de citation de logiciels ne sont pas encore très codifiées dans les communautés académiques. Il n'existe pas de standard descriptif. Sur la base de recommandations d'experts, voici une proposition de noyau minimal d'informations à mentionner[^7]:
 
-* le nom du logiciel de la manière la plus précise possible (par exemple le nom du *package*) ;
-* la date de mise à disposition de la version ou, à défaut, la date d’utilisation du logiciel par l’utilisateur à l'instar de ce qui se pratique pour les citations de pages web ;
-* l’auteur du logiciel ;
-* la localisation initiale (par exemple le lien vers la plateforme de développement) ;
-* l’identifiant pérenne (par exemple le SWHID).
+* Le nom du logiciel de la manière la plus précise possible (par exemple le nom du *package*)
+* La date de mise à disposition de la version ou, à défaut, la date d’utilisation du logiciel par l’utilisateur, à l'exemple de ce qui se pratique pour les citations de pages web
+* L’auteur du logiciel
+* La localisation initiale (par exemple le lien vers la plateforme de développement)
+* L’identifiant pérenne (par exemple le SWHID)
 
 Les utilisateur·ices de LaTeX peuvent utiliser le [biblatex-software *package*](https://ctan.org/pkg/biblatex-software) pour faciliter la tâche.
 
@@ -141,17 +141,17 @@ Les identifiants pérennes sont un moyen d'assurer un accès stable à une resso
 
 Le Comité pour la science ouverte définit ainsi un identifiant pérenne&nbsp;:
 
-> «&nbsp;Numéro ou une étiquette alphanumérique, opaque ou explicite, lisible par des machines et par des humains, permettant de désigner et de retrouver de manière univoque et pérenne un objet, un document, une personne, un lieu, un organisme, ou toute entité, dans le monde réel et sur internet[^8].&nbsp;»
+> «&nbsp;Numéro ou étiquette alphanumérique, opaque ou explicite, lisible par des machines et par des humains, permettant de désigner et de retrouver de manière univoque et pérenne un objet, un document, une personne, un lieu, un organisme, ou toute entité, dans le monde réel et sur internet.[^8]&nbsp;»
 
-Les identifiants réduisent les ambiguïtés&nbsp;: il peut en effet parfois être difficile de savoir si tel·le auteur·e ayant publié dans une discipline donnée est l'homonyme d'un·e autre auteur·e publiant dans un domaine proche, ou s'il s'agit d'une seule personne active dans plusieurs champs. On peut également citer le cas des institutions, dont le nom peut changer au fil du temps. Plusieurs institutions peuvent fusionner et former une nouvelle entité à décrire. Ces changements rendent difficiles l'identification des ressources produites par ces instances.
+Les identifiants réduisent les ambiguïtés. Il peut en effet parfois être difficile de savoir si tel·le auteur·e ayant publié dans une discipline donnée est l'homonyme d'un·e autre auteur·e publiant dans un domaine proche, ou s'il s'agit d'une seule personne active dans plusieurs champs. On peut également citer le cas des institutions, dont le nom peut changer au fil du temps. Plusieurs institutions peuvent fusionner et former une nouvelle entité à décrire. Ces changements rendent difficiles l'identification des ressources produites par ces instances.
 
-On peut également noter que les objets académiques à identifier se sont diversifiés et le logiciel fait partie des ressources vers lesquelles il est nécessaire de créer des liens valables sur le long terme.
+On peut également noter que les objets académiques à identifier se sont diversifiés, et que le logiciel fait maintenant partie des ressources vers lesquelles il est nécessaire de créer des liens valables sur le long terme.
 
 ### Obtenir et utiliser un *SoftWare Hash Identifier* (SWHID) 
 
 Comme nous l'avons vu précédemment, même si le DOI est l'identifiant le plus connu et le plus utilisé dans le monde académique, il n'est pas le plus adapté à l'identification des logiciels&nbsp;: on n'a généralement pas de DOI associé à chaque composant du logiciel — encore moins à chaque étape fine de son processus de développement.
 
-Le *SoftWare Hash Identifier* permet de pointer vers différents composants du logiciel, ainsi que vers des actions de son historique de développement. Il en existe cinq types différents en fonction de la façon dont on souhaite faire référence à un logiciel donné. La [documentation technique](https://docs.softwareheritage.org/devel/swh-model/persistent-identifiers.html#id5) détaille les types de SWHIDs disponibles. En voici une synthèse&nbsp;:
+Le *SoftWare Hash Identifier* permet de pointer vers différents composants du logiciel, ainsi que vers des actions de son historique de développement. Il en existe cinq types différents, chacun adapté à la façon dont on souhaite faire référence à un logiciel donné. La [documentation technique](https://docs.softwareheritage.org/devel/swh-model/persistent-identifiers.html#id5) détaille les types de SWHIDs disponibles. En voici une synthèse&nbsp;:
 
 <div class="table-wrapper" markdown="block">
 
@@ -184,7 +184,7 @@ Ces différents identifiants sont complémentaires car ils répondent à des bes
 
 ## En pratique&nbsp;: trouver et référencer des logiciels archivés
 
-Dans cette section, nous voyons comment trouver dans l'archive Software Heritage les logiciels que vous utilisez et comment obtenir les identifiants dont vous avez besoin pour les citer correctement dans vos productions académiques. Référencer un logiciel signifie lui attribuer un identifiant pérenne.
+Dans cette section, nous voyons comment trouver un logiciel dans l'archive Software Heritage et comment obtenir les identifiants dont vous avez besoin pour le citer correctement dans vos productions académiques. Référencer un logiciel signifie lui attribuer un identifiant pérenne.
 
 ### Naviguer et rechercher des logiciels sur Software Heritage 
 
@@ -197,46 +197,54 @@ Pour consulter ou citer du code source sur Software Heritage, il faut déjà l'a
 5. Utilisateur avancé, vous possédez un _code de hachage_ permettant d'identifier un certain fichier, un répertoire, une version ou une révision.
 6. Vous possédez un *SoftWare Hash Identifier* (SWHID).
 
-#### Cas d'étude quand vous explorez Software Heritage 
+#### Cas d'étude&nbsp;: explorer Software Heritage 
 
 Examinons chacun des cas présents, en allant du point de départ le plus imprécis vers le plus précis. Les options 1, 2, 4 et 6 permettent une interrogation facilitée de Software Heritage (Fig. 1).
 
 {% include figure.html filename="fr-or-preserver-logiciels-recherche-01.png" alt="Logigramme représentant les différents points d'entrée à partir desquels rechercher un logiciel sur Software Heritage." caption="Figure 1. Tous les chemins mènent à Software Heritage." %}
 
-##### Option 1. Vous ne connaissez que le _nom du projet_
-Par exemple pour le projet «&nbsp;Linux&nbsp;», le plus simple est de chercher son dépôt officiel dans un moteur de recherche ou un catalogue de logiciels, par exemple le [catalogue des logiciels du MédiaLab de SciencesPo](https://medialab.sciencespo.fr/outils/)). En tapant «&nbsp;Linux source code&nbsp;» dans un moteur de recherche, vous tomberez assez rapidement sur une page intitulée «&nbsp;GitHub - torvalds/linux: Linux kernel source tree&nbsp;» à l'adresse <https://github.com/torvalds/linux>. Cette adresse est celle de l'«&nbsp;origine&nbsp;», c'est-à-dire du dépôt distant de référence. Elle permet de retrouver très facilement le code source sur Software Heritage, comme vous le verrez dans le point 4 ci-dessous.
+**Option 1. Vous ne connaissez que le _nom du projet_**
 
-##### Option 2. Vous possédez un _fichier du code source_
-Par exemple pour le texte de la GNU Public Licence v3, rendez-vous à l'adresse <https://www.softwareheritage.org/>. Glissez et déposez votre fichier dans l'encadré intitulé «&nbsp;Vérifiez si le code source qui vous intéresse est déjà présent dans l’archive&nbsp;», puis cliquez sur «&nbsp;Search&nbsp;». Un menu déroulant vous indiquera alors si le code figure sur Software Heritage et quel est son code de hachage, par exemple `8624bcdae55baeef00cd11d5dfcfa60f68710a02`. Cliquer sur «&nbsp;Browse&nbsp;» vous permettra de visualiser ce fichier à l'adresse <https://archive.softwareheritage.org/browse/content/8624bcdae55baeef00cd11d5dfcfa60f68710a02/?path=GPL-3>.
+Pour le projet «&nbsp;Linux&nbsp;», par exemple, le plus simple est de chercher son dépôt officiel dans un moteur de recherche ou un catalogue de logiciels, comme le [catalogue des logiciels du MédiaLab de SciencesPo](https://medialab.sciencespo.fr/outils/)). En tapant «&nbsp;Linux source code&nbsp;» dans un moteur de recherche, vous tomberez assez rapidement sur une page intitulée «&nbsp;GitHub - torvalds/linux: Linux kernel source tree&nbsp;» à l'adresse <https://github.com/torvalds/linux>. Cette adresse est celle de l'«&nbsp;origine&nbsp;», c'est-à-dire du dépôt distant de référence. Elle permet de retrouver très facilement le code source sur Software Heritage, comme vous le verrez dans l'Option 4 ci-dessous.
 
-##### Option 3. Vous connaissez un _extrait du code_
-Considérons par exemple l'extrait `unsigned three = 1;`. Vous pouvez chercher davantage d'informations à son sujet à l'aide d'un moteur de recherche. Jonglez avec les guillemets pour cibler l'expression exacte (comme lorsque vous effectuez une recherche dans un catalogue ou un moteur de recherche, ajouter des guillemets permet de faire porter la recherche sur l'expression telle que formulée), et ajoutez des mots-clés pour affiner les résultats. En tapant par exemple «&nbsp;"unsigned three = 1" source code&nbsp;», vous trouverez rapidement un lien vers la page <https://github.com/torvalds/linux/blob/master/fs/ext4/resize.c>, ce qui vous indique l'adresse d'origine du projet et vous conduit une fois de plus à la situation décrite dans le point 4 ci-dessous.
+**Option 2. Vous possédez un _fichier du code source_**
 
-##### Option 4. Vous connaissez l'_adresse du dépôt de référence_ d'un projet
-Si vous connaissez par exemple l'adresse <https://github.com/torvalds/linux> du projet Linux, il suffit de la saisir dans la [barre de recherche de Software Heritage](https://archive.softwareheritage.org/browse/search/). Vous serez alors automatiquement redirigé·e vers [la page correspondante de l'archive](https://archive.softwareheritage.org/browse/origin/directory/?origin_url=https://github.com/torvalds/linux), qui vous permettra de naviguer dans le code source de Linux. Vous pouvez par exemple explorer le fichier `fs/ext4/resize.c` jusqu'à trouver la ligne contenant l'instruction paradoxale `unsigned three = 1;`&nbsp;;
+Pour le texte de la GNU Public Licence v3, rendez-vous à l'adresse <https://www.softwareheritage.org/>. Glissez et déposez votre fichier dans l'encadré intitulé «&nbsp;Vérifiez si le code source qui vous intéresse est déjà présent dans l’archive&nbsp;», puis cliquez sur _Search_ (Recherche). Un menu déroulant vous indiquera alors si le code figure sur Software Heritage et quel est son code de hachage, par exemple `8624bcdae55baeef00cd11d5dfcfa60f68710a02`. Cliquer sur _Browse_ (Parcourir) vous permettra de visualiser ce fichier à l'adresse <https://archive.softwareheritage.org/browse/content/8624bcdae55baeef00cd11d5dfcfa60f68710a02/?path=GPL-3>.
 
-##### Option 5. Vous connaissez un _code de hachage_
-Vous êtes un utilisateur suffisamment expérimenté et possédez le _code de hachage_ (SHA-1) permettant d'identifier un certain fichier, un répertoire, une version ou une révision. Par exemple, en visitant l'adresse <https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=64ac24e738823161693bf791f87adc802cf529ff>, vous avez trouvé le numéro de révision (*commit*) `64ac24e738823161693bf791f87adc802cf529ff`, ou bien vous savez que le code de hachage d'un fichier est `8624bcdae55baeef00cd11d5dfcfa60f68710a02`. Vous pouvez alors explorer la page correspondante en rajoutant l'un des préfixes suivants, selon le type de la ressource&nbsp;:
+**Option 3. Vous connaissez un _extrait du code_**
 
-	* pour un fichier : <https://archive.softwareheritage.org/browse/content/> ;
-	* pour un répertoire : <https://archive.softwareheritage.org/browse/directory/> ;     
-	* pour une capture : <https://archive.softwareheritage.org/browse/snapshot/> ;    
-	* pour une version : <https://archive.softwareheritage.org/browse/release/> ;    
-	* pour une révision : <https://archive.softwareheritage.org/browse/revision/>.
+Considérons par exemple l'extrait `unsigned three = 1;`. Vous pouvez chercher davantage d'informations à son sujet à l'aide d'un moteur de recherche. Jonglez avec les guillemets pour cibler l'expression exacte (comme lorsque vous effectuez une recherche dans un catalogue ou un moteur de recherche, ajouter des guillemets permet de faire porter la recherche sur l'expression telle quelle), et ajoutez des mots-clés pour affiner les résultats. En tapant par exemple «&nbsp;"unsigned three = 1" source code&nbsp;», vous trouverez rapidement un lien vers la page <https://github.com/torvalds/linux/blob/master/fs/ext4/resize.c>, ce qui vous indique l'adresse d'origine du projet et vous conduit une fois de plus à la situation décrite dans l'Option 4 ci-dessous.
 
-On trouvera donc la révision `64ac24e738823161693bf791f87adc802cf529ff` à l'adresse <https://archive.softwareheritage.org/browse/revision/64ac24e738823161693bf791f87adc802cf529ff>, et le fichier dont le code est `8624bcdae55baeef00cd11d5dfcfa60f68710a02` à l'adresse 	<https://archive.softwareheritage.org/browse/content/8624bcdae55baeef00cd11d5dfcfa60f68710a02>. Vous pouvez également, pour chacun de ces types de ressources — à l'exception notable des fichiers —, obtenir un *SoftWare Hash Identifier* (SWHID) en ajoutant le préfixe correspondant&nbsp;:
+**Option 4. Vous connaissez l'_adresse du dépôt de référence_ d'un projet**
 
-	* `swh:1:dir:` pour un répertoire ;    
-	* `swh:1:snp:` pour une capture ;    
-	* `swh:1:rel:` pour une version ;    
-	* `swh:1:rev:` pour une révision.
+Si vous connaissez par exemple l'adresse <https://github.com/torvalds/linux> du projet Linux, il suffit de la saisir dans la [barre de recherche de Software Heritage](https://archive.softwareheritage.org/browse/search/). Vous serez alors automatiquement redirigé·e vers [la page correspondante de l'archive](https://archive.softwareheritage.org/browse/origin/directory/?origin_url=https://github.com/torvalds/linux), qui vous permettra de naviguer dans le code source de Linux. Vous pouvez par exemple explorer le fichier `fs/ext4/resize.c` jusqu'à trouver la ligne contenant l'instruction paradoxale `unsigned three = 1;`.
 
-Vous vous trouverez alors dans la situation abordée dans le point 6 ci-dessous.
+**Option 5. Vous connaissez un _code de hachage_**
 
-##### Option 6. Vous possédez un identifiant _SoftWare Hash Identifier_ (SWHID)
+Vous êtes un utilisateur suffisamment expérimenté et possédez le _code de hachage_ (SHA-1) permettant d'identifier un certain fichier, un répertoire, une version ou une révision. Par exemple, en visitant l'adresse <https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=64ac24e738823161693bf791f87adc802cf529ff>, vous avez trouvé le numéro de révision (*commit*) `64ac24e738823161693bf791f87adc802cf529ff`, ou bien vous savez que le code de hachage d'un fichier est `8624bcdae55baeef00cd11d5dfcfa60f68710a02`. Vous pouvez alors explorer la page correspondante en rajoutant l'un des préfixes suivants, selon le type de ressource&nbsp;:
+
+* Pour un fichier&nbsp;: <https://archive.softwareheritage.org/browse/content/>
+* Pour un répertoire&nbsp;: <https://archive.softwareheritage.org/browse/directory/>     
+* Pour une capture&nbsp;: <https://archive.softwareheritage.org/browse/snapshot/>    
+* Pour une version&nbsp;: <https://archive.softwareheritage.org/browse/release/>    
+* Pour une révision&nbsp;: <https://archive.softwareheritage.org/browse/revision/>
+
+On trouvera donc la révision `64ac24e738823161693bf791f87adc802cf529ff` à l'adresse <https://archive.softwareheritage.org/browse/revision/64ac24e738823161693bf791f87adc802cf529ff>, et le fichier dont le code est `8624bcdae55baeef00cd11d5dfcfa60f68710a02` à l'adresse 	<https://archive.softwareheritage.org/browse/content/8624bcdae55baeef00cd11d5dfcfa60f68710a02>. Vous pouvez également, pour chacun de ces types de ressources — à l'exception notable des fichiers — obtenir un SoftWare Hash Identifier (SWHID) en ajoutant le préfixe correspondant&nbsp;:
+
+* Pour un répertoire&nbsp;: `swh:1:dir:`    
+* Pour une capture&nbsp;: `swh:1:snp:`     
+* Pour une version&nbsp;: `swh:1:rel:`    
+* Pour une révision&nbsp;: `swh:1:rev:` 
+
+Vous vous trouverez alors dans la situation abordée dans l'Option 6 ci-dessous&nbsp;:
+
+**Option 6. Vous possédez un identifiant SoftWare Hash Identifier (SWHID)**
+
 Vous pouvez alors le taper dans la [barre de recherche de l'archive](https://archive.softwareheritage.org/browse/search/). Par exemple, si vous y saisissez l'identifiant `swh:1:dir:1fee702c7e6d14395bbf5ac3598e73bcbf97b030`, vous serez redirigé·e vers la page <https://archive.softwareheritage.org/browse/directory/1fee702c7e6d14395bbf5ac3598e73bcbf97b030/>.
 
-À noter&nbsp;: le recours aux catalogues de logiciels reste une pratique peu répandue, y compris parmi les développeur·es. Pourtant, ces outils spécialisés permettent des recherches plus ciblées que les moteurs généralistes. Vous connaissez les institutions dont les domaines d'expertise sont proches des vôtres&nbsp;: vérifiez s'il n'existe pas un catalogue recensant la production logicielle de cet établissement. Votre propre institution a peut-être développé un tel outil.
+<div class="alert alert-info">
+À noter&nbsp;: le recours aux catalogues de logiciels reste une pratique peu répandue, y compris parmi les développeur·euses. Pourtant, ces outils spécialisés permettent des recherches plus ciblées que les moteurs généralistes. Vous connaissez les institutions dont les domaines d'expertise sont proches des vôtres&nbsp;: vérifiez s'il n'existe pas un catalogue recensant la production logicielle de cet établissement. Votre propre institution a peut-être développé un tel outil.
+</div>
 
 #### Exercice&nbsp;: mettre en œuvre sa stratégie de recherche
 
@@ -257,19 +265,19 @@ Mettons à présent ces notions en pratique. Trouvez dans l'archive Software Her
 
 ### Choisir l'identifiant pérenne à intégrer dans une citation 
 
-Maintenant que vous savez naviguer dans l'archive et que vous avez vu ci-dessus les différents types de SWHIDs permettant de répondre aux différents besoins de citation d'un logiciel, donnons ci-dessous deux cas concrets. Dans ces situations, des identifiants pérennes bien choisis sont nécessaires pour répondre aux besoins des chercheurs qui souhaitent faire référence à des logiciels ou des portions de code source dans leurs productions académiques.
+Maintenant que vous savez naviguer dans l'archive et que vous avez vu ci-dessus les différents types de SWHIDs permettant de répondre aux différents besoins de citation d'un logiciel, donnons ci-dessous deux cas concrets. Dans ces situations, des identifiants pérennes bien choisis sont nécessaires pour répondre aux besoins des chercheurs qui souhaitent faire référence à des logiciels, ou des portions de code source, dans leurs productions académiques.
 
-1. Une doctorante souhaite citer les logiciels utilisés pendant sa thèse pour permettre à ses lecteurs d'identifier et retrouver le code source correspondant, et de reproduire les résultats présentés dans son manuscrit. Elle a notamment utilisé le *package* R `{rdss}` pour une partie de ses analyses statistiques. Comme de nombreux autres *packages* R, `{rdss}` est seulement [disponible sur la forge GitLab.com](https://gitlab.com/f-santos/rdss). Bien que librement téléchargeable, ce *package* pourrait ne plus être disponible du jour au lendemain, si la forge GitLab.com fermait soudainement ses portes, ou si son auteur en retirait ce *package* sans préavis. Les résultats présentés dans la thèse de cette doctorante seraient alors impossibles à auditer et à reproduire par les membres de son jury, ou par les futurs lecteurs de son travail. Comment peut-elle fournir un identifiant pérenne pour permettre à ses lecteurs d'accéder durablement à la version de `{rdss}` utilisée dans son manuscrit, à savoir la version (ou  *release*) 1.1.1&nbsp;?
+1. Une doctorante souhaite citer les logiciels utilisés pendant sa thèse pour permettre à ses lecteurs d'identifier et retrouver le code source correspondant, et de reproduire les résultats présentés dans son manuscrit. Elle a notamment utilisé le package («&nbsp;paquet&nbsp;») R `{rdss}` pour une partie de ses analyses statistiques. Comme de nombreux autres packages R, `{rdss}` est seulement [disponible sur la forge GitLab.com](https://gitlab.com/f-santos/rdss). Bien que librement téléchargeable, ce package pourrait ne plus être disponible du jour au lendemain, si la forge GitLab fermait soudainement ses portes, ou si l'auteur en retirait son package sans préavis. Les résultats présentés dans la thèse de cette doctorante seraient alors impossibles à auditer et à reproduire par les membres de son jury, ou par les futurs lecteurs de son travail. Comment peut-elle fournir un identifiant pérenne pour permettre à ses lecteurs d'accéder durablement à la version de `{rdss}` utilisée dans son manuscrit, à savoir la version (ou «&nbsp;release&nbsp;») 1.1.1&nbsp;?
 
-2. Un chercheur rédige un article cherchant à comparer la performance de divers algorithmes de fouille de textes, ou *text mining*, une méthode utile notamment aux historiens. Un lot de méthodes efficaces en fouille de textes est par exemple implémenté dans le [*package* R `{tm}`](https://archive.softwareheritage.org/browse/origin/directory/?origin_url=https://cran.r-project.org/package%3Dtm&snapshot=99204e5a7070f348901b0e966a7ffbbe3db0a9b9&visit_type=cran). Notre chercheur pense avoir développé des fonctions en langage R encore plus rapides et économes en temps de calcul sur de grands jeux de données, en apportant des améliorations décisives à certains endroits du *package* `{tm}`. Par exemple, en considérant la version 0.7-9 du *package* `{tm}`, il souhaite signaler qu'il a mis au point une version plus rapide d'une fonction nommée `tm_scan_one`, dont le code est situé dans le [fichier `src/scan.c`](https://archive.softwareheritage.org/browse/content/sha1_git:e76e4f8b6a1d34dcb55cebaa0f4b91e5a186dd08/?origin_url=https://cran.r-project.org/package%3Dtm&path=tm/src/scan.c&snapshot=99204e5a7070f348901b0e966a7ffbbe3db0a9b9&visit_type=cran) du package. En particulier, ce chercheur a apporté une amélioration décisive à la portion de code comprise entre les lignes 46 à 65, écrite en langage C. Comment peut-il faire référence de manière pérenne à cette portion de code dans son projet de publication&nbsp;?
+2. Un chercheur rédige un article cherchant à comparer la performance de divers algorithmes de fouille de textes, ou «&nbsp;text mining&nbsp;», une méthode utile notamment en Histoire. Un lot de méthodes de fouille de textes est par exemple implémenté dans le [package R `{tm}`](https://archive.softwareheritage.org/browse/origin/directory/?origin_url=https://cran.r-project.org/package%3Dtm&snapshot=99204e5a7070f348901b0e966a7ffbbe3db0a9b9&visit_type=cran). Notre chercheur pense avoir développé des fonctions en langage R encore plus rapides et économes en temps de calcul sur de grands jeux de données, en apportant des améliorations décisives à certains endroits du *package* `{tm}`. Par exemple, en considérant la version 0.7-9 du *package* `{tm}`, il souhaite signaler qu'il a mis au point une version plus rapide d'une fonction nommée `tm_scan_one`, dont le code est situé dans le [fichier `src/scan.c`](https://archive.softwareheritage.org/browse/content/sha1_git:e76e4f8b6a1d34dcb55cebaa0f4b91e5a186dd08/?origin_url=https://cran.r-project.org/package%3Dtm&path=tm/src/scan.c&snapshot=99204e5a7070f348901b0e966a7ffbbe3db0a9b9&visit_type=cran) du package. En particulier, ce chercheur a apporté une amélioration décisive à la portion de code comprise entre les lignes 46 à 65, écrite en langage C. Comment peut-il faire référence de manière pérenne à cette portion de code dans son projet de publication&nbsp;?
 
 **Solutions**
 
-1. Le but est ici de citer une *version* d'un logiciel&nbsp;: le bon identifiant SWHID est donc un identifiant portant sur la *release*. Sur [la page adéquate](https://archive.softwareheritage.org/browse/origin/directory/?origin_url=https://gitlab.com/f-santos/rdss) de l'archive Software Heritage, on peut sélectionner la «&nbsp;release&nbsp;» 1.1.1, puis obtenir l'identifiant de version `swh:1:rel:ef8ba743282a602d8b105ce82e1f6f48779d7998` grâce au menu Permalinks situé à droite de l'écran (Fig. 2). 
+1. Le but est ici de citer une *version* d'un logiciel&nbsp;: le bon identifiant SWHID est donc un identifiant portant sur la «&nbsp;release&nbsp;». Sur [la page adéquate](https://archive.softwareheritage.org/browse/origin/directory/?origin_url=https://gitlab.com/f-santos/rdss) de l'archive Software Heritage, on peut sélectionner la release 1.1.1, puis obtenir l'identifiant de version `swh:1:rel:ef8ba743282a602d8b105ce82e1f6f48779d7998` grâce au menu **Permalinks** situé à droite de l'écran (Fig. 2). 
 
 {% include figure.html filename="fr-or-preserver-logiciels-recherche-02.gif" alt="Gif animé présentant les manipulations nécessaires pour trouver le package R rdss dans l'archive Software Heritage." caption="Figure 2. Trouver et citer une version précise d'un package R dans l'archive Software Heritage." %}
 
-2\. Le but est ici de citer un *extrait de code* contenu dans un fichier source, à une étape donnée du développement d'un logiciel. Le bon identifiant SWHID est donc un identifiant de type *content*, c'est-à-dire, portant sur le contenu d'un fichier précis. Sur [la page adéquate](https://archive.softwareheritage.org/browse/content/sha1_git:e76e4f8b6a1d34dcb55cebaa0f4b91e5a186dd08/?origin_url=https://cran.r-project.org/package=tm&path=tm/src/scan.c&snapshot=99204e5a7070f348901b0e966a7ffbbe3db0a9b9&visit_type=cran#L46-L65) de l'archive Software Heritage, on peut sélectionner la "release" 0.7-9 du *package*, puis les lignes 46 à 65, pour enfin obtenir l'identifiant de contenu `swh:1:cnt:e76e4f8b6a1d34dcb55cebaa0f4b91e5a186dd08` grâce au menu Permalinks situé à droite de l'écran (Fig. 3).    
+2\. Le but est ici de citer un *extrait de code* contenu dans un fichier source, à une étape donnée du développement d'un logiciel. Le bon identifiant SWHID est donc un identifiant de type «&nbsp;content&nbsp;», c'est-à-dire, portant sur le contenu d'un fichier précis. Sur [la page adéquate](https://archive.softwareheritage.org/browse/content/sha1_git:e76e4f8b6a1d34dcb55cebaa0f4b91e5a186dd08/?origin_url=https://cran.r-project.org/package=tm&path=tm/src/scan.c&snapshot=99204e5a7070f348901b0e966a7ffbbe3db0a9b9&visit_type=cran#L46-L65) de l'archive Software Heritage, on peut sélectionner la release 0.7-9 du package, puis les lignes 46 à 65, pour enfin obtenir l'identifiant de contenu `swh:1:cnt:e76e4f8b6a1d34dcb55cebaa0f4b91e5a186dd08` grâce au menu **Permalinks** situé à droite de l'écran (Fig. 3).    
 
 {% include figure.html filename="fr-or-preserver-logiciels-recherche-03.gif" alt="Gif animé présentant les manipulations nécessaires pour sélectionner un extrait de code du package R tm dans l'archive Software Heritage." caption="Figure 3. Trouver et citer un extrait de code source précis dans l'archive Software Heritage." %}
 
@@ -281,33 +289,33 @@ Dans cette section, vous allez principalement vous placer du point de vue des pr
 
 La grande majorité du code source archivé sur Software Heritage provient des «&nbsp;moissons&nbsp;» automatiques effectuées périodiquement depuis différentes sources. Notons que ces moissons automatiques sont faites «&nbsp;sans filtre&nbsp;»&nbsp;: Software Heritage n'effectue pas de test technique pour vérifier si un logiciel fonctionne.
 
-Entre ces moissons périodiques, tout·e auteur·e ou utilisateur·ice de logiciel a la possibilité de déclencher manuellement l'archivage d'un nouveau dépôt, ou la mise à jour d'un dépôt existant. Il s'agit de l'option «&nbsp;[Save Code Now](https://archive.softwareheritage.org/save/)&nbsp;», permettant de soumettre l'URL d'un dépôt de code source qui sera alors inspecté puis archivé par Software Heritage dans son état le plus récent. Il existe au moins deux cas où vous pourrez souhaiter utiliser cette option&nbsp;:
+Entre ces moissons périodiques, tout·e auteur·e ou utilisateur·ice de logiciel a la possibilité de déclencher manuellement l'archivage d'un nouveau dépôt, ou la mise à jour d'un dépôt existant. Il s'agit de l'option «&nbsp;_[Save Code Now](https://archive.softwareheritage.org/save/)_&nbsp;» (_Sauvegarder le Code Maintenant_), permettant de soumettre l'URL d'un dépôt de code source qui sera alors inspecté puis archivé par Software Heritage dans son état le plus récent. Il existe au moins deux cas où vous pourriez souhaiter utiliser cette option&nbsp;:
 
-1. Vous êtes utilisateur·ice d'un logiciel et avez utilisé sa toute dernière version pour produire les résultats d'un article que vous vous préparez à soumettre. Vous souhaitez utiliser un SWHID judicieusement choisi (en l'occurrence, un SWHID de type `release`) pour citer ce logiciel dans votre article. Malheureusement, la dernière version de ce logiciel n'a pas encore été moissonnée automatiquement par Software Heritage, et le SWHID correspondant ne peut donc pas être encore être produit. Vous souhaitez donc utiliser l'option «&nbsp;Save Code Now&nbsp;» afin que Software Heritage visite à nouveau le dépôt de ce logiciel, et en archive la dernière version. Le SWHID dont vous avez besoin sera alors disponible. 
-2. Vous êtes auteur·e d'un logiciel développé sur la forge GitLab.com et vous souhaitez le publier rapidement. Vous ne pouvez pas attendre que le dépôt GitLab soit moissonné automatiquement et souhaitez en déclencher l'archivage tout de suite afin de pouvoir fournir une URL stable (et un SWHID) dans l'article de présentation de votre logiciel.
+1. Vous êtes utilisateur·ice d'un logiciel et avez utilisé sa toute dernière version pour produire les résultats d'un article que vous vous préparez à soumettre. Vous souhaitez utiliser un SWHID judicieusement choisi (en l'occurrence, un SWHID de type `release`) pour citer ce logiciel dans votre article. Malheureusement, la dernière version de ce logiciel n'a pas encore été moissonnée automatiquement par Software Heritage, et le SWHID correspondant ne peut donc pas être encore être produit. Vous souhaitez donc utiliser l'option _Save Code Now_ afin que Software Heritage visite à nouveau le dépôt de ce logiciel, et en archive la dernière version. Le SWHID dont vous avez besoin sera alors disponible. 
+2. Vous êtes auteur·e d'un logiciel développé sur la forge GitLab et vous souhaitez le publier rapidement. Vous ne pouvez pas attendre que GitLab soit moissonné automatiquement et souhaitez en déclencher l'archivage tout de suite afin de pouvoir fournir une URL stable (et un SWHID) dans l'article de présentation de votre logiciel.
 
-Étudions concrètement le premier de ces deux cas, avec le point de vue d'un utilisateur non-développeur.
+Étudions concrètement le premier de ces deux cas, du point de vue d'un utilisateur non-développeur.
 
 ### Vérifier que la version archivée d'un dépôt est à jour 
 
 À un instant donné, il se peut que la version d'un logiciel actuellement disponible sur l'archive Software Heritage corresponde à une version antérieure à celle disponible sur la source officielle. Cela est particulièrement susceptible de se produire pour les logiciels en développement très actif dont l'évolution est rapide, avec parfois plusieurs dizaines de nouvelles révisions par jour. En effet, Software Heritage est une archive et non une forge, et n'a donc pas vocation à offrir en temps réel les dernières versions de l'ensemble des logiciels référencés. On peut néanmoins vérifier aisément si la version disponible sur l'archive Software Heritage est à jour.
 
-Prenons l'exemple d'un logiciel libre développé collaborativement sur la forge logicielle GitHub&nbsp;: le *package* `citar` pour l'éditeur de texte [Emacs](https://www.gnu.org/software/emacs/). En naviguant sur le dépôt correspondant de l'archive Software Heritage (Fig. 4), on peut repérer la date du dernier *snapshot* effectué sur le dépôt GitHub (ici encadrée en bleu), ainsi que le *hash* (c'est-à-dire l'identifiant) de la dernière modification connue sur ce dépôt (ici encadré en vert). En comparant ces éléments avec la date et le *hash* de la dernière modification effectuée sur [le dépôt GitHub d'origine](https://github.com/emacs-citar/citar), on peut donc savoir si la version archivée est à jour ou non.
+Prenons l'exemple d'un logiciel libre développé collaborativement sur la forge logicielle GitHub&nbsp;: le package `citar` pour l'éditeur de texte [Emacs](https://www.gnu.org/software/emacs/). En naviguant sur le dépôt correspondant de l'archive Software Heritage (Fig. 4), on peut repérer la date du dernier «&nbsp;snapshot&nbsp;» (capture) effectué sur le dépôt GitHub (ici encadrée en bleu), ainsi que le «&nbsp;hash&nbsp;» (c'est-à-dire l'identifiant) de la dernière modification connue sur ce dépôt (ici encadré en vert). En comparant ces éléments avec la date et le hash de la dernière modification effectuée sur [le dépôt GitHub d'origine](https://github.com/emacs-citar/citar), on peut donc savoir si la version archivée est à jour ou non.
 
-{% include figure.html filename="fr-or-preserver-logiciels-recherche-04.png" alt="Capture d'écran mettant en évidence les endroits où repérer la date d'archivage et le code de hachage d'une version précise du package citar dans l'archive Software Heritage." caption="Figure 4. Capture d'écran de la version archivée du *package* Emacs `citar`." %}
+{% include figure.html filename="fr-or-preserver-logiciels-recherche-04.png" alt="Capture d'écran mettant en évidence les endroits où repérer la date d'archivage et le code de hachage d'une version précise du package citar dans l'archive Software Heritage." caption="Figure 4. Capture d'écran de la version archivée du package Emacs `citar`." %}
 
 Notons qu'une extension de navigateur, [UpdateSWH](https://www.softwareheritage.org/browser-extensions/), disponible pour les principaux navigateurs web, facilite cette opération. Après l'avoir installée, il suffit de visiter le dépôt d'origine d'un logiciel sur une forge moissonnée par Software Heritage. Une icône s'affiche alors à droite de l'écran, accompagnée d'une infobulle précisant si la version de la forge de développement coïncide ou non avec celle de Software Heritage (Fig. 5). Ici, la dernière version de `citar` disponible sur GitHub est plus récente que celle archivée sur Software Heritage&nbsp;: les modifications les plus récentes n'ont donc pas encore été archivées.
 
-{% include figure.html filename="fr-or-preserver-logiciels-recherche-05.png" alt="Capture d'écran mettant en évidence la manière de repérer si un dépôt est à jour ou non dans l'archive Software Heritage." caption="Figure 5. Capture d'écran du dépôt GitHub du *package* Emacs `citar`. Le plug-in de navigateur Software Heritage fournit des informations dans l'infobulle à droite." %}
+{% include figure.html filename="fr-or-preserver-logiciels-recherche-05.png" alt="Capture d'écran mettant en évidence la manière de repérer si un dépôt est à jour ou non dans l'archive Software Heritage." caption="Figure 5. Capture d'écran du dépôt GitHub du package Emacs `citar`. Le plug-in de navigateur Software Heritage fournit des informations dans l'infobulle à droite." %}
 
 ### En pratique&nbsp;: archiver du code source que vous avez écrit 
 
-Afin de reprendre le cas d'usage le plus fréquent, vous allez créer un dépôt sur une forge logicielle basée sur [Git](https://git-scm.com/), avant d'y éditer des extraits de code. Git est un logiciel de versionnement avancé, permettant de gérer finement les versions successives de fichiers (au format texte brut principalement) d'un même projet lors de l'avancée du travail, de garder la trace de chaque modification effectuée (date, auteur·e, contenu) et de pouvoir revenir à des versions antérieures de ces fichiers. Il existe d'autres systèmes de gestion de version (par exemple [Mercurial](https://www.mercurial-scm.org/) ou [SVN](https://subversion.apache.org/)), mais la plupart des forges logicielles actuelles utilisent Git, et offrent ainsi une plateforme web centralisant l'avancée d'un projet, en particulier dans le cas d'un développement collaboratif.
+Afin de reprendre le cas d'usage le plus fréquent, vous allez créer un dépôt sur une forge logicielle basée sur [Git](https://git-scm.com/), avant d'y éditer des extraits de code. Git est un logiciel de versionnement avancé, permettant de gérer finement les versions successives de fichiers (au format texte brut principalement) d'un même projet, lors de l'avancée du travail. Il permet de garder la trace de chaque modification effectuée (date, auteur·e, contenu) et de pouvoir revenir à des versions antérieures de ces fichiers. Il existe d'autres systèmes de gestion de version (par exemple [Mercurial](https://www.mercurial-scm.org/) ou [SVN](https://subversion.apache.org/)), mais la plupart des forges logicielles actuelles utilisent Git, et offrent ainsi une plateforme web centralisant l'avancée d'un projet, en particulier dans le cas d'un développement collaboratif.
 
-<div class="alert alert-warning"> 
-Vous n'avez pas besoin d'avoir déjà utilisé Git pour faire les exercices. Nous proposons la création d'un compte sur la forge logicielle GitLab.com, et vous utiliserez l'éditeur de code en ligne directement intégré sur cette forge.
-
-Mais si vous êtes au contraire déjà un·e utilisateur·ice régulier de Git, vous pouvez effectuer l'exercice en utilisant votre compte sur une autre forge logicielle (par exemple GitHub, ou une forge institutionnelle), et en utilisant Git en ligne de commande avec les instructions <code>add</code>, <code>commit</code>, <code>push</code>, etc., si vous en avez l'habitude. 
+<div class="alert alert-info"> 
+Vous n'avez pas besoin d'avoir déjà utilisé Git pour faire les exercices. Nous proposons la création d'un compte sur la forge logicielle GitLab, et vous utiliserez l'éditeur de code en ligne directement intégré sur cette forge.
+<br></br>
+Si vous êtes au contraire déjà un·e utilisateur·ice régulier·e de Git, vous pouvez effectuer l'exercice en utilisant votre compte sur une autre forge logicielle (par exemple GitHub, ou une forge institutionnelle), et en utilisant Git en ligne de commande avec les instructions <code>add</code>, <code>commit</code>, <code>push</code>, etc., si vous en avez l'habitude. 
 </div>
 
 #### Créer un dépôt GitLab 
@@ -316,7 +324,7 @@ Mais si vous êtes au contraire déjà un·e utilisateur·ice régulier de Git, 
 2. Vous pourrez ensuite [vous connecter sur cette forge](https://gitlab.com/users/sign_in) avec vos identifiants. 
 3. Dans l'interface de GitLab, ou [en suivant ce lien](https://gitlab.com/projects/new), choisissez l'option «&nbsp;Créer un projet vide&nbsp;», dans lequel vous hébergerez par la suite du code source. 
 4. Choisissez par exemple `Test SWH` comme nom de projet, et veillez à ce que le «&nbsp;Niveau de visibilité&nbsp;» du projet soit réglé sur «&nbsp;Public&nbsp;». (Sans cela, le code source du projet ne serait accessible que par vous, et ne pourrait donc pas être moissonné par Software Heritage.) 
-5. Validez enfin la création de ce nouveau projet en cliquant sur le bouton «&nbsp;Créer le projet&nbsp;» (Fig. 6).
+5. Validez enfin la création de ce nouveau projet en cliquant sur le bouton _Créer le projet_ (Fig. 6).
 
 {% include figure.html filename="fr-or-preserver-logiciels-recherche-06.png" alt="Capture d'écran indiquant les informations correctes à renseigner pour créer un nouveau projet sur la forge GitLab.com : nom, slug et visibilité." caption="Figure 6. Créer un nouveau projet dans l'interface de GitLab.com." %}
 
@@ -347,27 +355,27 @@ fi
 exit 0
 ```
 
-Pour ce faire, dans l'interface de GitLab.com, cliquez sur le bouton `+` situé en haut de la page du dépôt, puis choisissez «&nbsp;Nouveau fichier&nbsp;». Dans la nouvelle fenêtre qui s'ouvre, collez l'extrait de code ci-dessus, puis attribuez le nom `leap.sh` à ce fichier source dans le champ Filename. Enfin, en bas de la page, cliquez sur Valider les modifications pour effectuer une révision (ou *commit*). Après cela, le fichier `leap.sh` est ajouté à votre dépôt, et une révision associée à la création de ce fichier a bien été enregistrée (Fig. 7).
+Pour ce faire, dans l'interface de GitLab, cliquez sur le bouton `+` situé en haut de la page du dépôt, puis choisissez «&nbsp;Nouveau fichier&nbsp;». Dans la nouvelle fenêtre qui s'ouvre, collez l'extrait de code ci-dessus, puis attribuez le nom `leap.sh` à ce fichier source dans le champ Filename. Enfin, en bas de la page, cliquez sur _Valider les modifications_ pour effectuer une révision (ou *commit*). Le fichier `leap.sh` est maintenant ajouté à votre dépôt, et une révision associée à la création de ce fichier a bien été enregistrée (Fig. 7).
 
 {% include figure.html filename="fr-or-preserver-logiciels-recherche-07.gif" alt="Gif animé montrant les manipulations nécessaires pour ajouter un nouveau fichier dans le dépôt sur l'interface en ligne de GitLab.com, et effectuer un nouveau commit après cela." caption="Figure 7. Ajout du fichier `leap.sh` dans votre dépôt." %}
 
 #### Ajouter une licence 
 
-Maintenant que votre dépôt comporte du code, il est nécessaire de lui ajouter une licence pour en spécifier les conditions d'utilisation. Certains sites spécialisés, tels que [Choosealicense.com](https://choosealicense.com/) pourront vous aider à choisir la licence adaptée à vos besoins et au degré de liberté que vous souhaitez accorder aux utilisateurs de votre logiciel.
+Maintenant que votre dépôt comporte du code, il est nécessaire de lui ajouter une licence pour en spécifier les conditions d'utilisation. Certains sites spécialisés, tels que [Choosealicense.com](https://choosealicense.com/), pourront vous aider à choisir la licence adaptée à vos besoins et au degré de liberté que vous souhaitez accorder aux utilisateurs de votre logiciel.
 
-D'un point de vue technique, on peut aisément attribuer une licence à travers l'interface de GitLab.com, en cliquant sur le lien «&nbsp;Ajouter une LICENCE&nbsp;» dans la page d'accueil du dépôt. Vous pouvez alors choisir l'une des licences dans la liste déroulante «&nbsp;Appliquer un modèle&nbsp;». Choisissez par exemple la licence GNU Affero General Public License v3.0, puis cliquez à nouveau sur «&nbsp;Valider les modifications&nbsp;» en bas de la page. Cela crée une nouvelle révision associée à l'ajout du fichier `LICENSE` dans votre dépôt (Fig. 8).
+D'un point de vue technique, on peut aisément attribuer une licence à travers l'interface de GitLab, en cliquant sur le lien «&nbsp;Ajouter une LICENCE&nbsp;» dans la page d'accueil du dépôt. Vous pouvez alors choisir l'une des licences dans la liste déroulante «&nbsp;Appliquer un modèle&nbsp;». Choisissez par exemple la licence GNU Affero General Public License v3.0, puis cliquez à nouveau sur _Valider les modifications_ en bas de la page. Cela crée une nouvelle révision associée à l'ajout du fichier `LICENSE` dans votre dépôt (Fig. 8).
 
 {% include figure.html filename="fr-or-preserver-logiciels-recherche-08.gif" alt="Gif animé montrant les manipulations nécessaires pour ajouter une licence dans le dépôt sur l'interface en ligne de GitLab.com." caption="Figure 8. Ajout d'une licence." %}
 
 #### Déclencher l'archivage du dépôt 
 
-Votre dépôt GitLab possède désormais un contenu raisonnable&nbsp;: un fichier de code en langage Bash, une licence en spécifiant les conditions d'utilisation, et un template de fichier README. Ce dépôt peut à présent être archivé sur Software Heritage. Deux options sont possibles pour cela&nbsp;:
+Votre dépôt GitLab possède désormais un contenu raisonnable&nbsp;: un fichier de code en langage Bash, une licence spécifiant les conditions d'utilisation, et un «&nbsp;template&nbsp;» (modèle exemple) de fichier README. Ce dépôt peut à présent être archivé sur Software Heritage. Deux options sont possibles pour cela&nbsp;:
 
-1\. Manuellement, avec l'option «&nbsp;Save Code Now&nbsp;». Visitez [la page dédiée](https://archive.softwareheritage.org/save/) sur le site de Software Heritage. Entrez l'URL de votre dépôt `Test SWH` créé sur GitLab.com. Notons que, par défaut, le champ «&nbsp;Origin type&nbsp;» est correctement attribué, avec la valeur `git` (qui correspond effectivement au cas d'un dépôt GitLab). Collez dans le champ «&nbsp;Origin URL&nbsp;» l'adresse que vous pouvez récupérer sur la page GitLab de votre dépôt, en cliquant sur le bouton «&nbsp;Code&nbsp;», puis «&nbsp;Cloner avec HTTPS&nbsp;» (Fig. 9). 
+1\. Manuellement, avec l'option _Save Code Now_. Visitez [la page dédiée](https://archive.softwareheritage.org/save/) sur le site de Software Heritage. Entrez l'URL de votre dépôt `Test SWH` créé sur GitLab. Notons que, par défaut, le champ «&nbsp;Origin type&nbsp;» est correctement attribué, avec la valeur `git` (qui correspond effectivement au cas d'un dépôt GitLab). Collez dans le champ «&nbsp;Origin URL&nbsp;» l'adresse que vous pouvez récupérer sur la page GitLab de votre dépôt, en choisissant «&nbsp;Cloner avec HTTPS&nbsp;» dans le menu déroulant «&nbsp;Code&nbsp;» (Fig. 9). 
 
 {% include figure.html filename="fr-or-preserver-logiciels-recherche-09.gif" alt="Gif animé montrant comment archiver manuellement un dépôt GitLab dans l'interface de Software Heritage : dans le menu Save code now, indiquer l'URL du dépôt dans le champ Origin url." caption="Figure 9. Archiver manuellement un dépôt." %}
 
-2\. Alternative&nbsp;: vous pouvez également choisir d'utiliser à la place le [plug-in de navigateur](https://www.softwareheritage.org/browser-extensions/) déjà mentionné plus haut. Cliquez sur l'icône «&nbsp;disquette&nbsp;» affichée à droite de votre écran afin de déclencher l'archivage (Fig. 10).    
+2\. Alternative&nbsp;: vous pouvez également choisir d'utiliser le [plug-in de navigateur](https://www.softwareheritage.org/browser-extensions/) déjà mentionné plus haut. Cliquez sur l'icône «&nbsp;disquette&nbsp;» affichée à droite de votre écran afin de déclencher l'archivage (Fig. 10).    
 
 {% include figure.html filename="fr-or-preserver-logiciels-recherche-10.gif" alt="Gif animé montrant comment archiver un dépôt GitLab à l'aide du plug-in de navigateur : cliquer sur l'icône Disquette qui apparait à droite de l'écran." caption="Figure 10. Archiver un dépôt à l'aide du plug-in de navigateur." %}
 
@@ -377,19 +385,19 @@ Fournir [un fichier README](https://www.makeareadme.com/) suffisamment détaill�
 
 ### Ajouter des métadonnées pour rendre son logiciel identifiable 
 
-Les logiciels sont des ressources labiles&nbsp;: leur cycle de vie peut s'étendre sur plusieurs décennies, leurs fonctionnalités évoluent, leur nom n'est pas toujours fixe, leur plateforme d'origine peut aussi changer, y compris en cours du développement d'une même version.
+Les logiciels sont des ressources changeantes&nbsp;: leur cycle de vie peut s'étendre sur plusieurs décennies, leurs fonctionnalités évoluent, leur nom n'est pas toujours fixe, leur plateforme d'origine peut aussi changer... Cela, y compris en cours du développement d'une même version.
 
 De fait, ces ressources peuvent être difficiles à identifier. Dans le cas des logiciels, les métadonnées doivent entre autres permettre d’exprimer les auteur·es, les changements de versions, la ou les licences, mais aussi les relations entre les différentes productions académiques. Les métadonnées aident à identifier le logiciel ainsi que son contexte de création et d'utilisation. Il existe deux grandes catégories de métadonnées.
 
 1. Les métadonnées intrinsèques fournissent des informations essentielles pour assurer la préservation et l'utilisabilité à long terme des logiciels. Elles sont contenues dans un fichier texte à vocation descriptive, souvent intitulé `README` ou `DESCRIPTION`, situé à la racine du répertoire du code source du logiciel. C'est pourquoi, très souvent, les auteur·es de logiciels sont les premiers et les principaux fournisseurs de métadonnées intrinsèques.
 
-2. Les métadonnées extrinsèques peuvent fournir quant à elles des informations importantes sur le contexte et la provenance du logiciel&nbsp;: par exemple, sur quelle forge le logiciel a été développé. Ces informations aident les utilisateurs à localiser le logiciel, à identifier la communauté qui l'utilise. Ces métadonnées renseignent aussi sur la relation entre le logiciel et d’autres produits de recherche&nbsp;: des publications, des jeux de données. Ces métadonnées ne sont pas incluses dans les fichiers du code source, c'est pourquoi elles sont qualifiées d'extrinsèques. Elles peuvent être ajoutées par des opérateurs extérieurs&nbsp;: des services éditoriaux, des agrégateurs, [des catalogues](https://zbmath.org/software/), etc. Elles peuvent être aussi fournies par la personne qui a écrit le code source, comme c'est le cas avec l'archive ouverte HAL. Les informations à compléter sont indiquées dans un [formulaire de saisie](http://doc.hal.science/deposer/deposer-le-code-source/#).
+2. Les métadonnées extrinsèques peuvent fournir quant à elles des informations importantes sur le contexte et la provenance du logiciel&nbsp;: par exemple, sur quelle forge le logiciel a été développé. Ces informations aident les utilisateurs à localiser le logiciel, à identifier la communauté qui l'utilise. Ces métadonnées renseignent aussi sur la relation entre le logiciel et d’autres produits de recherche&nbsp;: des publications, des jeux de données. Ces métadonnées ne sont pas incluses dans les fichiers du code source, c'est pourquoi elles sont qualifiées d'extrinsèques. Elles peuvent être ajoutées par des opérateurs extérieurs&nbsp;: des services éditoriaux, des agrégateurs, [des catalogues](https://zbmath.org/software/), etc. Elles peuvent être aussi fournies par la personne qui a écrit le code source, comme c'est le cas avec l'archive ouverte HAL. Les informations à compléter sont alors indiquées dans un [formulaire de saisie](http://doc.hal.science/deposer/deposer-le-code-source/#).
 
-La personne à l'origine du logiciel joue un rôle majeur dans le processus descriptif du logiciel. Des métadonnées riches contribuent à la réutilisation et l'identification des logiciels.
+La personne à l'origine du logiciel joue un rôle majeur dans le processus de description du logiciel. Des métadonnées riches contribuent à la réutilisation et l'identification efficaces des logiciels.
 
-### CodeMeta, la pierre de Rosette des auteur·es de logiciels 
+### CodeMeta, LA référence pour des auteur·es de logiciels 
 
-Fournir des métadonnées intrinsèques incombe à l'auteur·e du logiciel. Or, décrire un logiciel est une pratique bien moins codifiée que décrire un ouvrage ou un article. Si certaines métadonnées semblent relever de l'évidence (nom du logiciel, auteur·es, version, licence), il n'existe pas de standard indiquant un noyau minimal d'informations à fournir. La liste des métadonnées dépend de l'usage ciblé ainsi que le note Sheila M. Morrissey&nbsp;:
+Fournir des métadonnées intrinsèques incombe à l'auteur·e du logiciel. Or, décrire un logiciel est une pratique bien moins codifiée que décrire un ouvrage ou un article. Si certaines métadonnées semblent évidentes (nom du logiciel, auteur·es, version, licence), il n'existe pas de standard indiquant un noyau minimal d'informations à fournir. La liste des métadonnées dépend de l'usage ciblé, ainsi que le note Sheila M. Morrissey&nbsp;:
 
 > «&nbsp;Comment décrire efficacement un logiciel ? La liste des propriétés à décrire dépend des objectifs pour lesquels nous collectons des logiciels.[^9].&nbsp;»
 
