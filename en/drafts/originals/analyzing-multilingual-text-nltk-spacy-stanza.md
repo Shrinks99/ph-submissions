@@ -15,8 +15,7 @@ review-ticket: https://github.com/programminghistorian/ph-submissions/issues/612
 difficulty: 2
 activity: analyzing
 topics: [python, data-manipulation, distant-reading]
-abstract: The lesson covers tokenization, part-of-speech tagging, and lemmatization, as well as automatic language detection, for non-English multilingual text. You’ll learn how to use the Python packages NLTK, spaCy, and Stanza to analyze a bilingual Russian and French text.
-avatar_alt: Handwritten letter in the form of a rebus (puzzle in which symbols or pictures represent words or syllables).
+abstract: This lesson covers tokenization, part-of-speech tagging, and lemmatization, as well as automatic language detection, for non-English and multilingual text. You’ll learn how to use the Python packages NLTK, spaCy, and Stanza to analyze a multilingual Russian and French text.
 doi: XX.XXXXX/phen0000
 ---
 
