@@ -126,9 +126,6 @@ More specifically, in either of the line graph, the y-axis represents the percen
 In addition, there are multiple lines, each representing one television network. A basic interactive component is a date-range selector where users can specify a range of dates, and the line graphs will be updated upon selection.
 
 ## Import Libraries
-
-[EXPLAIN code with commentary. Why these libraries?]
-
 ```
 import datetime
 import requests
@@ -246,8 +243,6 @@ To use a template that controls how our dashboard will look, we use the LITERA t
 You can choose any theme you prefer from [this list](https://dash-bootstrap-components.opensource.faculty.ai/docs/themes/).  
 
 ## Coding the Frontend
-[INTRODUCE Code chunk - ideally move all comments in-line to commentary introducing or following up on code]
-
 ```
 app.layout = dbc.Container(
     [   dbc.Row([ # row 1
