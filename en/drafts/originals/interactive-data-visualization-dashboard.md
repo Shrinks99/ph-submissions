@@ -26,7 +26,7 @@ To advance open scholarship in the humanities, it is important to make research 
 
 Unlike static graphs, interactive dashboards allow readers to explore patterns in the data based on their specific interests by filtering, sorting, or changing data views. Features like hover-over tooltips can also provide additional information without cluttering the main display. This lesson will walk you through the process of creating interactive dashboards based on publicly available datasets using the open-source [Dash library in Python](https://dash.plotly.com/introduction). Here is an example of the kind of data visualization dashboard that can be created by Dash[^1]:
 
-{% include figure.html filename="en-or-interactive-data-visualization-dashboard-01.png" alt="A screenshot showing what kind of dashboard can be created by Dash." caption="Screenshot of an example of interactive data visualization dashboard created by Dash." %}
+{% include figure.html filename="en-or-interactive-data-visualization-dashboard-01.png" alt="A screenshot showing what kind of dashboard can be created by Dash." caption="Figure 1. Screenshot of an example of interactive data visualization dashboard created by Dash." %}
 
 Figure 1 shows a dashboard that visualizes the gender pay gaps in the businesses and organizations in Ireland. On the left, the interactive features include a radio button to switch between Year 2023 and Year 2022, and a dropdown menu to select a company. Depending on what year and what company a user chooses, the data and the bar graph in the main panel on the right change. This lesson will show how to use Dash to create an interactive data dashboard.
 
@@ -57,7 +57,7 @@ Our goal is to retrieve the data for the dashboard via the 2.0 TV API. Regarding
 
 After data retrieval, you will prepare a dataset like this for visualization:
 
-{% include figure.html filename="en-or-interactive-data-visualization-dashboard-02.png" alt="A screenshot showing what the processed dataset looks like. There are three columns: date collected, Series, and Value." caption="Screenshot of the processed dataset." %}
+{% include figure.html filename="en-or-interactive-data-visualization-dashboard-02.png" alt="A screenshot showing what the processed dataset looks like. There are three columns: date collected, Series, and Value." caption="Figure 2. Screenshot of the processed dataset." %}
 
 In Figure 2, the Value column represents the daily percentage of airtime that mentions certain keywords for a given station (e.g., "CNN"). This dataset is the one that the dashboard will be based on.
 
@@ -296,7 +296,7 @@ The text has a font weight set to bold.
 
 In Row 3, here comes the key interactive feature of our dashboard: a date range picker where a user can choose a start date and an end date (Figure 3).
 
-{% include figure.html filename="en-or-interactive-data-visualization-dashboard-03.png" alt="A screenshot showing what the date range picker looks like" caption="Interactive feature: The date range picker of the dashboard." %}
+{% include figure.html filename="en-or-interactive-data-visualization-dashboard-03.png" alt="A screenshot showing what the date range picker looks like" caption="Figure 3. Interactive feature: The date range picker of the dashboard." %}
 
 ```
 dbc.Row([ # row 3
@@ -451,7 +451,7 @@ In a Jupyter Notebook, you can also choose to review the dashboard as a cell out
 
 The dashboard looks like this:
 
-{% include figure.html filename="en-or-interactive-data-visualization-dashboard-04.png" alt="A screenshot showing what the dashboard looks like. There are two line graphs: one shows how media attention to Ukraine-related words in TV stations changes over time; the other shows the same but for Russia-related words" caption="Screenshot of the dashboard." %}
+{% include figure.html filename="en-or-interactive-data-visualization-dashboard-04.png" alt="A screenshot showing what the dashboard looks like. There are two line graphs: one shows how media attention to Ukraine-related words in TV stations changes over time; the other shows the same but for Russia-related words" caption="Figure 4. Screenshot of the dashboard." %}
 
 ### Deploying the Dashboard
 After the dashboard code is ready, in most cases, it is desirable to share your dashboards with the public using a URL. This means that you need to deploy your dashboard as a web application. 
@@ -497,7 +497,7 @@ The dashboard for the extended case relies on a publicly available dataset from 
 
 The data-retrieval tool is [Chronicling America's API](https://chroniclingamerica.loc.gov/about/api/). You can use this API to retrieve the needed data and prepare it for visualization in a tabular structure like this:
 
-{% include figure.html filename="en-or-interactive-data-visualization-dashboard-05.png" alt="A screenshot showing what the dataset for the extended case looks like. The rows represent languages, the columns represent decades, and the cells represent count of newspapers." caption="Screenshot of the dataset for the extended case." %}
+{% include figure.html filename="en-or-interactive-data-visualization-dashboard-05.png" alt="A screenshot showing what the dataset for the extended case looks like. The rows represent languages, the columns represent decades, and the cells represent count of newspapers." caption="Figure 5. Screenshot of the dataset for the extended case." %}
 
 In Figure 4, the rows represent languages, the columns represent decades (from the 1690s to the 2020s), and the cells represent counts of newspaper. 
 
@@ -526,7 +526,7 @@ Both charts show the top-10 non-English languages in percentage. [The script for
 
 If you have downloaded the data in CSV (see the previous section, above), you can run the script (`app-rq2.py`) directly without retrieving the data from Chronicling America. The final product looks like this:
 
-{% include figure.html filename="en-or-interactive-data-visualization-dashboard-06.png" alt="A screenshot showing what the dashboard for the extended case looks like. There are two pie graphs: one shows the top 10 non-English newspapers in the U.S. in the 1690s; the other shows the same but for 2020s" caption="Screenshot of the non-English-newspaper dashboard. Each chart shows the top-10 non-English newspapers in a given decade. The percentage is the count of newspaper titles in a given non-English language divided by the sum of non-English newspaper titles." %}
+{% include figure.html filename="en-or-interactive-data-visualization-dashboard-06.png" alt="A screenshot showing what the dashboard for the extended case looks like. There are two pie graphs: one shows the top 10 non-English newspapers in the U.S. in the 1690s; the other shows the same but for 2020s" caption="Figure 6. Screenshot of the non-English-newspaper dashboard. Each chart shows the top-10 non-English newspapers in a given decade. The percentage is the count of newspaper titles in a given non-English language divided by the sum of non-English newspaper titles." %}
 
 The deployment procedure is the same as the TV airtime case. I would encourage you to refer to the same procedure outlined above to deploy the non-English-newspaper dashboard by yourself.
 
