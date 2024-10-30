@@ -18,8 +18,8 @@ translator:
 translation-editor:
 - Alexandre Wauthier
 translation-reviewer:
-- Forename Surname
-- Forename Surname
+- Jeanne Gissinger
+- Bénédicte Garnier
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/625
 difficulty: 2
 activity: transforming
