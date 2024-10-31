@@ -160,7 +160,7 @@ Como podemos observar en la figura 11, la siguiente propiedad que hemos agregado
 
 {% include figure.html filename="es-or-estructurar-metadatos-academicos-con-wikidata-11.png" alt="Elemento para la revista '_Acceso_' con tres propiedades y sus valores relacionados" caption="Figura 11. Ejemplo de descripción de datos de una revista en Wikidata: título, titulo corto y campo de trabajo" %}
 
-Las referencias en Wikidata suelen seguir un formato estándar que incluye información como el título de la fuente, el autor (si está disponible), la fecha de publicación y un enlace URL o un identificador único (como un DOI-_Digital Object Identifier_ o un ISBN- _International Standard Book Number_) que permite acceder a la fuente original.
+Las referencias en Wikidata suelen seguir un formato estándar que incluye información como el título de la fuente, el autor (si está disponible), la fecha de publicación y un enlace URL o un identificador único (como un DOI (_Digital Object Identifier_) o un ISBN (_International Standard Book Number_)) que permite acceder a la fuente original.
 
 Posteriormente, hemos incluido la propiedad [“campo de trabajo” (P101)](https://www.wikidata.org/wiki/Property:P101). Se trata del área de especialización de la publicación, pero también es conocido como disciplina o ámbito científico. Para el caso de la revista _Acceso_, hemos registrado una variedad de términos relacionados al manejo, organización y preservación de la información en diferentes contextos: ciencias de la información, archivística, ciencia documental, museología. Muchos de estos conceptos han sido repetidos en la propiedad [“tema principal de la obra (P921)”](https://www.wikidata.org/wiki/Property:P921)
 
