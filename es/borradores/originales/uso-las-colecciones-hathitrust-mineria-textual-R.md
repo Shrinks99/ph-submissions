@@ -28,24 +28,24 @@ El propósito de esta lección es difundir el uso de conjuntos de datos con atri
 
 Al finalizar esta lección habrás aprendido a:
 
-- Usar el lenguaje de programación R para accesar datos para miles de libros en español disponibles por el *HathiTrust*.
-- Saber cómo crear y utilizar las “colecciones” de *HathiTrust* para obtener un conjunto de datos de los textos que estés interesado en estudiar.
+- Usar el lenguaje de programación R para acceder a datos de miles de libros en español disponibles a través del *HathiTrust*.
+- Saber cómo crear y utilizar las colecciones de *HathiTrust* para obtener un conjunto de datos de los textos que estés interesado en estudiar.
 - Aplicar técnicas de minería textual para seleccionar, filtrar y explorar los datos obtenidos.
 
-Este tutorial se compone de dos secciones principales, la primera una introducción en la que se dan detalles de cómo explorar los contenidos de un libro en el Hathitrust, y una segunda sección en la cual se explica cómo crear y usar colecciones de documentos.
+Esta lección se compone de dos secciones principales: la primera es una introducción en la que se dan detalles de cómo explorar los contenidos de un libro en el Hathitrust y la segunda explica cómo crear y usar colecciones de documentos.
 	
 
 # Introducción
 
-Uno de los obstáculos mayores para avanzar el estudio de la humanidades digitales fuera del mundo anglosajón es la escasez de textos digitalizados a escala masiva. Aunque de los más de 15 millones de volúmenes que posee [*HathiTrust*](https://www.hathitrust.org/) solo una pequeña fracción [no es en inglés](https://www.hathitrust.org/blogs/ten-million-and-counting/), para muchos investigadores estos números pueden representar más de lo que está disponible en su idioma en otros sitios. Por ejemplo, un 6% de los volúmenes en *HathiTrust* son en español, lo que significa que hay más de medio millón de textos disponibles. En el caso de la literatura, significa que existen miles de volúmenes de diferentes géneros literarios producidos en los diferentes países de habla hispana. El Centro de Investigación ha puesto a tu alcance los datos de todos los volúmenes que poseen, gratis y ya pre-procesados. Esto incluye tanto los volúmenes cuyos derechos de autor han expirado como los que no. Es decir, aunque no puedes tener acceso directo a muchos de los textos debido a la ley de derechos de autor, el Centro te proporciona conjuntos de datos que contienen los “atributos extraídos” (“Extracted Features”) de esos volúmenes, incluyendo las frecuencias con que aparecen los _tokens_ (palabras y símbolos) en cada página. 
+Uno de los obstáculos mayores para avanzar en el estudio de la humanidades digitales fuera del mundo anglosajón es la escasez de textos digitalizados a escala masiva. Pese a que solo una pequeña fracción de los más de 15 millones de volúmenes que posee [*HathiTrust*](https://www.hathitrust.org/) (https://www.hathitrust.org/blogs/ten-million-and-counting/)[no es en inglés], para muchos investigadores estos números pueden representar más de lo que está disponible en su idioma en otros sitios. Por ejemplo, un 6% de los volúmenes en *HathiTrust* son en español, lo que significa que hay más de medio millón de textos disponibles. En el caso de la literatura, significa que existen miles de volúmenes de diferentes géneros literarios producidos en los diferentes países de habla hispana. El Centro de Investigación ha puesto a tu alcance los datos de todos los volúmenes que poseen, gratis y ya pre-procesados. Esto incluye tanto los volúmenes cuyos derechos de autor han expirado como los que no. Es decir, que aunque no puedas tener acceso directo a muchos de los textos debido a la ley de derechos de autor, el Centro te proporcionará conjuntos de datos que contienen los “atributos extraídos” (“Extracted Features”) de esos volúmenes, incluyendo las frecuencias con que aparecen los _tokens_ (palabras y símbolos) en cada página. 
 
 ## Requisitos
 
-Esta lección presupone que posees nociones básicas de R. De no ser así, te recomendamos completar primero los tutoriales [Datos tabulares básicos con R](https://programminghistorian.org/es/lecciones/datos-tabulares-en-r) de Taryn Dewar y [Administración de datos en R](https://programminghistorian.org/es/lecciones/administracion-de-datos-en-r) de Nabeel Siddiqui, ambos traducidos al español por Jennifer Isasi. 
+Esta lección cuenta con que poseas nociones básicas de R. De no ser así, te recomendamos completar primero las lecciones [Datos tabulares básicos con R](https://programminghistorian.org/es/lecciones/datos-tabulares-en-r) de Taryn Dewar y [Administración de datos en R](https://programminghistorian.org/es/lecciones/administracion-de-datos-en-r) de Nabeel Siddiqui, ambas traducidas al español por Jennifer Isasi. 
 
 A lo largo de esta lección se le pedirá al lector que instale y cargue paquetes de R que se necesitan para obtener y manipular datos del sitio *Hathitrust* y que importe archivos en formatos de excel y csv. Se espera también que el lector sepa manipular datos usando el paquete de *dplyr*.
 
-Aunque en teoría puedes practicar el código de este tutorial en una línea de comandos de R, estaremos usando el entorno de desarrollo [RStudio](https://www.rstudio.com/products/rstudio/download/#download) en nuestros ejemplos y te recomendamos que lo instales. Si no lo tienes aún, [en este video](https://www.youtube.com/watch?v=Nmu4WPdJBRo) encontrarás una guía sobre cómo descargarlo e instalarlo en Windows y en [este otro video](https://www.youtube.com/watch?v=OW66f1sBQOc) para hacer lo mismo en una Mac.
+Si bien en teoría puedes practicar el código de este tutorial en una línea de comandos de R, estaremos usando el entorno de desarrollo [RStudio](https://www.rstudio.com/products/rstudio/download/#download) en nuestros ejemplos y te recomendamos que lo instales. Si no lo tienes aún, [en este video](https://www.youtube.com/watch?v=Nmu4WPdJBRo) encontrarás una guía sobre cómo descargarlo e instalarlo en Windows y en [este otro video](https://www.youtube.com/watch?v=OW66f1sBQOc) para hacer lo mismo en una Mac.
 
 ## Instalar y cargar paquetes
 
@@ -80,7 +80,7 @@ Cada libro o volumen en *HathiTrust* posee un número de identificación único 
 
 {% include figure.html filename="es-or-uso-las-colecciones-hathitrust-mineria-textual-R-01.png" alt="Ejemplar de la novela María en el sitio HathiTrust" caption="Figura 1. 'María' de Jorge Isaacs" %}
 
-Si estás buscando un libro escribiendo su título o autor en el cuadro de búsqueda de *HathiTrust*, tienes que asegurarte de seleccionar la opción de "Full View" para encontrar su número de identificación. El mismo número de identificación te permite utilizar `hathiTools` para tener acceso a los atributos extraídos. El comando `get_hathi_counts` va a guardar en la variable “maria” un `tibble` que es un `dataframe` (o marco de datos) que contiene varios tipos de datos sobre la novela. 
+Si estás buscando un libro escribiendo su título o autor en el cuadro de búsqueda de *HathiTrust*, tienes que asegurarte de seleccionar la opción de "Full View" para encontrar su número de identificación. El mismo número de identificación te permite utilizar `hathiTools` para tener acceso a los atributos extraídos. El comando `get_hathi_counts` va a guardar en la variable “maria” un `tibble` que es un `dataframe` (o marco de datos) y que contiene varios tipos de datos sobre la novela. 
 
 ```{r}
 maria<-get_hathi_counts("uc1.31175010656638")
