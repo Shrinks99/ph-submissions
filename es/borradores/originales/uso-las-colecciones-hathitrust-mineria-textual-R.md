@@ -37,7 +37,7 @@ Esta lección se compone de dos secciones principales: la primera es una introdu
 
 # Introducción
 
-Uno de los obstáculos mayores para avanzar en el estudio de la humanidades digitales fuera del mundo anglosajón es la escasez de textos digitalizados a escala masiva. De los más de 15 millones de volúmenes que posee [*HathiTrust*](https://www.hathitrust.org/) (https://www.hathitrust.org/blogs/ten-million-and-counting/) sólo una pequeña fracción [no es en inglés]. Pese a ello, estos números pueden representar para muchos investigadores, más de lo que está disponible en su idioma en otros sitios. Por ejemplo, un 6% de los volúmenes en *HathiTrust* son en español, lo que significa que hay más de medio millón de textos disponibles. En el caso de la literatura, significa que existen miles de volúmenes de diferentes géneros literarios producidos en los diferentes países de habla hispana. El Centro de Investigación ha puesto a tu alcance los datos de todos los volúmenes que poseen, gratis y ya pre-procesados. Esto incluye tanto los volúmenes cuyos derechos de autor han expirado como los que aún no. Es decir, que aunque no puedas tener acceso directo a muchos de los textos debido a la ley de derechos de autor, el Centro te proporcionará conjuntos de datos que contienen los “atributos extraídos” (“Extracted Features”) de esos volúmenes, incluyendo las frecuencias con que aparecen los _tokens_ (palabras y símbolos) en cada página. 
+Uno de los obstáculos mayores para avanzar en el estudio de la humanidades digitales fuera del mundo anglosajón es la escasez de textos digitalizados a escala masiva. De los más de 15 millones de volúmenes que posee [*HathiTrust*](https://www.hathitrust.org/) (https://www.hathitrust.org/blogs/ten-million-and-counting/) sólo una pequeña fracción [no es en inglés]. Pese a ello, estos números pueden representar para muchos investigadores, más de lo que está disponible en su idioma en otros sitios. Por ejemplo, un 6% de los volúmenes en *HathiTrust* son en español, lo que significa que hay más de medio millón de textos disponibles. En el caso de la literatura, significa que existen miles de volúmenes de diferentes géneros literarios producidos en los diferentes países de habla hispana. El Centro de Investigación ha puesto a tu alcance los datos de todos los volúmenes que posee, gratis y ya pre-procesados. Esto incluye tanto los volúmenes cuyos derechos de autor han expirado como los que aún no. Es decir, que aunque no puedas tener acceso directo a muchos de los textos debido a la ley de derechos de autor, el Centro te proporcionará conjuntos de datos que contienen los “atributos extraídos” (“Extracted Features”) de esos volúmenes, incluyendo las frecuencias con que aparecen los _tokens_ (palabras y símbolos) en cada página. 
 
 ## Requisitos
 
@@ -99,7 +99,7 @@ head(maria)
 
 ```
 
-Es muy probable que te encuentres con casos en que el número no funciona y no obtienes los datos extraídos como esperabas. Este es un problema conocido y la única solución es encontrar otra versión del volumen que te interesa y utilizar ese número nuevo. 
+Es muy probable que te encuentres con casos en que el número no funcione y no obtengas los datos extraídos como esperabas. Este es un problema conocido y la única solución es encontrar otra versión del volumen que te interesa y utilizar ese número nuevo. 
 
 Parte de la información que obtenemos de *HathiTrust* es los tokens y las páginas en las que aparecen. Ya que recibes los datos en forma de marco de datos, puedes utilizar las técnicas del paquete `dplyr` que has aprendido en [otras lecciones](https://programminghistorian.org/es/lecciones/administracion-de-datos-en-r#requisitos), como filtrar (`filter`) y resumir (`summarise`). Puedes así filtrar todos los tokens según la página asociada y contar cuántos tokens existen por páginas.
 
@@ -120,7 +120,7 @@ head(tokens_maria)
 6    12        434
 ```
 
-Visualizar los resultados te muestra que el número de palabras por página es bastante uniforme, excepto por el comienzo y el final del volumen donde tienes muchas páginas en blanco o con información que no es parte de la narración principal. 
+Si visualizas los resultados verás que el número de palabras por página es bastante uniforme, a excepcion del comienzo y el final del volumen donde tienes muchas páginas en blanco o con información que no es parte de la narración principal. 
 
 ```{r}
 plot(tokens_maria$page, 
@@ -131,7 +131,7 @@ Tu resultado debe ser similar a este:
 
 {% include figure.html filename="es-or-uso-las-colecciones-hathitrust-mineria-textual-R-02.png" alt="Visualización de la distribución de tokens por página en la novela María" caption="Figura 2. Tokens por página en 'María'" %}
 
-Podemos filtrar nuestros datos para encontrar las divisiones entre capítulos y añadirlos al gráfico. Para lograrlo, sin embargo, es necesario saber la palabra exacta que el texto utiliza para ser dividido en partes. EN este caso, la palabra es "capítulo" en letras mayúsculas. 
+Podemos filtrar nuestros datos para encontrar las divisiones entre capítulos y añadirlos al gráfico. Para lograrlo, debes saber la palabra exacta que el texto utiliza para ser dividido en partes. En este caso, la palabra es "capítulo" en letras mayúsculas. 
 
 ```{r}
 capitulos<-maria  %>% filter(token == "CAPÍTULO") 
@@ -149,7 +149,7 @@ Como ves en la figura 3, es interesante que la novela comienza con una serie de 
 
 {% include figure.html filename="es-or-uso-las-colecciones-hathitrust-mineria-textual-R-03.png" alt="Visualización de la distribución de tokens por capítulo en la novela María" caption="Figura 3. Tokens por capítulo en 'María'" %}
 
-Además, es una buena idea deshacerse de la sección del volumen que viene antes del primer capítulo. En este caso porque, entre otras cosas, contiene un prólogo que no es parte de la narración. En este caso sabemos que la novela comienza en la página 17, y ahora hay que encontrar la página donde se acaba la historia y eliminar lo que venga después, ya sean índices o glosarios.
+Además, es buena idea deshacerse de la sección del volumen que viene antes del primer capítulo. En este caso porque contiene, entre otras cosas, un prólogo que no es parte de la narración. En este caso sabemos que la novela comienza en la página 17, y ahora hay que encontrar la página donde se acaba la historia y eliminar lo que venga después, ya sean índices o glosarios.
 
 ```{r}
 maria %>%
@@ -189,7 +189,7 @@ El nuevo marco de datos `maria` solo contiene lo que se encuentra entre las pág
 
 ## Una mirada global a nuestro marco de datos
 
-Además de la información sobre tokens y páginas, en los atributos extraídos del volumen encuentras varios otros detalles. Cada columna del marco de datos posee un nombre que describe un atributo extraído. El primero, “htid”, es el número de identificación del volumen, el cual usaste para obtener sus datos. El segundo es “token” o una palabra o símbolo en el texto. “POS” es la categoría gramatical a que corresponde cada token -- etiquetado siguiendo los ["universal dependencies"](https://universaldependencies.org/u/pos/all.html) (en inglés). Le siguen “count” o la frecuencia de cada palabra en la página, "section" o la sección de la página en la que se encuentra el token, y por último el número de página. Los valores posibles en la columna "section" incluyen “header” (encabezado), “body” que es el cuerpo principal de la página, y “footer” (el pie de la página). Por ejemplo, podemos leer en la tabla de abajo que la palabra “dulce” es un adjetivo que ocurre una vez en el cuerpo de la página 37 y "Salomón" es un nombre propio que aparece tres veces en la misma página. Nótese que el número de página no coincide necesariamente con el número impreso en las páginas del libro cuando miras la reproducción de imagen en el sitio de web. El número que nos da *HathiTrust* como parte de los datos corresponde a las páginas creadas en el proceso de escanear el volumen. 
+Además de la información sobre tokens y páginas, en los atributos extraídos del volumen encontrarás varios otros detalles. Cada columna del marco de datos posee un nombre que describe un atributo extraído. El primero, “htid”, es el número de identificación del volumen, el cual usaste para obtener sus datos. El segundo es “token” o una palabra o símbolo en el texto. “POS” es la categoría gramatical a que corresponde cada token -- etiquetado siguiendo los ["universal dependencies"](https://universaldependencies.org/u/pos/all.html) (en inglés). Le siguen “count” o la frecuencia de cada palabra en la página, "section" o la sección de la página en la que se encuentra el token, y por último el número de página. Los valores posibles en la columna "section" incluyen “header” (encabezado), “body” que es el cuerpo principal de la página, y “footer” (el pie de la página). Por ejemplo, podemos leer en la tabla de abajo que la palabra “dulce” es un adjetivo que aparece una vez en el cuerpo de la página 37 y "Salomón" es un nombre propio que aparece tres veces en la misma página. Ten en cuenta que el número de página no coincide necesariamente con el número impreso en las páginas del libro que encuentras como reproducción de imagen en el sitio de web. El número que nos da *HathiTrust* como parte de los datos corresponde a las páginas creadas en el proceso de escanear el volumen. 
 
 <div class="table-wrapper" markdown="block">
 	
