@@ -107,7 +107,7 @@ As the definition says, the basis of every simulation is an executable simulatio
 
 We can then run this model, the actual simulation, to see how these rules, attributes, decisions, etc. in our letter exchange model play out together over time. Once we observe these new pieces of information - essentially the model outputs - of our simulation run, our model can be revised and then run again. The process of building a simulation model is constantly cycling between phases of running the model, interpreting the results, and then adapting the model for further experiments. In this sense, simulation methodology is comparable to the hermeneutic circle of heuristics, critique, and interpretation historians are used to[^5].
 
-Now to the last part of the definition regarding real-world or hypothetical subject matters. Many historians probably hold a cautious view of the nature of historical reality and - more importantly - our ability as scholars to describe it. Just as sources are king in traditional history, data is queen in Digital History.
+Now to the last part of the definition regarding real-world or hypothetical subject matters. Many historians probably hold a cautious view of the nature of historical reality and - more importantly - our ability as scholars to describe it. Just as sources are king in traditional history, data is queen in Digital History[^5a].
 
 However, as we already tried to hint at, the objects of the simulation are not data alone, but our hypotheses about history, i.e. all the assumptions we have about the past that we believe connect our data into a plausible narrative. By building a historical simulation model, we are automatically moving 'from the actual to the possible'[^6].
 
@@ -218,11 +218,11 @@ import mesa
 To begin writing the model code, we start with two core classes: one for the overall `model`, the other for the `agents`.
 
 Let's start with the new agent class: `class LetterAgent(mesa.Agent)`.
-For now, each agent has only two variables: how much letters it currently has sent and received. Each agent will also have a unique identifier (i.e., a name), stored in the `unique_id` variable. Giving each agent a unique id is a good practice when doing agent-based modeling.
+For now, each agent has only two variables: how many letters it currently has sent and received. Each agent will also have a unique identifier (i.e., a name), stored in the `unique_id` variable. Giving each agent a unique id is a good practice when doing agent-based modeling.
 
 ```python
 class LetterAgent(mesa.Agent):
-    """An agent with no initial letters."""
+    """An agent with unique_id but no initial letters."""
 
     def __init__(self, unique_id, model):
         super().__init__(unique_id, model)
@@ -239,7 +239,7 @@ class LetterModel(mesa.Model):
     def __init__(self, N):
         super().__init__()
         self.num_agents = N
-        # Create N number of agents
+        # Create N agents
         for i in range(self.num_agents):
             a = LetterAgent(i, self)
 ```
@@ -248,7 +248,7 @@ class LetterModel(mesa.Model):
 
 Time in most agent-based models moves in steps, sometimes also called ticks. At each step of the model, one or more of the agents – usually all of them – are activated and take their own step, changing internally and/or interacting with one another or the environment.
 
-The scheduler is a special model component which controls the order in which agents are activated. For example, all the agents may activate in the same order every step, their order might be shuffled, we may try to simulate all the agents acting at the same time, and more. `Mesa` offers a few different built-in scheduler classes, with a common interface. That makes it easy to change the activation regime a given model uses, and see whether it changes the model behavior. This may not seem important, but scheduling patterns can have an impact on your results[^20].
+The scheduler is a special model component which controls the order in which agents are activated. For example, all the agents may activate in the same order every step, their order might be shuffled, we may try to simulate all the agents acting at the same time, and more. `Mesa` offers a few different built-in scheduler classes, with a common interface. That makes it easy to change the activation regime a given model uses, and see whether it changes the model behavior. This may not seem important, but scheduling patterns can have a big impact on your results[^20].
 
 For now, let's use one of the simplest ones: `RandomActivation`[^21], which activates all the agents once per step, in random order.
 
@@ -256,7 +256,7 @@ For now, let's use one of the simplest ones: `RandomActivation`[^21], which acti
 self.schedule = mesa.time.RandomActivation(self)
 ```
 
-Every agent is expected to have a ``step`` method. The step method is the action the agent takes when it is activated by the model schedule. We add an agent to the schedule using the `add` method; when we call the schedule's `step` method, the model shuffles the order of the agents, then activates and executes each agent's ```step``` method.
+Every agent is expected to have a ``step`` method. The step method is the action the agent takes when it is activated by the model schedule. We add an agent to the schedule using the `add` method; when we call the schedule's `step` method `self.schedule.step()`, the model shuffles the order of the agents, then activates and executes each agent's ```step``` method.
 
 ```python
 def step(self):
@@ -270,7 +270,7 @@ Adding all parts together, the model code with the scheduler added looks like th
 
 ```python
 class LetterAgent(mesa.Agent):
-    """An agent with no initial letters."""
+    """An agent with unqiue_id but no initial letters."""
 
     def __init__(self, unique_id, model):
         super().__init__(unique_id, model)
@@ -299,7 +299,7 @@ class LetterModel(mesa.Model):
         self.schedule.step()
 ```
 
-At this point, we have a model which runs – it just doesn’t do anything. You
+At this point, we have a model which runs – it just doesn’t do anything in terms of letter sending/receiving. You
 can see for yourself with a few easy lines:
 
 
@@ -311,13 +311,13 @@ empty_model.step() # execute the step function once
 {% include figure.html filename="en-or-agent-based-model-communication-networks-01.png" alt="List of output of the model's agents, each printing the line 'Hi, I am agent X', with X ranging from 0 to 9." caption="Figure 1. Currently, the only thing our agents do is say Hi!" %}
 
 > _Bonus Question 1_:
-Try changing the scheduler from RandomActivation to BaseScheduler. What do you observe at the agents output? What would be necessary in the definiton of the agents if you would like to use StagedActivation? *Hint*: Have a look in the source code of `mesa.time`!
+Try changing the scheduler from RandomActivation to BaseScheduler. What do you observe at the agent's output? What would be necessary in the definition of the agents if you would like to use StagedActivation? *Hint*: Take a look in the source code of `mesa.time`!
 
 #### 2.5.3 Agent Step
 
 Now we just need to have the agents do what we intend them to do: send each other letters.
 
-To allow the agent to choose another agent at random, we use the `model.random` random-number generator. This works just like Python’s `random` module, but with a fixed seed set when the model is instantiated. This can be used to later replicate a specific model run.
+To allow the agent to choose another agent for this at random, we use the `model.random` random-number generator. This works just like Python’s `random` module, but with a fixed seed set when the model is instantiated. This can be used to later replicate a specific model run.
 
 To pick an agent at random, we need a list of all agents. Notice that there isn’t such a list explicitly in the model. The scheduler, however, does have an internal list of all the agents it is scheduled to activate.
 
@@ -358,6 +358,9 @@ import matplotlib.pyplot as plt
 ```python
 agent_letters_recd = [b.letters_received for b in model.schedule.agents]
 plt.hist(agent_letters_recd)
+plt.xlabel("Letters Received")
+plt.ylabel("Number of Agents")
+
 plt.show()
 ```
 
@@ -383,11 +386,13 @@ for j in range(100):
 
 
 plt.hist(all_letters_rec, bins=range(max(all_letters_rec) + 1))
+plt.xlabel("Letters Received")
+plt.ylabel("Number of Agents")
 
 plt.show()
 ```
 
-{% include figure.html filename="en-or-agent-based-model-communication-networks-03.png" alt="A histogram of the agents and their letters received. This time, with 100 model instantions running 10 times each, and binned as integers. The y-axis displays the amount of agents that have received a certain amount of letters displayed on the x-axis. In this figure, the distribution is normal, i.e., most agents have an average number of letters received. This indicates that the decision to whom an agent sends a letter is currently random." caption="Figure 3. Histogram of the letters received by all agents after 100 model runs" %}
+{% include figure.html filename="en-or-agent-based-model-communication-networks-03.png" alt="A histogram of the agents and their letters received. This time, with 100 model instantiations running 10 times each, and binned as integers. The y-axis displays the amount of agents that have received a certain amount of letters displayed on the x-axis. In this figure, the distribution is normal, i.e., most agents have an average number of letters received. This indicates that the decision to whom an agent sends a letter is currently random." caption="Figure 3. Histogram of the letters received by all agents after 100 model runs" %}
 
 This runs 100 instantiations of the model, and runs each for 10 steps. (Notice that we set the histogram bins to be integers, since agents can only have whole numbers of letters). By running the model 100 times, we smooth out some of the ‘noise’ of randomness, and get to the model’s overall expected behavior.
 
@@ -453,7 +458,7 @@ for dx in [-1, 0, 1]:
         neighbors.append((x+dx, y+dy))
 ```
 
-But there’s an even simpler way, using the grid’s built-in `get_neighborhood` method, which returns all the neighbors of a given cell. This method can get two types of cell neighborhoods: [Von Neumann](https://en.wikipedia.org/wiki/Von_Neumann_neighborhood) (only includes the 4 top, bottom, left and right neighboring squares) and [Moore](https://en.wikipedia.org/wiki/Moore_neighborhood) (includes all 8 surrounding squares). It also needs an argument as to whether to include the center cell itself as one of the neighbors.
+But there’s an even simpler way, using the grid’s built-in `get_neighborhood` method, which returns all the neighbors of a given cell. This method can get two types of cell neighborhoods: [Von Neumann](https://en.wikipedia.org/wiki/Von_Neumann_neighborhood) (only includes the 4 top, bottom, left and right neighboring squares) and [Moore](https://en.wikipedia.org/wiki/Moore_neighborhood) (includes all 8 surrounding squares). It also needs an argument whether to include the center cell itself as one of the neighbors.
 
 With that in mind, the agent’s move method looks like this:
 
@@ -469,13 +474,13 @@ class LetterAgent(mesa.Agent):
         self.model.grid.move_agent(self, new_position)
 ```
 
-Next, we need to get all the other agents present in a cell, and sent one of them a letter. We can get the contents of one or more cells using the grid's `get_cell_list_contents` method, or by accessing a cell directly. The method accepts a list of cell coordinate tuples, or a single tuple if we only care about one cell.
+Next, we need to get all the other agents present in a cell, and send one of them a letter. We can get the contents of one or more cells using the grid's `get_cell_list_contents` method, or by accessing a cell directly. The method accepts a list of cell coordinate tuples, or a single tuple if we only care about one cell.
 
 ```python
 class LetterAgent(mesa.Agent):
     #...
     def send_letter(self):
-        cellmates = self.model.grid.get_cell_list_contents([self.pos])
+        cellmates = [a for a in self.model.grid.get_cell_list_contents([self.pos]) if a != self]
         if len(cellmates) > 1:
             other = self.random.choice(cellmates)
             other.letters_received += 1
@@ -515,7 +520,7 @@ class LetterAgent(mesa.Agent):
         self.model.grid.move_agent(self, new_position)
 
     def send_letter(self):
-        cellmates = self.model.grid.get_cell_list_contents([self.pos])
+        cellmates = [a for a in self.model.grid.get_cell_list_contents([self.pos]) if a != self]
         if len(cellmates) > 1:
             other_agent = self.random.choice(cellmates)
             other_agent.letters_received += 1
@@ -534,7 +539,7 @@ for i in range(20):
     model.step()
 ```
 
-Now let's use `matplotlib` and `numpy` to visualize how many agents reside in each cell. To do that, we create a numpy array of the same size as the grid, filled with zeros. Then we use the grid object's `coord_iter()` feature, which lets us loop over every cell in the grid, giving us each cell's coordinates and contents in turn.
+Now let's use `matplotlib` and `numpy` to visualize how many agents reside in each cell after 20 steps. To do that, we create a numpy array of the same size as the grid, filled with zeros. Then we use the grid object's `coord_iter()` feature, which lets us loop over every cell in the grid, giving us each cell's coordinates and contents in turn.
 
 ```python
 import numpy as np
@@ -546,14 +551,14 @@ for cell in model.grid.coord_iter():
     agent_count = len(cell_content)
     agent_counts[x][y] = agent_count
 plt.imshow(agent_counts, interpolation="nearest")
-plt.colorbar()
+plt.colorbar(label="Number of Agents present in Cell")
 
 ```
 
-{% include figure.html filename="en-or-agent-based-model-communication-networks-04.png" alt="This shows a colormesh, a 2-dimensional grid where each cell in the grid is colored based on how many agents are present on it, on a scale of 0 to 3, with lighter yellow colors indicating more agents and darker blue colors indicating less agents. The figure shows that some cells are more crowded than others, but the distribution does look rather random." caption="Figure 4. A colormesh showing how many agents are present on each cell of our grid space" %}
+{% include figure.html filename="en-or-agent-based-model-communication-networks-04.png" alt="This shows a color mesh, a 2-dimensional grid where each cell in the grid is colored based on how many agents are present on it, on a scale of 0 to 3, with lighter yellow colors indicating more agents and darker blue colors indicating less agents. The figure shows that some cells are more crowded than others, but the distribution does look rather random." caption="Figure 4. A color mesh showing how many agents are present on each cell of our grid space" %}
 
 > _Bonus question 3_:
-Letters are send to direct neighbours. How could you implement sending letters only to agents far apart, e.g. with at least a distance of three cells? *Hint*: You will have to define a distance measure on grids, see e.g. this [tutorial on similarity measures](https://programminghistorian.org/en/lessons/common-similarity-measures#city-block-manhattan-distance).
+Letters are sent to direct neighbors. How could you implement sending letters only to agents far apart, e.g., with at least a distance of three cells? *Hint*: You will have to define a distance measure on grids, see e.g., this [tutorial on similarity measures](https://programminghistorian.org/en/lessons/common-similarity-measures#city-block-manhattan-distance).
 
 #### 2.5.6 Collecting Data
 
@@ -588,7 +593,7 @@ def compute_received_letters(model):
     return number_of_received_letters
 ```
 
-Putting things together yields the following updated Letter Model.
+By defining this function in our script and then updating the Letter Model in the following way, we can finally collect data.
 
 
 ```python
@@ -641,16 +646,20 @@ agent_letters = model.datacollector.get_agent_vars_dataframe()
 agent_letters.tail()
 ```
 
-{% include figure.html filename="en-or-agent-based-model-communication-networks-05.png" alt="Table showing the number of letters sent and received by agents 33, 1, 7, 24, and 39, after 100 steps of the simulation. These numbers vary between 24 and 44." caption="Figure 5. Number of letters sent and received by a selction of agents, at step 100 of the simulation" %}
+{% include figure.html filename="en-or-agent-based-model-communication-networks-05.png" alt="Table showing the number of letters sent and received by agents 33, 1, 7, 24, and 39, after 100 steps of the simulation. These numbers vary between 24 and 44." caption="Figure 5. Number of letters sent and received by a selection of agents, at step 100 of the simulation" %}
 
-You'll see that the DataFrame's index is pairings of model step and agent ID. You can analyze it the way you would any other DataFrame, e.g. by following the tutorial on [Visualizing Date with Bokeh and Pandas](https://programminghistorian.org/en/lessons/visualizing-with-bokeh). Let's get a histogram of agent's letters sent at the model's end:
+You'll see that the DataFrame's index consists of pairings of model step and agent ID. You can analyze it the way you would any other DataFrame, e.g., by following the tutorial on [Visualizing Data with Bokeh and Pandas](https://programminghistorian.org/en/lessons/visualizing-with-bokeh). Let's get a histogram of agent's letters sent at the model's end:
 
 ```python
 end_letters = agent_letters.xs(99, level="Step")["Letters_sent"]
 end_letters.hist(bins=range(agent_letters.Letters_sent.max() + 1))
+plt.xlabel("Letters Sent")
+plt.ylabel("Number of Agents")
+plt.title("Distribution of Letters Sent by Agents")
+plt.show()
 ```
 
-{% include figure.html filename="en-or-agent-based-model-communication-networks-06.png" alt="Another hisogram where the y-axis shows an amount of agents, but this time the x-axis denotes how many letters were sent by those agents, instead of letters received. The numbers of letters sent range from about 25 to over 50. There at most 4 agents that have the same number of letters sent. The figure shows a distribution that is skewed toward an average amount of letters sent." caption="Figure 6. A histogram of agent's letters sent after 100 steps of simulating the model" %}
+{% include figure.html filename="en-or-agent-based-model-communication-networks-06.png" alt="Another histogram where the y-axis shows an amount of agents, but this time the x-axis denotes how many letters were sent by those agents, instead of letters received. The numbers of letters sent range from about 25 to over 50. There are at most 4 agents that have the same number of letters sent. The figure shows a distribution that is skewed toward an average amount of letters sent." caption="Figure 6. A histogram of agent's letters sent after 100 steps of simulating the model" %}
 
 You can also use `pandas` to export the data to a CSV (comma separated value) file, which can be opened by any common spreadsheet application or opened by `pandas`.
 
@@ -660,11 +669,11 @@ If you do not specify a file path, the file will be saved in the local directory
 agent_letters.to_csv("agent_data.csv")
 ```
 
-Having exported the data we can then apply several approaches to test the hypotheses that we encoded in the model. The goal to systematically test - or validate - a model is to check if the model actually represents what it is supposed to. This can range from simple testing of your expectations versus the outputs, to analyzing the internal consistency of the model, over a detailed exploration of the possible parameters of your simulation (a so called parameter space), to a detailed calibration to available empirical data. Mehdizadeh et al 2022, p. 8-9, despite coming from the realm of mobility studies, offer a sensible differentiation of various validation methods as well as a good example into how Agent-based models are evaluated in other fields.[^23]
+Having exported the data we can then apply several approaches to test the hypotheses that we encoded in the model. The goal to systematically test - or validate - a model is to check if the model actually represents what it is supposed to. This can range from simple testing of your expectations versus the outputs, to analyzing the internal consistency of the model, over a detailed exploration of the possible parameters of your simulation (a so-called parameter space), to a detailed calibration to available empirical data. Mehdizadeh et al 2022, p. 8-9, coming from the discipline of mobility studies, offer a sensible differentiation of various validation methods as well as a good example into how Agent-based models are evaluated in other fields.[^23]
 
 In our case, we should check if changing the model parameters leads to data that corresponds to our expectations, e.g., if we would use a different random distribution for the letter sending, we would expect to see a different distribution of received letters.
 
-Another option lies in the idea of Network Morphospaces,[^24] which is a type of parameter space analysis. For this approach we would run the model several times for every possible parameter set and record the resulting output. Parameters could, e.g., change the likelihood of sending a letter in each round, vary the range of finding neighbors, or change the importance of the similarity of letter content to what the receiver's mental state is in each round. Together with measures of the resulting output, e.g., fitting it to a distribution, or in the case of network output, its centralities, the parameter sets yield a fingerprint of each simulation run, which can be used to create an abstract embedding space. By including empirical data, in our case of historical networks, into such a space, one can observe which parameter sets bring the simulated outcome closer to the observed outcome. By adapting both the way how hypotheses are encoded in the model and what simulation parameters are chosen, one can bring the model outcome closer to empirical findings. 
+Another option lies in the idea of Network Morphospaces,[^24] which is a type of parameter space analysis. For this approach we would run the model several times for every possible parameter set and record the resulting output. Parameters could, e.g., change the likelihood of sending a letter in each round, vary the range of finding neighbors, or how much the letter content matters in each round. Together with measures of the resulting output, e.g., fitting it to a distribution, or in the case of network output, its centralities, the parameter sets yield a fingerprint of each simulation run, which can be used to create an abstract embedding space, similar to the word embeddings explained in this [tutorial](https://programminghistorian.org/en/lessons/understanding-creating-word-embeddings). By including empirical data, in our case networks taken from historical sources, into such a space, one can observe which parameter sets bring the simulated outcome closer to the observed outcome. By adapting both the way how hypotheses are encoded in the model and what simulation parameters are chosen, one can bring the model outcome closer to empirical findings and therefore determine, which hypotheses and parameters are most likely to reflect the real-world processes that shaped the historical network. 
 
 > _Bonus question 4_:
 Try to plot the time series of received letters for a single agent. *Hint*: You can use the same way of accessing the dataframe, but on the level of the AgentID. Instead of using dataframe.hist(), use dataframe.plot().
@@ -678,7 +687,7 @@ More recently, the `mesa` contributors have introduced a possibility to control 
 
 For this, we need to define three components: the portrayal of the agents in the visualization, what parameters of the model we want to control, and finally the visualization itself.
 
-Additionally, for the portrayal we define the agents color and size. To have some visual cue on the model run, we change the agents' color once they have received a certain number of letters.
+Additionally, for the portrayal we define the agent's color and size. To have some visual cue on the model run, we change the agents' color once they have received a certain number of letters.
 
 
 ```python
@@ -688,7 +697,7 @@ def agent_portrayal(agent):
     agents_letters = agent.letters_received
     if agents_letters > 5:
         size = agents_letters
-    if agents_letters > 30:
+    if agents_letters > 15:
         color = "tab:red"
     return {
         "color": color, "size": size,
@@ -697,7 +706,7 @@ def agent_portrayal(agent):
 
 In the visualization, we want to be able to control the amount of agents that are generated. This is an integer number, which we allow to be changed from 10 to 100 agents in steps of one. The width and height of the grid will stay fixed in the simulation.
 
-We additionaly introduce an option to switch between two modes of how the agents select neighbours for their letter sending. Both are randomly selecting from a list. If we select reinforce as True, the choice is weighted by the number of received letters of the neighbors.
+We additionally introduce an option to switch between two modes of how the agents select neighbors for their letter sending. Both are randomly selected from a list. If we select reinforce as True, the choice is weighted by the number of received letters of the neighbors.
 
 ```python
 if self.reinforce == False:
@@ -713,9 +722,9 @@ else:
     )[0]
 ```
 
-If agents have already received some letters, the likeliness of receiveing more letters grows. In this way, we can allow agents to become, in a sense, more "famous". This could be one simple possible mechanism to model why well known people like Christiaan Huygens seem to have gotten much more letters than others.
+If agents have already received some letters, the likeliness of receiving more letters grows. In this way, we can allow agents to become, in a sense, more "famous". This could be one simple possible mechanism to model why well-known people like Christiaan Huygens seem to have received much more letters than others.
 
-We also make it less likely for every agent to move in every step. For this, we introduce another weighted random choice, this time with fixed weight. Now agents will only move with a chance of 20%, whenever they draw a one.
+We also make it less likely for every agent to move in every step, as people don't constantly relocate. For this, we introduce another weighted random choice, this time with fixed weight. Now agents will only move with a chance of 20%, whenever they draw a one.
 
 ```python
 if self.random.choices([0,1], weights=[0.8, 0.2], k=1)[0] == 1:
@@ -744,7 +753,7 @@ class LetterAgent(mesa.Agent):
             self.model.grid.move_agent(self, new_position)
 
     def send_letter(self):
-        cellmates = self.model.grid.get_cell_list_contents([self.pos])
+        cellmates = [a for a in self.model.grid.get_cell_list_contents([self.pos]) if a != self]
         if len(cellmates) > 1:
             if self.reinforce == False:
                 other_agent = self.random.choice(cellmates)
@@ -792,7 +801,7 @@ class LetterModel(mesa.Model):
         self.datacollector.collect(self)
 ```
 
-We can now setup the interface parameters we want to be able to control in the visualization.
+We can now set up the interface parameters we want to be able to control in the visualization.
 
 ```python
 model_params = {
@@ -825,13 +834,17 @@ def make_histogram(model):
     ax = fig.subplots()
     letter_vals = [agent.letters_received for agent in model.schedule.agents]
     ax.hist(letter_vals, bins=10)
-    solara.FigureMatplotlib(fig)
+    ax.set(
+        xlabel="Letters received",
+        ylabel="Number of agents",
+        title="Distribution of Letters received by Agents"
+    )
+
+    solara.FigureMatplotlib(fig, format="png")
 ```
 
 
-The simulation is called with the model to run, its parameters, the measures that should be visible and the chosen agent style.
-
-Try to run the model for a while. Do the agent colors change?
+By defining the model parameters, the histogram function, and the agent_protrayal settings, together with the main Letter Model, we can now call the simulation and let the model for a while. Do the agents' colors change?
 
 ```python 
 from mesa.experimental import JupyterViz
@@ -852,7 +865,7 @@ simulation
 What difference do you observe in the visualization, when switching between reinforce True or False?
 
 > _Bonus question 6_:
-How could you use reinforement for the movement process? This would make more "famous" senders more likely to be the target of a movement process.
+How could you use reinforcement for the movement process? This would make more "famous" senders more likely to be the target of a movement process.
 
 ## Part 3: A Summary, Open Questions and Next Steps
 
@@ -863,6 +876,7 @@ Now we have a relatively basic model for the process we wanted to depict, the ex
 3. Agents that move about in space.
 
 As well as those bonus features:
+
 4. Agents can send letters to others more than one cell away,
 5. A letter ledger, akin to an edge-list of a network,
 6. Agents moving purposefully in the direction of more 'famous' Agents, i.e., those who receive a lot of letters.
@@ -874,29 +888,29 @@ Now the question remains how you could go on with this model, but also how to go
 ### 3.1 Suggestions for extending the model
 You already may have come up with your own ideas for extending the model, but we want to give you at least some inspiration for further extensions. Importantly, we want to suggest to you some features that have strong connections to the historical subject matter and which raise some interesting modelling challenges:
 
-1. Implement a way for agents to "die" and new agents to be "born" during the simulation. In the real world, not only did some letter writers actually die at some point, but they also might have phases of letter writing activity.
-2. Think of a representation of the knowledge that is exchanged and how this should influence the other parts of the model. In the end, one of the most interesting aspects about the Republic of Letters is that it likely had a transformative impact on scientific activity in Europe. Try to envisage how this aspect could be introduced in and analyzed with this model!
-3. Implement an actual geographic space, rather than a grid. Space has some important repurcussions on movement and letter sending dynamics. Also, the Republic of Letters mainly featured people in the Low Countries and Northern Italy. Think about what geographical aspects of the Republic of Letters should be present in the model and how to implement them. To do this, maybe take a look at [mesa-geo](https://github.com/projectmesa/mesa-geo), a GIS (Geoinformation System) extension to the `mesa` package.
+1. Implement a way for agents to "die" and new agents to be "born" during the simulation. In the real world, not only did some letter writers actually die at some point, but they also might have phases of different intensity of letter writing activity.
+2. Think of a representation of the knowledge that is exchanged and how this should influence the other parts of the model. In the end, one of the most interesting aspects about the Republic of Letters is that it likely had a transformative impact on scientific activity in Europe. Try to envisage how this aspect could be introduced in and analyzed with this model.
+3. Implement an actual geographic space, rather than a grid. Space has some important repercussions on movement and letter sending dynamics. Also, the Republic of Letters mainly featured people in the Low Countries and Northern Italy. Think about what geographical aspects of the Republic of Letters should be present in the model and how to implement them. To do this, maybe take a look at [mesa-geo](https://github.com/projectmesa/mesa-geo), a GIS (Geoinformation System) extension to the `mesa` package.
 
-For more inspiration, you might also want look at [our own extended version of this model](https://doi.org/10.5281/zenodo.11277767)!
+For more inspiration, you might also want to look at [our own extended version of this model](https://doi.org/10.5281/zenodo.11277767)!
 
 ### 3.2 Further Steps and Resources
-At this point, we are finished with the tutorial but there is a lot more to learn not only about the technical side of things, but also the unique quirks as well as best practices of Agent-based modeling methodology.
+At this point, we are finished with the tutorial, but there is a lot more to learn not only about the technical side of things, but also the unique quirks as well as best practices of Agent-based modeling methodology.
 
-For any technical questions, we suggest you head over to [the documentation of mesa](https://mesa.readthedocs.io/en/stable/overview.html), which also features tutorials on advanced features, especially built-in javascript-based visualization methods. You can also head to youtube [for a video tutorial](https://www.youtube.com/playlist?list=PLF0b3ThojznRpQOd7iFukqXybbMV_vwZn) in a similar vein like the official `mesa` tutorials.
+For any technical questions, we suggest you head over to [the documentation of mesa](https://mesa.readthedocs.io/), which also features tutorials on advanced features, especially built-in javascript-based visualization methods. You can also head to youtube [for a video tutorial](https://www.youtube.com/playlist?list=PLF0b3ThojznRpQOd7iFukqXybbMV_vwZn) similar to the official `mesa` tutorials.
 
 We also want to at least mention some of the key methodological aspects we cannot cover here.
 
-First of all, there is the aspect of documentation and publishing of Agent-based Models. There is a still developing, but already quite established method of formally documenting the complex beasts those models are, which is called ODD ('Overview, Design Concepts, Details').[^25] This is a document that lists all the features and design intentions of your model, with the explicit aim that others should be able to replicate a version of your model just from the ODD. Writing up an ODD can also help yourself understanding your goals as well as possible gaps in your model, too!
+First of all, there is the aspect of documentation and publishing of Agent-based Models. There is a still developing, but already quite established method of formally documenting the complex beasts those models are, which is called ODD ('Overview, Design Concepts, Details').[^25] This is a document that lists all the features and design intentions of your model, with the explicit aim that others should be able to replicate a version of your model just from the ODD. Writing up an ODD can also help you understand your goals as well as possible gaps in your model, too!
 
-Many models are published on [the website CoMSES](https://www.comses.net/about/), hosted by the Network for Computational Modeling in Social and Ecological Sciences. We recommend you to give their model library a browse, but also to publish your own models' code and ODD there. While it is not a platform geared towards historians (such a platform sadly does not exist, yet) it is a great place that encourages reproducability, reusability and even gives the opportunity for peer review.
+Many models are published on [the website CoMSES](https://www.comses.net/about/), hosted by the Network for Computational Modeling in Social and Ecological Sciences. We recommend you to give their model library a browse, but also to publish your own models' code and ODD there. While it is not a platform geared towards historians (such a platform sadly does not exist, yet) it is a great place that encourages reproducibility, reusability and even gives the opportunity for peer review if desired.
 
 Many models are published in early, unfinished states to gather feedback. Models are often developed collaboratively in this way, and you should not hesitate to publish preliminary work in a non-peer review venue such as this. This strong tradition of collaboration and iterative, experimentative work can be a great asset to your own modeling.
 
 ### 3.3 Final Remarks
-Agent-based Modeling for historians is still in an early phase. There is still a small - albeit growing! - number of people who apply simulation methods to historical research questions and there are many open questions left regarding the methods' implications and prerquisites for historical inquiry.
+Agent-based Modeling for historians is still in an early phase. There is still a small - albeit growing! - number of people who apply simulation methods to historical research questions and there are many open questions left regarding the methods' implications and prerequisites for historical inquiry.
 
-The methodological criticism, which is so important for todays Digital History, is still just unfolding, but this also leaves much room for exiting discussion and discoveries.
+The methodological criticism, which is so important for today's Digital History, is still just unfolding, but this also leaves much room for exciting discussion and discoveries.
 
 Do not hesitate to get in touch with us if you want to be part of this discussion and if you want to help us build a community of practice around historical simulation methods!
 
@@ -912,7 +926,9 @@ Do not hesitate to get in touch with us if you want to be part of this discussio
 
 [^5]: Gavin, Michael. Agent-Based Modeling and Historical Simulation. Digital Humanities Quarterly, 008(4):195, December 2014. [http://www.digitalhumanities.org/dhq/vol/8/4/000195/000195.html](http://www.digitalhumanities.org/dhq/vol/8/4/000195/000195.html).
 
-[^6]: McCarty, Willard (2019). “Modeling the Actual, Simulating the Possible.” In The Shape of Data in the Digital Humanities: Modeling Texts and Text-Based Resources / Edited by Julia Flanders and Fotis Jannidis., edited by Julia Flanders, Fotis Jannidis, and Willard McCarty. London: Routledge. [https://www.taylorfrancis.com/books/9781315552941](https://www.taylorfrancis.com/books/9781315552941).
+[^5a]: Romein, C. A., Max Kemman, Julie M. Birkholz, J. Baker, M. D. Gruijter, Albert Meroño-Peñuela, T. Ries, Ruben Ros, S. Scagliola (2020). State of the Field: Digital History. In: Journal of the Historical Association 105 (365), pp. 291-312.
+
+[^6]: McCarty, Willard (2019). “Modeling the Actual, Simulating the Possible.” In The Shape of Data in the Digital Humanities: Modeling Texts and Text-Based Resources / Edited by Julia Flanders and Fotis Jannidis, and Willard McCarty. London: Routledge. [https://www.taylorfrancis.com/books/9781315552941](https://www.taylorfrancis.com/books/9781315552941).
 
 [^7]: Scheuermann, Leif (2022), Über die Rolle computerbasierter Modellrechnungen und Simulationen für eine digitale Geschichte, In Digital History. Konzepte, Methoden und Kritiken Digitaler Geschichtswissenschaft. edited by Karoline Dominika Döring, Stefan Haas, Mareike König, and Jörg Wettlaufer. Berlin; Boston 2022 (Studies in Digital History and Hermeneutics 6).
 
@@ -940,11 +956,11 @@ Do not hesitate to get in touch with us if you want to be part of this discussio
 
 [^19]: Wachter, Laslett and Hammel 1978, p. xix
 
-[^20]: Comer, Kenneth W. “Who Goes First? An Examination of the Impact of Activation on Outcome Behavior in AgentBased Models.” George Mason University, 2014. [http://mars.gmu.edu/bitstream/handle/1920/9070/Comer_gmu_0883E_10539.pdf](http://mars.gmu.edu/bitstream/handle/1920/9070/Comer_gmu_0883E_10539.pdf).
+[^20]: Comer, Kenneth W. “Who Goes First? An Examination of the Impact of Activation on Outcome Behavior in AgentBased Models.” George Mason University, 2014. [https://hdl.handle.net/1920/9070](https://hdl.handle.net/1920/9070).
 
 [^21]: Unlike `mesa.model` or `mesa.agent`, `mesa.time` has multiple classes (e.g. `RandomActivation`, `StagedActivation` etc). To ensure context, time is used in the import as evidenced below with `mesa.time.RandomActivation`.  You can see the different time classes at [mesa.time](https://github.com/projectmesa/mesa/blob/main/mesa/time.py).
 
-[^22]: However there are more types of space to include `HexGrid`, `NetworkGrid`, and the previously mentioned `ContinuousSpace`. Similar to `mesa.time` context is retained with `mesa.space.[enter class]`. You can see the different classes at [`mesa.space`](https://github.com/projectmesa/mesa/blob/main/mesa/space.py).
+[^22]: Other types of space available include `HexGrid`, `NetworkGrid`, and the previously mentioned `ContinuousSpace`. Similar to `mesa.time` context is retained with `mesa.space.[enter class]`. You can see the different classes at [`mesa.space`](https://github.com/projectmesa/mesa/blob/main/mesa/space.py).
 
 [^23]: Mehdizadeh, Milad, Trond Nordfjaern, und Christian A. Klöckner. (2022). “A systematic review of the agent-based modelling/simulation paradigm in mobility transition“. Technological Forecasting and Social Change 184:122011, p.8-9. [https://doi.org/10.1016/j.techfore.2022.122011](https://doi.org/10.1016/j.techfore.2022.122011).
 
