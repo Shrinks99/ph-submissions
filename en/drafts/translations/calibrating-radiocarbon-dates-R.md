@@ -21,8 +21,8 @@ translation-editor:
 - Laura Alice Chapot
 - Agustín Cosovschi
 translation-reviewer:
-- Forename Surname
-- Forename Surname
+- Giulia Osti
+- Jeff Blackadar
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/603
 difficulty: 2
 activity: analyzing
