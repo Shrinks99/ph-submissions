@@ -141,9 +141,9 @@ Agent-based Modeling as a term for the kind of simulation approach we just descr
 
 Similar, individual-based simulation approaches have existed from at least the 1960s, though. Tim Gooding puts the origins of Agent-based Modeling at 1933, when Enrico Fermi first used the so-called Monte-Carlo-Method with mechanical computing machines to forecast and analyze results of physical experiments[^15]. Another early example includes the aforementioned Peter Laslett, who, together with Anthropologist Eugene Hammel and Computer scientist Kenneth W. Wachter, devised individual-based Monte-Carlo Simulations on household structures in early modern England[^12].
 
-Since then, a number of changes occurred that warrant a distinction between those efforts and the newer, actual Agent-based Models. For one, changes in hardware, software and programming paradigms have led to a much higher performance and affordability of bigger and more complex models. Also, the epistemological framework of emergent properties in systems we described in Sec. 1.2 is heavily inspired by modern thinking on Complex Adaptive Systems, which itself has roots into the 1950s and before, but is mainly a product of recent scholarly activity[^16]. In the newer Agent-based Modeling, there is a bigger principle emphasis on the relevance of heterogeneous agents, processes of social learning, coupling of micro- and macro-level phenomena and on theory-agnosticism.
+Since then, a number of changes occurred that warrant a distinction between those efforts and the newer, actual Agent-based Models. For one, changes in hardware, software and programming paradigms have led to a much higher performance and affordability of bigger and more complex models. Also, the epistemological framework of emergent properties in systems we described in Sec. 1.2 is heavily inspired by modern thinking on Complex Adaptive Systems[^16], which itself has roots into the 1950s and before, but is mainly a product of recent scholarly activity (e.g., in the field of ecology regarding natural and societal adaptations to climate change[^16b]). In the newer Agent-based Modeling, there is a bigger principle emphasis on the relevance of heterogeneous agents, processes of social learning, coupling of micro- and macro-level phenomena and on theory-agnosticism.
 
-Today, Agent-based Modeling and simulations in general are starting to appear more frequently in historical research, most notably in Archaeology[^17], but in the context of Digital History[^18] and Digital Humanities[^6] as well.
+Today, Agent-based Modeling and simulations in general are starting to appear more frequently in historical research, most notably in Archaeology (e.g., in simulations of prehistoric settlement patterns[^16c] or in-depth methodological and epistemological discussions[^17]), but in the context of Digital History  (e.g., with simulations of different aspects of trade and production in ancient roman economies[^18]) and Digital Humanities (particularly in recent methodological discussions[^6]) as well.
 
 ## Part 2: Programming Agent-based Models with Mesa
 
@@ -202,7 +202,7 @@ Each instantiation of the model class will be a specific model run. Each model w
 
 Another important aspect of `mesa` is the `scheduler`. The scheduler keeps track of which agent should act when. This process is called "activation" in the terms of `mesa`, and there are a number of predefined activation procedures: random, simultaneous, or staged activation. For this tutorial we will make use of random activation, meaning that all agents act one after another, but the order is random at each new step of the model.
 
-Some research questions might require the agents to interact in/with a `space`. This could be a geographical space or something more abstract. Sometimes, like in this tutorial, a simple abstract representation of relative distance is sufficient, for example in the form of a two-dimensional *grid*. `Mesa` also supports hexagonal, continuous or network grids, which are useful for e.g. covering a geographical space or simulating social relations. If a simulation relies on geographical map projections, an additional package from the `mesa` project might be useful: [mesa-geo](https://github.com/projectmesa/mesa-geo).
+Some research questions might require the agents to interact in/with a `space`. This could be a geographical space or something more abstract. Sometimes, like in this tutorial, a simple abstract representation of relative distance is sufficient, for example in the form of a two-dimensional *grid*. `Mesa` also supports hexagonal, continuous or network grids, which are useful for e.g. covering a geographical space or simulating social relations, like in the aforementioned simulations of prehistoric settlement patterns or roman economic activity. If a simulation relies on geographical map projections, an additional package from the `mesa` project might be useful: [mesa-geo](https://github.com/projectmesa/mesa-geo).
 
 ### 2.5 Building the Model
 
@@ -248,7 +248,7 @@ class LetterModel(mesa.Model):
 
 Time in most agent-based models moves in steps, sometimes also called ticks. At each step of the model, one or more of the agents – usually all of them – are activated and take their own step, changing internally and/or interacting with one another or the environment.
 
-The scheduler is a special model component which controls the order in which agents are activated. For example, all the agents may activate in the same order every step, their order might be shuffled, we may try to simulate all the agents acting at the same time, and more. `Mesa` offers a few different built-in scheduler classes, with a common interface. That makes it easy to change the activation regime a given model uses, and see whether it changes the model behavior. This may not seem important, but scheduling patterns can have a big impact on your results[^20].
+The scheduler is a special model component which controls the order in which agents are activated. For example, all the agents may activate in the same order every step, their order might be shuffled, we may try to simulate all the agents acting at the same time, and more. `Mesa` offers a few different built-in scheduler classes, with a common interface. That makes it easy to change the activation regime a given model uses, and see whether it changes the model behavior. This may not seem important, but scheduling patterns can have a big impact on your results. How severe those impacts depending on the type of activation method are is still a topic of research and debate, but at the very least, potential effects on your model should be considered and be made clear[^20].
 
 For now, let's use one of the simplest ones: `RandomActivation`[^21], which activates all the agents once per step, in random order.
 
@@ -357,7 +357,8 @@ import matplotlib.pyplot as plt
 
 ```python
 agent_letters_recd = [b.letters_received for b in model.schedule.agents]
-plt.hist(agent_letters_recd)
+plt.hist(agent_letters_recd, bins=range(10,30))
+plt.xticks(range(10,31))
 plt.xlabel("Letters Received")
 plt.ylabel("Number of Agents")
 
@@ -386,6 +387,7 @@ for j in range(100):
 
 
 plt.hist(all_letters_rec, bins=range(max(all_letters_rec) + 1))
+plt.xticks(range(max(all_letters_rec) + 1))
 plt.xlabel("Letters Received")
 plt.ylabel("Number of Agents")
 
@@ -652,7 +654,9 @@ You'll see that the DataFrame's index consists of pairings of model step and age
 
 ```python
 end_letters = agent_letters.xs(99, level="Step")["Letters_sent"]
-end_letters.hist(bins=range(agent_letters.Letters_sent.max() + 1))
+bin_range = range(agent_letters.Letters_sent.max() + 1)
+end_letters.hist(bins=bin_range)
+plt.xticks(bin_range)
 plt.xlabel("Letters Sent")
 plt.ylabel("Number of Agents")
 plt.title("Distribution of Letters Sent by Agents")
@@ -949,6 +953,10 @@ Do not hesitate to get in touch with us if you want to be part of this discussio
 [^15]: Gooding, Tim (2019), “Agent-Based Model History and Development.” In Economics for a Fairer Society, by Tim Gooding, 25–36. Cham: Springer International Publishing. [https://doi.org/10.1007/978-3-030-17020-2_4](https://doi.org/10.1007/978-3-030-17020-2_4).
 
 [^16]: Mitchell, Melanie (2011), Complexity: A Guided Tour. Oxford: Oxford University Press.
+
+[^16b]: See for example Alexander, Sarah and Paul Block (2022), Integration of seasonal precipitation forecast information into local-level agricultural decision-making using an agent-based model to support community adaptation, in: Climate Risk Management 36, p.100417. [https://doi.org/10.1016/j.crm.2022.100417](https://doi.org/10.1016/j.crm.2022.100417).
+
+[^16c]: Sikk, Kaarel and Geoffrey Caruso (2020), A spatially explicit agent-based model of central place foraging theory and its explanatory power for hunter-gatherers settlement patterns formation processes, in: Adaptive Behavior 28 (5), pp. 377-397. [https://doi.org/10.1177/1059712320922915](https://doi.org/10.1177/1059712320922915). 
 
 [^17]: Graham, Shawn. An Enchantment of Digital Archaeology: Raising the Dead with Agent-Based Models, Archaeogaming and Artificial Intelligence. Digital Archaeology: Documenting the Anthropocene 1. online: Berghahn Books, 2020. [https://doi.org/10.1515/9781789207873](https://doi.org/10.1515/9781789207873).
 
