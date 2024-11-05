@@ -35,11 +35,11 @@ Si [l'archivage et l'ouverture des données de recherche](https://programminghis
 
 Archiver les logiciels est donc un prérequis pour garantir un accès partagé aux auteur·es, contributeur·ices, utilisateur·ices et lecteur·ices de logiciels.[^2]
 
-Quoique essentiel à la compréhension des résultats, le logiciel n'est pourtant pas toujours identifié comme une ressource à préserver. En l'absence de réelle méthode d'archivage, les liens pointent bien souvent vers des sources déplacées ou perdues. Un article de D. Spinellis[^10] illustre la courte durée de vie des URL dans les articles publiés (elle est en moyenne supérieure à celle d'un hamster – 2 ans, mais inférieure à celle d'un pingouin – 15 à 20 ans). Le site web d'un individu ou même d'un laboratoire n'offre aucune garantie de pérennité, car un simple changement de fournisseur d'accès à Internet, un départ à la retraite, ou le changement de nom d'une institution, peuvent suffire à rendre tous les liens obsolètes.
+Quoique essentiel à la compréhension des résultats, le logiciel n'est pourtant pas toujours identifié comme une ressource à préserver. En l'absence de réelle méthode d'archivage, les liens pointent bien souvent vers des sources déplacées ou perdues. Un article de D. Spinellis[^10] illustre la courte durée de vie des URL dans les articles publiés (elle est en moyenne supérieure à celle d'un hamster (2 ans), mais inférieure à celle d'un pingouin (15 à 20 ans)). Le site web d'un individu ou même d'un laboratoire n'offre aucune garantie de pérennité, car un simple changement de fournisseur d'accès à Internet, un départ à la retraite, ou le changement de nom d'une institution, peuvent suffire à rendre tous les liens obsolètes.
 
 Même les «&nbsp;forges[^3]&nbsp;», plateformes de développement collaboratif en ligne telles que GitHub et GitLab — dont l'usage s'est très fortement accru ces dernières années, y compris dans le monde académique[^4] — n'offrent pas de garantie d'accès pérenne. Leurs conditions d’utilisation peuvent être modifiées et les espaces de travail fonctionnant avec une technologie donnée ne seraient alors plus maintenus. Pire encore, ces plateformes peuvent être intégralement désactivées, coupant même aux auteur·es de logiciels tout accès à leur contenu — mésaventure qu'ont connue les [utilisateur·ices de Google Code](https://opensource.googleblog.com/2015/03/farewell-to-google-code.html). Même les forges institutionnelles offrant de plus grandes garanties en termes de services peuvent être désactivées. Les forges sont donc de puissants outils de collaboration mais ne constituent pas la solution optimale pour mettre du code informatique à disposition du lectorat d'un article académique. Elles facilitent l'écriture du code, non sa préservation.
 
-L'absence de vraies solutions d'archivage, tant pour les développeur·euses que pour les utilisateur·ices de logiciel, a donc des conséquences en chaine sur tout le système de citation académique et la reproductibilité des travaux — autrement dit, donc, sur la qualité de la science. Aussi est-il crucial de disposer d'un archivage dans un entrepôt dédié.
+L'absence de vraies solutions d'archivage, tant pour les développeur·euses que pour les utilisateur·ices de logiciels, a donc des conséquences en chaine sur tout le système de citation académique et la reproductibilité des travaux — autrement dit, donc, sur la qualité de la science. Aussi est-il crucial de disposer d'un archivage dans un entrepôt dédié.
 
 ## L'accès au code source des logiciels
 
@@ -49,13 +49,13 @@ Sous quelle forme les logiciels doivent-ils être archivés&nbsp;? Leur concepti
 
 Le développement d'un logiciel commence par l'écriture d'un «&nbsp;code source&nbsp;», c'est-à-dire d'une série d'instructions écrites dans un ou plusieurs langages informatiques (par exemple [Python](https://www.python.org/), [R](https://www.r-project.org/), etc.), lisibles et compréhensibles par des humains. Il s'agit donc d'une représentation textuelle de l'architecture du programme et des algorithmes qui en sous-tendent le fonctionnement.
 
-À l'autre bout de la chaine, on trouve un «&nbsp;exécutable&nbsp;»&nbsp;: c'est la version transformée du code source, rendue lisible par la machine. Cette traduction pour la machine – non lisible par les humains – prend la forme d'une série de 0 et de 1 (d'où le nom de «&nbsp;binaire&nbsp;» parfois donné comme synonyme d'«&nbsp;exécutable&nbsp;»), codant les impulsions électriques nécessaires à l'exécution du programme.
+À l'autre bout de la chaine, on trouve un «&nbsp;exécutable&nbsp;»&nbsp;: c'est la version transformée du code source, lisible par la machine. Cette traduction pour la machine – non lisible par les humains – prend la forme d'une série de 0 et de 1 (d'où le nom de «&nbsp;binaire&nbsp;» parfois donné comme synonyme d'«&nbsp;exécutable&nbsp;»), codant les impulsions électriques nécessaires à l'exécution du programme.
 
 La «&nbsp;compilation&nbsp;» est le processus transformant le code source écrit par des humains en un programme exécutable pour la machine. On peut donc imaginer le code source comme une recette de cuisine, l'exécutable comme le plat obtenu en suivant la recette, et la compilation comme le travail culinaire.[^11]
 
-L'archive Software Heritage, qui sera présentée ultérieurement, ne collecte que le code source, car c'est le seul composant du logiciel qui reste exploitable sur le long terme. En effet, la compilation n'est pas un processus facilement réversible&nbsp;: si l'on peut immédiatement passer du code source à l'exécutable, l'inverse est beaucoup plus délicat et incertain — de même qu'il ne suffit généralement pas de goûter un plat pour connaitre sa recette. De plus, le code source d'un logiciel, comme une recette de cuisine, peut être inspecté, compris, éventuellement modifié et à nouveau transmis par les personnes qui l'utilisatent.
+L'archive Software Heritage, qui sera présentée ultérieurement, ne collecte que le code source, car c'est le seul composant du logiciel qui reste exploitable sur le long terme. En effet, la compilation n'est pas un processus facilement réversible&nbsp;: si l'on peut immédiatement passer du code source à l'exécutable, l'inverse est beaucoup plus délicat et incertain — de même qu'il ne suffit généralement pas de goûter un plat pour connaitre sa recette. De plus, le code source d'un logiciel, comme une recette de cuisine, peut être inspecté, compris, éventuellement modifié et à nouveau transmis par les personnes qui l'utilisent.
 
-Autrement dit, renvoyer vers le code source constitue la manière la plus sûre et efficace de partager du logiciel sur le long terme. 
+Autrement dit, renvoyer vers le code source constitue la manière la plus sûre et efficace de partager un logiciel sur le long terme. 
 
 Nous pouvons d'ailleurs illustrer le fait que le code source nous donne bien plus d'informations que le code exécutable, en observant par exemple [un fragment de code de la mission Apollo](https://archive.softwareheritage.org/swh:1:cnt:0c1741c1fb0150f111625d02277407f628c31bac;origin=https://github.com/virtualagc/virtualagc;visit=swh:1:snp:cdcd2bc43331a436e8c659ba93175ef7d7eb339b;anchor=swh:1:rev:4e5d304eb7cd5589b924ffb8b423b6f15511b35d;path=/Luminary116/THE_LUNAR_LANDING.agc;lines=250-254). Parallèlement au code «&nbsp;efficace&nbsp;», voué à dicter le comportement de la machine, on voit en fin de ligne (derrière les croisillons `#`) des informations destinées au lectorat humain. Ces commentaires fournissent la «&nbsp;raison d'être&nbsp;» du code destiné à la machine&nbsp;: les auteurs y expliquent pourquoi ils ont jugé pertinent d'ajouter telle ou telle ligne de code. Cela permet de s'orienter rapidement dans le code, d'identifier les lignes responsables d'un certain comportement et éventuellement de les modifier.
 
@@ -65,7 +65,7 @@ Nous pouvons d'ailleurs illustrer le fait que le code source nous donne bien plu
 
 [Software Heritage](https://www.softwareheritage.org/?lang=fr), infrastructure portée par l'Inria et l'Unesco, est dédiée à l'archivage du «&nbsp;[patrimoine logiciel mondial de l'humanité](https://www.inria.fr/fr/software-heritage-archive-mondiale-logiciel)&nbsp;».  Les trois missions de Software Heritage sont la collecte, la préservation et le partage du code des logiciels rendus publics. Pour les raisons exposées dans la section précédente, Software Heritage conserve le code source des logiciels, c'est-à-dire la partie du logiciel compréhensible par l'être humain.[^5]
 
-Le premier avantage de Software Heritage est de fournir un point d'entrée central vers des millions de logiciels, développés et disséminés dans une multitude de plateformes. Le second avantage pour l'utilisateur est d'accéder à des collections qui sont régulièrement et automatiquement mises à jour. Ainsi, quelqu'un voulant renvoyer vers une version donnée d'un logiciel a le choix parmi ses différentes versions archivées. De plus, quelqu'un qui a développé un logiciel peut compter sur une version archivée de son travail.
+Le premier avantage de Software Heritage est de fournir un point d'entrée central vers des millions de logiciels, développés et disséminés dans une multitude de plateformes. Le second avantage pour l'utilisateur est d'accéder à des collections qui sont régulièrement et automatiquement mises à jour. Ainsi, quelqu'un voulant renvoyer vers une certaine version d'un logiciel a le choix parmi ses différentes versions archivées. De plus, quelqu'un qui a développé un logiciel peut compter sur une version archivée de son travail.
 
 ### Les options d'archivage 
 
@@ -81,29 +81,29 @@ La pérennité de l'accès aux logiciels archivés est garantie par des identifi
 
 Software Heritage permet un accès unifié à des contenus issus d'une grande diversité de sources. Outre les plateformes de développement et de distribution les plus communément utilisées, Software Heritage fournit aussi&nbsp;:
 
-* Des contenus publics de [forges désactivées](https://archive.softwareheritage.org/browse/search/?q=googlecode.com&visit_type=git&with_content=true&with_visit=true) comme Google Code
-* Des contenus des forges institutionnelles basées sur GitLab (par exemple [l'instance GitLab de l'IN2P3 du CNRS](https://gitlab.in2p3.fr/)) ayant fait la demande d'être inclues dans l'archive
+* Des contenus publics de [forges désactivées](https://archive.softwareheritage.org/browse/search/?q=googlecode.com&visit_type=git&with_content=true&with_visit=true) comme Google Code.
+* Des contenus des forges institutionnelles basées sur GitLab (par exemple [l'instance GitLab de l'IN2P3 du CNRS](https://gitlab.in2p3.fr/)) ayant fait la demande d'être inclues dans l'archive.
 * Des codes sources associés à des articles, grâce aux partenariats entre Software Heritage et plusieurs revues en sciences et technologies
 * Des [codes sources de logiciels déposés dans l'archive ouverte nationale HAL](https://archive.softwareheritage.org/browse/search/?q=hal.archives-ouvertes.fr&visit_type=deposit&with_content=true&with_visit=true). Le [dépôt dans HAL](https://hal.science/hal-01872189) permet de créer une description citable du logiciel, alors que l'archivage dans Software Heritage est principalement dédié à rendre identifiable des composants techniques du logiciel (voir le [chapitre sur les identifiants pérennes](#utiliser-des-identifiants-pérennes-adaptés)). Multidisciplinaire, HAL permet de partager en libre accès les résultats de recherche, publiés ou non.
 
-La politique documentaire de Software Heritage s'applique à l'échelle d'un gisement d'informations (forge, plateforme) et non pas logiciel par logiciel. L'enjeu est d'offrir la couverture la plus large possible. Cet objectif est motivé par la nature composite du logiciel&nbsp;: un logiciel de recherche peut en effet s'appuyer sur des éléments issus de communautés de l'administration publique ou de l'industrie. C'est pourquoi les archives de Software Heritage excèdent le périmètre académique.
+La politique documentaire de Software Heritage s'applique à l'échelle d'un gisement d'informations (forge, plateforme) et non pas logiciel par logiciel. L'enjeu est d'offrir la couverture la plus large possible. Cet objectif est motivé par la nature composite du logiciel&nbsp;: un logiciel de recherche peut en effet s'appuyer sur des éléments issus de communautés de l'administration publique ou de l'industrie. C'est pourquoi les archives de Software Heritage dépassent le périmètre académique.
 
 En outre, la plus-value de Software Heritage est de préserver l'historique de développement des logiciels issus des forges, en plus de leur code source. L'historique de développement documente la création d'un logiciel et peut fournir des explications sur son fonctionnement. Voici l'exemple d'une [révision («&nbsp;commit&nbsp;») de 2008](https://archive.softwareheritage.org/browse/revision/64ac24e738823161693bf791f87adc802cf529ff/?origin_url=git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git&snapshot=fc7706e4c177714475a4886831486ad0979983ea#swh-revision-changes-list), rédigée par Matthew Wilcox&nbsp;:
 
 > «&nbsp;Implémentation générique des sémaphores  
-> Il n'y a plus d'enjeux critiques de performance concernant les sémaphores&nbsp;; une implémentation générique en C est donc préférable pour la maintenabilité, la débogage et l'extensibilité. Merci à Peter Zijlstra pour avoir corrigé l'avertissement concernant lockdep. Merci à Harvey Harrison pour avoir souligné que le unlikely() était inutile.    
+> Il n'y a plus d'enjeu critique de performance concernant les sémaphores&nbsp;; une implémentation générique en C est donc préférable pour la maintenabilité, la débogage et l'extensibilité. Merci à Peter Zijlstra pour avoir corrigé l'avertissement concernant lockdep. Merci à Harvey Harrison pour avoir souligné que le unlikely() était inutile.    
 > Signé par&nbsp;: Matthew Wilcox <willy@linux.intel.com>       
 > Accepté par&nbsp;: Ingo Molnar <mingo@elte.hu>&nbsp;»[^12]     
 
 Lorsqu'un code source est développé dans une forge, chaque modification peut être documentée à l'aide d'une telle révision. L'ensemble des révisions permet donc de reconstituer l'historique des changements apportés. Dans l'exemple ci-dessus, Matthew Wilcox justifie sa démarche visant à simplifier une partie du noyau Linux, en remplaçant 7679 lignes complexes par 314 lignes élémentaires, dans 113 fichiers. La révision incarne l'unité intellectuelle qui sous-tend toute cette diversité de modifications ponctuelles. Un historique de développement peut ainsi fournir des informations contextuelles précieuses pour comprendre la structure d'un logiciel.
 
-Enfin, si le code source d'un logiciel est supprimé de son emplacement d'origine, cela n'a pas d'impact sur les fonds de Software Heritage&nbsp;: les évolutions du code source sont archivées mais, si la ressource est supprimée, ce changement n'est pas répercuté – ce qui prémunit du risque de lien brisé.
+Enfin, si le code source d'un logiciel est supprimé de son emplacement d'origine, cela n'a pas d'impact sur les fonds de Software Heritage&nbsp;: les évolutions du code source sont archivées mais, si la ressource est supprimée, ce changement n'est pas répercuté – ce qui prémunit contre le risque de lien brisé.
 
 ## Rendre les logiciels identifiables 
 
 Les logiciels constituent des ressources particulièrement difficiles à identifier sur le long terme. Comment surmonter ces difficultés&nbsp;?
 
-### Les besoins d'identification spécifiques au logiciel 
+### Les besoins d'identification spécifiques aux logiciels 
 
 Pourquoi est-il si difficile d'identifier un logiciel&nbsp;? Certaines raisons sont contextuelles&nbsp;:
 
@@ -112,7 +112,7 @@ Pourquoi est-il si difficile d'identifier un logiciel&nbsp;? Certaines raisons s
 
 D'autres raisons sont inhérentes à la nature même du logiciel&nbsp;:
 
-* Les logiciels évoluent de version en version (changements qui peuvent être mineurs comme majeure), et on peut souhaiter citer une version, voire une étape précise du développement d'une version.
+* Les logiciels évoluent de version en version (changements qui peuvent être mineurs comme majeurs), et on peut souhaiter citer une version, voire une étape précise du développement d'une version.
 * Les logiciels, même simples en apparence, font intervenir de nombreux composants et leur architecture peut être complexe. Autrement dit, on peut avoir besoin de faire référence uniquement à un élément du logiciel et pas au produit dans son intégralité.
 
 Ainsi, l'archivage des logiciels est une tâche fondamentalement différente de l'archivage de jeux de données. Les données associées à un article ou un projet scientifique sont généralement dans un état «&nbsp;figé&nbsp;», unique et définitif, dont il suffit d'assurer la disponibilité à long terme, à l'aide d'un entrepôt dédié et d'un identifiant de type DOI. Inversement, le code source est un contenu fortement évolutif&nbsp;: il convient donc de garder la trace de toutes les versions mises à disposition du public. 
@@ -127,17 +127,17 @@ Citer un logiciel s'avère nécessaire lorsque celui-ci a joué un rôle déterm
 
 Par ailleurs, il n'existe pas toujours d'article associé au logiciel&nbsp;: il peut avoir été développé en dehors d'une communauté académique, ou simplement, n'avoir jamais été présenté dans une revue. Cela renforce donc le besoin de citer le logiciel lui-même, au même titre qu'une autre ressource académique. Les pratiques de citation de logiciels ne sont pas encore très codifiées dans les communautés académiques. Il n'existe pas de standard descriptif. Sur la base de recommandations d'experts, voici une proposition de noyau minimal d'informations à mentionner[^7]:
 
-* Le nom du logiciel de la manière la plus précise possible (par exemple le nom du *package*)
+* Le nom du logiciel de la manière la plus précise possible (par exemple le nom du package)
 * La date de mise à disposition de la version ou, à défaut, la date d’utilisation du logiciel par l’utilisateur, à l'exemple de ce qui se pratique pour les citations de pages web
 * L’auteur du logiciel
 * La localisation initiale (par exemple le lien vers la plateforme de développement)
 * L’identifiant pérenne (par exemple le SWHID)
 
-Les utilisateur·ices de LaTeX peuvent utiliser le [biblatex-software *package*](https://ctan.org/pkg/biblatex-software) pour faciliter la tâche.
+Les utilisateur·ices de LaTeX peuvent utiliser le [biblatex-software package](https://ctan.org/pkg/biblatex-software) pour faciliter la tâche.
 
 ### Utiliser des identifiants pérennes adaptés
 
-Les identifiants pérennes sont un moyen d'assurer un accès stable à une ressource, par exemple un document en ligne ou une description de document. Ils permettent d'établir des liens entre des informations de différentes natures&nbsp;: on sait par exemple qu'un article donné, identifié par un DOI, a été rédigé par telle personne, identifiée à son tour par sa référence [ORCID (*Open Researcher or Contributor ID*)](https://orcid.org/). Et cette personne exerce dans une institution elle-même identifiée *via* le [*Research Organization Registry* (ROR)](https://ror.org/about/).
+Les identifiants pérennes sont un moyen d'assurer un accès stable à une ressource, par exemple un document en ligne ou une description de document. Ils permettent d'établir des liens entre des informations de différentes natures&nbsp;: on sait par exemple qu'un article donné, identifié par un DOI, a été rédigé par telle personne, identifiée à son tour par sa référence [ORCID (*Open Researcher or Contributor ID*)](https://orcid.org/). Et cette personne exerce dans une institution elle-même identifiée via le [*Research Organization Registry* (ROR)](https://ror.org/about/).
 
 Le Comité pour la science ouverte définit ainsi un identifiant pérenne&nbsp;:
 
@@ -155,7 +155,7 @@ Le *SoftWare Hash Identifier* permet de pointer vers différents composants du l
 
 <div class="table-wrapper" markdown="block">
 
-| Type de contenus à identifier | Type de SWHID à utiliser |
+| Type de contenu à identifier | Type de SWHID à utiliser |
 |-------------------------------|--------------------------|
 | L'accent est mis sur un point de l'historique de développement | [*snapshot*](https://archive.softwareheritage.org/swh:1:dir:d198bc9d7a6bcf6db04f476d29314f157507d505;visit=swh:1:snp:c7c108084bc0bf3d81436bf980b46e98bd338453;anchor=swh:1:rev:50d91bdfc94cb9d3aa01634ac0b003d76e799bf1), [*release*](https://archive.softwareheritage.org/swh:1:rel:22ece559cc7cc2364edc5e5593d63ae8bd229f9f), [*revision*](https://archive.softwareheritage.org/swh:1:rev:309cf2674ee7a0749978cf8265ab91a60aea0f7d) |
 | L'accent est mis sur l'ensemble des contenus du code source à un moment donné | [*directory*](https://archive.softwareheritage.org/swh:1:dir:d198bc9d7a6bcf6db04f476d29314f157507d505) |
@@ -170,7 +170,7 @@ Le tableau suivant résume les informations présentées dans cette section.
 
 <div class="table-wrapper" markdown="block">
 
-|  | Citer un logiciel ... | Effectuer des vérifications techniques ... |
+| Besoin | Citer un logiciel | Effectuer des vérifications techniques |
 | -------- | -------- | -------- |
 | Objectif     | Attribuer correctement les responsabilités intellectuelles, pour renvoyer vers une version donnée.     | S'assurer de la reproductibilité des résultats obtenus avec le logiciel, pour obtenir des informations sur le processus de développement lui-même.     |
 | Pré-requis | Citer un logiciel nécessite qu'un identifiant pérenne soit attribué à chaque version. L'identifiant doit renvoyer vers des objets et vers leur description générale. | Effectuer des vérifications techniques nécessite qu'un identifiant pérenne renvoie à des composants précis du logiciel, qu'il s'agisse du code source comme d'explications fournies par les développeurs pour documenter leurs actions. L'identifiant doit renvoyer directement vers le contenu de l'objet.| 
@@ -199,7 +199,7 @@ Pour consulter ou citer du code source sur Software Heritage, il faut déjà l'a
 
 #### Cas d'étude&nbsp;: explorer Software Heritage 
 
-Examinons chacun des cas présents, en allant du point de départ le plus imprécis vers le plus précis. Les options 1, 2, 4 et 6 permettent une interrogation facilitée de Software Heritage (Fig. 1).
+Examinons chacun des cas présents, en allant du point de départ le plus imprécis vers le plus précis. Les options 1, 2, 4 et 6 permettent une interrogation facile de Software Heritage (Fig. 1).
 
 {% include figure.html filename="fr-or-preserver-logiciels-recherche-01.png" alt="Logigramme représentant les différents points d'entrée à partir desquels rechercher un logiciel sur Software Heritage." caption="Figure 1. Tous les chemins mènent à Software Heritage." %}
 
@@ -213,7 +213,7 @@ Pour le texte de la GNU Public Licence v3, rendez-vous à l'adresse <https://www
 
 **Option 3. Vous connaissez un _extrait du code_**
 
-Considérons par exemple l'extrait `unsigned three = 1;`. Vous pouvez chercher davantage d'informations à son sujet à l'aide d'un moteur de recherche. Jonglez avec les guillemets pour cibler l'expression exacte (comme lorsque vous effectuez une recherche dans un catalogue ou un moteur de recherche, ajouter des guillemets permet de faire porter la recherche sur l'expression telle quelle), et ajoutez des mots-clés pour affiner les résultats. En tapant par exemple «&nbsp;"unsigned three = 1" source code&nbsp;», vous trouverez rapidement un lien vers la page <https://github.com/torvalds/linux/blob/master/fs/ext4/resize.c>, ce qui vous indique l'adresse d'origine du projet et vous conduit une fois de plus à la situation décrite dans l'Option 4 ci-dessous.
+Considérons par exemple l'extrait `unsigned three = 1;`. Vous pouvez chercher davantage d'information à son sujet à l'aide d'un moteur de recherche. Jonglez avec les guillemets pour cibler l'expression exacte (comme lorsque vous effectuez une recherche dans un catalogue ou un moteur de recherche, ajouter des guillemets permet de faire porter la recherche sur l'expression telle quelle), et ajoutez des mots-clés pour affiner les résultats. En tapant par exemple «&nbsp;"unsigned three = 1" source code&nbsp;», vous trouverez rapidement un lien vers la page <https://github.com/torvalds/linux/blob/master/fs/ext4/resize.c>, ce qui vous indique l'adresse d'origine du projet et vous conduit une fois de plus à la situation décrite dans l'Option 4 ci-dessous.
 
 **Option 4. Vous connaissez l'_adresse du dépôt de référence_ d'un projet**
 
@@ -221,7 +221,7 @@ Si vous connaissez par exemple l'adresse <https://github.com/torvalds/linux> du
 
 **Option 5. Vous connaissez un _code de hachage_**
 
-Vous êtes un utilisateur suffisamment expérimenté et possédez le _code de hachage_ (SHA-1) permettant d'identifier un certain fichier, un répertoire, une version ou une révision. Par exemple, en visitant l'adresse <https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=64ac24e738823161693bf791f87adc802cf529ff>, vous avez trouvé le numéro de révision (*commit*) `64ac24e738823161693bf791f87adc802cf529ff`, ou bien vous savez que le code de hachage d'un fichier est `8624bcdae55baeef00cd11d5dfcfa60f68710a02`. Vous pouvez alors explorer la page correspondante en rajoutant l'un des préfixes suivants, selon le type de ressource&nbsp;:
+Vous êtes un utilisateur suffisamment expérimenté et possédez le _code de hachage_ (SHA-1) permettant d'identifier un certain fichier, un répertoire, une version ou une révision. Par exemple, en visitant l'adresse <https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=64ac24e738823161693bf791f87adc802cf529ff>, vous avez trouvé le numéro de révision `64ac24e738823161693bf791f87adc802cf529ff`, ou bien vous savez que le code de hachage d'un fichier est `8624bcdae55baeef00cd11d5dfcfa60f68710a02`. Vous pouvez alors explorer la page correspondante en rajoutant l'un des préfixes suivants, selon le type de ressource&nbsp;:
 
 * Pour un fichier&nbsp;: <https://archive.softwareheritage.org/browse/content/>
 * Pour un répertoire&nbsp;: <https://archive.softwareheritage.org/browse/directory/>     
@@ -251,7 +251,7 @@ Vous pouvez alors le taper dans la [barre de recherche de l'archive](https://arc
 Mettons à présent ces notions en pratique. Trouvez dans l'archive Software Heritage&nbsp;:
 
 1. Le code du programme LanguageTools.
-2. Le code contenant les mots «&nbsp;you are not expected to understand this&nbsp;».
+2. Le code contenant les mots «&nbsp;you are not expected to understand this&nbsp;» («&nbsp;vous n'êtes pas supposés comprendre ceci&nbsp;».
 3. Le code correspondant au dépôt <https://github.com/CatalaLang/catala>.
 4. Le fichier composé des lignes suivantes&nbsp;: 
 	```c
@@ -267,17 +267,17 @@ Mettons à présent ces notions en pratique. Trouvez dans l'archive Software Her
 
 Maintenant que vous savez naviguer dans l'archive et que vous avez vu ci-dessus les différents types de SWHIDs permettant de répondre aux différents besoins de citation d'un logiciel, donnons ci-dessous deux cas concrets. Dans ces situations, des identifiants pérennes bien choisis sont nécessaires pour répondre aux besoins des chercheurs qui souhaitent faire référence à des logiciels, ou des portions de code source, dans leurs productions académiques.
 
-1. Une doctorante souhaite citer les logiciels utilisés pendant sa thèse pour permettre à ses lecteurs d'identifier et retrouver le code source correspondant, et de reproduire les résultats présentés dans son manuscrit. Elle a notamment utilisé le package («&nbsp;paquet&nbsp;») R `{rdss}` pour une partie de ses analyses statistiques. Comme de nombreux autres packages R, `{rdss}` est seulement [disponible sur la forge GitLab.com](https://gitlab.com/f-santos/rdss). Bien que librement téléchargeable, ce package pourrait ne plus être disponible du jour au lendemain, si la forge GitLab fermait soudainement ses portes, ou si l'auteur en retirait son package sans préavis. Les résultats présentés dans la thèse de cette doctorante seraient alors impossibles à auditer et à reproduire par les membres de son jury, ou par les futurs lecteurs de son travail. Comment peut-elle fournir un identifiant pérenne pour permettre à ses lecteurs d'accéder durablement à la version de `{rdss}` utilisée dans son manuscrit, à savoir la version (ou «&nbsp;release&nbsp;») 1.1.1&nbsp;?
+1. Une doctorante souhaite citer les logiciels utilisés pendant sa thèse pour permettre à ses lecteur·ices d'identifier et retrouver le code source correspondant, et de reproduire les résultats présentés dans son manuscrit. Elle a notamment utilisé le package R `{rdss}` pour une partie de ses analyses statistiques. Comme de nombreux autres packages R, `{rdss}` est seulement [disponible sur la forge GitLab](https://gitlab.com/f-santos/rdss). Bien que librement téléchargeable, ce package pourrait ne plus être disponible du jour au lendemain, si la forge GitLab fermait soudainement ses portes, ou si l'auteur en retirait son package sans préavis. Les résultats présentés dans la thèse de cette doctorante seraient alors impossibles à auditer et à reproduire par les membres de son jury, ou par les futurs lecteur·ices de son travail. Comment peut-elle fournir un identifiant pérenne pour permettre à ses lecteur·ices d'accéder durablement à la version de `{rdss}` utilisée dans son manuscrit, à savoir la version (ou «&nbsp;release&nbsp;») 1.1.1&nbsp;?
 
-2. Un chercheur rédige un article cherchant à comparer la performance de divers algorithmes de fouille de textes, ou «&nbsp;text mining&nbsp;», une méthode utile notamment en Histoire. Un lot de méthodes de fouille de textes est par exemple implémenté dans le [package R `{tm}`](https://archive.softwareheritage.org/browse/origin/directory/?origin_url=https://cran.r-project.org/package%3Dtm&snapshot=99204e5a7070f348901b0e966a7ffbbe3db0a9b9&visit_type=cran). Notre chercheur pense avoir développé des fonctions en langage R encore plus rapides et économes en temps de calcul sur de grands jeux de données, en apportant des améliorations décisives à certains endroits du *package* `{tm}`. Par exemple, en considérant la version 0.7-9 du *package* `{tm}`, il souhaite signaler qu'il a mis au point une version plus rapide d'une fonction nommée `tm_scan_one`, dont le code est situé dans le [fichier `src/scan.c`](https://archive.softwareheritage.org/browse/content/sha1_git:e76e4f8b6a1d34dcb55cebaa0f4b91e5a186dd08/?origin_url=https://cran.r-project.org/package%3Dtm&path=tm/src/scan.c&snapshot=99204e5a7070f348901b0e966a7ffbbe3db0a9b9&visit_type=cran) du package. En particulier, ce chercheur a apporté une amélioration décisive à la portion de code comprise entre les lignes 46 à 65, écrite en langage C. Comment peut-il faire référence de manière pérenne à cette portion de code dans son projet de publication&nbsp;?
+2. Un chercheur rédige un article cherchant à comparer la performance de divers algorithmes de fouille de textes, ou «&nbsp;text mining&nbsp;», une méthode utile notamment en Histoire. Un lot de méthodes de fouille de textes est par exemple implémenté dans le [package R `{tm}`](https://archive.softwareheritage.org/browse/origin/directory/?origin_url=https://cran.r-project.org/package%3Dtm&snapshot=99204e5a7070f348901b0e966a7ffbbe3db0a9b9&visit_type=cran). Notre chercheur pense avoir développé des fonctions en langage R encore plus rapides et économes en temps de calcul sur de grands jeux de données, en apportant des améliorations décisives à certains endroits du package `{tm}`. Par exemple, en considérant la version 0.7-9 du package `{tm}`, il souhaite signaler qu'il a mis au point une version plus rapide d'une fonction nommée `tm_scan_one`, dont le code est situé dans le [fichier `src/scan.c`](https://archive.softwareheritage.org/browse/content/sha1_git:e76e4f8b6a1d34dcb55cebaa0f4b91e5a186dd08/?origin_url=https://cran.r-project.org/package%3Dtm&path=tm/src/scan.c&snapshot=99204e5a7070f348901b0e966a7ffbbe3db0a9b9&visit_type=cran) du package. En particulier, ce chercheur a apporté une amélioration décisive à la portion de code comprise entre les lignes 46 à 65, écrite en langage C. Comment peut-il faire référence de manière pérenne à cette portion de code dans son projet de publication&nbsp;?
 
 **Solutions**
 
-1. Le but est ici de citer une *version* d'un logiciel&nbsp;: le bon identifiant SWHID est donc un identifiant portant sur la «&nbsp;release&nbsp;». Sur [la page adéquate](https://archive.softwareheritage.org/browse/origin/directory/?origin_url=https://gitlab.com/f-santos/rdss) de l'archive Software Heritage, on peut sélectionner la release 1.1.1, puis obtenir l'identifiant de version `swh:1:rel:ef8ba743282a602d8b105ce82e1f6f48779d7998` grâce au menu **Permalinks** situé à droite de l'écran (Fig. 2). 
+1\. Le but est ici de citer une version d'un logiciel&nbsp;: le bon identifiant SWHID est donc un identifiant portant sur la «&nbsp;release&nbsp;». Sur [la page adéquate](https://archive.softwareheritage.org/browse/origin/directory/?origin_url=https://gitlab.com/f-santos/rdss) de l'archive Software Heritage, on peut sélectionner la release 1.1.1, puis obtenir l'identifiant de version `swh:1:rel:ef8ba743282a602d8b105ce82e1f6f48779d7998` grâce au menu **Permalinks** situé à droite de l'écran (Fig. 2). 
 
 {% include figure.html filename="fr-or-preserver-logiciels-recherche-02.gif" alt="Gif animé présentant les manipulations nécessaires pour trouver le package R rdss dans l'archive Software Heritage." caption="Figure 2. Trouver et citer une version précise d'un package R dans l'archive Software Heritage." %}
 
-2\. Le but est ici de citer un *extrait de code* contenu dans un fichier source, à une étape donnée du développement d'un logiciel. Le bon identifiant SWHID est donc un identifiant de type «&nbsp;content&nbsp;», c'est-à-dire, portant sur le contenu d'un fichier précis. Sur [la page adéquate](https://archive.softwareheritage.org/browse/content/sha1_git:e76e4f8b6a1d34dcb55cebaa0f4b91e5a186dd08/?origin_url=https://cran.r-project.org/package=tm&path=tm/src/scan.c&snapshot=99204e5a7070f348901b0e966a7ffbbe3db0a9b9&visit_type=cran#L46-L65) de l'archive Software Heritage, on peut sélectionner la release 0.7-9 du package, puis les lignes 46 à 65, pour enfin obtenir l'identifiant de contenu `swh:1:cnt:e76e4f8b6a1d34dcb55cebaa0f4b91e5a186dd08` grâce au menu **Permalinks** situé à droite de l'écran (Fig. 3).    
+2\. Le but est ici de citer un extrait de code contenu dans un fichier source, à une étape donnée du développement d'un logiciel. Le bon identifiant SWHID est donc un identifiant de type «&nbsp;content&nbsp;», c'est-à-dire, portant sur le contenu d'un fichier précis. Sur [la page adéquate](https://archive.softwareheritage.org/browse/content/sha1_git:e76e4f8b6a1d34dcb55cebaa0f4b91e5a186dd08/?origin_url=https://cran.r-project.org/package=tm&path=tm/src/scan.c&snapshot=99204e5a7070f348901b0e966a7ffbbe3db0a9b9&visit_type=cran#L46-L65) de l'archive Software Heritage, on peut sélectionner la release 0.7-9 du package, puis les lignes 46 à 65, pour enfin obtenir l'identifiant de contenu `swh:1:cnt:e76e4f8b6a1d34dcb55cebaa0f4b91e5a186dd08` grâce au menu **Permalinks** situé à droite de l'écran (Fig. 3).    
 
 {% include figure.html filename="fr-or-preserver-logiciels-recherche-03.gif" alt="Gif animé présentant les manipulations nécessaires pour sélectionner un extrait de code du package R tm dans l'archive Software Heritage." caption="Figure 3. Trouver et citer un extrait de code source précis dans l'archive Software Heritage." %}
 
@@ -285,7 +285,7 @@ Maintenant que vous savez naviguer dans l'archive et que vous avez vu ci-dessus 
 
 Dans cette section, vous allez principalement vous placer du point de vue des producteurs de code source, en créant un dépôt contenant un bref extrait de code et en assurant son archivage sur Software Heritage. Toutefois, rappelons qu'il n'est pas nécessaire d'être l'auteur·e d'un logiciel pour en demander l'archivage sur Software Heritage.
 
-### Dans quels cas archiver manuellement du code source 
+### Dans quels cas archiver manuellement du code source&nbsp;?
 
 La grande majorité du code source archivé sur Software Heritage provient des «&nbsp;moissons&nbsp;» automatiques effectuées périodiquement depuis différentes sources. Notons que ces moissons automatiques sont faites «&nbsp;sans filtre&nbsp;»&nbsp;: Software Heritage n'effectue pas de test technique pour vérifier si un logiciel fonctionne.
 
@@ -294,7 +294,7 @@ Entre ces moissons périodiques, tout·e auteur·e ou utilisateur·ice de logici
 1. Vous êtes utilisateur·ice d'un logiciel et avez utilisé sa toute dernière version pour produire les résultats d'un article que vous vous préparez à soumettre. Vous souhaitez utiliser un SWHID judicieusement choisi (en l'occurrence, un SWHID de type `release`) pour citer ce logiciel dans votre article. Malheureusement, la dernière version de ce logiciel n'a pas encore été moissonnée automatiquement par Software Heritage, et le SWHID correspondant ne peut donc pas être encore être produit. Vous souhaitez donc utiliser l'option _Save Code Now_ afin que Software Heritage visite à nouveau le dépôt de ce logiciel, et en archive la dernière version. Le SWHID dont vous avez besoin sera alors disponible. 
 2. Vous êtes auteur·e d'un logiciel développé sur la forge GitLab et vous souhaitez le publier rapidement. Vous ne pouvez pas attendre que GitLab soit moissonné automatiquement et souhaitez en déclencher l'archivage tout de suite afin de pouvoir fournir une URL stable (et un SWHID) dans l'article de présentation de votre logiciel.
 
-Étudions concrètement le premier de ces deux cas, du point de vue d'un utilisateur non-développeur.
+Étudions concrètement le premier de ces deux cas, du point de vue d'un·e utilisateur·ice non-développeur·se.
 
 ### Vérifier que la version archivée d'un dépôt est à jour 
 
@@ -320,13 +320,13 @@ Si vous êtes au contraire déjà un·e utilisateur·ice régulier·e de Git, vo
 
 #### Créer un dépôt GitLab 
 
-1. Si ce n'est pas déjà fait, commencez par [vous créer un compte sur GitLab.com](https://gitlab.com/users/sign_up). 
+1. Si ce n'est pas déjà fait, commencez par [vous créer un compte sur GitLab](https://gitlab.com/users/sign_up). 
 2. Vous pourrez ensuite [vous connecter sur cette forge](https://gitlab.com/users/sign_in) avec vos identifiants. 
 3. Dans l'interface de GitLab, ou [en suivant ce lien](https://gitlab.com/projects/new), choisissez l'option «&nbsp;Créer un projet vide&nbsp;», dans lequel vous hébergerez par la suite du code source. 
 4. Choisissez par exemple `Test SWH` comme nom de projet, et veillez à ce que le «&nbsp;Niveau de visibilité&nbsp;» du projet soit réglé sur «&nbsp;Public&nbsp;». (Sans cela, le code source du projet ne serait accessible que par vous, et ne pourrait donc pas être moissonné par Software Heritage.) 
 5. Validez enfin la création de ce nouveau projet en cliquant sur le bouton _Créer le projet_ (Fig. 6).
 
-{% include figure.html filename="fr-or-preserver-logiciels-recherche-06.png" alt="Capture d'écran indiquant les informations correctes à renseigner pour créer un nouveau projet sur la forge GitLab.com : nom, slug et visibilité." caption="Figure 6. Créer un nouveau projet dans l'interface de GitLab.com." %}
+{% include figure.html filename="fr-or-preserver-logiciels-recherche-06.png" alt="Capture d'écran indiquant les informations correctes à renseigner pour créer un nouveau projet sur la forge GitLab.com : nom, slug et visibilité." caption="Figure 6. Créer un nouveau projet dans l'interface de GitLab." %}
 
 #### Écrire une portion de code 
 
@@ -355,7 +355,7 @@ fi
 exit 0
 ```
 
-Pour ce faire, dans l'interface de GitLab, cliquez sur le bouton `+` situé en haut de la page du dépôt, puis choisissez «&nbsp;Nouveau fichier&nbsp;». Dans la nouvelle fenêtre qui s'ouvre, collez l'extrait de code ci-dessus, puis attribuez le nom `leap.sh` à ce fichier source dans le champ Filename. Enfin, en bas de la page, cliquez sur _Valider les modifications_ pour effectuer une révision (ou *commit*). Le fichier `leap.sh` est maintenant ajouté à votre dépôt, et une révision associée à la création de ce fichier a bien été enregistrée (Fig. 7).
+Pour ce faire, dans l'interface de GitLab, cliquez sur le bouton `+` situé en haut de la page du dépôt, puis choisissez «&nbsp;Nouveau fichier&nbsp;». Dans la nouvelle fenêtre qui s'ouvre, collez l'extrait de code ci-dessus, puis attribuez le nom `leap.sh` à ce fichier source dans le champ Filename. Enfin, en bas de la page, cliquez sur _Valider les modifications_ pour effectuer une révision. Le fichier `leap.sh` est maintenant ajouté à votre dépôt, et une révision associée à la création de ce fichier a bien été enregistrée (Fig. 7).
 
 {% include figure.html filename="fr-or-preserver-logiciels-recherche-07.gif" alt="Gif animé montrant les manipulations nécessaires pour ajouter un nouveau fichier dans le dépôt sur l'interface en ligne de GitLab.com, et effectuer un nouveau commit après cela." caption="Figure 7. Ajout du fichier `leap.sh` dans votre dépôt." %}
 
@@ -381,7 +381,7 @@ Votre dépôt GitLab possède désormais un contenu raisonnable&nbsp;: un fichie
 
 ## Pour aller plus loin&nbsp;: décrire un logiciel avec CodeMeta 
 
-Fournir [un fichier README](https://www.makeareadme.com/) suffisamment détaillé (voir par exemple le fichier README du [package R `{tapas}`](https://archive.softwareheritage.org/swh:1:cnt:0918fd32b5eddc85aaaeb35da83a749795e703bc;origin=https://github.com/wfinsinger/tapas;visit=swh:1:snp:fb13c70f7d5edc7515756d6f1c01a3f3b1a69e72;anchor=swh:1:rev:5f3d58423904da1b0bf368886ccf31d97956f7b3;path=/README.Rmd)) constitue une étape importante pour expliquer les finalités d'un logiciel. Ajouter un fichier descriptif CodeMeta facilite l'identification d'un logiciel.
+Fournir [un fichier README](https://www.makeareadme.com/) suffisamment détaillé (voir par exemple le fichier README du [package R `{tapas}`](https://archive.softwareheritage.org/swh:1:cnt:0918fd32b5eddc85aaaeb35da83a749795e703bc;origin=https://github.com/wfinsinger/tapas;visit=swh:1:snp:fb13c70f7d5edc7515756d6f1c01a3f3b1a69e72;anchor=swh:1:rev:5f3d58423904da1b0bf368886ccf31d97956f7b3;path=/README.Rmd)) constitue une étape importante pour expliquer les finalités d'un logiciel. Néanmoins, ajouter un fichier descriptif CodeMeta facilite l'identification d'un logiciel.
 
 ### Ajouter des métadonnées pour rendre son logiciel identifiable 
 
@@ -389,54 +389,54 @@ Les logiciels sont des ressources changeantes&nbsp;: leur cycle de vie peut s'é
 
 De fait, ces ressources peuvent être difficiles à identifier. Dans le cas des logiciels, les métadonnées doivent entre autres permettre d’exprimer les auteur·es, les changements de versions, la ou les licences, mais aussi les relations entre les différentes productions académiques. Les métadonnées aident à identifier le logiciel ainsi que son contexte de création et d'utilisation. Il existe deux grandes catégories de métadonnées.
 
-1. Les métadonnées intrinsèques fournissent des informations essentielles pour assurer la préservation et l'utilisabilité à long terme des logiciels. Elles sont contenues dans un fichier texte à vocation descriptive, souvent intitulé `README` ou `DESCRIPTION`, situé à la racine du répertoire du code source du logiciel. C'est pourquoi, très souvent, les auteur·es de logiciels sont les premiers et les principaux fournisseurs de métadonnées intrinsèques.
+1\. Les métadonnées intrinsèques fournissent des informations essentielles pour assurer la préservation et l'utilisation à long terme des logiciels. Elles sont contenues dans un fichier texte à vocation descriptive, souvent intitulé `README` ou `DESCRIPTION`, situé à la racine du répertoire du code source du logiciel. C'est pourquoi, très souvent, les auteur·es de logiciels sont les premiers et les principaux fournisseurs de métadonnées intrinsèques.
 
-2. Les métadonnées extrinsèques peuvent fournir quant à elles des informations importantes sur le contexte et la provenance du logiciel&nbsp;: par exemple, sur quelle forge le logiciel a été développé. Ces informations aident les utilisateurs à localiser le logiciel, à identifier la communauté qui l'utilise. Ces métadonnées renseignent aussi sur la relation entre le logiciel et d’autres produits de recherche&nbsp;: des publications, des jeux de données. Ces métadonnées ne sont pas incluses dans les fichiers du code source, c'est pourquoi elles sont qualifiées d'extrinsèques. Elles peuvent être ajoutées par des opérateurs extérieurs&nbsp;: des services éditoriaux, des agrégateurs, [des catalogues](https://zbmath.org/software/), etc. Elles peuvent être aussi fournies par la personne qui a écrit le code source, comme c'est le cas avec l'archive ouverte HAL. Les informations à compléter sont alors indiquées dans un [formulaire de saisie](http://doc.hal.science/deposer/deposer-le-code-source/#).
+2\. Les métadonnées extrinsèques peuvent fournir quant à elles des informations importantes sur le contexte et la provenance du logiciel&nbsp;: par exemple, sur quelle forge le logiciel a été développé. Ces informations aident les utilisateurs à localiser le logiciel, et à identifier la communauté qui l'utilise. Ces métadonnées renseignent aussi sur la relation entre le logiciel et d’autres produits de recherche&nbsp;: des publications, des jeux de données... Ces métadonnées ne sont pas incluses dans les fichiers du code source, c'est pourquoi elles sont qualifiées d'extrinsèques. Elles peuvent être ajoutées par des opérateurs extérieurs&nbsp;: des services éditoriaux, des agrégateurs, [des catalogues](https://zbmath.org/software/), etc. Elles peuvent être aussi fournies par la personne qui a écrit le code source, comme c'est le cas avec l'archive ouverte HAL. Les informations à compléter sont alors indiquées dans un [formulaire de saisie](http://doc.hal.science/deposer/deposer-le-code-source/#).
 
 La personne à l'origine du logiciel joue un rôle majeur dans le processus de description du logiciel. Des métadonnées riches contribuent à la réutilisation et l'identification efficaces des logiciels.
 
-### CodeMeta, LA référence pour des auteur·es de logiciels 
+### CodeMeta, LA référence pour les auteur·es de logiciels 
 
-Fournir des métadonnées intrinsèques incombe à l'auteur·e du logiciel. Or, décrire un logiciel est une pratique bien moins codifiée que décrire un ouvrage ou un article. Si certaines métadonnées semblent évidentes (nom du logiciel, auteur·es, version, licence), il n'existe pas de standard indiquant un noyau minimal d'informations à fournir. La liste des métadonnées dépend de l'usage ciblé, ainsi que le note Sheila M. Morrissey&nbsp;:
+Fournir des métadonnées intrinsèques est la responsabilité de l'auteur·e du logiciel. Malheureusement, décrire un logiciel est une pratique bien moins codifiée que décrire un ouvrage ou un article. Si certaines métadonnées semblent évidentes (nom du logiciel, auteur·es, version, licence), il n'existe pas de standard indiquant un noyau minimal d'informations à fournir. La liste des métadonnées dépend de l'usage ciblé, ainsi que le note Sheila M. Morrissey&nbsp;:
 
 > «&nbsp;Comment décrire efficacement un logiciel ? La liste des propriétés à décrire dépend des objectifs pour lesquels nous collectons des logiciels.[^9].&nbsp;»
 
-De plus, il existe de nombreux vocabulaires descriptifs, ayant chacun leurs spécificités. Non seulement il faut déterminer les éléments à décrire, mais il faut également considérer dans quel vocabulaire les exprimer. Voici un exemple de correspondances entre métadonnées issues de différentes plateformes&nbsp;:
+De plus, il existe de nombreux langages pour décrire ces propriétés, ayant chacun leur vocabulaire spécifique. Non seulement il faut déterminer les éléments à décrire, mais il faut également considérer avec quel vocabulaire les exprimer. Voici un exemple de correspondances entre métadonnées issues de différentes plateformes&nbsp;:
 
 <div class="table-wrapper" markdown="block">
 
-| Propriété CodeMeta  | GitHub        | PyPI                                |
-|---------------------|---------------|-------------------------------------|
-| programmingLanguage | languages_url | classifiers['Programming Language'] |
-| author              | login         | author                              |
+| Métadonnée | CodeMeta  | GitHub  | PyPI  |
+|-----------|----------------|---------------|-------|
+| Langage de programmation | programmingLanguage | languages_url | classifiers['Programming Language'] |
+| Auteur·e | author   | login | author   |
 
 </div>
 
 
-De même, cette fois à l'échelle du logiciel et non plus de la plateforme, comparez [le fichier `DESCRIPTION` d'un *package* R](https://archive.softwareheritage.org/browse/content/sha1_git:29c0f87d31f0dad1b55bb6d9fed4e7d45b77b19d/?origin_url=https://cran.r-project.org/package%3Dtm&path=tm/DESCRIPTION&snapshot=99204e5a7070f348901b0e966a7ffbbe3db0a9b9&visit_type=cran) et [le fichier `Project.toml` d'un *package* Julia](https://archive.softwareheritage.org/browse/content/sha1_git:4869ca4be8d0b31d1f41ee164b658f0c617a8030/?origin_url=https://github.com/JuliaGeometry/Meshes.jl&path=Project.toml). Ces deux fichiers ont le même objectif (indiquer auteur·es, versions, dépendances, etc.), mais vous pouvez constater que leur syntaxe diffère sensiblement en fonction du langage, ce qui rend difficile leur moisson et leur traitement automatiques.
+De même, cette fois à l'échelle du logiciel et non plus de la plateforme, comparez [le fichier `DESCRIPTION` d'un package R](https://archive.softwareheritage.org/browse/content/sha1_git:29c0f87d31f0dad1b55bb6d9fed4e7d45b77b19d/?origin_url=https://cran.r-project.org/package%3Dtm&path=tm/DESCRIPTION&snapshot=99204e5a7070f348901b0e966a7ffbbe3db0a9b9&visit_type=cran) et [le fichier `Project.toml` d'un package Julia](https://archive.softwareheritage.org/browse/content/sha1_git:4869ca4be8d0b31d1f41ee164b658f0c617a8030/?origin_url=https://github.com/JuliaGeometry/Meshes.jl&path=Project.toml). Ces deux fichiers ont le même objectif (indiquer auteur·es, versions, dépendances, etc.), mais vous pouvez constater que leur syntaxe diffère sensiblement en fonction du langage, ce qui rend difficile leur moisson et leur traitement automatiques.
 
-CodeMeta résout ces problèmes en jouant le rôle de [connecteur entre une vingtaine de vocabulaires](https://codemeta.github.io/crosswalk/)&nbsp;: il est comparable à une table de concordance. CodeMeta présente aussi l'avantage d'être adapté aux besoins académiques. Il permet ainsi d'indiquer un financement, un lien avec une publication, un domaine disciplinaire. Les métadonnées sont lisibles par l'humain comme par les machines, ce qui augmente le potentiel de "découvrabilité" d'un logiciel décrit *via* un fichier CodeMeta, conçu avec le CodeMeta Generator.
+CodeMeta résout ces problèmes en jouant le rôle de [connecteur entre une vingtaine de vocabulaires](https://codemeta.github.io/crosswalk/)&nbsp;: il est comparable à une table de concordance. CodeMeta a aussi l'avantage d'être adapté aux besoins académiques. Il permet ainsi d'indiquer un financement, un lien avec une publication, ou encore un domaine disciplinaire. Les métadonnées sont lisibles par l'humain comme par la machine, ce qui augmente le potentiel de &laquo;&nbsp;découvrabilité&nbsp;&raquo; d'un logiciel décrit via un fichier CodeMeta, conçu avec le CodeMeta Generator.
 
-### En pratique&nbsp;: utilisation de CodeMeta Generator pour documenter votre dépôt 
+### En pratique&nbsp;: utiliser CodeMeta Generator pour documenter votre dépôt 
 
-Ajoutez un fichier CodeMeta dans le dépôt de la leçon afin de renseigner quelques métadonnées utiles sous un format unifié. Ce fichier, qui sera nommé `codemeta.json`, est donc au format [JavaScript Object Notation](https://fr.wikipedia.org/wiki/JavaScript_Object_Notation), l'un des formats populaires de stockage de (méta)données. Cette syntaxe est néanmoins très fastidieuse à saisir manuellement, et on utilise donc plutôt habituellement des interfaces de saisie pour générer de tels fichiers.
+Ajoutez un fichier CodeMeta dans le dépôt de la leçon afin de renseigner quelques métadonnées utiles sous un format unifié. Ce fichier, qui sera nommé `codemeta.json`, est donc au format [JSON (JavaScript Object Notation)](https://fr.wikipedia.org/wiki/JavaScript_Object_Notation), l'un des formats populaires de stockage de (méta)données. Cette syntaxe est néanmoins très fastidieuse à saisir manuellement, et on utilise donc plutôt habituellement des interfaces de saisie pour générer de tels fichiers.
 
-En effet, consultez par exemple [ce fichier CodeMeta](https://archive.softwareheritage.org/swh:1:cnt:3f28ad2b83ae59ff2ab85c95aab666f0dca8487b;origin=https://github.com/damienbelveze/plagiator;visit=swh:1:snp:3dd49cc39bde69ed9fc8819a745ff0441cf86495;anchor=swh:1:rev:c89473931599243de3893ef0de9fc128e8a086e4;path=/codemeta.json), fournissant les métadonnées pour le *serious game* Plagiator. Bien que l'on puisse comprendre la structure globale d'un tel fichier, et deviner le sens de la plupart des champs (`contributor`, `email`, `dateCreated`, etc.), il semble clair que la saisie manuelle de ce genre de fichier serait inconfortable pour l'auteur·e d'un logiciel.
+En effet, consultez par exemple [ce fichier CodeMeta](https://archive.softwareheritage.org/swh:1:cnt:3f28ad2b83ae59ff2ab85c95aab666f0dca8487b;origin=https://github.com/damienbelveze/plagiator;visit=swh:1:snp:3dd49cc39bde69ed9fc8819a745ff0441cf86495;anchor=swh:1:rev:c89473931599243de3893ef0de9fc128e8a086e4;path=/codemeta.json), fournissant les métadonnées pour le &laquo;&nbsp;serious game&nbsp;&raquo; (jeu sérieux) Plagiator. Bien que l'on puisse comprendre la structure globale d'un tel fichier, et deviner le sens de la plupart des champs (`contributor`, `email`, `dateCreated`, etc.), il semble clair que la saisie manuelle de ce genre de fichier serait inconfortable pour l'auteur·e du logiciel.
 
-Vous pourrez donc préférer utiliser des interfaces graphiques intuitives telles que [CodeMeta Generator](https://codemeta.github.io/codemeta-generator/) (il en existe d'autres&nbsp;?) pour produire des fichiers CodeMeta.
+Vous pourrez donc préférer utiliser des interfaces graphiques intuitives telles que [CodeMeta Generator](https://codemeta.github.io/codemeta-generator/) pour produire des fichiers CodeMeta.
 
-**Exercice**. Créons un fichier CodeMeta correspondant à votre dépôt.
+**Exercice**. Créez un fichier CodeMeta correspondant à votre dépôt.
 
 1. Sur le site de [CodeMeta Generator](https://codemeta.github.io/codemeta-generator/), remplissez au moins les champs les plus essentiels (par exemple&nbsp;: `Name`, `Authors`, `License(s)`, `Programming Language`, `Code    repository`) avec les informations adéquates. 
-2. Cliquez sur le bouton «&nbsp;Generate codemeta.json v3.0&nbsp;» en bas de la page afin d'obtenir le contenu d'un fichier `codemeta.json`.
+2. Cliquez sur le bouton _Generate codemeta.json v3.0_ (Générer codemeta.json v3.0) en bas de la page afin d'obtenir le contenu d'un fichier `codemeta.json`.
 
 {% include figure.html filename="fr-or-preserver-logiciels-recherche-11.gif" alt="Gif animé du site CodeMeta Generator indiquant les informations correctes à renseigner dans différents champs : Name, License, Programming language, Code repository, Author name." caption="Figure 11. Créer un fichier CodeMeta." %}
 
-**Exercice**. Pour terminer, placez ce fichier `codemeta.json` à la racine de votre dépôt.
+**Exercice**. Placez ce fichier `codemeta.json` à la racine de votre dépôt.
 
 1. Copiez le contenu proposé par CodeMeta Generator à l'issue de l'étape précédente. 
-2. Dans votre dépôt sur GitLab.com, créez un nouveau fichier nommé `codemeta.json`, et collez-y ce contenu. 
-3. Cliquez sur «&nbsp;Valider les modifications&nbsp;» afin de créer une nouvelle révision (*commit*) associée à la création de ce fichier.
+2. Dans votre dépôt sur GitLab, créez un nouveau fichier nommé `codemeta.json`, et collez-y ce contenu. 
+3. Cliquez sur _Valider les modifications_ afin de créer une nouvelle révision (&laquo;&nbsp;commit&nbsp;&raquo;) associée à la création de ce fichier.
 
 {% include figure.html filename="fr-or-preserver-logiciels-recherche-12.gif" alt="Gif animé montrant les manipulations nécessaires pour ajouter le fichier CodeMeta dans le dépôt GitLab, à l'aide de l'interface graphique : bouton Nouveau fichier, ajout du contenu, puis bouton Valider." caption="Figure 12. Ajouter le fichier CodeMeta à votre dépôt." %}
 
@@ -444,14 +444,15 @@ Vous pourrez donc préférer utiliser des interfaces graphiques intuitives telle
 
 Une recherche plus transparente et plus reproductible nécessite non seulement un accès pérenne aux jeux de données, mais également aux logiciels utilisés dans les travaux académiques. Par leur structure, leurs modalités de conception et de diffusion, les logiciels doivent être archivés avec des solutions spécifiques telles que la bibliothèque de code source Software Heritage. En effet, si les forges constituent de puissants outils de développement, elles n'offrent aucune garantie de disponibilité à long terme de leur contenu. De plus, grâce aux différentes types d'identifiants pérennes, il est possible de garantir l'accès aux logiciels et à leurs composants de manière fiable.
 Enfin, que le logiciel soit composé de millions de lignes de code ou qu’il soit un court script, il représente une production académique méritant d'être archivée et citée.
-Les pratiques académiques inhérentes au logiciel sont encore en plein développement. Intégrer un socle de bonnes pratiques dès à présent vous bénéficiera sur la durée.
+
+Les pratiques académiques relatant aux logiciels sont encore en plein développement. Intégrer dès maintenant un socle de bonnes pratiques vous bénéficiera sur la durée.
 
 ## Avez-vous plus de questions&nbsp;?
 
 Les auteur·es se feront un plaisir de répondre à toute question que vous pouvez avoir.
 
-* Pour toute demande relative à Software Heritage, consulter [la foire aux questions](https://www.softwareheritage.org/faq/) ou utiliser [le formulaire de contact](https://www.softwareheritage.org/contact/).
-* Pour suivre l’actualité de Software Heritage, consulter [le blog dédié](https://www.softwareheritage.org/blog/) ou abonnez-vous à [la newsletter](https://www.softwareheritage.org/newsletter/).
+* Pour toute demande relative à Software Heritage, consultez [la foire aux questions](https://www.softwareheritage.org/faq/) ou utilisez [le formulaire de contact](https://www.softwareheritage.org/contact/).
+* Pour suivre l’actualité de Software Heritage, consultez [le blog dédié](https://www.softwareheritage.org/blog/) ou abonnez-vous à [la newsletter](https://www.softwareheritage.org/newsletter/).
 
 ## Remerciements
 
@@ -461,7 +462,7 @@ Les auteur·es souhaitent remercier Joenio Marques da Costa, *backend developer*
 
 [^1]: Notre traduction. Texte original&nbsp;:«&nbsp;A common theme is a growing emphasis on "reproducibility" being discussed in many disciplines [...]. This goes beyond "data" and requires software and analysis pipelines to be published in a usable state alongside papers.&nbsp;». Davenport, James Harold, James Grant, et Catherine Mary Jones. «&nbsp;Data Without Software Are Just Numbers&nbsp;». Data Science Journal 19, nᵒ 1 (22 janvier 2020): 3. <https://doi.org/10.5334/dsj-2020-003>. 
 [^2]: Le lecteur confronté à un lien brisé peut certes tenter de rechercher et d'obtenir le logiciel mentionné par d'autres moyens, mais il sera probablement difficile d'obtenir la même version logicielle que celle vers laquelle pointait le lien désormais mort. 
-[^3]: Une *forge* est une plateforme en ligne permettant à plusieurs auteur·es de travailler ensemble à la production de fichiers au format texte, le cas le plus fréquent (mais pas unique) étant la production de code informatique. Nous reviendrons plus tard dans cette leçon sur la notion de forge logicielle. 
+[^3]: Une forge est une plateforme en ligne permettant à plusieurs auteur·es de travailler ensemble à la production de fichiers au format texte, le cas le plus fréquent (mais pas unique) étant la production de code informatique. Nous reviendrons plus tard dans cette leçon sur la notion de forge logicielle. 
 [^4]: Escamilla, Emily, Martin Klein, Talya Cooper, Vicky Rampin, Michele C. Weigle, et Michael L. Nelson. «&nbsp;The Rise of GitHub in Scholarly Publications&nbsp;». arXiv, 9 août 2022. <https://doi.org/10.48550/arXiv.2208.04895>. 
 [^5]: [Techniquement, Software Heritage peut archiver des exécutables](https://www.softwareheritage.org/faq/#26_Do_you_also_archive_software_executables_aka_binaries), mais insistons sur le fait qu'il ne s'agit alors que d'un effet secondaire dans l'hébergement du logiciel dans son ensemble. La priorité est la collecte du code source. 
 [^6]: Notre traduction. Texte original&nbsp;:«&nbsp;The authors had cited an OGSA-DAI paper that should have meant they were using a version of the software between OGSA-DAI 1 and 6. Later in their paper, the authors mentioned a component that was specific to OGSA-DAI versions 2.5 to 6. However, the authors then talked of another component and a toolkit, which was only available  with a completely different version of the software. Without my highly detailed knowledge of the OGSA-DAI project, it would have been impossible to determine what software was used.&nbsp;». Jackson, Mike. «&nbsp;How to Cite and Describe Software&nbsp;». Software Sustainability Institute, s.d. [https://www.software.ac.uk/how-cite-software](https://www.software.ac.uk/how-cite-software). 
@@ -469,5 +470,5 @@ Les auteur·es souhaitent remercier Joenio Marques da Costa, *backend developer*
 [^8]: Collège Europe Et International et Comité pour la science ouverte. «&nbsp;Des identifiants ouverts pour la science ouverte&nbsp;». Report. Comité pour la science ouverte, 3 juillet 2019. <https://doi.org/10.52949/22>. 
 [^9]: Notre traduction. Texte original&nbsp;:«&nbsp;How do we describe software effectively&nbsp;? The list of properties to be described will vary according to the purposes for which we collect software.&nbsp;». Morrissey, Sheila M. «&nbsp;Preserving Software: Motivations, Challenges and Approaches&nbsp;». Digital Preservation Coalition, août 2020. <https://doi.org/10.7207/twgn20-02>. 
 [^10]: Spinellis, Diomidis, «&nbsp;The decay and failures of web references&nbsp;», Communications of the ACM, janvier 2003, vol. 46, nᵒ 1, p. 71‑77, <https://doi.org/10.1145/602421.602422>.
-[^11]: Formellement, notons qu'il existe des langages *compilés* (C/C++, Fortran, ...) dont le code nécessite d'être compilé globalement par le développeur afin de produire un programme exécutable, et des langages *interprétés* (Python, R, ...) dont le code est traduit à la demande (ligne par ligne) dans un format lisible par la machine, à chaque exécution et sans produire de fichier exécutable séparé. Bien que différentes, les étapes de compilation et d'interprétation traduisent toutes deux le code source lisible par des humains en instructions de plus bas niveau exécutables par la machine.
+[^11]: Formellement, notons qu'il existe des langages &laquo;&nbsp;compilés&nbsp;&raquo; (C/C++, Fortran, ...) dont le code nécessite d'être compilé globalement par le développeur afin de produire un programme exécutable, et des langages &laquo;&nbsp;interprétés&nbsp;&raquo; (Python, R, ...) dont le code est traduit à la demande (ligne par ligne) dans un format lisible par la machine, à chaque exécution et sans produire de fichier exécutable séparé. Bien que différentes, les étapes de compilation et d'interprétation traduisent toutes deux le code source lisible par des humains en instructions de plus bas niveau exécutables par la machine.
 [^12]: Notre traduction. Texte original&nbsp;: «&nbsp;Generic semaphore implementation. Semaphores are no longer performance-critical, so a generic C implementation is better for maintainability, debuggability and extensibility. Thanks to Peter Zijlstra for fixing the lockdep warning. Thanks to Harvey Harrison for pointing out that the unlikely() was unnecessary.Signed-off-by: Matthew Wilcox <willy@linux.intel.com>. Acked-by: Ingo Molnar <mingo@elte.hu>&nbsp;»    
