@@ -7,8 +7,8 @@ date: YYYY-MM-DD
 authors:
 - Corey Stephan
 reviewers:
-- Forename Surname
-- Forename Surname
+- Adam Porter
+- Ivan Siqueira
 editors:
 - Scott Kleinman
 - Caio Mello
