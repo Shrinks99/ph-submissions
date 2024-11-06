@@ -71,7 +71,7 @@ Le premier avantage de Software Heritage est de fournir un point d'entrée centr
 
 Software Heritage fournit plusieurs options pour l'archivage des logiciels&nbsp;:
 
-1. Un archivage automatisé&nbsp;: les contenus publics des forges les plus couramment utilisées sont archivés automatiquement, à intervals réguliers. [La liste des forges dont le contenu est régulièrement «&nbsp;moissonné&nbsp;»](https://archive.softwareheritage.org/) inclut toutes les forges les plus populaires. La plupart des logiciels «&nbsp;open source&nbsp;» (ouverts) que vous utilisez sont donc très probablement déjà archivés dans Software Heritage.
+1. Un archivage automatisé&nbsp;: les contenus publics des forges les plus couramment utilisées sont archivés automatiquement, à intervalles réguliers. [La liste des forges dont le contenu est régulièrement «&nbsp;moissonné&nbsp;»](https://archive.softwareheritage.org/) inclut toutes les forges les plus populaires. La plupart des logiciels «&nbsp;open source&nbsp;» (ouverts) que vous utilisez sont donc très probablement déjà archivés dans Software Heritage.
 
 2. Un archivage manuel&nbsp;: il est aussi possible d'archiver un logiciel, ou de mettre à jour son archivage, manuellement. Ce service permet de mettre à jour des contenus entre deux vagues d'archivage automatisé. Il n'est pas nécessaire de créer un compte, ni d'être l'auteur·ice du logiciel pour y recourir. En revanche, si le logiciel n'est pas public, son archivage n'est pas autorisé. Cette [documentation](https://docs.softwareheritage.org/#landing-preserve) détaille toutes les différentes options.
 
