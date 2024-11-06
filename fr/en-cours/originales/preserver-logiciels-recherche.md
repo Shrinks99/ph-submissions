@@ -395,7 +395,7 @@ De fait, ces ressources peuvent être difficiles à identifier. Dans le cas des 
 
 La personne à l'origine du logiciel joue un rôle majeur dans le processus de description du logiciel. Des métadonnées riches contribuent à la réutilisation et l'identification efficaces des logiciels.
 
-### CodeMeta, LA référence pour les auteur·es de logiciels 
+### Les avantages de CodeMeta  
 
 Fournir des métadonnées intrinsèques est la responsabilité de l'auteur·e du logiciel. Malheureusement, décrire un logiciel est une pratique bien moins codifiée que décrire un ouvrage ou un article. Si certaines métadonnées semblent évidentes (nom du logiciel, auteur·es, version, licence), il n'existe pas de standard indiquant un noyau minimal d'informations à fournir. La liste des métadonnées dépend de l'usage ciblé, ainsi que le note Sheila M. Morrissey&nbsp;:
 
