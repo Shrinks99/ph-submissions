@@ -3,7 +3,7 @@ title: "Georreferenciación y visualización de itinerarios con Recogito y Vison
 slug: georreferenciacion-visualizacion-con-recogito-y-visone
 layout: lesson
 collection: lessons
-date: 2024-MM-DD
+date: YYYY-MM-DD
 authors:
 - Gabriel Calarco
 - Gimena del Rio Riande
@@ -23,7 +23,7 @@ doi: XX.XXXXX/phen0000
 
 {% include toc.html %}
 
-# Introducción
+## Introducción
 
 En este tutorial aprenderás sobre tecnologías de anotación, georreferenciación y visualización de datos en un flujo de trabajo con dos softwares gratuitos que se han venido desarrollando al interior de la comunidad global de humanistas digitales: **[Recogito](https://recogito.pelagios.org/)** y **[Visone](https://visone.ethz.ch/)**. No exploraremos todas las posibilidades de estas herramientas, sino que apenas usaremos las que nos permitirán visualizar un itinerario sobre un mapa. Así, este tutorial se estructura en dos partes bien diferenciadas pero íntimamente relacionadas en tanto proceso o flujo de trabajo, en las que:
 
@@ -38,7 +38,7 @@ Para poner en práctica estas actividades, volveremos sobre un fragmento del tex
 
 No es necesario tener experiencia previa en informática para seguir este tutorial.
 
-# Anotación semántica de lugares y georreferenciación con Recogito
+## Anotación semántica de lugares y georreferenciación con Recogito
 
 En la primera parte de este tutorial usaremos la herramienta gratuita y de código abierto Recogito, que permite un trabajo en línea y de almacenamiento en la nube. Esta herramienta ha sido desarrollada por [Pelagios Network](https://pelagios.org/). Recogito es una plataforma de anotación semántica. Ofrece un espacio personal de trabajo donde se pueden cargar, recopilar y organizar materiales fuente ‒textos, imágenes y datos tabulares‒ y/o colaborar en anotaciones y tareas grupales de georreferenciación. 
 
@@ -46,11 +46,11 @@ En la primera parte de este tutorial usaremos la herramienta gratuita y de códi
 
 La georreferenciación es un proceso que consiste identificar los topónimos y asignarles las coordenadas de su localización geográfica asociándolos con una entrada correspondiente en un *gazetteer* o diccionario histórico-geográfico. La georreferenciación de textos a través de herramientas digitales se ha convertido en una metodología importante en diferentes disciplinas, y su impulso en los últimos años ha dado lugar a un auge de las [Humanidades Espaciales](https://geohumanities.org/?page_id=2). Puedes encontrar más información sobre este proceso en el tutorial [Georreferencias con QGIS 2.0](https://programminghistorian.org/es/lecciones/georreferenciar-qgis).
 
-## Crea una cuenta 
+### Crea una cuenta 
 
 En primer lugar, crea una cuenta en [Recogito](https://recogito.pelagios.org/) con un correo electrónico y nombre de usuario.
  
-## Sube un documento y aplica NER
+### Sube un documento y aplica NER
 
 Con Recogito puedes anotar una variedad de documentos digitales (incluidos los formatos de imagen), pero en este tutorial nos centramos en documentos de texto. Para cargar un documento de texto en Recogito, recomendamos utilizar el formato `.txt` (si el documento estuviera en otro formato de texto, por ejemplo, un `.doc` de Word o de otro procesador de texto, primero debes convertirlo al formato UTF-8 Unicode, un formato de codificación de caracteres que se utiliza para representar cualquier caracter en la web. Esto puede hacerse en cualquier editor de texto, como Word, simplemente usando la opción "guardar como" > "Texto sin formato (`.txt`)" y luego seleccionar "UTF-8"). 
 
@@ -78,7 +78,7 @@ Para el caso de este tutorial, no publicaremos el texto con el que trabajaremos.
 
 {% include figure.html filename="es-or-georreferenciacion-visualizacion-con-recogito-y-visone-04.jpg" alt="Opciones para compartir un documento en Recogito" caption="Figura 4. Opciones para compartir un documento en Recogito." %} 
 
-## Crea anotaciones
+### Crea anotaciones
 
 Crear anotaciones en Recogito es simple. Solo debes resaltar la palabra o las palabras en el texto que deseas anotar. Por ejemplo, un lugar que reconozcas. Esta acción mostrará una pequeña ventana emergente de anotación, que te pedirá que asignes una categoría a la anotación. Puedes elegir entre **Place** (lugar), **Person** (persona) y **Event** (evento).
 
@@ -116,13 +116,13 @@ San Salvador  (línea 11)</div>
 
 Puedes encontrar entradas correspondientes a casi todos estos lugares en el *gazetteer* de Indias, con excepción de "Perú", para el cual puedes usar la entrada de Geonames, que es un *gazetter* general.
 
-## Introduce relaciones
+### Introduce relaciones
 
 Existe otro tipo de anotación que puede realizarse en Recogito. Esto se conoce como "etiquetado relacional", mediante el cual se puede crear una conexión o relación entre dos anotaciones (de entidades) existentes. Para marcar relaciones entre entidades,  cambia el modo de anotación de Recogito a **Relations**, y luego simplemente haz clic en la primera entidad anotada, y arrastra el puntero a la segunda. Aparecerá una línea punteada que conecta las dos anotaciones junto con un cuadro de texto: deberás completarlo para describir la relación. Para este tutorial, simplemente colocaremos una cantidad arbitraria de días para señalar la distancia entre ubicaciones, pero estas se introducen sólo a modo de ejemplo y no se relaciona directamente con la narración. La línea también tiene una flecha, que indica la "dirección" de la relación. Esta característica resulta conveniente para marcar relaciones que son jerárquicas, o como en nuestro caso, donde se pueden utilizar para indicar la dirección de un viaje. En este caso, podemos simplemente marcar las relaciones con números o con una imaginaria cantidad de días, tal como puedes ver en la imagen:
 
 {% include figure.html filename="es-or-georreferenciacion-visualizacion-con-recogito-y-visone-10.jpg" alt="Texto anotado en Recogito, con lugares marcados y asociados por relaciones" caption="Figura 10. Texto anotado en Recogito." %} 
 
-## Descarga los datos de tu texto georreferenciado
+### Descarga los datos de tu texto georreferenciado
 
 Como veremos en esta sección, se pueden descargar los textos anotados y/o datos de anotaciones en diferentes formatos para usar en otras aplicaciones. Recogito ofrece varias opciones de descargas, a continuación nos centraremos en las que nos servirán para visualizar en un mapa el itinerario que acabamos de marcar utilizando el software Visone.
 
@@ -140,13 +140,13 @@ Revisa bien los apartados, ya que puedes bajarte los `.csv` para ambos. Sigue la
 
 Te recomendamos que abras el archivo `.csv` que descargaste de la sección **Annotations** y revises que todas las entradas tengan cargadas los datos de longitud y latitud, ya que si esto sucede debes cambiar la entrada de *gazetteer* utilizada para marcar ese lugar por otra que sí incluya la información geográfica.
 
-# Visone
+## Visone
 
 **[Visone](https://visone.ethz.ch/)** (acrónimo de  *visual social networks* o redes sociales visuales) es un software de descarga gratuita para la creación, transformación, exploración, análisis y representación visual de datos en red, desarrollado conjuntamente entre la Universidad de Konstanz y el Instituto de Tecnología de Karlsruhe desde 2001.
 
 Visone permite generar y visualizar diferentes tipos de redes. Las redes son estructuras de vínculos e interacciones que nos permiten trazar relaciones de acuerdo a la proximidad o distancia existente entre determinados puntos. Una red está formada por agentes (vértices o nodos, *nodes* en inglés) y las relaciones existentes entre ellos (aristas, *edges* en inglés).
 
-## Descarga e instala Visone
+### Descarga e instala Visone
 
 A diferencia de Recogito, necesitaremos instalar [Visone](http://visone.ethz.ch/html/download.html). La versión de descarga recomendada para todos los sistemas operativos es **visone-2.26.jar**. 
 
@@ -154,7 +154,7 @@ A diferencia de Recogito, necesitaremos instalar [Visone](http://visone.ethz.ch/
 
 Una vez completada la instalación, inicia Visone. 
 
-## Importa las relaciones desde Recogito
+### Importa las relaciones desde Recogito
 
 En la barra del menú superior, selecciona **File Open**. Navega hasta el archivo **edges** que acabas de crear en Recogito y selecciónalo. Cuando se te solicite que especifiques un formato de datos, elige **CSV files**.
 
@@ -178,7 +178,7 @@ Selecciona el botón **configure** (*configuración*) a la izquierda y el botón
 
 Hasta ahora, Visone solo ha importado información sobre los enlaces, pero no hay datos de atributos para los nodos (de hecho, Visone simplemente ha inferido la existencia de los nodos del hecho de que los enlaces existen). Los únicos atributos que tienen los nodos son sus ID únicos en la columna **source** (*fuente*).
 
-## Importa los nodos (lugares marcados) desde Recogito
+### Importa los nodos (lugares marcados) desde Recogito
 
 En **Attribute Manager** (ver Figura 15), haz clic en la pestaña **import & export** (*importación y exportación*) a la izquierda y la pestaña **node** (*nodo*) en la parte superior. En la sección de **import** (*importar*), haz clic en el botón con puntos suspensivos (…) para elegir el archivo de nodos que exportaste desde Recogito (el que descargaste con la opción `.csv` de la sección **Annotations**). Esto abrirá un segundo cuadro de diálogo (Figura 16). Asegúrate de que **header** esté seleccionado, que el atributo de red sea **source**, que el atributo de archivo sea **UUID**, que el encoding sea **UTF-8** y que el delimitador de celda sea una **coma** (,). Esto intentará hacer coincidir la identificación única de cada fila en el archivo de nodos, con la identificación única de cada nodo que ha generado Visone. Si hay coincidencia, se agregarán los atributos a ese nodo. Si creaste alguna etiqueta para las entidades en Recogito, también se mostrará aquí. Finalmente, haz clic en OK.
 
@@ -196,7 +196,7 @@ Vuelve a seleccionar la pestaña **configure** en **Attribute Manager**. Debajo 
 
 {% include figure.html filename="es-or-georreferenciacion-visualizacion-con-recogito-y-visone-19.jpg" alt="Visualización de los nodos y las relaciones importadas desde Recogito antes de aplicar estilos" caption="Figura 19. Visualización de los nodos y las relaciones importadas desde Recogito antes de aplicar estilos." %}
 
-## Posiciona esta red sobre un mapa
+### Posiciona esta red sobre un mapa
 
 Ahora has importado la red, pero es un poco aburrida, porque es solo una secuencia lineal. Sin embargo, al menos podemos ponerla en su contexto geográfico. En la ventana principal, haz clic en la pestaña **visualization**. Establece la categoría (**category**) en **mapping**, el tipo (**type**) en **coordinates** y la propiedad (**property**) en **geographic Mercator**. La longitud debe asignarse al atributo **LNG** y la latitud debe asignarse al atributo **LAT** que has importado. 
 
@@ -217,7 +217,7 @@ Finalmente, si deseas mejorar la presentación gráfica de esta visualización, 
 
 {% include figure.html filename="es-or-georreferenciacion-visualizacion-con-recogito-y-visone-21.jpg" alt="Opciones de visualización de nodos en Visone" caption="Figura 21. Opciones de visualización de nodos en Visone." %}
 
-## Guarda tu trabajo y exporta la visualización
+### Guarda tu trabajo y exporta la visualización
 
 Guarda tu archivo de red como un archivo graphML, un formato de archivo para gráficos. Este archivo te permitirá volver a abrir tu red en Visone cuando desees modificarla o seguir trabajando en ella.
 
@@ -225,7 +225,7 @@ Finalmente, exporta tu red final como un archivo de imagen usando **File Export*
 
 {% include figure.html filename="es-or-georreferenciacion-visualizacion-con-recogito-y-visone-22.jpg" alt="Resultado final de la exportación del itinerario desde Visone" caption="Figura 22. Resultado final de la exportación del itinerario desde Visone." %}
 
-# Conclusiones
+## Conclusiones
 
 A lo largo de este tutorial aprendimos a: 
 - Georreferenciar los lugares mencionados en un texto y relacionarlos entre sí para formar un itinerario utilizando Recogito.
@@ -239,7 +239,7 @@ Si deseas ver más ejemplos del uso de Recogito para el marcado de información 
 
 También te recomendamos visitar el sitio de [Pelagios Network](https://pelagios.org/), en donde encontrarás más información sobre las herramientas y actividades que ofrece esta red.
 
-# Otros tutoriales para trabajar con Recogito y Visone
+## Otros tutoriales para trabajar con Recogito y Visone
 
 Hay muchos tutoriales adicionales disponibles para Recogito y Visone. Te recomendamos los siguientes:
 
@@ -247,6 +247,6 @@ Hay muchos tutoriales adicionales disponibles para Recogito y Visone. Te recomen
 
 - El tutorial de Recogito de Gimena del Rio y Valeria Vitale, [Recogito-in-a-Box: From Annotation to Digital Edition](https://ri.conicet.gov.ar/handle/11336/134134) (en inglés).
 
-## Nota 
+### Nota 
 
 La segunda parte de este tutorial se basa en el tutorial para Visone creado por Leif Isaksen y traducido y adaptado al español y a textos en español por Gabriel Calarco y Gimena del Rio Riande.
