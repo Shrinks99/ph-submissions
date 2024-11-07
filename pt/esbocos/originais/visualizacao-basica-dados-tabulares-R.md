@@ -7,11 +7,10 @@ date: YYYY-MM-DD
 authors:
 - Diana Santos
 reviewers:
-- Forename Surname
-- Forename Surname
+- Jimmy Medeiros
+- Tarssio Barreto
 editors:
-- Forename Surname
-- Forename Surname
+- Eric Brasil
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/624
 difficulty: 1
 activity:
