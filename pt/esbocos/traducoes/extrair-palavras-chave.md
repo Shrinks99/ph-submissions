@@ -36,24 +36,24 @@ doi:
 
 
 
-Nota introdutória: O termo “gazetteer”, que será muitas vezes encontrado ao longo desta lição, não tem uma tradução direta para o português, sendo o termo mais próximo “gazeta”. Por este motivo, ao longo da lição, iremos utilizar o termo original, em inglês.
+Nota introdutória: Um gazetter trata-se de um diretório que agrega importantes informações para o estudo de localidades e toponímia, sendo por norma utilizado em conjunto com um mapa ou atlas completo.O termo “gazetteer”, que será muitas vezes encontrado ao longo desta lição, não tem uma tradução direta para o português, sendo o termo mais próximo “gazeta”. Por este motivo, ao longo da lição, iremos utilizar o termo original, em inglês.
 
 ## Objetivos da Lição
 
-Se tem uma cópia de um texto armazenada no seu computador, é relativamente fácil procurar por palavras-chave únicas. Muitas vezes, isto pode ser feito através de recursos integrados no seu editor de texto. Contudo, os académicos necessitam cada vez mais de encontrar um conjunto de termos variados dentro de um ou vários textos. Por exemplo, um académico pode recorrer a [gazetters](http://en.wikipedia.org/wiki/Gazetteer) (em inglês) para extrair todas as menções a localidades inglesas dentro de uma série de textos, para que esses locais possam ser, posteriormente, representados num mapa. Por outro lado, pode querer extrair todos os nomes masculinos, sobrenomes, [palavras vazias]( https://pt.wikipedia.org/wiki/Palavra_vazia), ou qualquer outro conjunto de palavras. Usar esses mesmos recursos de pesquisa para alcançar um objetivo mais complexo torna o seu projeto mais moroso e desajeitado. Esta lição pretende ensiná-lo como utilizar o Python para extrair de uma série de textos um conjunto de palavras-chave de uma forma rápida e sistemática.
+Se tem uma cópia de um texto armazenada no seu computador, é relativamente fácil procurar por uma palavra-chave única . Muitas vezes, isto pode ser feito através de recursos integrados no seu editor de texto. Contudo, os académicos necessitam cada vez mais de encontrar um conjunto de termos variados dentro de um ou vários textos. Por exemplo, um académico pode recorrer a [gazetters](http://en.wikipedia.org/wiki/Gazetteer) (em inglês) para extrair todas as menções a localidades em inglês dentro de uma série de textos, para que esses locais possam ser, posteriormente, representados num mapa. Por outro lado, pode querer extrair todos os nomes masculinos, sobrenomes, [palavras vazias]( https://pt.wikipedia.org/wiki/Palavra_vazia), ou qualquer outro conjunto de palavras. Usar esses mesmos recursos de pesquisa para alcançar um objetivo mais complexo torna o seu projeto moroso e desajeitado. Esta lição pretende ensiná-lo como utilizar o Python para extrair de uma série de textos um conjunto de palavras-chave de uma forma rápida e sistemática.
 
 É esperado que, uma vez completada a lição, consiga generalizar as aprendizagens adquiridas, de modo a extrair conjuntos de palavras-chave personalizados de qualquer ficheiro armazenado no seu computador.
 
 
 ## Para quem é útil?
 
-Esta lição é útil para qualquer um que trabalhe com fontes históricas armazenadas no seu próprio computador e que estejam transcritas em formatos mutáveis de texto eletrónico. É particularmente útil para pessoas interessadas em identificar subcategorias de documentos que contenham uma ou mais de um grande número de palavras-chave. Isto pode ser útil para identificar um subconjunto relevante para leitura atenta ou para extrair e estruturar as palavras-chave num formato que possa ser usado noutra ferramenta digital como, por exemplo, um _input_ para um exercício de mapeamento.
+Esta lição é útil para qualquer um que trabalhe com fontes históricas armazenadas no seu próprio computador e que estejam transcritas em formatos mutáveis de texto eletrónico. É particularmente útil para pessoas interessadas em delimitar subgrupos de documentos que contenham uma ou mais de um grande número de palavras-chave. Isto pode ser útil para identificar um subconjunto relevante para leitura atenta ou para extrair e estruturar as palavras-chave num formato que possa ser usado noutra ferramenta digital como, por exemplo, dados de entrada para um exercício de mapeamento.
 
 O presente tutorial mostrará aos utilizadores como extrair todas as menções a condados ingleses e gauleses de uma série de 6,692 minibiografias de indivíduos que ingressaram na Universidade de Oxford durante o reinado de Jaime I de Inglaterra (1603-1625). Estes registos foram transcritos pela [British History Online](http://www.british-history.ac.uk/alumni-oxon/1500-1714) (em inglês), através da versão impressa de *Alumni Oxonienses, 1500-1714*. Estas biografias contêm informação sobre cada aluno, incluindo a data dos seus estudos e a faculdade ou faculdades que frequentaram. Muitas vezes incluem informações adicionais, quando conhecidas, como a data de nascimento e morte, o nome e ocupação do pai, a sua naturalidade, e o percurso profissional posterior. As biografias são fontes ricas, das quais provêm informações relativamente comparáveis sobre um grande número de indivíduos semelhantes (homens ricos que frequentaram Oxford). Os 6,692 registos foram pré-processados pelo autor e salvos num [ficheiro CSV](http://en.wikipedia.org/wiki/Comma-separated_values) (em inglês), com uma entrada por linha.
 
-Neste tutorial, o _dataset_ envolve palavras-chave geográficas. Uma vez extraídas, os nomes de localidades podem ser georreferenciados para o seu local no globo e, depois, mapeados, recorrendo ao mapeamento digital. Isto torna possível determinar quais as faculdades que atraíam estudantes de determinadas partes do país, e se estes padrões se alteraram ao longo do tempo. Para um tutorial prático sobre como aplicar este próximo passo, veja a lição de Fred Gibbs mencionada no final desta lição. Os leitores também podem estar interessados em ler [georeferencing in QGIS 2.0](/lessons/georeferencing-qgis) (em inglês), também disponível no *Programming Historian*.
+Neste tutorial, o [_dataset_](https://pt.wikipedia.org/wiki/Conjunto_de_dados) envolve palavras-chave geográficas. Uma vez extraídas, os nomes de localidades podem ser georreferenciados para o seu local no globo e, depois, mapeados, recorrendo ao mapeamento digital. Isto torna possível determinar quais as faculdades que atraíam estudantes de determinadas partes do país, e se estes padrões se alteraram ao longo do tempo. Para um tutorial prático sobre como aplicar este próximo passo, veja a lição de Fred Gibbs mencionada no final desta lição. Os leitores também podem estar interessados em ler [georeferencing in QGIS 2.0](/lessons/georeferencing-qgis) (em inglês), também disponível no *Programming Historian*.
 
-No entanto, esta abordagem não se limita a palavras-chaves de cariz geográfico. Também pode ser utilizada para extrair nomes próprios, preposições, palavras de cariz alimentar ou qualquer outro conjunto de palavras definido pelo utilizador. Deste modo, este processo pode ser útil a alguém que procure isolar registos individuais que contenham alguma destas palavras-chave ou a alguém que procure calcular a frequência das suas palavras-chave dentro de um corpo de textos. Este tutorial confere caminhos para análises textuais ou geoespaciais, ao invés da procura de respostas diretas.
+Esta abordagem não se limita a palavras-chaves de natureza geográfica. Também pode ser utilizada para extrair nomes próprios, preposições, palavras de cariz alimentar ou qualquer outro conjunto de palavras definido pelo utilizador. Deste modo, este processo pode ser útil a alguém que procure isolar registos individuais que contenham alguma destas palavras-chave ou que procure calcular a frequência das suas palavras-chave dentro de um corpo de textos. Este tutorial confere caminhos para análises textuais ou geoespaciais, ao invés da procura de respostas diretas.
 
 A capacidade de processamento de dados é cada vez mais crucial para os historiadores e académicos textuais, e qualquer pessoa que trabalhe com textos particularmente difíceis e desorganizados deve considerar ler [Cleaning Data with OpenRefine](/lessons/cleaning-data-with-openrefine) (em inglês), de Seth van Hooland et al. A abordagem utilizada neste tutorial não está otimizada para trabalhar com textos fracamente transcritos, como textos convertidos através do [Reconhecimento Ótico de Caracteres](https://en.wikipedia.org/wiki/Optical_character_recognition) (em inglês) se o software tiver uma grande margem de erro. Leitores que trabalhem com editores de texto antigos, com ortografia não padronizada, podem considerar esta aprendizagem desafiadora, sendo que o uso de gazetteer deve conter correspondências exatas às palavras procuradas. Contudo, com um bom gazetteer, esta abordagem demonstra ser bastante útil, e exceder a praticidade da busca tradicional por palavras-chave ao possibilitar o [_fuzzy searching_](https://en.wikipedia.org/wiki/Approximate_string_matching) (em inglês).
 
@@ -67,13 +67,13 @@ Esta lição aborda Expressões Regulares. Por isso, alguns leitores podem achar
 
 ## Familiarizar-se com os dados
 
-O primeiro passo deste processo é analisar os dados que usaremos nesta lição. Como já foi mencionado, estes incluem detalhes biográficos de aproximadamente 6,692 alunos que iniciaram os seus estudos na Universidade de Oxford no início do século XVII.
+O primeiro passo deste processo é analisar os dados que usaremos nesta lição. Como já foi mencionado, estes incluem detalhes biográficos de 6,692 alunos que iniciaram os seus estudos na Universidade de Oxford no início do século XVII.
 
 [The\_Dataset\_-\_Alumni_Oxonienses-Jas1.csv](/assets/The_Dataset_-_Alumni_Oxonienses-Jas1.csv) (1.4MB)
 
 {% include figure.html filename="extracting-keywords-1.png" caption="Captura de tela dos primeiros quarenta registos do _dataset_" %}
 
-Faça o _download_ do _dataset_ e perca alguns minutos para analisar todos os tipos de informação disponíveis. Deverá reparar em três colunas de informação. A primeira, “Name” (Nome), contém o nome do aluno. A segunda, “Details” (Detalhes), contém toda a informação biográfica conhecida sobre essa pessoa. A última coluna, “Matriculation Year” (Ano de matrícula), contém o ano no qual a pessoa deu início aos seus estudos. Esta última coluna foi extraída da segunda coluna no pré-processamento deste tutorial. As primeiras duas colunas encontram-se iguais à versão do documento *Alumni Oxonienses* do British History Online. Se notar a presença de mais de três colunas, tal significa que o seu programa definiu incorretamente o [delimitador](https://en.wikipedia.org/wiki/Delimiter) (em inglês) entre colunas. Este deve ser definido como “,” (vírgula entre aspas duplas). A maneira de selecionar o delimitador depende do programa utilizado, mas deve conseguir encontrar a solução online.
+Faça o _download_ do _dataset_ e dedique alguns minutos para analisar todos os tipos de informação disponíveis. Deverá reparar em três colunas de informação. A primeira, “Name” (Nome), contém o nome do aluno. A segunda, “Details” (Detalhes), contém toda a informação biográfica conhecida sobre essa pessoa. A última coluna, “Matriculation Year” (Ano de matrícula), contém o ano no qual a pessoa deu início aos seus estudos. Esta última coluna foi extraída da segunda coluna no pré-processamento deste tutorial. As primeiras duas colunas encontram-se iguais à versão do documento *Alumni Oxonienses* do British History Online. Se notar a presença de mais de três colunas, tal significa que o seu programa definiu incorretamente o [delimitador](https://en.wikipedia.org/wiki/Delimiter) (em inglês) entre colunas. Este deve ser definido como “,” (vírgula entre aspas duplas). A maneira de selecionar o delimitador depende do programa editor de tabelas utilizado, mas deve conseguir encontrar a solução online.
 
 A maioria destes registos biográficos (mas não todos) contém informação suficiente para indicarmos de que condado é natural o aluno. Note que um grande número de registos contém nomes de localidades correspondentes a cidades (‘ of London’, no primeiro registo) ou condados ingleses (‘ of Middlesex’ no quinto registo ou ‘of Wilts’ – diminutivo de Wiltshire, no sexto registo). Se não é britânico, é natural que não esteja familiarizado com estes nomes de localidades. Pode encontrar uma lista dos [Condados Históricos de Inglaterra](http://en.wikipedia.org/wiki/Historic_counties_of_England) na Wikipedia (em inglês).
 
@@ -81,7 +81,7 @@ Infelizmente, a informação não está sempre disponível no mesmo formato. Por
 
 ## Construir o seu gazetteer
 
-De modo a extrair nomes de localidades relevantes temos de, primeiramente, decidir quais são eles. Precisamos de uma lista de localidades, por norma chamada de gazetteer. Muitos dos nomes de localidades mencionados nos registos são abreviaturas, como ‘Wilts’ ao invés de ‘Wiltshire’ ou ‘Salop’ ao invés de ‘Shropshire’. Encontrar todas essas variações pode ser desafiante. Inicialmente, vamos construir um gazetteer básico de condados ingleses.
+De modo a extrair nomes de localidades relevantes temos de, primeiramente, decidir quais são eles. Precisamos de uma lista de localidades, por norma chamada de dicionário geográfico. Muitos dos nomes de localidades mencionados nos registos são abreviaturas, como ‘Wilts’ ao invés de ‘Wiltshire’ ou ‘Salop’ ao invés de ‘Shropshire’. Encontrar todas essas variações pode ser desafiante. Inicialmente, vamos construir um gazetteer básico de condados ingleses.
 Crie um diretório (pasta) no seu computador, onde irá salvar todo o seu trabalho. Nesse diretório, crie um ficheiro de texto chamado ‘gazetteer.txt’ e, utilizando os nomes listados na página da Wikipedia mencionada anteriormente, adicione cada condado a uma nova linha no documento de texto. Deve ter esta aparência:
 
 ```text
@@ -131,14 +131,14 @@ Se, porventura, precisar de adicionar algum nome a este conjunto de palavras-cha
 
 ## Carregar os seus textos
 
-O próximo passo é colocar os textos nos quais quer pesquisar num outro documento de texto, com uma entrada por linha. A forma mais fácil de o fazer é abrir a folha de cálculo, selecionar toda a segunda coluna ("details") e colar o conteúdo num novo documento de texto. Nomeie o documento ‘textos.txt’ e guarde-o no mesmo diretório que o seu documento ‘gazetteer.txt’. O seu diretório deve estar com esta aparência:
+O próximo passo é colocar os textos nos quais quer pesquisar num outro documento de texto, com uma entrada por linha. A forma mais fácil de o fazer é abrir a folha de cálculo (tabela), selecionar toda a segunda coluna ("details") e colar o conteúdo num novo documento de texto. Nomeie o documento ‘textos.txt’ e guarde-o no mesmo diretório que o seu documento ‘gazetteer.txt’. O seu diretório deve estar com esta aparência:
 
 {% include figure.html filename="extracting-keywords-2.png" caption="Conteúdos do seu diretório de trabalho" %}
 
-A razão pela qual damos este passo é de modo a manter os dados originais (o documento .CSV) desconectado do programa Python que iremos escrever no caso de, acidentalmente, alterarmos algo sem dar conta. Na minha opinião, esta abordagem também facilita a leitura do código, igualmente importante aquando da aprendizagem. Não é estritamente necessário utilizar um documento .txt para este passo, pois o Python possui a capacidade de abrir e ler ficheiros CSV. No final desta lição, abordaremos como usar as ferramentas de escrita e leitura de ficheiros CSV no Python, mas este é um passo avançado e opcional.
+A razão pela qual damos este passo é de modo a manter os dados originais (o documento .CSV) desconectados do programa Python que iremos escrever no caso de, acidentalmente, alterarmos algo sem dar conta. Na minha opinião, esta abordagem também facilita a leitura do código, igualmente importante na aprendizagem. Não é estritamente necessário utilizar um documento .txt para este passo, pois o Python possui a capacidade de abrir e ler ficheiros CSV. No final desta lição, abordaremos como usar as ferramentas de escrita e leitura de ficheiros CSV no Python, mas este é um passo avançado opcional.
 
 ## Escrever o programa Python
-O último passo é escrever um programa que irá procurar, em cada um dos textos, o conjunto de palavras-chave definidos no gazetteer e, depois, providenciar um _output_ que indicará quais as entradas da nossa folha de cálculo que contêm quais as palavras. Há imensas maneiras de alcançar este resultado. Ao planear a escrita de um programa é sempre boa ideia traçar um algoritmo. Um algoritmo é um conjunto de passos direcionados ao utilizador sobre como resolver o problema. É uma lista do que irá fazer, a qual irá ser convertida em instruções programáticas apropriadas. A abordagem que utilizaremos aqui baseia-se no seguinte algoritmo:
+O último passo é escrever um programa que irá procurar, em cada um dos textos, o conjunto de palavras-chave definidos no gazetteer e, depois, providenciar um _output_ que indicará quais as entradas da nossa folha de cálculo que contêm as palavras listadas. Há diversas maneiras de alcançar este resultado. Ao planear a escrita de um programa é sempre boa ideia traçar um algoritmo. Um algoritmo é um conjunto de passos legíveis por humanos para resolver um problema. É uma lista do que irá fazer, a qual irá ser convertida em instruções programáticas apropriadas. A abordagem que utilizaremos aqui baseia-se no seguinte algoritmo:
 
 1. Inserir a lista de palavras-chave que criou no ‘gazetteer.txt’ e salvar cada uma numa lista de Python.
 2. Carregar os textos de ‘textos.txt.’ e salvar cada um numa outra lista de Python.
@@ -162,7 +162,7 @@ print(len(allKeywords))
 
 ```
 
-A primeira linha é uma indicação, para ilustrar-nos (a nós, humanos) o que o código faz, pois todas as linhas de Python iniciadas com um # são comentários. Quando o código operar, irá ignorar estes comentários, pelo que são somente para uso humano. Um código bem comentado é mais fácil para uso e trabalho futuro, pois terá os meios para decifrar o código criado posteriormente.
+A primeira linha é uma indicação, para ilustrar-nos (a nós, humanos) o que o código faz, pois todas as linhas de Python iniciadas com um # são comentários. Quando o código operar, irá ignorar estes comentários, pelo que são somente para uso humano. Um código bem comentado é mais fácil para uso e trabalho futuro, pois terá os meios para decifrar o código criado anteriormente.
 
 A segunda linha abre o ficheiro ‘gazetteer.txt’ e lê-o, o que é sinalizado pelo ‘r’ (de ler (_read_), ao contrário de ‘w’ para escrita (_write_), ou de ‘a’ para anexar (_attach_)). Isso significa que não iremos alterar os conteúdos do ficheiro. Apenas lê-los.
 
@@ -188,6 +188,8 @@ Poderá executar o programa que escreveu com o seguinte comando:
 python extractKeywords.py
 
 ```
+
+Nota: Se o editor utilizado colocar automaticamente uma linha vazia a mais no gazetteer.txt. ele encontra 40 resultados, não 39. 
 
 Uma vez executado o programa, deverá ver o seu gazetteer exibido como uma lista Python no resultado do comando, juntamente com o número de entradas na sua lista (39). Se sim, ótimo! Prossiga para o passo 2. Se a última linha do seu resultado indica que só existe 1 resultado, isso significa que o código não operou corretamente, uma vez que sabemos que devem existir 39 palavras-chave na sua gazetteer. Reveja o seu código e procure se existe algum erro. Se continuar sem conseguir resolver o problema, tente alterar “\n” para “\r” na linha três. Alguns editores de texto usam o [retorno de carro](https://pt.wikipedia.org/wiki/Retorno_de_carro) (‘carriage return’) ao invés de ‘caracteres de nova linha’ ao criar uma linha. O \r significa ‘retorno de carro’ e deve resolver o problema.
 
@@ -233,9 +235,9 @@ for entry in allTexts:
 
 A variável ‘allTexts’ contém todos os nossos textos. Através de um laço de repetição _for_ ,  vamos analisar um registo de cada vez.
 
-Uma vez que estamos interessados em palavras singulares, iremos dividir o texto em palavras singulares utilizando o método .split(), procurando explicitamente por espaços: ‘entry.plit(‘ ‘)’. Note que existe um único espaço entre as aspas. Uma vez que as palavras são geralmente separadas por espaços, deverá funcionar bem. Isto significa que agora temos uma lista Python chamada ‘allWords’ que contém cada palavra numa única entrada bibliográfica.
+Uma vez que estamos interessados em palavras singulares, iremos dividir o texto em palavras singulares utilizando o método .split(), procurando explicitamente por espaços: ‘entry.split(‘ ‘)’. Note que existe um único espaço entre as aspas. Uma vez que as palavras são geralmente separadas por espaços, deverá funcionar bem. Isto significa que agora temos uma lista Python chamada ‘allWords’ que contém cada palavra numa única entrada bibliográfica.
 
-Utilizamos outro laço de repetição _for_ para verificar cada palavra nessa lista. Onde quer que se encontre uma vírgula, ponto ou ponto e vírgula, essa pontuação será substituída por nada, removendo-a. Note que não há um espaço entre as aspas das últimas três linhas.
+Utilizamos outro laço de repetição _for_ para verificar cada palavra nessa lista. Onde quer que se encontre uma vírgula, ponto ou ponto e vírgula, essa pontuação será substituída por nada, efetivamente removendo-a. Note que não há um espaço entre as aspas das últimas três linhas.
 
 Temos agora um conjunto de palavras limpo, que podemos comparar com as entradas da gazetteer, de modo a encontrar correspondências.
 
@@ -362,7 +364,7 @@ Se não gostar do formato final do resultado, pode alterá-lo ao ajustar a penú
     f.close()
 ```
 
-Repare no ‘a’ ao invés do ‘r’ utilizado anteriormente. Isto ‘anexa’ o texto ao ficheiro chamado ‘output.txt’, que será salvo no seu diretório de trabalho. Há que ter cuidado, pois ao correr o programa várias vezes, irá anexar todos os resultados a este ficheiro, criando um ficheiro muito longo. Há maneiras de evitá-lo, que iremos abordar posteriormente. Pode considerar verificar como funciona a ferramenta de escrita ‘w’ e experimentar vários formatos de exportação. Há mais informação sobre estas ferramentas na lição [‘Trabalhando com ficheiros de texto em Python']( https://programminghistorian.org/pt/licoes/trabalhando-ficheiros-texto-python).
+Repare no ‘a’ ao invés do ‘r’ utilizado anteriormente. Isto ‘anexa’ o texto ao ficheiro chamado ‘output.txt’, que será salvo no seu diretório de trabalho. Há que ter cuidado, pois ao executar o programa várias vezes, irá anexar todos os resultados a este ficheiro, criando um ficheiro muito longo. Há maneiras de evitá-lo, que iremos abordar posteriormente. Pode considerar verificar como funciona a ferramenta de escrita ‘w’ e experimentar vários formatos de exportação. Há mais informação sobre estas ferramentas na lição [‘Trabalhando com ficheiros de texto em Python']( https://programminghistorian.org/pt/licoes/trabalhando-ficheiros-texto-python).
 
 ## Aperfeiçoar a Gazetteer
 
@@ -555,7 +557,7 @@ with open(filename, 'a') as csvfile:
 
 ```
 
-O código está detalhadamente comentado, por isso, se passar algum tempo a lê-lo, irá entender como funciona. Guarde este código e volte a corrê-lo através do Python. Deverá aparecer um ficheiro chamado ‘output.csv’ no seu diretório de trabalho que, ao abrir, deverá conter toda a informação que tinha anteriormente, mas sem a necessidade de cortar ou colar.
+O código está detalhadamente comentado, por isso, se passar algum tempo a lê-lo, irá entender como funciona. Guarde este código e volte a executá-lo através do Python. Deverá aparecer um ficheiro chamado ‘output.csv’ no seu diretório de trabalho que, ao abrir, deverá conter toda a informação que tinha anteriormente, mas sem a necessidade de cortar ou colar.
 
 Para sumarizar todas as alterações feitas à versão original:
 
@@ -563,9 +565,8 @@ Para sumarizar todas as alterações feitas à versão original:
 2. Através da biblioteca ‘time’, utilizámos a data e tempo correntes de modo a criar um único e facilmente decifrável nome para o nosso ficheiro de resultados.
 3. Através da biblioteca ‘csv’ criámos um ficheiro .csv, utilizando esse nome de ficheiro e colocámos os cabeçalhos das colunas que queríamos usar. 
 4. Corremos o mesmo código para correspondências, comparando ‘allTexts?’ com ‘allWords’ e armazenámos os resultados.
-5. Ao invés de imprimirmos os resultados no ecrã, guardámos os dados originais de cada linha (Name, Details, Matriculation Year) + as correspondências para um énuplo chamado ‘newRow’.
+5. Ao invés de imprimirmos os resultados no ecrã, guardámos os dados originais de cada linha (Name, Details, Matriculation Year) + as correspondências para um [énuplo](https://pt.wikipedia.org/wiki/%C3%89nuplo) chamado ‘newRow’.
 6. Através da biblioteca ’csv’, escrevemos os dados da ‘newRow’ para um novo ficheiro CSV, linha por linha.
-Esta abordagem criou um código mais longo e complexo, mas o resultado é um programa poderoso que lê a partir de um ficheiro CSV, compara o conteúdo dos textos com uma gazetteer e, depois, automaticamente, escreve o resultado num novo ficheiro CSV em branco, sem passos intermédios para o seu utilizador. Não precisava de ir tão longe, mas esperemos que consiga perceber as vantagens de o ter feito.
 
 Esta abordagem criou um código mais longo e complexo, mas o resultado é um programa poderoso que lê a partir de um ficheiro CSV, compara o conteúdo dos textos com uma gazetteer e, depois, automaticamente, escreve o resultado num novo ficheiro CSV em branco, sem passos intermédios para o seu utilizador. Não precisava de ir tão longe, mas esperemos que consiga perceber as vantagens de o ter feito.
 
