@@ -405,7 +405,7 @@ dim(novelas)
 #[1] 3810243       6
 ```
 
-Ahora puedes obtener la frecuencia de los tokens y el resultado será un marco de datos con tres variables: el número de identificación de cada novela, el token y su frecuencia en ese texto.
+Ahora puedes obtener la frecuencia de los tokens, y el resultado será un marco de datos con tres variables: el número de identificación de cada novela, el token y su frecuencia en ese texto.
 
 
 ```{r}
@@ -430,13 +430,13 @@ head(novelas)
 
 ```
 
-Con este marco de datos y los metadatos que descargaste de *HathiTrust*, estás listo para analizar y visualizar tus datos.
+Con este marco de datos y los metadatos que descargaste de *HathiTrust* estarás listo para analizar y visualizar tus datos.
 
 ### Windows: Otra manera de construir el marco de datos
 
-Antes de proceder a analizar este conjunto de novelas, veamos una manera alternativa de obtener los atributos extraídos de *HathiTrust*. Es un poco más lento, probablemente demandará más recursos de tu sistema, pero representa una alternativa si trabajas en Windows y no tienes Rsync, o si por alguna razón tu instalación de Rsync no funciona correctamente. Si regresas al ejemplo con que empezamos esta lección, la novela *María*, recordarás que usamos la función `get_hathi_counts()` y su número de "htid" para obtener los tokens de ese libro. 
+Antes de proceder a analizar este conjunto de novelas, veamos una manera alternativa de obtener los atributos extraídos de *HathiTrust*. Es un poco más lento, probablemente demandará más recursos de tu sistema, pero representará una alternativa si trabajas en Windows y no tienes Rsync, o si por alguna razón tu instalación de Rsync no funciona correctamente. Si regresas al ejemplo con el que empezamos esta lección, la novela *María*, recordarás que usamos la función `get_hathi_counts()` y su número de "htid" para obtener los tokens de ese libro. 
 
-Como ese método solo es capaz de adquirir un volumen a la vez, necesitamos crear nuestra propia función con un bucle *for* que vaya guardando la información para cada número htid que tenemos. Para este tutorial hemos incluido una función que no sólo logra este cometido, sino que además te notifica si algunos de tus números de htid no funcionan. El código se encuentra en el archivo  [`obtener_tokens.r`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/uso-las-colecciones-hathitrust-mineria-textual-R/obtener_tokens.r) y necesitas ponerlo en la misma carpeta en la que tienes tu proyecto de R. Para cargarlo usa el siguiente comando.
+Como ese método sólo es capaz de adquirir un volumen a la vez, necesitaremos crear nuestra propia función con un bucle *for* que vaya guardando la información para cada número htid que tenemos. Para este tutorial hemos incluido una función que no sólo logra este cometido, sino que además te notifica si algunos de tus números de htid no funcionan. El código se encuentra en el archivo  [`obtener_tokens.r`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/uso-las-colecciones-hathitrust-mineria-textual-R/obtener_tokens.r) y necesitarás ponerlo en la misma carpeta donde tienes tu proyecto de R. Para cargarlo usa el siguiente comando.
 
 ```{r}
 source("obtener_tokens.r")
@@ -455,13 +455,13 @@ novelas<- resultado[1]
 no_encontrado<-resultado[2]
 ```
 
-El primer elemento del resultado se convierte en nuestro marco de datos con atributos extraídos. Si alguno de tus archivos no se descargó, puedes ver su número en la variable “no_encontrado”.
+El primer elemento del resultado se conviertirá en nuestro marco de datos con atributos extraídos. Si alguno de tus archivos fuera descargado, podrás ver su número en la variable “no_encontrado”.
 
 ```{r}
 novelas<-as.data.frame(novelas)
 ```
 
-Notarás que tu marco de datos posee las mismas dimensiones que cuando usas Rsync y a partir de este punto puedes seguir los mismos pasos que en el apartado anterior para limpiar los datos y obtener las frecuencias.
+Notarás que tu marco de datos posee las mismas dimensiones que cuando usas Rsync, y a partir de este punto puedes seguir los mismos pasos que en el apartado anterior para limpiar los datos y obtener las frecuencias.
 
 ```{r}
 
@@ -474,14 +474,14 @@ novelas <- novelas %>%
 
 ## Minería textual y próximos pasos
 
-Ahora tienes un conjunto de datos en un formato que es perfecto para cualquier tipo de proyecto de minería textual que te interese. Como se hizo en el caso de la novela *María* podríamos localizar la frecuencia de una palabra en los textos, solo que en este caso se podría a hacer en textos publicados en diferentes fechas. Digamos, por ejemplo, que me interesa saber la frecuencia relativa de las menciones del nombre de la ciudad de "Guayaquil" en la novelas ecuatorianas. El primer paso sería determinar la extensión de cada texto en la colección y añadir una nueva columna con esa información
+Ahora tienes un conjunto de datos en un formato que es perfecto para cualquier tipo de proyecto de minería textual que te interese. Como se hizo en el caso de la novela *María*, podríamos localizar la frecuencia de una palabra en los textos, sólo que en este caso se podría a hacer en textos publicados en diferentes fechas. Digamos, por ejemplo, que me interesa saber la frecuencia relativa de las menciones del nombre de la ciudad de "Guayaquil" en la novelas ecuatorianas. El primer paso sería determinar la extensión de cada texto en la colección y añadir una nueva columna con esa información
 
 ```{r}
 para_frecuencias_relativas <- novelas %>%
   group_by(htid) %>%
   mutate(total_volumen = sum(num_tokens))
 ```
-Después podemos buscar nuestra palabra:
+Después podremos buscar nuestra palabra:
 
 ```{r}
 palabra_encontrada<-para_frecuencias_relativas %>% filter(token == "Guayaquil")
@@ -513,7 +513,7 @@ palabra_encontrada <- palabra_encontrada |>
 
 El propósito de este tutorial es presentar un ejemplo de cómo obtener y manipular los datos de *HathiTrust* para la minería textual. A pesar de sus limitaciones, los datos que podemos obtener de *HathiTrust* son un fantástico recurso para explorar nuevas ideas, desarrollar teorías, o investigar una tesis de manera preliminar a estudios más rigurosos. 
 
-Cuando selecciones los volúmenes para crear tu colección, escoge de ser posible la primera edición del libro pues de esa manera no tendrá introducciones, prólogos u otro material que puede introducir tokens no relacionados al texto principal. Si estás trabajando con cientos de volúmenes es posible que estos tokens adicionales no representen un gran problema por la escala del proyecto, pero es una buena idea evitarlos ya que no siempre será posible (o práctico) eliminarlos como hicimos en el ejemplo de *María*. Trabajar con los datos de cientos de volúmenes puede ocasionar que `Rstudio` deje de funcionar y en esos casos una solución será trabajar directamente en la consola de R, o utilizar un entorno que funcione con pocos recursos como [Rcommander](https://es.wikipedia.org/wiki/R_Commander), para el cual puedes encontrar [varios](https://estadistica-dma.ulpgc.es/cursoR4ULPGC/12-Rcommander.html) [manuales](https://www.uv.es/conesa/CursoR/material/Manual-R-commander.pdf) en internet. En muchos casos, sin embargo, la opción más sensible será dividir los conjuntos de datos en grupos más pequeños, organizados por temas o periodos históricos.
+Cuando selecciones los volúmenes para crear tu colección, escoge de ser posible la primera edición del libro pues de esa manera no tendrá introducciones, prólogos u otro material que pueda introducir tokens no relacionados al texto principal. Si estás trabajando con cientos de volúmenes es posible que estos tokens adicionales no representen un gran problema por la escala del proyecto, pero es una buena idea evitarlos ya que no siempre será posible (o práctico) eliminarlos como hicimos en el ejemplo de *María*. Trabajar con los datos de cientos de volúmenes puede ocasionar que `Rstudio` deje de funcionar y en esos casos una solución será trabajar directamente en la consola de R, o utilizar un entorno que funcione con pocos recursos como [Rcommander](https://es.wikipedia.org/wiki/R_Commander), para el cual puedes encontrar [varios](https://estadistica-dma.ulpgc.es/cursoR4ULPGC/12-Rcommander.html) [manuales](https://www.uv.es/conesa/CursoR/material/Manual-R-commander.pdf) en internet. En muchos casos, sin embargo, la opción más sensible será dividir los conjuntos de datos en grupos más pequeños, organizados por temas o periodos históricos.
 
 Por último, si creas una colección interesante en *HathiTrust*, hazla pública y compártela con otros que estén interesados en tu tema.
 
