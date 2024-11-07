@@ -42,17 +42,18 @@ Muitas das lições do *Programming Historian* exigem que você insira comandos 
 
 Interfaces de linha de comando possuem vantagens para usuários de computador que precisam de maior precisão em seu trabalho -- tal como historiadores(as) digitais. Elas permitem maior detalhamento quando executando alguns programas, ao passo que você pode adicionar modificações para especificar exatamente como deseja que o programa seja executado. Além do mais, elas podem ser facilmente automatizadas através de [scripts](http://www.tldp.org/LDP/Bash-Beginners-Guide/html/chap_01.html), que são basicamente conjuntos de comandos baseados em texto.
 
-Existem duas interfaces de linha de comando principais, ou 'shells,' que muitos historiadores e historiadoras digitais utilizam. No macOS[^1] e muitas distribuições Linux, o shell é conhecido como `bash`, ou o 'Bourne-again shell' (*shell renascido*). Para usuários(as) de sistemas baseados no Windows, a interface de linha de comando é por padrão baseada em `MS-DOS`, que utiliza comandos e [sintaxe](https://pt.wikipedia.org/wiki/Sintaxe) distinta, mas que comumente pode atingir tarefas similares. Essa lição oferece uma introdução básica ao terminal `bash`, e usuários Windows podem acompanhá-la instalando shells populares como [Cygwin](https://www.cygwin.com/) ou Git Bash (veja abaixo).
+Existem duas interfaces de linha de comando principais, ou 'shells,' que muitos historiadores e historiadoras digitais utilizam. No macOS[^1] e muitas distribuições Linux, o shell é conhecido como `bash`, ou o 'Bourne-again shell' (*shell renascido*). Para usuários(as) de sistemas baseados no Windows, a interface de linha de comando é por norma baseada em `MS-DOS`, que utiliza comandos e [sintaxe](https://pt.wikipedia.org/wiki/Sintaxe) distinta, mas que comumente pode desempenhar tarefas similares. Essa lição oferece uma introdução básica ao terminal `bash`, e usuários Windows podem acompanhá-la instalando shells populares como [Cygwin](https://www.cygwin.com/) ou Git Bash (veja abaixo).
 
-Essa lição utiliza um **[shell do Unix](https://pt.wikipedia.org/wiki/Shell_do_Unixl)**, que é um interpretador de linha de comando que provê uma interface de usuário para o sistema operacional [Unix](https://pt.wikipedia.org/wiki/Unix) e similares. Essa lição cobre um pequeno número de comandos básicos. Ao final desse tutorial, você será capaz de navegar pelo seus sistema de ficheiros e encontrar ficheiros, abri-los, executar tarefas de manipulação de dados básicos, tal como combinar e copiar ficheiros, assim como lê-los e fazer edições relativamente simples. Esses comandos constituem o alicerce sobre o qual comandos mais complexos podem ser construídos para se adequarem ao seu projeto ou dados de pesquisa. Leitores(as) que busquem um guia de referências que vá além dessa lição são recomendados a ler *Unix and Linux: Visual Quickstart Guide*, 4ª edição (2009) de Deborah S. Ray e Eric J. Ray.
+Essa lição utiliza um **[shell do Unix](https://pt.wikipedia.org/wiki/Shell_do_Unixl)**, 
+é uma interface de linha de comando no sistema operacional [Unix](https://pt.wikipedia.org/wiki/Unix) e similares. Essa lição cobre um pequeno número de comandos básicos. Ao final desse tutorial, você será capaz de navegar pelo seu sistema de ficheiros e encontrar ficheiros, abri-los, executar tarefas de manipulação de dados básicos, tal como combinar e copiar ficheiros, assim como lê-los e fazer edições relativamente simples. Esses comandos constituem o alicerce sobre o qual comandos mais complexos podem ser construídos para se adequarem ao seu projeto ou dados de pesquisa. Leitores(as) que busquem um guia de referências que vá além dessa lição são recomendados a ler *Unix and Linux: Visual Quickstart Guide*, 4ª edição (2009) de Deborah S. Ray e Eric J. Ray.
 
 ## Apenas para Windows: Instalando o Git Bash
 
-Para aqueles(as) com macOS, e a maioria das distribuições Linux, vocês estão com sorte — já possuem um shell bash instalado. Para aqueles com Windows, vocês precisarão de um passo extra e instalar o Git Bash. Ele pode ser instalado após o download do mais recente 'Full installer' (_instalador completo_) nessa [página](https://git-for-windows.github.io/) (em inglês). Instruções para instalação estão disponíveis no [Open Hatch](https://web.archive.org/web/20190114082523/https://openhatch.org/missions/windows-setup/install-git-bash) (em inglês).
+Usuários de macOS, e a maioria das distribuições Linux: vocês estão com sorte — já possuem um shell bash instalado. Usuários Windows, vocês precisarão de um passo extra e instalar o Git Bash. Ele pode ser instalado após o download do mais recente 'Full installer' (_instalador completo_) nessa [página](https://git-for-windows.github.io/) (em inglês). Instruções para instalação estão disponíveis no [Open Hatch](https://web.archive.org/web/20190114082523/https://openhatch.org/missions/windows-setup/install-git-bash) (em inglês).
 
 ## Abrindo o seu Shell
 
-Vamos iniciar o shell. No Windows, execute o Git Bash a partir do diretório em que você o instalou. Você terá que executar como administrador - para tal, clique com o botão direito do mouse e selecione 'Executar como administrador.' No macOS, por padrão o shell está localizado em:
+Vamos iniciar o shell. No Windows, execute o Git Bash a partir do diretório em que você o instalou. Você terá que executar como administrador - para tal, clique com o botão direito do mouse e selecione 'Executar como administrador.' No macOS, por norma o shell está localizado em:
 
 `Applications -> Utilities -> Terminal`
 
@@ -62,7 +63,7 @@ Quando você o executa, verá esta janela.
 
 {% include figure.html filename="or-en-intro-to-bash-03.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 3. Uma tela vazia do terminal em nosso macOS" %}
 
-Você pode querer alterar a aparência padrão de seu terminal, pois os olhos podem se cansar ao olhar repetidamente para um texto preto em fundo branco. Na aplicação padrão do macOS, você pode abrir o menu 'Settings' nas 'Preferences' no Terminal. Clique na guia 'Settings' e altere-a para um novo esquema de cores. Pessoalmente, preferimos algo com um pouco menos de contraste entre o fundo e o texto, já que você estará olhando para esta tela por muito tempo. 'Novel' é um agradável, assim como o popular conjunto de paleta de cores [Solarized](http://ethanschoonover.com/solarized). Para usuários Windows, um efeito similar pode ser alcançado utilizando a aba `Properties` do Git Bash. Para alcançá-la, clique com o botão direito do mouse em qualquer lugar na barra superior e selecione `Propriedades`.
+Você pode querer alterar a aparência padrão de seu terminal, pois os olhos podem se cansar ao olhar repetidamente para um texto preto em fundo branco. Na aplicação padrão do macOS, você pode abrir o menu 'Settings' nas 'Preferences' no Terminal. Clique na guia 'Settings' e altere-a para um novo esquema de cores. Pessoalmente, preferimos algo com um pouco menos de contraste entre o fundo e o texto, já que você estará olhando para esta tela por muito tempo. 'Novel' é agradável, assim como o popular conjunto de paleta de cores [Solarized](http://ethanschoonover.com/solarized). Para usuários Windows, um efeito similar pode ser alcançado utilizando a aba `Properties` do Git Bash. Para alcançá-la, clique com o botão direito do mouse em qualquer lugar na barra superior e selecione `Properties`.
 
 {% include figure.html filename="or-en-intro-to-bash-04.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 4. A tela de configurações da Aplicação Shell Terminal do macOS" %}
 
@@ -70,33 +71,33 @@ Assim que você estiver satisfeito(a) com a interface, vamos começar.
 
 ## Se Movendo pelo Sistema de Ficheiros do Seu Computador
 
-Se, ao abrir uma janela do shell, você está incerto de sua localização no sistema de ficheiros do computador, o primeiro paço é encontrar o diretório em que você se encontra. Diferentemente de um sistema gráfico, quando num shell você não pode estar em múltiplos diretórios ao mesmo tempo. Quando abre seu explorador de diretórios em sua área de trabalho, ele está mostrando ficheiros que estão dentro de um diretório. Você pode descobrir em qual diretório está através do comando `pwd`, que significa "print working directory" (_imprima o diretório de trabalho_). Tente digitar
+Se, ao abrir uma janela do shell, você está incerto de sua localização no sistema de ficheiros do computador, o primeiro passo é encontrar o diretório em que você se encontra. Diferentemente de um sistema gráfico, quando num shell você não pode estar em múltiplos diretórios ao mesmo tempo. Quando abre seu explorador de diretórios em sua área de trabalho, ele está mostrando ficheiros que estão dentro de um diretório. Você pode descobrir em qual diretório está através do comando `pwd`, que significa "print working directory" (_imprima o diretório de trabalho_). Tente digitar
 
 `pwd`
 
-e apertar Enter. Se você utiliza um macOS, seu computador provavelmente mostrará `/users/USERNAME` com seu nome no lugar de USERNAME. Por exemplo, O caminho de Ian no macOS é `/users/ianmilligan1/`. Em muitas distribuições Linux, você verá algo similar, como `home/USERNAME`.
+e carregar Enter. Se você utiliza um macOS, seu computador provavelmente mostrará `/users/USERNAME` com seu nome no lugar de USERNAME. Por exemplo, o caminho de Ian no macOS é `/users/ianmilligan1/`. Em muitas distribuições Linux, você verá algo similar, como `/home/USERNAME`.
 
-Aqui é onde você percebe que aqueles utilizando Windows e aqueles utilizando macOS/Linux terão experiências um pouco distintas. No Windows, James está em :
+Aqui é onde você percebe que quem utiliza Windows e quem utiliza macOS/Linux terão experiências um pouco distintas. No Windows, James está em :
 
 `c/users/jbaker`
 
-Existem pequenas diferenças, mas não tenha medo; uma vez que você esteja movendo e manipulando ficheiros, essas divergências de plataformas ficarão em segundo plano.
+Existem pequenas diferenças, mas não tenha medo; desde que você esteja movendo e manipulando ficheiros, essas divergências de plataformas ficarão em segundo plano.
 
-Para nos orientar, vamos ver uma lista de quais ficheiros estão nesse diretório. Digite
+Para nos orientar, vamos ver uma lista dos ficheiros estão nesse diretório. Digite
 
 `ls`
 
 e você verá listado cada ficheiro e diretório no interior de sua atual localização. Seu diretório pode estar confuso ou impecável, mas você verá pelo menos algumas localizações familiares. No macOS, por exemplo, você verá `Applications`, `Desktop`, `Documents`, `Downloads`, `Library`, `Pictures`, etc.
 
-Você pode querer mais informações do que apenas uma lista de ficheiros. Podemos fazer isso especificando variadas *flags* (bandeiras) para acompanhar nossos comandos básicos. Elas são adições a um comando que provê ao computador um pouco mais de direcionamento sobre qual tipo de retorno ou manipulação você pretende realizar. Para acessar uma lista de *flags*, usuários de macOS/Linux podem recorrer ao programa de ajuda integrado. Basta digitar:
+Você pode querer mais informações do que apenas uma lista de ficheiros. Podemos fazer isso especificando variadas *flags* (sinalizadores) para acompanhar nossos comandos básicos. Elas são adições a um comando que fornecem ao computador um pouco mais de direcionamento sobre o tipo de retorno ou manipulação você pretende realizar. Para acessar uma lista de *flags*, usuários de macOS/Linux podem recorrer ao programa de ajuda integrado. Basta digitar:
 
 `man ls`
 
 {% include figure.html filename="or-en-intro-to-bash-05.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 5. A página Manual para o comando LS" %}
 
-Aqui, você vê uma lista do nome do comando, as possibilidades de formatação do comando e o que ele faz. **Muitos deles não farão sentido agora, mas não se preocupe; com o tempo você se ficará mais familiarizado com eles.** Você pode explorar essa página de várias formas: a barra de espaço move uma página abaixo, ou você pode usar as setas para cima e para baixo por todo documento.
+Aqui, você vê uma lista do nome do comando, as possibilidades de formatação do comando e o que ele faz. **Muitos deles não farão sentido agora, mas não se preocupe; com o tempo você ficará mais familiarizado com eles.** Você pode explorar essa página de várias formas: a barra de espaço move uma página abaixo, ou você pode usar as setas para cima e para baixo por todo documento.
 
-Para sair da página do manual, aperte
+Para sair da página do manual, digite
 
 `q`
 
@@ -124,7 +125,7 @@ Logo, se você digitar
 
 `ls -l`
 
-o computador retornará uma lista longa de ficheiros contendo informações similares ao que você encontraria no seu explorador de ficheiros: seu tamanho em bites, a data de sua criação ou última modificação, e o nome do ficheiro. Entretanto, isso pode ser um pouco confuso: você vê que um ficheiro test.html possui '620' bits. Comumente, você está mais acostumado a unidades de medida de como bytes, kilobytes, megabytes e gigabytes.
+o computador retornará uma lista longa de ficheiros contendo informações similares ao que você encontraria no seu explorador de ficheiros: seu tamanho em bits, a data de sua criação ou última modificação, e o nome do ficheiro. Contudo, isso pode ser um pouco confuso: você vê que um ficheiro test.html possui '620' bits. Em geeral, você está mais acostumado a unidades de medida como bytes, kilobytes, megabytes e gigabytes.
 
 Felizmente, existe outra *flag*:
 
@@ -146,7 +147,7 @@ Se você digitar
 
 `cd Área\ de\ Trabalho/`[^2]
 
-você está agora em sua Área de Trabalho. Isso é similar a clicar duas vezes no ícone da Área de Trabalho no seu explorado de ficheiros. Para verificar novamente, digite `pwd` e você verá algo como:
+você está agora em sua Área de Trabalho. Isso é similar a clicar duas vezes no ícone da Área de Trabalho no seu explorador de ficheiros. Para verificar novamente, digite `pwd` e você verá algo como:
 
 `/Users/ianmilligan1/Área\ de\ Trabalho/`
 
@@ -162,9 +163,9 @@ Isso nos movimenta um diretório 'acima', colocando-nos de volta em `/users/ianm
 
 lhe trará de volta ao diretório inicial, exatamente onde você começou.
 
-Tente explorar um pouco mais: visite seu diretório documentos, imagens, pastas que você tenha na sua área de trabalho. Se acostume a se movimentar entre os diretórios. Imagine que você está navegando por uma [topologia em árvore](https://pt.wikipedia.org/wiki/Topologia_em_%C3%A1rvore). Se você está na área de trabalho, você não será capaz de `cd Documentos` pois este é um 'filho' de seu diretório inicial, ao passo que sua Área de Trabalho é 'irmã' de sua pasta Documentos. para se mover para uma irmã, você deve retornar ao pai comum. Para fazer isso, você deverá retornar para o seu diretório inicial (`cd ..`) e então se mover para `cd Documentos`.
+Tente explorar um pouco mais: visite seu diretório de documentos, imagens, pastas que você tenha na sua área de trabalho. Se acostume a passear pelos diretórios. Imagine que você está navegando por uma [topologia em árvore](https://pt.wikipedia.org/wiki/Topologia_em_%C3%A1rvore). Se você está na área de trabalho, você não será capaz de `cd Documentos` pois este é um 'filho' de seu diretório inicial, ao passo que sua Área de Trabalho é 'irmã' de sua pasta Documentos. Para se mover para uma localização irmã, você deve retornar à "mãe" comum. Para fazer isso, você deverá retornar para o seu diretório inicial (`cd ..`) e então se mover para `cd Documentos`.
 
-Ser capaz de navegar no seus sistema de ficheiros utilizando o shell bash é muito importante para muitas das lições no *Programming Historian*. À medida que você se sentir mais confortável, logo se verá pulando diretamente para o diretório que deseja. No nosso caso, de qualquer lugar em nosso sistema, poderíamos digitar
+Ser capaz de navegar no seu sistema de ficheiros utilizando o shell bash é muito importante para muitas das lições no *Programming Historian*. À medida que você se sentir mais confortável, logo se verá pulando diretamente para o diretório que deseja. No nosso caso, de qualquer lugar em nosso sistema, poderíamos digitar
 
 `cd /users/ianmilligan1/mallet-2.0.7`
 
@@ -182,23 +183,23 @@ no macOS e Linux ou
 
 `explorer .`
 
-No Windows. Esse comando abrirá seu GUI no diretório atual. Certifique-se de deixar o espaço entre `open` ou `explorer` e o ponto.
+No Windows. Esse comando abrirá seu GUI no diretório atual. Certifique-se de que deixou o espaço entre `open` ou `explorer` e o ponto.
 
 ## Interagindo com ficheiros
 
-Assim como navegar pelos diretórios, você pode interagir com ficheiros na linha de comando: você pode lê-los, abri-los, executá-los, e mesmo editá-los, geralmente sem nunca precisar sair da interface. Há algum debate sobre por que alguém faria isso. O principal motivo é a experiência fluida de trabalhar na linha de comando: você nunca precisa pegar o mouse ou tocar o *touchpad* e, embora tenha uma curva de aprendizado acentuada, pode eventualmente se tornar um ambiente de escrita único. Além disso, muitos programas exigem que você use a linha de comando para opera-los. Como você usará programas na linha de comando, muitas vezes pode ser mais rápido fazer pequenas edições em ficheiros sem a necessidade de alternar para um outro programa. Para alguns desses argumentos, veja ["Why, oh WHY, do those #?@! nutheads use vi?"](http://www.viemu.com/a-why-vi-vim.html) de Jon Beltran de Heredia.
+Assim como navegar pelos diretórios, você pode interagir com ficheiros na linha de comando: você pode lê-los, abri-los, executá-los, e mesmo editá-los, geralmente sem nunca precisar sair da interface. Há algum debate sobre por que alguém faria isso. O principal motivo é a experiência fluida de trabalhar na linha de comando: você nunca precisa pegar o mouse ou tocar o *touchpad* e, embora tenha uma curva de aprendizado acentuada, pode eventualmente se tornar um ambiente de escrita único. Além disso, muitos programas exigem que você use a linha de comando para operá-los. Como você usará programas na linha de comando, muitas vezes pode ser mais rápido fazer pequenas edições em ficheiros sem a necessidade de alternar para um outro programa. Para alguns desses argumentos, veja ["Why, oh WHY, do those #?@! nutheads use vi?"](http://www.viemu.com/a-why-vi-vim.html) de Jon Beltran de Heredia.
 
 Aqui estão algumas maneiras básicas de interagir com ficheiros.
 
-Primeiro, você pode criar um novo diretório para lidar com ficheiros de texto. Vamos criá-lo em sua área de trabalho, por conveniência. Você sempre pode movê-lo posteriormente. Navegue até sua Área de Trabalho, e digite:
+Primeiro, você pode criar um novo diretório para lidar com ficheiros de texto. Vamos criá-lo em sua área de trabalho, por conveniência. Você pode sempre movê-lo posteriormente. Navegue até sua Área de Trabalho, e digite:
 
 `mkdir ProgHist-Text`
 
 Esse comando cria um diretório com o nome, como você pode imaginar, 'ProgHist-Text'. Em geral, é bom evitar colocar espaços nos nomes de arquivos e diretórios ao usar a linha de comando (existem soluções alternativas, é claro, mas essa abordagem é mais simples). Você pode verificar na sua área de trabalho se funcionou. Agora, acesse esse diretório (lembre-se, o comando seria `cd ProgHist-Text`).
 
-Mas espere! Há um truque para tornar as coisas um pouco mais rápidas. Vá para o diretório anterior (`cd ..` - o que o levará de volta para a área de trabalho). Para navegar até o diretório `ProgHist-Text`, você poderia digitar `cd ProgHist-Text`. Alternativamente, você poderia digitar cd Prog e depois pressionar a tecla Tab. Você notará que a interface completa automaticamente a linha para `cd ProgHist-Text`. **Pressionar a tecla tab a qualquer momento no shell irá tentar autocompletar a linha com base nos ficheiros ou subdiretórios no diretório atual. No entanto, é sensível a maiúsculas e minúsculas. No exemplo anterior, `cd prog` não seria autocompletado para `ProgHist-Text`. Quando dois ou mais ficheiros têm os mesmos caracteres, o autocompletar preencherá apenas até o primeiro ponto de diferença. Encorajamos o uso desse método ao longo da lição para ver como ele funciona.**
+Mas espere! Há um truque para tornar as coisas um pouco mais rápidas. Vá para o diretório anterior (`cd ..` - o que o levará de volta para a área de trabalho). Para navegar até o diretório `ProgHist-Text`, você poderia digitar `cd ProgHist-Text`. Alternativamente, você poderia digitar cd Prog e depois pressionar a tecla Tab. Você notará que a interface completa automaticamente a linha para `cd ProgHist-Text`. **Pressionar a tecla tab a qualquer momento no shell irá tentar completar a linha com base nos ficheiros ou subdiretórios no diretório atual. No entanto, é sensível a maiúsculas e minúsculas. No exemplo anterior, `cd prog` não seria autocompletado para `ProgHist-Text`. Quando dois ou mais ficheiros têm os mesmos caracteres, o completar preencherá apenas até o primeiro ponto de diferença. Encorajamos o uso desse método ao longo da lição para ver como ele funciona.**
 
-Agora você precisa encontrar um ficheiro de texto simples para nos ajudar com o exemplo. Porque não usar um livro que sabemos ser longo, tal como o épico *Guerra e Paz* (em inglês), de Leon Tolstoy? O ficheiro de texto está disponível no [Projeto Gutenberg](http://www.gutenberg.org/ebooks/2600). Se você já instalou o [wget](https://programminghistorian.org/en/lessons/automated-downloading-with-wget) (em inglês), você pode simplesmente digitar
+Agora você precisa encontrar um ficheiro de texto simples para nos ajudar com o exemplo. Porque não usar um livro que sabemos ser longo, tal como o épico *Guerra e Paz* (em inglês), de Leon Tolstoy? O ficheiro de texto está disponível no [Projeto Gutenberg](http://www.gutenberg.org/ebooks/2600). Se você já instalou o [wget](https://programminghistorian.org/en/lessons/automated-downloading-with-wget) (em inglês), pode simplesmente digitar
 
 `wget http://www.gutenberg.org/files/2600/2600-0.txt`
 
@@ -210,7 +211,7 @@ você verá algo como
 
 >> -rw-r--r--+ 1 ianmilligan1  staff   3.1M  1 May 10:03 2600-0.txt
 
-Você pode ler o texto no interior desse ficheiro de algumas maneiras diferentes. Primeiro, pode informar ao computador que você quer lê-lo utilizando o programa padrão que você usa para abrir ficheiros de texto. Por padrão, deve ser o TextEdit no macOS ou Notepad no Windows. Para abrir um ficheiro, digite
+Você pode ler o texto no interior desse ficheiro de algumas maneiras diferentes. Primeiro, pode indicar ao computador que você quer lê-lo utilizando o programa padrão que você usa para abrir ficheiros de texto. O padrão deve ser o TextEdit no macOS ou o Notepad no Windows
 
 `open 2600-0.txt`
 
@@ -236,7 +237,7 @@ fornece uma visão das primeiras dez linhas, enquanto
 
 fornece uma perspectiva das últimas dez linhas. Esta é uma boa maneira de determinar rapidamente o conteúdo do ficheiro. Você poderia incluir um comando para alterar a quantidade de linhas mostradas: `head -20 2600-0.txt`, por exemplo, mostraria as vinte primeiras linhas.
 
-Você também deseja mudar o nome do ficheiro para algo mais descritivo. Você pode 'mover' para um novo nome digitando
+Você também pode desejar mudar o nome do ficheiro para algo mais descritivo. Você pode 'mover' para um novo nome digitando
 
 `mv 2600-0.txt tolstoy.txt`
 
@@ -248,13 +249,13 @@ Você revisitará esses comandos em breve.
 
 Agora que você utilizou diversos comandos novos, é hora de mais um truque. Pressione a seta para cima no seu teclado. Observe que `cp 2600-0.txt tolstoy.txt` aparece antes do seu cursor. Você pode continuar pressionando a seta para cima para percorrer os comandos anteriores. A seta para baixo retorna ao seu comando mais recente.
 
-Após ter lido e renomeado vários ficheiros, você pode desejar reunir todos os seus textos em um único ficheiro. Para combinar. ou concatenar, dois ou mais ficheiros, você pode usar o comando `cat`. Primeiro, vamos duplicar o ficheiro Tolstoy (`cp tolstoy.txt tolstoy2.txt`). Agora que você tem duas cópias do *Guerra e Paz*, vamos colocá-los juntos para fazer um livro **ainda mais longo**.
+Após ter lido e mudado o nome a vários ficheiros, você pode desejar reunir todos os seus textos em um único ficheiro. Para combinar. ou concatenar, dois ou mais ficheiros, você pode usar o comando `cat`. Primeiro, vamos duplicar o ficheiro Tolstoy (`cp tolstoy.txt tolstoy2.txt`). Agora que você tem duas cópias do *Guerra e Paz*, vamos colocá-los juntos para fazer um livro **ainda mais longo**.
 
 Para combinar, ou concatenar, dois ou mais ficheiros use o comando `cat`. Digite
 
 `cat tolstoy.txt tolstoy2.txt`
 
-e aperte Enter. Isso irá imprimir na tela, ou mostrar, os ficheiros combinados no interior do shell. Contudo, ele é longo demais para ser lido nessa janela! Felizmente, utilizando o comando `>`, você pode enviar o resultado para um novo ficheiro, ao invés da visualização no terminal. Digite
+e depois Enter. Isso irá imprimir na tela, ou mostrar, os ficheiros combinados no interior do shell. Contudo, ele é longo demais para ser lido nessa janela! Felizmente, utilizando o comando `>`, você pode enviar o resultado para um novo ficheiro, ao invés da visualização no terminal. Digite
 
 `cat tolstoy.txt tolstoy2.txt > tolstoy-em-dobro.txt`.
 
@@ -264,7 +265,7 @@ Quando combinando mais do que dois ficheiros, usar um _wildcard_ pode ajudar a e
 
 `cat *.txt > tudo-junto.txt`
 
-e apertar Enter, uma combinação de todos os ficheiros .txt no diretório atual são combinados em ordem alfabética como `tudo-junto.txt`. Isto pode ser muito útil se você precisa combinar um número elevado de pequenos ficheiros no interior de um diretório para trabalhar com eles em um programa de análise de texto. Outra _wildcard_ que vale a pena ser memorizada é `?` que é um espaço reservado para um único caractere ou número.
+e depois Enter, uma combinação de todos os ficheiros .txt no diretório atual são combinados por ordem alfabética como `tudo-junto.txt`. Isto pode ser muito útil se você precisar combinar um número elevado de pequenos ficheiros no interior de um diretório para trabalhar com eles em um programa de análise de texto. Outra _wildcard_ que vale a pena ser memorizada é `?`, que é um espaço reservado para um único caractere ou número.
 
 ## Editando ficheiros de texto diretamente na linha de comando
 
@@ -278,11 +279,11 @@ Você verá o Vim ganhar vida diante de você, um editor de texto baseado em lin
 
 {% include figure.html filename="or-en-intro-to-bash-06.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 6. Vim" %}
 
-Se você realmente quer se aprofundar no Vim, há um [bom guia](http://vimdoc.sourceforge.net/htmldoc/quickref.html) (em inglês) disponível.
+Se você realmente quer se aprofundar no Vim, existe um [bom guia](http://vimdoc.sourceforge.net/htmldoc/quickref.html) em inglês.
 
-Utilizar o Vim para ler ficheiros é relativamente simples. Você pode utilizar as setas para navegar e poderia, teoricamente, ler *Guerra e Paz* através da linha de comando (deveria receber uma prêmio por fazer isso.). Alguns comandos básicos de navegação rápidos são os seguintes:
+Utilizar o Vim para ler ficheiros é relativamente simples. Você pode utilizar as setas para navegar e poderia, teoricamente, ler *Guerra e Paz* através da linha de comando (deveria receber um prêmio por fazer isso.). Alguns comandos básicos de navegação rápidos são os seguintes:
 
-`Ctrl+F` (ou seja, pressionar e segurar a tecla 'Ctrl' e pressionar a tecla F) irá lhe mover uma página abaixo (`Shift+SetaParaCima` no Windows).
+`Ctrl+F` (ou seja, pressionar e segurar a tecla 'Ctrl' e pressionar a tecla F) irá mudar para uma página abaixo (`Shift+SetaParaCima` no Windows).
 
 `Ctrl+B` irá lhe mover uma página acima (`Shift+SetaParaBaixo` para usuários do Windows).
 
@@ -349,7 +350,7 @@ Como alternativa, se você estivesse no diretório `proghist-dest`, este comando
 
 `cp /users/ianmilligan1/Área\ de\ Trabalho/ProgHist-Text/*.txt ./`
 
-O comando `./` refere-se ao diretório **atual** em que você está. **Este é um comando realmente valioso.**
+`./` refere-se ao diretório **atual** em que você está. **Esta é um elemento da linguagem de comandos realmente valioso.**
 
 Por fim, se você quiser excluir um arquivo, por qualquer motivo, o comando é `rm`, ou remove. **Tenha cuidado com o comando `rm`**, pois você não quer excluir ficheiros acidentalmente. Ao contrário da exclusão dentro da sua interface gráfica, não há lixeira ou opções de desfazer aqui. Por essa razão, se você estiver em dúvida, é recomendado ter cautela ou fazer backups regulares dos seus dados.
 
@@ -359,19 +360,18 @@ Vá para `ProgHist-Text` e exclua o ficheiro original digitando
 
 Verifique se o ficheiro foi removido usando o comando `ls`.
 
-Se você deseja excluir um diretório inteiro, tem duas opções. Você pode usar `rmdir`, o oposto de `mkdir`, para deletar um diretório **vazio**. Para excluir um diretório que contém ficheiros, você pode usar, na área de trabalho:
+Se você deseja excluir um diretório inteiro, tem duas opções. Você pode usar `rmdir`, o oposto de `mkdir`, para remover um diretório **vazio**. Para excluir um diretório que contém ficheiros, você pode usar, na área de trabalho:
 
 `rm -r ProgHist-Text`
 
-## Conclusões
-
+## Conclusão
 Neste momento, você pode querer fazer uma pausa do terminal. Para fazer isso, digite `exit` e sua sessão será fechada.
 
-Há mais comandos para experimentar à medida que você se familiariza com a linha de comando. Alguns de nossos outros favoritos são `du`, que é uma maneira de descobrir quanta memória está sendo usada em um diretório ou ficheiro (`du -h` o torna legível por humanos - como com outros comandos). Para aqueles de vocês no macOS ou Linux, `top` fornece uma visão geral de quais processos estão sendo executados (`mem` no Windows) e `touch NOMEDOFICHEIRO` pode criar um ficheiro de texto básico em ambos os sistemas.
+Há mais comandos para experimentar à medida que você se familiariza com a linha de comando. Alguns de nossos outros favoritos são `du`, que é uma maneira de descobrir quanta memória está sendo usada em um diretório ou ficheiro (`du -h` o torna legível por humanos - como com outros comandos). Para quem usa macOS ou Linux, `top` fornece uma visão geral do processos que estão sendo executados (`mem` no Windows) e `touch NOMEDOFICHEIRO` pode criar um ficheiro de texto básico em ambos os sistemas.
 
-A esta altura, esperamos que você tenha uma compreensão elementar de como se movimentar usando a linha de comando, mover ficheiros simples e fazer pequenas edições aqui e ali. Esta lição de nível iniciante foi projetada para lhe dar alguma fluência e confiança básicas. No futuro, você pode querer se envolver com scripts.
+A esta altura, esperamos que você tenha uma compreensão elementar de como se movimentar usando a linha de comando, mover ficheiros simples e fazer pequenas edições aqui e ali. Esta lição introdutória foi projetada para lhe dar alguma fluência e confiança básicas. No futuro, você pode querer se envolver com scripts.
 
-Divirta-se! Antes que perceba, você pode acabar gostando da conveniência e precisão da linha de comando - para determinadas aplicações, pelo menos - muito mais do que a interface gráfica pesada fornecida pelo seu sistema. O seu conjunto de ferramentas acaba de se expandir.
+Divirta-se! Antes que se aperceba, você pode acabar gostando da conveniência e precisão da linha de comando - para determinadas aplicações, pelo menos - muito mais do que a interface gráfica pesada fornecida pelo seu sistema. O seu conjunto de ferramentas acaba de se expandir.
 
 ## Guia de referência
 
