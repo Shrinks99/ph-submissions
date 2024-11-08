@@ -20,7 +20,7 @@ activity: sustaining
 topics: [data-management]
 abstract: Short abstract of this lesson
 avatar_alt: Visual description of lesson image
-doi: XX.XXXXX/phen0000
+doi: 10.46430/phfr0034
 ---
 
 {% include toc.html %}
