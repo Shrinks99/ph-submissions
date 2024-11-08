@@ -38,7 +38,7 @@ doi: XX.XXXXX/phen0000
 
 Muitas das lições do *Programming Historian* exigem que você insira comandos através de uma **interface de linha de comando**. A maneira usual de usuários de computador interagirem com seu sistema atualmente é através de uma **interface gráfica de usuário** ou GUI (do inglês _Graphical User Interface_). Isso significa que, para entrar em uma pasta, você clica em uma imagem de uma pasta de ficheiros; para você executar um programa, você clica nele; e quando você navega na web, você usa o mouse para interagir com vários elementos de uma página da web. Antes da ascensão das GUIs no final dos anos 1980, no entanto, a principal maneira de interagir com um computador era através de uma interface da linha de comando.
 
-{% include figure.html filename="en-or-intro-to-bash-01.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 1. GUI do computador de Ian Milligan" %}
+{% include figure.html filename="en-or-intro-to-bash-01.png" alt="_Screenshot_ mostrando interface gráfica de um computador" caption="Figura 1. GUI do computador de Ian Milligan" %}
 
 Interfaces de linha de comando possuem vantagens para usuários de computador que precisam de maior precisão em seu trabalho -- tal como historiadores(as) digitais. Elas permitem maior detalhamento quando executando alguns programas, ao passo que você pode adicionar modificações para especificar exatamente como deseja que o programa seja executado. Além do mais, elas podem ser facilmente automatizadas através de [scripts](http://www.tldp.org/LDP/Bash-Beginners-Guide/html/chap_01.html), que são basicamente conjuntos de comandos baseados em texto.
 
@@ -57,15 +57,15 @@ Vamos iniciar o shell. No Windows, execute o Git Bash a partir do diretório em 
 
 `Applications -> Utilities -> Terminal`
 
-{% include figure.html filename="en-or-intro-to-bash-02.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 2. O programa Terminal.app no macOS" %}
+{% include figure.html filename="en-or-intro-to-bash-02.png" alt="Ícone do programa Terminal no macOS" caption="Figura 2. O programa Terminal.app no macOS" %}
 
 Quando você o executa, verá esta janela.
 
-{% include figure.html filename="en-or-intro-to-bash-03.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 3. Uma tela vazia do terminal em nosso macOS" %}
+{% include figure.html filename="en-or-intro-to-bash-03.png" alt="_Screenshot_ de uma tela vazia do Terminal" caption="Figura 3. Uma tela vazia do terminal em nosso macOS" %}
 
 Você pode querer alterar a aparência padrão de seu terminal, pois os olhos podem se cansar ao olhar repetidamente para um texto preto em fundo branco. Na aplicação padrão do macOS, você pode abrir o menu 'Settings' nas 'Preferences' no Terminal. Clique na guia 'Settings' e altere-a para um novo esquema de cores. Pessoalmente, preferimos algo com um pouco menos de contraste entre o fundo e o texto, já que você estará olhando para esta tela por muito tempo. 'Novel' é agradável, assim como o popular conjunto de paleta de cores [Solarized](http://ethanschoonover.com/solarized). Para usuários Windows, um efeito similar pode ser alcançado utilizando a aba `Properties` do Git Bash. Para alcançá-la, clique com o botão direito do mouse em qualquer lugar na barra superior e selecione `Properties`.
 
-{% include figure.html filename="en-or-intro-to-bash-04.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 4. A tela de configurações da Aplicação Shell Terminal do macOS" %}
+{% include figure.html filename="en-or-intro-to-bash-04.png" alt="Screenshot da tela de configurações do Terminal do macOS" caption="Figura 4. A tela de configurações da Aplicação Shell Terminal do macOS" %}
 
 Assim que você estiver satisfeito(a) com a interface, vamos começar.
 
@@ -93,7 +93,7 @@ Você pode querer mais informações do que apenas uma lista de ficheiros. Podem
 
 `man ls`
 
-{% include figure.html filename="en-or-intro-to-bash-05.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 5. A página Manual para o comando LS" %}
+{% include figure.html filename="en-or-intro-to-bash-05.png" alt="Screenshot da página Manual para o comando LS" caption="Figura 5. A página Manual para o comando LS" %}
 
 Aqui, você vê uma lista do nome do comando, as possibilidades de formatação do comando e o que ele faz. **Muitos deles não farão sentido agora, mas não se preocupe; com o tempo você ficará mais familiarizado com eles.** Você pode explorar essa página de várias formas: a barra de espaço move uma página abaixo, ou você pode usar as setas para cima e para baixo por todo documento.
 
@@ -125,7 +125,7 @@ Logo, se você digitar
 
 `ls -l`
 
-o computador retornará uma lista longa de ficheiros contendo informações similares ao que você encontraria no seu explorador de ficheiros: seu tamanho em bits, a data de sua criação ou última modificação, e o nome do ficheiro. Contudo, isso pode ser um pouco confuso: você vê que um ficheiro test.html possui '620' bits. Em geeral, você está mais acostumado a unidades de medida como bytes, kilobytes, megabytes e gigabytes.
+o computador retornará uma lista longa de ficheiros contendo informações similares ao que você encontraria no seu explorador de ficheiros: seu tamanho em bits, a data de sua criação ou última modificação, e o nome do ficheiro. Contudo, isso pode ser um pouco confuso: você vê que um ficheiro test.html possui '620' bits. Em geral, você está mais acostumado a unidades de medida como bytes, kilobytes, megabytes e gigabytes.
 
 Felizmente, existe outra *flag*:
 
@@ -277,7 +277,7 @@ Digite
 
 Você verá o Vim ganhar vida diante de você, um editor de texto baseado em linha de comando.
 
-{% include figure.html filename="en-or-intro-to-bash-06.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 6. Vim" %}
+{% include figure.html filename="en-or-intro-to-bash-06.png" alt="Documento aberto no programa Vim" caption="Figura 6. Vim" %}
 
 Se você realmente quer se aprofundar no Vim, existe um [bom guia](http://vimdoc.sourceforge.net/htmldoc/quickref.html) em inglês.
 
@@ -291,7 +291,7 @@ Se você deseja se mover rapidamente para o final de uma linha, pode pressionar:
 
 Vamos rolar até o topo e fazer uma alteração mínima, como adicionar um campo `Leitor` (_Reader_) no cabeçalho. Mova o cursor entre **Autor:** (_Author:_ em inglês) e **Tradutores:** (_Translators:_ em inglês), assim:
 
-{% include figure.html filename="en-or-intro-to-bash-07.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 7. Pronto para inserir um campo" %}
+{% include figure.html filename="en-or-intro-to-bash-07.png" alt="Screenchot mostrando o Vim no modi de inserção" caption="Figura 7. Pronto para inserir um campo" %}
 
 Se você simplesmente começar a digitar, receberá uma mensagem de erro ou o cursor começará a pular. Isso ocorre porque você precisa especificar que deseja fazer uma edição. Pressione a tecla
 
@@ -311,7 +311,7 @@ Para sair do Vim ou salvar alterações, você precisa inserir uma série de com
 
 >> "tolstoy.txt" [dos] 65009L, 3291681C written
 
-{% include figure.html filename="en-or-intro-to-bash-08.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 8. Após Escrever o Ficheiro, com nossas Pequenas Alterações" %}
+{% include figure.html filename="en-or-intro-to-bash-08.png" alt="Screenshot do Vim com alterações no texto" caption="Figura 8. Após Escrever o Ficheiro, com nossas Pequenas Alterações" %}
 
 Se você quiser sair, digite `:` novamente e depois `q`. Isso o levará de volta à linha de comando. Assim como no restante do bash, você também poderia ter combinado os dois comandos. Pressionar `:` e depois digitar `wq` teria salvado o ficheiro e depois saído do Vim. Ou, se você quisesse sair **sem** salvar, `q!` teria encerrado o Vim e substituído a preferência padrão para salvar suas alterações.
 
