@@ -26,8 +26,8 @@ review-ticket: https://github.com/programminghistorian/ph-submissions/issues/566
 difficulty: 1
 activity: presenting
 topics: [mapping]
-abstract: Short abstract of this lesson
-avatar_alt: Visual description of lesson image
+abstract: In this lesson you will install QGIS software, download geospatial files like shapefiles and GeoTIFFs, and create a map out of a number of vector and raster layers.
+avatar_alt: Elevation view of a mountain range.
 doi: XX.XXXXX/phen0000
 ---
 
