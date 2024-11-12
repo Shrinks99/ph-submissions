@@ -482,38 +482,6 @@ When we write our dates in this way, we have the following main points for other
 
 Calibrating radiocarbon dates allows their transposition into a calendar time frame. This step is key to interpreting the results, especially since the rhythm of the carbon-14 "clock" varies over time. In this lesson, we learned how to combine conventional dates and test for consistency before calibrating them. We also saw how to graphically represent these date and how to present the results with all the information necessary for their reproduction.
 
-## Endnotes
-
-[^1]: As opposed to relative dating which orders a series of events. Strictly speaking, there is no absolute dating method because they all fit into a specific frame of reference. Some authors thus prefer to speak of quantifiable dating (O’Brien and Lyman, 2002). However, for convenience, we retain this terminology here, since it is understood that an absolute date is expressed as a point on a standard scale for measuring time (Dean, 1978).
-
-[^2]: As support for this lesson, it may be helpful to read the introductory chapters of _Comprendre et réaliser les tests statistiques à l’aide de R : Manuel de Biostatistique_ by Gaël Millot (2014) (in French).
-
-[^3]: Anderson et al. 1947.
-
-[^4]: Colman, Pierce & Birkeland, 1987.
-
-[^5]: We use the year 1950 as our reference, because it corresponded to the standard astronomical era (during these first developments of the radiocarbon method). Today we use 1950 as it also allows us to have a reference which sufficiently precedes the consequences of atmosphere nuclear tests.
-
-[^6]:The reality is more complex, notably with the reality of [isotope fractionation](https://en.wikipedia.org/wiki/Isotope_fractionation).
-
-[^7]: See, for example, Calabrisotto et al. (2017).
-
-[^8]: Arnold & Libby, 1949; Libby, 1960.
-
-[^9]: There actually exists three series of calibration curves: IntCal for the northern hemisphere, SHCal for the southern hemisphere, and Marine for marine samples.
-
-[^10]: At the moment of this lesson’s first publication (in French), the curve IntCal20 has just been published. Reimer et al., 2009, 2013, 2020.
-
-[^11]: Scott, Cook & Naysmith, 2007.
-
-[^12]: Actually, calibration by simple interception no longer needs to be used.
-
-[^13]: Hyndman, 1996.
-
-[^14]: The reasons of this heterogeneity are beyond the scope of this lesson. A detailed discussion is available in the literature, see for example Walsh and Schwalbe (2020).
-
-[^15]: Millard, 2014.
-
 ## Bibliography
 
 Anderson, E. C., W. F. Libby, S. Weinhouse, A. F. Reid, A. D. Kirshenbaum, & A. V. Grosse. 1947. "Radiocarbon From Cosmic Radiation". *Science* 105 (2735): 576‑77. <https://doi.org/10.1126/science.105.2735.576>.
@@ -553,3 +521,35 @@ Scott, E. M., G. T Cook, & P. Naysmith. 2007. "Error and Uncertainty in Radiocar
 Ward, G. K., & S. R. Wilson. 1978. "Procedures for Comparing and Combining Radiocarbon Age Determinations: A Critique". *Archaeometry* 20 (1): 19‑31. <https://doi.org/10.1111/j.1475-4754.1978.tb00208.x>.
 
 Walsh, B., & Schwalbe, L. 2020. "An Instructive Inter-Laboratory Comparison: The 1988 Radiocarbon Dating of the Shroud of Turin". *Journal of Archaeological Science: Reports* 29: 102015. <https://doi.org/10.1016/j.jasrep.2019.102015>.
+
+## Endnotes
+
+[^1]: As opposed to relative dating which orders a series of events. Strictly speaking, there is no absolute dating method because they all fit into a specific frame of reference. Some authors thus prefer to speak of quantifiable dating (O’Brien and Lyman, 2002). However, for convenience, we retain this terminology here, since it is understood that an absolute date is expressed as a point on a standard scale for measuring time (Dean, 1978).
+
+[^2]: As support for this lesson, it may be helpful to read the introductory chapters of _Comprendre et réaliser les tests statistiques à l’aide de R : Manuel de Biostatistique_ by Gaël Millot (2014) (in French).
+
+[^3]: Anderson et al. 1947.
+
+[^4]: Colman, Pierce & Birkeland, 1987.
+
+[^5]: We use the year 1950 as our reference, because it corresponded to the standard astronomical era (during these first developments of the radiocarbon method). Today we use 1950 as it also allows us to have a reference which sufficiently precedes the consequences of atmosphere nuclear tests.
+
+[^6]:The reality is more complex, notably with the reality of [isotope fractionation](https://en.wikipedia.org/wiki/Isotope_fractionation).
+
+[^7]: See, for example, Calabrisotto et al. (2017).
+
+[^8]: Arnold & Libby, 1949; Libby, 1960.
+
+[^9]: There actually exists three series of calibration curves: IntCal for the northern hemisphere, SHCal for the southern hemisphere, and Marine for marine samples.
+
+[^10]: At the moment of this lesson’s first publication (in French), the curve IntCal20 has just been published. Reimer et al., 2009, 2013, 2020.
+
+[^11]: Scott, Cook & Naysmith, 2007.
+
+[^12]: Actually, calibration by simple interception no longer needs to be used.
+
+[^13]: Hyndman, 1996.
+
+[^14]: The reasons of this heterogeneity are beyond the scope of this lesson. A detailed discussion is available in the literature, see for example Walsh and Schwalbe (2020).
+
+[^15]: Millard, 2014.
