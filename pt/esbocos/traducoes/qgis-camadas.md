@@ -36,7 +36,7 @@ doi: XX.XXXXX/phen0000
 
 ## Objetivos da lição
 
-Com essa lição, você poderá instalar o programa QGIS, baixar ficheiros geoespaciais como shapefiles e GeoTIFFs, e criar um mapa a partir de diversas camadas vetoriais e raster. O Quantum, ou QGIS, é uma alternativa em código aberto para o líder da indústria, o ArcGIS da ESRI. O QGIS é multi-plataformas, o que lhe permite funcionar no Windows, Mac e Linux, e conta com diversas das funções mais utilizadas por historiadores. O ArcGIS é proibitivamente caro e apenas funciona no Windows (apesar de que um software pode ser comprado para permitir seu funcionamento no Mac). Entretanto, várias universidades  possuem licenças, permitindo que alunos e funcionários tenham acesso a cópias gratuitas do programa (entre em contato com o seu bibliotecário da área de cartografia, equipe de TI, ou o departamento de Geografia). O QGIS é ideal para aqueles sem acesso à cópia gratuita do Arc, e também é uma boa opção para aprender o básico de SIG e decidir se você quer ou não instalar uma cópia do ArcGIS no seu computador. Além disso, qualquer trabalho realizado no QGIS pode ser exportado para o ArcGIS futuramente, caso opte por um upgrade. Os autores tendem a usar ambos programas, satisfeitos com o desempenho do QGIS para operações básicas em computadores Mac e Linux, mas ainda voltam ao ArcGIS para projetos mais avançados. Em diversos casos, não é uma deficiência de funções, mas problemas de estabilidade que nos levam de volta ao ArcGIS. Para aqueles aprendendo Python com o Programming Historian, vocês ficarão felizes em saber que, tanto o QGIS quanto o ArcGIS, usam o Python como sua principal linguagem de programação.
+Com essa lição, você poderá instalar o programa QGIS, baixar ficheiros geoespaciais como shapefiles e GeoTIFFs, e criar um mapa a partir de diversas camadas vetoriais e raster. O Quantum, ou QGIS, é uma alternativa em código aberto para o líder da indústria, o ArcGIS da ESRI. O QGIS é multi-plataformas, o que lhe permite funcionar no Windows, Mac e Linux, e conta com diversas das funções mais utilizadas por historiadores. O ArcGIS é proibitivamente caro e apenas funciona no Windows (apesar de que um software pode ser comprado para permitir seu funcionamento no Mac). Entretanto, várias universidades  possuem licenças, permitindo que alunos e funcionários tenham acesso a cópias gratuitas do programa (entre em contato com o seu bibliotecário da área de cartografia, equipe de TI, ou o departamento de Geografia). O QGIS é ideal para aqueles sem acesso à cópia gratuita do Arc, e também é uma boa opção para aprender o básico de SIG e decidir se você quer ou não instalar uma cópia do ArcGIS no seu computador. Além disso, qualquer trabalho realizado no QGIS pode ser exportado para o ArcGIS futuramente, caso opte por um upgrade. Os autores tendem a usar ambos programas, satisfeitos com o desempenho do QGIS para operações básicas em computadores Mac e Linux, mas ainda voltam ao ArcGIS para projetos mais avançados. Em diversos casos, não é uma deficiência de funções, mas problemas de estabilidade que nos levam de volta ao ArcGIS. Para aqueles aprendendo Python com o _Programming Historian_, vocês ficarão felizes em saber que, tanto o QGIS quanto o ArcGIS, usam o Python como sua principal linguagem de programação.
 
 ## Instalando QGIS
 
@@ -50,7 +50,7 @@ Abra a [página de download do QGIS](https://qgis.org/pt_BR/site/forusers/downlo
 {% include figure.html filename="pt-tr-qgis-camadas-01.png" alt="Visual description of figure image" caption="Figura 1" %}
 
 -   Baixe e instale o QGIS.
--   Como os demais programas a serem utilizados pela primeira vez no Mac, você terá que encontrar o QGIS em Programas.
+-   Como os demais programas a serem utilizados pela primeira vez no Mac, você terá que encontrar o QGIS em **Programas**.
 
 ### Instruções para Windows
 
@@ -64,7 +64,7 @@ O QGIS é bastante simples de se instalar na maior parte das versões do Linux. 
 
 ## Os dados de *Prince Edward Island*
 
-Estaremos utilizando alguns dados governamentais da província de Prince Edward Island (PEI), no Canadá. A PEI é um ótimo exemplo, pois conta com vários dados disponíveis online gratuitamente e porque é a menor província canadense, o que torna os downloads rápidos! Baixe os "[shapefiles](https://pt.wikipedia.org/wiki/Shapefile)" (ficheiros `.shp`) da PEI:
+Estaremos utilizando alguns dados governamentais da província de Prince Edward Island (PEI), no Canadá. A PEI é um ótimo exemplo, pois conta com vários dados disponíveis online gratuitamente e porque é a menor província canadense, o que torna os downloads rápidos! Baixe os "[shapefiles](https://perma.cc/2V6W-62AZ)" (ficheiros `.shp`) da PEI:
 
 Entre nos links abaixo em seu navegador. Desenvolvemos os dois últimos *shapefiles*, então eles devem baixar automaticamente:
 
@@ -73,8 +73,8 @@ Entre nos links abaixo em seu navegador. Desenvolvemos os dois últimos *shapefi
 3.  <http://www.gov.pe.ca/gis/download.php3?name=hydronetwork&file_format=SHP>
 4.  <http://www.gov.pe.ca/gis/download.php3?name=forest_35&file_format=SHP>
 5.  <http://www.gov.pe.ca/gis/download.php3?name=nat_parks&file_format=SHP>
-6.  [PEI Highways](https://programminghistorian.org/assets/PEI_highway.zip)
-7.  [PEI Places](https://programminghistorian.org/assets/PEI_placenames.zip)
+6.  [PEI Highways](/assets/PEI_highway.zip)
+7.  [PEI Places](/assets/PEI_placenames.zip)
 
 Após baixar os sete ficheiros, coloque-os em uma pasta e descomprima os ficheiros `.zip`. Confira o conteúdo das pastas. Você irá encontrar quatro ficheiros com o mesmo nome, mas sendo de formatos diferentes. Quando você abrir essas pastas no programa SIG, você perceberá que é necessário apenas clicar no ficheiro `.shp` e que os outros três formatos apenas dão suporte a esse ficheiro em plano de fundo. Ao mover os ficheiros em seu computador, é sempre importante manter os quatro ficheiros juntos. Esta é uma das razões dos shapefiles serem normalmente compartilhados comprimidos em zip. Lembre-se em qual pasta você salvou as pastas shapefile não comprimidas, já que será necessário encontrá-las a partir do QGIS em alguns minutos.
 
@@ -82,7 +82,7 @@ Após baixar os sete ficheiros, coloque-os em uma pasta e descomprima os ficheir
 
 Abra o QGIS. 
 
-A primeira coisa que precisamos fazer é configurar o Sistema De Referenciamento Coordenado (SRC) (Coordenate Reference System (CRS), em inglês) corretamente. O SRC é a projeção cartográfica e as projeções são as diversas formas de representar lugares do mundo real em mapas bidimensionais. A projeção padrão é WGS84 (está sendo cada vez mais comum utilizar WGS84, que é compatível com softwares como o Google Earth), mas já que a maior parte de nossos dados e exemplos são criados pelos governos canadenses, nós recomendamos utilizar NAD83 (North American Datum, 1983). Para mais informações acerca do NAD83 e o datum do Governo Federal, consulte o [site do NRCan](http://www.nrcan.gc.ca/earth-sciences/geography-boundary/mapping/topographic-mapping/10272) (em inglês). A PEI tem seu próprio sistema de referência de coordenadas NAD 83, que utiliza uma [projeção Estereográfica Dupla](http://www.gov.pe.ca/gis/index.php3?number=77865&lang=E) (em inglês). Administrar o SRC de diferentes camadas de informação e garantir que estejam funcionando corretamente é um dos mais complicados aspectos do SIG para iniciantes. De qualquer forma, se o software estiver configurado corretamente, ele deve converter o SRC e permitir o manuseio de dados importados de diferentes fontes. 
+A primeira coisa que precisamos fazer é configurar o Sistema De Referenciamento Coordenado (SRC) (Coordenate Reference System (CRS), em inglês) corretamente. O SRC é a projeção cartográfica e as projeções são as diversas formas de representar lugares do mundo real em mapas bidimensionais. A projeção padrão é WGS84 (está sendo cada vez mais comum utilizar WGS84, que é compatível com softwares como o Google Earth), mas já que a maior parte de nossos dados e exemplos são criados pelos governos canadenses, nós recomendamos utilizar NAD83 (North American Datum, 1983). Para mais informações acerca do NAD83 e o datum do Governo Federal, consulte o [site do NRCan](https://perma.cc/WF7F-QPRS) (em inglês). A PEI tem seu próprio sistema de referência de coordenadas NAD 83, que utiliza uma [projeção Estereográfica Dupla](https://perma.cc/5QZW-5BB2) (em inglês). Administrar o SRC de diferentes camadas de informação e garantir que estejam funcionando corretamente é um dos mais complicados aspectos do SIG para iniciantes. De qualquer forma, se o software estiver configurado corretamente, ele deve converter o SRC e permitir o manuseio de dados importados de diferentes fontes. 
 
 Selecione Propriedades do Projeto.
 
@@ -113,7 +113,7 @@ Para aqueles que desejarem adicionar mapas base pré-prontos ao QGIS, pode-se te
 
 ### Abrindo vetores
 
-[Definição](http://www.gislounge.com/geodatabases-explored-vector-and-raster-data/) de vetores: o SIG utiliza pontos, linhas e polígonos, também conhecidos como dados vetoriais. A sua primeira ordem de trabalho é organizar esses pontos, linhas e polígonos e projetá-los com precisão nos mapas. Os pontos podem ser cidades ou postes de telefone; as linhas podem representar rios, estradas ou ferrovias; e os polígonos podem compreender o terreno de uma fazenda ou fronteiras políticas maiores. No entanto, também é possível associar dados históricos com esses espaços geográficos e estudar como as pessoas interagiam e alteraram os seus ambientes físicos. No entanto, também é possível associar dados históricos com esses espaços geográficos e estudar como as pessoas interagiam e alteraram os seus ambientes físicos. A população das cidades mudou, os rios mudaram os seus cursos, os terrenos foram subdivididos e as terras foram plantadas com várias culturas.
+[Definição](https://perma.cc/QT8P-NMT4) de vetores: o SIG utiliza pontos, linhas e polígonos, também conhecidos como dados vetoriais. A sua primeira ordem de trabalho é organizar esses pontos, linhas e polígonos e projetá-los com precisão nos mapas. Os pontos podem ser cidades ou postes de telefone; as linhas podem representar rios, estradas ou ferrovias; e os polígonos podem compreender o terreno de uma fazenda ou fronteiras políticas maiores. No entanto, também é possível associar dados históricos com esses espaços geográficos e estudar como as pessoas interagiam e alteraram os seus ambientes físicos. No entanto, também é possível associar dados históricos com esses espaços geográficos e estudar como as pessoas interagiam e alteraram os seus ambientes físicos. A população das cidades mudou, os rios mudaram os seus cursos, os terrenos foram subdivididos e as terras foram plantadas com várias culturas.
 
 - No menu Camada, na barra de ferramentas, selecione **Adicionar Camada** e então _Adicionar Camada Vetorial_ (também pode-se usar o comando `Ctrl + Shift + V`).
 
@@ -244,10 +244,10 @@ Ao longo da barra de ferramentas no canto superior esquerdo da janela principal 
 
 Após criar um mapa utilizando camadas vetoriais, agora nós iremos adicionar ou utilizar a nossa primeira camada raster.
 
-"Dados raster" são imagens digitais constituídas por redes quadriculadas. Todos os dados de detecção remota, como imagens de satélite ou [fotos aéreas](https://pt.wikipedia.org/wiki/Aerofotogrametria#Ortofotografia), são rasters, mas geralmente não se pode enxergar o quadriculado dessas imagens, pois elas são compostas por pequenos píxeis. Cada pixel tem o seu próprio valor e, quando esses valores são simbolizados em cores ou em escala de cinzentos, formam uma imagem que é útil para visualização ou análise topográfica. Um mapa histórico digitalizado também é integrado no SIG em formato raster.
+"Dados raster" são imagens digitais constituídas por redes quadriculadas. Todos os dados de detecção remota, como imagens de satélite ou [fotos aéreas](https://perma.cc/SUC2-N5T4), são rasters, mas geralmente não se pode enxergar o quadriculado dessas imagens, pois elas são compostas por pequenos píxeis. Cada pixel tem o seu próprio valor e, quando esses valores são simbolizados em cores ou em escala de cinzentos, formam uma imagem que é útil para visualização ou análise topográfica. Um mapa histórico digitalizado também é integrado no SIG em formato raster.
 
 
--   Faça o download de [PEI_CumminsMap1927.tif](https://programminghistorian.org/assets/PEI_CumminsMap1927_compLZW.tif) para a pasta do seu projeto.
+-   Faça o download de [PEI_CumminsMap1927.tif](/assets/PEI_CumminsMap1927_compLZW.tif) para a pasta do seu projeto.
 -   Embaixo de **Camada** na barra de ferramentas, selecione _Adicionar Camada Raster_.
 
 {% include figure.html filename="pt-tr-qgis-camadas-27.png" alt="Visual description of figure image" caption="Figura 27" %}
@@ -269,7 +269,7 @@ Após criar um mapa utilizando camadas vetoriais, agora nós iremos adicionar ou
 
 {% include figure.html filename="pt-tr-qgis-camadas-31.png" alt="Visual description of figure image" caption="Figura 31" %}
 
--   Agora será possível ver o mapa raster de fundo “por detrás” da camada `coastline_polygon`. Aumente o zoom para uma inspeção mais detalhada, e será possível ver claramente a camada da linha de costa. Perceba como o alinhamento, apesar de bom, não está perfeito. Iremos aprender mais, [na lição 4](https://programminghistorian.org/pt/licoes/georreferenciamento-qgis), sobre os desafios de georreferenciar mapas históricos para lhes dar coordenadas do mundo real.
+-   Agora será possível ver o mapa raster de fundo “por detrás” da camada `coastline_polygon`. Aumente o zoom para uma inspeção mais detalhada, e será possível ver claramente a camada da linha de costa. Perceba como o alinhamento, apesar de bom, não está perfeito. Iremos aprender mais, [na lição 4](/pt/licoes/georreferenciamento-qgis), sobre os desafios de georreferenciar mapas históricos para lhes dar coordenadas do mundo real.
 
 {% include figure.html filename="pt-tr-qgis-camadas-32.png" alt="Visual description of figure image" caption="Figura 32" %}
 
