@@ -19,7 +19,7 @@ difficulty: 1
 activity: sustaining 
 topics: [data-management]
 abstract: Short abstract of this lesson
-avatar_alt: Visual description of lesson image
+avatar_alt: Dessin du mécanisme d'une montre chronographe.
 doi: 10.46430/phfr0034
 ---
 
