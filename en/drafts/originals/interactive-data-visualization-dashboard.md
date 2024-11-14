@@ -489,99 +489,102 @@ In this section, you will achieve this goal by using the free-tier web service p
 
 If you need more computing power and greater RAM, for example a web application that will see heavy usage, or is based on a large dataset, you may need to pay Render a certain fee. At the time of writing, other options for hosting dynamic web applications (instead of static sites) include [PythonAnywhere](https://www.pythonanywhere.com/), [Dash Enterprise](https://dash.plotly.com/dash-enterprise), [Heroku](https://devcenter.heroku.com/), [Amazon Web Services](https://aws.amazon.com/), and [Google App Engine](https://cloud.google.com/appengine). 
 
-If you want to host your own server, or you have someone at your institution who can help you set up a dedicated server, the general approach to take is to find ways to deploy Flask apps (e.g., via [Apache2](https://ubuntu.com/server/docs/web-servers-apache)).
+If you want to host your own server, or someone at your institution can help you set up a dedicated server, the general approach to take is to find ways to deploy Flask apps (e.g. via [Apache2](https://ubuntu.com/server/docs/web-servers-apache)).
 
 
-## Setting up in GitHub
-You will need to upload the code folder, `ph-dash`, as a repository onto GitHub. This can be done in command line or in GitHub Desktop (see [this lesson if you are new to Git or GitHub](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#github--github-pages-)).
+#### Setting up in GitHub
 
-Then, install one more library for deployment: `$pip install gunicorn`. This library, [`gunicorn`](https://gunicorn.org/), is needed when Render sets up a web server for you.
+You will need to upload the `ph-dash` folder to GitHub, as a repository. You can do this in the command line or using GitHub Desktop (see [this _Programming Historian_ lesson](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#github--github-pages-) if you are new to Git or GitHub).
 
-In the repository, you need two essential files: A `.py` file that contains all of your Python code, and a file called `requirements.txt` that lists all the required Python libraries for the dashboard. Later, Render will read this file to install the needed Python libraries when you deploy the app. You can easily create this requirements file in command line using `$pip freeze > requirements.txt`. I have [provided a sample repository in this link for your reference](https://github.com/hluling/ph-dash).
+Then, install one more library for deployment by entering `$pip install gunicorn`. The [`gunicorn`](https://gunicorn.org/) library is needed for Render to set up a web server for you.
 
-### Setting up in Render
-You can sign up for free using an email address. 
+In the repository, you need two essential files: a `.py` file that contains all of your Python code, and a file called `requirements.txt` that lists all the required Python libraries. When you deploy the app, Render will read this file to install the required Python libraries. You can easily create this requirements file in the command line, using `$pip freeze > requirements.txt`. I have also provided a [sample repository in this link, for your reference](https://github.com/hluling/ph-dash).
 
-Then, navigate to the appropriate place to create a new "Web Service." 
+#### Setting up in Render
 
-If your GitHub repository is public, you can copy and paste the HTTPS address of the repository into the address of "Public Git Repository." 
+You can sign up for free using an email address. Navigate to the appropriate place to create a new "Web Service". If your GitHub repository is public, you can copy and paste the HTTPS address of the repository into the "Public Git Repository" address field. Otherwise, you can also link your GitHub account to Render, giving Render access to your private repository.
 
-Otherwise, you can also link your GitHub account with Render so that Render has access to your private repository.
+On the next screen, you will enter several pieces of information. In addition to giving your dashboard a name, you'll need to configure two more settings (assuming all the populated default settings are correct). 
 
-Then, you will enter several pieces of information on the next screen. In addition to giving your dashboard a name, you need to configure two more settings (assuming all the populated default settings are correct). 
+First, change the **Start Command** input to `gunicorn app:server`. The `server` name after the colon should match the object name you set for your server in your Python script. The `app` name before the colon should match the `.py` filename in the repository.
 
-First, in "Start Command," change the input to `gunicorn app:server`. That is, the name after the colon must be the same as the object name of the server you set in your Python script. The name before the colon must be the same as the `.py` file in the repository.
+Second, scroll down to find the section called **Environment Variables**. Click _Add Environment Variable_ and input `PYTHON_VERSION` as the key, with the Python version that you use on your machine as the value (use `$python -V` in the command line to check your Python version). If you don't explicitly specify the Python version this way, Render will use Python 3.7 as default, which may cause conflicts with the library versions you've specified in `requirements.txt`.
 
-Second, scroll down and find the section called "Environment Variables." Click "Add Environment Variable" and input `PYTHON_VERSION` as the key and the Python version that you use on your machine as the value (use `$python -V` in command line to check your Python version). If you don't explicitly specify the Python version this way, Render will use Python 3.7 as default, which may cause conflicts between this old Python version and the libraries' versions specified in `requirements.txt`.
+Third, click _Create Web Service_ and wait for several minutes for the application to build. When finished, you'll be able to see your dashboard via a URL, like this: `https://ph-dash-demo.onrender.com/`.
 
-Third, click "Create Web Service" and wait for several minutes for the application to build. When finished, you can see your dashboard via a URL like this: https://ph-dash-demo.onrender.com/
+## Extending the Case Study
 
-# Extending the Case Study
-To demonstrate the wide applicability of the approach used in the case study, this lesson also shows how to create another dashboard using a different dataset. This extended case explores a different research question: How has the ranking of top non-English languages of American newspapers changed from the 1690s to the present? Specifically, a dashboard will be designed to show the top ten languages for each decade dating back to the 1690s, highlighting any shifts in their rankings and the emergence or decline of different languages over time. 
+To demonstrate the wide applicability of the approach used in the case study above, this lesson will show how to create another dashboard, using a different dataset. This extended case explores a different research question: "How have the top languages of non-English U.S. newspapers changed from the 1690s to today?" We'll design a dashboard to show the top ten languages in each decade dating back to the 1690s, highlighting any shifts in their rankings and the emergence or decline of different languages over time. 
 
-Whereas non-English Native American newspapers serve as a crucial medium for preserving cultural values, educating about Euro-American society, and negotiating tribal sovereignty,[^7] [^8] non-English immigrant newspapers help newcomers track the latest events in their home countries, provide ways to learn about the new country, and facilitates transition.[^9] Examining the top non-English American newspapers helps further investigation into the history of Native Americans, immigration history, the sociolinguistics and ideological landscapes in the U.S.,[^10] and various functions of ethnic media.[^11] 
+Whereas non-English Native American newspapers serve as a crucial medium for preserving cultural values, teaching about the Euro-American society, and negotiating tribal sovereignty,[^7] [^8] non-English immigrant newspapers help newcomers track the latest events in their home countries, provide ways to learn about the new country, and facilitate transition.[^9] Examining the top non-English American newspapers helps to investigate Native American history, immigration history, the sociolinguistics and ideological landscapes in the U.S.,[^10] and various functions of ethnic media.[^11] 
 
-## Dataset
-The dashboard for the extended case relies on a publicly available dataset from [the Chronicling America project](https://chroniclingamerica.loc.gov/). Specifically, the data come from [the U.S. Newspaper Directory, 1690-Present](https://chroniclingamerica.loc.gov/search/titles/). This dataset tracks the metadata of historic American newspapers including the language of a newspaper. 
+### Dataset
 
-The data-retrieval tool is [Chronicling America's API](https://chroniclingamerica.loc.gov/about/api/). You can use this API to retrieve the needed data and prepare it for visualization in a tabular structure like this:
+The dashboard for the extended case relies on a publicly available dataset from [the Chronicling America project](https://chroniclingamerica.loc.gov/). Specifically, the data come from [the U.S. Newspaper Directory, 1690-Present](https://chroniclingamerica.loc.gov/search/titles/). This dataset tracks the metadata of historic U.S newspapers, including what language they were written in. 
+
+The data-retrieval tool is [Chronicling America's API](https://chroniclingamerica.loc.gov/about/api/). You can use this API to retrieve the required data and prepare it for visualization in a tabular structure, like this:
 
 {% include figure.html filename="en-or-interactive-data-visualization-dashboard-05.png" alt="A screenshot showing what the dataset for the extended case looks like. The rows represent languages, the columns represent decades, and the cells represent count of newspapers." caption="Figure 5. Screenshot of the dataset for the extended case." %}
 
-In Figure 4, the rows represent languages, the columns represent decades (from the 1690s to the 2020s), and the cells represent counts of newspaper. 
+In Figure 5, the rows represent different languages (sorted alphabetically), the columns represent decades (from the 1690s to the 2020s), and the cells represent newspaper counts. 
 
-You can use the cell values to calculate the percentage for a given newspaper language in a certain decade. The percentage is calculated by dividing the number of newspapers for a given language in a certain decade by the total number of non-English newspapers in that decade, and then multiplying by 100. This gives the proportion of newspapers for that language relative to all non-English newspapers in the same decade. 
+You can use the cell values to calculate the proportion (percentage) of newspapers for a given language – relative to all non-English newspapers – over a certain decade. The percentage is calculated by dividing the number of newspapers in a given language in a certain decade by the total number of non-English newspapers in that decade, and then multiplying by 100.
 
-Then, you can visualize what the top 10 non-English newspapers are in a certain decade.
+Then, you can visualize what the top 10 non-English languages were in a certain decade.
 
-## Planning the Dashboard for the Extended Case
-Let's create two pie charts side by side. The pie chart will show the top 10 non-English languages in percentage. Both charts will allow users to specify a decade, so the results from any two decades can be compared.
+### Planning the Dashboard for the Extended Case
 
-Regarding workflow, the following steps will be the same as described in the TV airtime case above: the same prerequisites will be needed; follow the same steps to create a new virtual environment; the same Python libraries will be needed; and you can follow the same steps to deploy the dashboard on Render. 
+Let's create two pie charts, side by side. Both pie charts will show the top 10 non-English languages with their percentage – users will be able to specify a certain decade for each pie chart using a dropdown menu, allowing them to compare the results for any two decades.
 
-The data downloading procedure and the specific code used for the non-English-newspaper dashboard will be different from the TV airtime case. However, the underlying logic is the same: you start with data retrieval, prepare the data for visualization, code the dashboard frontend, then code the dashboard backend.
+The following are the same as we've described in the TV airtime case study above:
+- Prerequisites
+- Creating a new virtual environment
+- Python libraries needed
+- Deploying the dashboard on Render
 
-## Download Data
+The differences will be in the data downloading procedure, as well as the specific code used to build the dashboard's frontend and backend. However, the underlying logic remains the same: you start with data retrieval, prepare the data for visualization, code the dashboard frontend, then code the dashboard backend.
 
-Because the download can take a long time, for the purpose of this lesson, it may be more helpful to focus on the dashboard-coding part directly. Thus, I provide the downloaded data in CSV [here](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/interactive-data-visualization-dashboard/data_lang_asrow.csv). Feel free to download this dataset directly and move on to the next section.
+### Download Data
 
-If you wonder how to download the data, I have provided [the script here](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/interactive-data-visualization-dashboard/rq2-download.py). The key step is to retry a query if there is an error returned by the server. This is probably due to the restriction that Chronicling America sets on how many requests in a given period can be sent to the server for downloads. No matter what your data demand is, always follow the rule set by the server and respect other users.
+Because the download can take a long time, it may be more helpful to simply focus on the dashboard coding part directly. Thus, I've provided [the downloaded data in a CSV file](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/interactive-data-visualization-dashboard/data_lang_asrow.csv). Feel free to download this dataset directly and move on to the next section.
 
-## Coding the non-English-newspaper Dashboard
+If you're wondering how to download the data yourself, I have provided [the necessary script](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/interactive-data-visualization-dashboard/rq2-download.py) to do so. The key step is to retry a query if the server returns an error – Chronicling America restricts the number of download requests which can be sent to the server over a given period. No matter what your data demand is, always follow the rule set by the server and respect other users.
 
-The dashboard has two pie charts placed side by side, each of which has a dropdown menu for selecting decades. 
+### Coding the non-English-newspaper Dashboard
 
-Both charts show the top-10 non-English languages in percentage. [The script for coding the dashboard can be found here](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/interactive-data-visualization-dashboard/app-rq2.py). 
+[This is the script for coding the dashboard](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/interactive-data-visualization-dashboard/app-rq2.py). 
 
-If you have downloaded the data in CSV (see the previous section, above), you can run the script (`app-rq2.py`) directly without retrieving the data from Chronicling America. The final product looks like this:
+If you have downloaded the data in CSV format, you can run the `app-rq2.py` script directly, without retrieving the data from Chronicling America. The final product should look like this:
 
-{% include figure.html filename="en-or-interactive-data-visualization-dashboard-06.png" alt="A screenshot showing what the dashboard for the extended case looks like. There are two pie graphs: one shows the top 10 non-English newspapers in the U.S. in the 1690s; the other shows the same but for 2020s" caption="Figure 6. Screenshot of the non-English-newspaper dashboard. Each chart shows the top-10 non-English newspapers in a given decade. The percentage is the count of newspaper titles in a given non-English language divided by the sum of non-English newspaper titles." %}
+{% include figure.html filename="en-or-interactive-data-visualization-dashboard-06.png" alt="A screenshot showing what the dashboard for the extended case looks like. There are two pie graphs: one shows the top 10 non-English newspapers in the U.S. in the 1690s; the other shows the same but for 2020s" caption="Figure 6. The non-English-newspaper dashboard." %}
 
-The deployment procedure is the same as the TV airtime case. I would encourage you to refer to the same procedure outlined above to deploy the non-English-newspaper dashboard by yourself.
+Each chart shows the top-10 languages of non-English newspapers in a given decade. To deploy this dashboard online, you can follow the same procedure as for the TV airtime case study.
 
-# Conclusion
-Interactive visualization contributes to digital humanities by facilitating knowledge discovery and making the research output more accessible to the public. In this lesson, the key steps of creating and deploying an interactive dashboard using an open-source tool, Dash in Python, are demonstrated with two examples in media studies. Like [Shiny in R](https://doi.org/10.46430/phen0105), this is an approach that can be applied in a wide range of applications in digital humanities.
+## Conclusion
+
+Interactive visualization contributes to digital humanities by facilitating knowledge discovery and making research outputs more accessible to the public. In this lesson, we've demonstrated the key steps for creating and deploying an interactive dashboard, using the open-source Dash in Python, and two examples from the field of media studies. As with the lesson using [Shiny in R](https://doi.org/10.46430/phen0105), this approach can be adapted to a wide range of research applications in the digital humanities.
 
 You have learned:
 * How to retrieve publicly available data using an API using the `requests` library
 
-  The data owner may have a restriction on the amount of data to be requested. You need to respect such a policy. As shown in the non-English newspaper case, something you could do is to time your requests (e.g., to resend a request after a certain time). 
+>The data owner may have a restriction on the amount of data to be requested. You need to respect such a policy. As shown in the non-English >newspaper case, something you could do is to time your requests (e.g., to resend a request after a certain time). 
 
 * How to create the frontend of a dashboard
   
-  The key is to understand the page layout as a grid that has a certain number of rows and columns. We have used a CSS framework called bootstrap that is user-friendly to non-web-developers. This can help you get off the ground quickly. We did not discuss the use of [wireframe](https://en.wikipedia.org/wiki/Website_wireframe) in the planning stage. But that is something useful to consider if you work in a team or your dashboard has more features and outputs.
+>The key is to understand the page layout as a grid that contains a certain number of rows and columns. We used a CSS framework called Bootstrap, which is user-friendly for non-web-developers. This can help you get off the ground quickly. We did not discuss the use of [wireframe](https://en.wikipedia.org/wiki/Website_wireframe) in the planning stage, but that could be useful to consider if you work in a team, or your dashboard has many features and outputs.
 
 * How to create the backend of a dashboard
   
-  One takeaway regarding the backend: Any changes in the user input will trigger changes in the output. There are two things to keep in mind: The `id` you specified in the frontend component helps you to define the input and output variables in the callback decorator; the dataframe needs to be updated based on the changes in the input variables.
+>One takeaway regarding the backend: any changes in the user input will trigger changes in the output. There are two things to keep in mind: the `id` you specified in the frontend component helps you to define the input and output variables in the callback decorator; the dataframe needs to be updated based on the changes in the input variables.
 
 * How to deploy a dashboard for free
 
-  Your dashboard needs to be seen and accessed by others to make great impacts. We have used Render for the deployment, but that is just one of the options at the time of writing. There are even more options if you are willing to pay a certain amount of money. The key is to find a platform that is reliable and sustainable for long term.
+>Your dashboard needs to be seen and accessed by others, to achieve great impact. We used Render for the deployment, but that is only one of many options available at the time of writing. There are even more options if you are willing to pay a certain amount of money. The key is to find a platform that is reliable and sustainable.
 
-For the final message of this lesson, you are encouraged to adapt the provided code for your own purposes. There are also numerous free online resources for further study. To get started, all you need to do is just opening a command line tool, opening a text editor, and trying out the Python code yourself.
+The final message of this lesson is to encourage you to adapt the provided code for your own purposes. There are also numerous free online resources for further study. To get started, all you need to do is just open a command line tool, open a text editor, and try out the Python code yourself!
 
-# References
+## Endnotes
+
 [^1]: Ann Marie Ward. *Ireland Gender Pay Gap Analysis* (), https://genderpaygap.pythonanywhere.com/.
 
 [^2]: Stephen Lacy et al., “Issues and Best Practices in Content Analysis,” *Journalism &amp; Mass Communication Quarterly* 92, no. 4 (September 28, 2015): 791–802, https://doi.org/10.1177/1077699015607338.
