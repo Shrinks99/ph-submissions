@@ -178,7 +178,7 @@ Por fim, tente:
 
 `open .`
 
-no macOS e Linux ou:
+no macOS ou:
 
 `explorer .`
 
@@ -214,7 +214,7 @@ Você pode ler o texto no interior desse ficheiro de algumas maneiras diferentes
 
 `open 2600-0.txt`
 
-no macOS e Linux, ou:
+no macOS, ou:
 
 `explorer 2600-0.txt`
 
@@ -383,7 +383,7 @@ Para sua conveniência, aqui estão os comandos que aprendeu nesta lição:
 | `man *`              | Lista o manual do comando, substituído pelo `*`                                                                                                        |
 | `cd *`               | Muda o diretório atual para `*`                                                                                                                        |
 | `mkdir *`            | Cria um diretório chamado `*`                                                                                                                          |
-| `open` ou `explorer` | No macOS e no Linux, `open`, seguido por um arquivo, o abre; no Windows, o comando `explorer` seguido de um nome de arquivo faz a mesma coisa.          |
+| `open` ou `explorer` | No macOS, `open`, seguido por um arquivo, o abre; no Windows, o comando `explorer` seguido de um nome de arquivo faz a mesma coisa.          |
 | `cat *`              | `cat` é um comando versátil. Ele lerá um ficheiro para você se você substituir um ficheiro por `*`, mas também pode ser usado para combinar ficheiros. |
 | `head *`             | Mostra as primeiras dez linhas de `*`                                                                                                                  |
 | `tail *`             | Mostra as últimas dez linhas de `*`                                                                                                                    |
