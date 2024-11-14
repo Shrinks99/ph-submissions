@@ -18,7 +18,7 @@ review-ticket: https://github.com/programminghistorian/ph-submissions/issues/616
 difficulty: 1 
 activity: sustaining 
 topics: [data-management]
-abstract: Short abstract of this lesson
+abstract: Cette leçon présente des modalités d'archivage adaptées aux spécificités du logiciel et à différents profils d'utilisateurs. Les bonnes pratiques pour citer les logiciels, ainsi que des méthodes pour explorer efficacement les fonds de Software Heritage, seront abordées.
 avatar_alt: Dessin du mécanisme d'une montre chronographe.
 doi: 10.46430/phfr0034
 ---
