@@ -40,9 +40,9 @@ Muitas das lições do *Programming Historian* exigem que você insira comandos 
 
 Interfaces de linha de comando possuem vantagens para usuários de computador que precisam de maior precisão em seu trabalho – tal como historiadores(as) digitais. Elas permitem maior detalhamento quando executando alguns programas, ao passo que você pode adicionar modificações para especificar exatamente como deseja que o programa seja executado. Além do mais, elas podem ser facilmente automatizadas através de [scripts](http://www.tldp.org/LDP/Bash-Beginners-Guide/html/chap_01.html), que são basicamente conjuntos de comandos baseados em texto.
 
-Existem duas interfaces de linha de comando principais, ou "shells", que muitos historiadores e historiadoras digitais utilizam. No macOS[^1] e muitas distribuições Linux, o shell é conhecido como `bash`, ou o "bourne-again shell" (shell renascido). Para usuários(as) de sistemas baseados no Windows, a interface de linha de comando é por norma baseada em `MS-DOS`, que utiliza comandos e [sintaxe](https://pt.wikipedia.org/wiki/Sintaxe) distinta, mas que comumente pode desempenhar tarefas similares. Essa lição oferece uma introdução básica ao terminal `bash`, e usuários Windows podem acompanhá-la instalando shells populares como [Cygwin](https://www.cygwin.com/) ou Git Bash (veja abaixo).
+Existem duas interfaces de linha de comando principais, ou "shells", que muitos historiadores e historiadoras digitais utilizam. No macOS[^1] e muitas distribuições Linux, o shell é conhecido como `bash`, ou o "bourne-again shell" (shell renascido). Para usuários(as) de sistemas baseados no Windows, a interface de linha de comando é por norma baseada em `MS-DOS`, que utiliza comandos e [sintaxe](https://perma.cc/WPA6-LJG8) distinta, mas que comumente pode desempenhar tarefas similares. Essa lição oferece uma introdução básica ao terminal `bash`, e usuários Windows podem acompanhá-la instalando shells populares como [Cygwin](https://www.cygwin.com/) ou Git Bash (veja abaixo).
 
-Essa lição utiliza um [shell do Unix](https://pt.wikipedia.org/wiki/Shell_do_Unixl), é uma interface de linha de comando no sistema operacional [Unix](https://pt.wikipedia.org/wiki/Unix) e similares. Essa lição cobre um pequeno número de comandos básicos. Ao final desse tutorial, você será capaz de navegar pelo seu sistema de ficheiros e encontrar ficheiros, abri-los, executar tarefas de manipulação de dados básicos, tal como combinar e copiar ficheiros, assim como lê-los e fazer edições relativamente simples. Esses comandos constituem o alicerce sobre o qual comandos mais complexos podem ser construídos para se adequarem ao seu projeto ou dados de pesquisa. Leitores(as) que busquem um guia de referências que vá além dessa lição são recomendados a ler *Unix and Linux: Visual Quickstart Guide*, 4ª edição (2009) de Deborah S. Ray e Eric J. Ray.
+Essa lição utiliza um [shell do Unix](https://perma.cc/QLR4-LNAU), é uma interface de linha de comando no sistema operacional [Unix](https://perma.cc/BZQ4-3HAJ) e similares. Essa lição cobre um pequeno número de comandos básicos. Ao final desse tutorial, você será capaz de navegar pelo seu sistema de ficheiros e encontrar ficheiros, abri-los, executar tarefas de manipulação de dados básicos, tal como combinar e copiar ficheiros, assim como lê-los e fazer edições relativamente simples. Esses comandos constituem o alicerce sobre o qual comandos mais complexos podem ser construídos para se adequarem ao seu projeto ou dados de pesquisa. Leitores(as) que busquem um guia de referências que vá além dessa lição são recomendados a ler *Unix and Linux: Visual Quickstart Guide*, 4ª edição (2009) de Deborah S. Ray e Eric J. Ray.
 
 ## Apenas para Windows: Instalando o Git Bash
 
@@ -138,7 +138,7 @@ Quando você quer usar duas flags, você pode executá-las junto. Então, ao dig
 
 receberá um resultado em um formato legível para humanos; você descobre que aqueles 620 bits correspondem a 5.9KB, que outro ficheiro tem 1 megabyte, e assim por diante.
 
-Essas opções são muito importantes. Elas aparecem em outras lições do *Programming Historian*. [Wget](https://programminghistorian.org/en/lessons/applied-archival-downloading-with-wget), [MALLET](https://programminghistorian.org/en/lessons/topic-modeling-and-mallet), e [Pandoc](https://programminghistorian.org/pt/licoes/autoria-sustentavel-texto-simples-pandoc-markdown) usam a mesma sintaxe. Felizmente, você não precisa memorizar a sintaxe; em vez disso, mantenha essas lições à mão para que possa dar uma olhada rápida se precisar ajustar alguma coisa. Essas lições podem ser feitas em qualquer ordem.
+Essas opções são muito importantes. Elas aparecem em outras lições do *Programming Historian*. [Wget](/en/lessons/applied-archival-downloading-with-wget), [MALLET](/en/lessons/topic-modeling-and-mallet), e [Pandoc](/pt/licoes/autoria-sustentavel-texto-simples-pandoc-markdown) usam a mesma sintaxe. Felizmente, você não precisa memorizar a sintaxe; em vez disso, mantenha essas lições à mão para que possa dar uma olhada rápida se precisar ajustar alguma coisa. Essas lições podem ser feitas em qualquer ordem.
 
 Agora, você passou um bom tempo em seu diretório inicial. Vamos para outro lugar. Você pode fazer isso através do comando `cd` ou "Change Directory" (Mudar diretório).
 
@@ -162,7 +162,7 @@ Isso nos movimenta um diretório "acima", colocando-nos de volta em `/users/ianm
 
 lhe trará de volta ao diretório inicial, exatamente onde você começou.
 
-Tente explorar um pouco mais: visite seu diretório de documentos, imagens, pastas que você tenha na sua área de trabalho. Se acostume a passear pelos diretórios. Imagine que você está navegando por uma [topologia em árvore](https://pt.wikipedia.org/wiki/Topologia_em_%C3%A1rvore). Se você está na área de trabalho, você não será capaz de `cd Documentos` pois este é um "filho" de seu diretório inicial, ao passo que sua Área de Trabalho é "irmã" de sua pasta Documentos. Para se mover para uma localização irmã, você deve retornar à "mãe" comum. Para fazer isso, você deverá retornar para o seu diretório inicial (`cd ..`) e então se mover para `cd Documentos`.
+Tente explorar um pouco mais: visite seu diretório de documentos, imagens, pastas que você tenha na sua área de trabalho. Se acostume a passear pelos diretórios. Imagine que você está navegando por uma [topologia em árvore](https://perma.cc/7BRY-YU8J). Se você está na área de trabalho, você não será capaz de `cd Documentos` pois este é um "filho" de seu diretório inicial, ao passo que sua Área de Trabalho é "irmã" de sua pasta Documentos. Para se mover para uma localização irmã, você deve retornar à "mãe" comum. Para fazer isso, você deverá retornar para o seu diretório inicial (`cd ..`) e então se mover para `cd Documentos`.
 
 Ser capaz de navegar no seu sistema de ficheiros utilizando o shell bash é muito importante para muitas das lições no *Programming Historian*. À medida que você se sentir mais confortável, logo se verá pulando diretamente para o diretório que deseja. No nosso caso, de qualquer lugar em nosso sistema, poderíamos digitar:
 
@@ -172,7 +172,7 @@ Ou, no Windows, algo como:
 
 `cd c:\mallet-2.0.7\`
 
-e ser levado ao nosso diretório MALLET para [modelagem de tópicos](https://programminghistorian.org/en/lessons/topic-modeling-and-mallet).
+e ser levado ao nosso diretório MALLET para [modelagem de tópicos](/en/lessons/topic-modeling-and-mallet).
 
 Por fim, tente:
 
@@ -186,7 +186,7 @@ no Windows. Esse comando abrirá seu GUI no diretório atual. Certifique-se de q
 
 ## Interagindo com ficheiros
 
-Assim como navegar pelos diretórios, você pode interagir com ficheiros na linha de comando: você pode lê-los, abri-los, executá-los, e mesmo editá-los, geralmente sem nunca precisar sair da interface. Há algum debate sobre por que alguém faria isso. O principal motivo é a experiência fluida de trabalhar na linha de comando: você nunca precisa pegar o mouse ou tocar o touchpad e, embora tenha uma curva de aprendizado acentuada, pode eventualmente se tornar um ambiente de escrita único. Além disso, muitos programas exigem que você use a linha de comando para operá-los. Como você usará programas na linha de comando, muitas vezes pode ser mais rápido fazer pequenas edições em ficheiros sem a necessidade de alternar para um outro programa. Para alguns desses argumentos, veja ["Why, oh WHY, do those #?@! nutheads use vi?"](http://www.viemu.com/a-why-vi-vim.html) de Jon Beltran de Heredia.
+Assim como navegar pelos diretórios, você pode interagir com ficheiros na linha de comando: você pode lê-los, abri-los, executá-los, e mesmo editá-los, geralmente sem nunca precisar sair da interface. Há algum debate sobre por que alguém faria isso. O principal motivo é a experiência fluida de trabalhar na linha de comando: você nunca precisa pegar o mouse ou tocar o touchpad e, embora tenha uma curva de aprendizado acentuada, pode eventualmente se tornar um ambiente de escrita único. Além disso, muitos programas exigem que você use a linha de comando para operá-los. Como você usará programas na linha de comando, muitas vezes pode ser mais rápido fazer pequenas edições em ficheiros sem a necessidade de alternar para um outro programa. Para alguns desses argumentos, veja ["Why, oh WHY, do those #?@! nutheads use vi?"](https://perma.cc/7633-K3Q6) de Jon Beltran de Heredia.
 
 Aqui estão algumas maneiras básicas de interagir com ficheiros.
 
@@ -198,7 +198,7 @@ Esse comando cria um diretório com o nome, como você pode imaginar, `ProgHist-
 
 Mas espere! Há um truque para tornar as coisas um pouco mais rápidas. Vá para o diretório anterior (`cd ..` - o que o levará de volta para a área de trabalho). Para navegar até o diretório `ProgHist-Text`, você poderia digitar `cd ProgHist-Text`. Alternativamente, você poderia digitar `cd Prog` e depois pressionar a tecla Tab. Você notará que a interface completa automaticamente a linha para `cd ProgHist-Text`. Pressionar a tecla tab a qualquer momento no shell irá tentar completar a linha com base nos ficheiros ou subdiretórios no diretório atual. No entanto, é sensível a maiúsculas e minúsculas. No exemplo anterior, `cd prog` não seria autocompletado para `ProgHist-Text`. Quando dois ou mais ficheiros têm os mesmos caracteres, o completar preencherá apenas até o primeiro ponto de diferença. Encorajamos o uso desse método ao longo da lição para ver como ele funciona.
 
-Agora você precisa encontrar um ficheiro de texto simples para nos ajudar com o exemplo. Porque não usar um livro que sabemos ser longo, tal como o épico *Guerra e Paz* (em inglês), de Leon Tolstoy? O ficheiro de texto está disponível no [Projeto Gutenberg](http://www.gutenberg.org/ebooks/2600). Se você já instalou o [wget](https://programminghistorian.org/en/lessons/automated-downloading-with-wget) (em inglês), pode simplesmente digitar:
+Agora você precisa encontrar um ficheiro de texto simples para nos ajudar com o exemplo. Porque não usar um livro que sabemos ser longo, tal como o épico *Guerra e Paz* (em inglês), de Leon Tolstoy? O ficheiro de texto está disponível no [Projeto Gutenberg](http://www.gutenberg.org/ebooks/2600). Se você já instalou o [wget](/en/lessons/automated-downloading-with-wget) (em inglês), pode simplesmente digitar:
 
 `wget http://www.gutenberg.org/files/2600/2600-0.txt`
 
@@ -268,7 +268,7 @@ e depois _Enter_, uma combinação de todos os ficheiros `.txt` no diretório at
 
 ## Editando ficheiros de texto diretamente na linha de comando
 
-Se você quiser ler um arquivo inteiro sem sair da linha de comando, você pode iniciar o [vim](https://pt.wikipedia.org/wiki/Vim). O Vim é um editor de texto muito poderoso, perfeito para usar com programas como [Pandoc](http://johnmacfarlane.net/pandoc/), para fazer processamento de texto ou para editar seu código sem ter que mudar para outro programa. O melhor de tudo é que ele vem incluído no bash tanto no macOS e Linux quanto no Windows. O Vim tem uma curva de aprendizado bastante acentuada, então vamos apenas abordar alguns pontos menores.
+Se você quiser ler um arquivo inteiro sem sair da linha de comando, você pode iniciar o [vim](https://perma.cc/6728-CAFF). O Vim é um editor de texto muito poderoso, perfeito para usar com programas como [Pandoc](http://johnmacfarlane.net/pandoc/), para fazer processamento de texto ou para editar seu código sem ter que mudar para outro programa. O melhor de tudo é que ele vem incluído no bash tanto no macOS e Linux quanto no Windows. O Vim tem uma curva de aprendizado bastante acentuada, então vamos apenas abordar alguns pontos menores.
 
 Digite
 
@@ -278,7 +278,7 @@ Você verá o Vim ganhar vida diante de você, um editor de texto baseado em lin
 
 {% include figure.html filename="en-or-intro-to-bash-06.png" alt="Documento aberto no programa Vim" caption="Figura 6. Vim" %}
 
-Se você realmente quer se aprofundar no Vim, existe um [bom guia](http://vimdoc.sourceforge.net/htmldoc/quickref.html) em inglês.
+Se você realmente quer se aprofundar no Vim, existe um [bom guia](https://perma.cc/RG67-AK94) em inglês.
 
 Utilizar o Vim para ler ficheiros é relativamente simples. Você pode utilizar as setas para navegar e poderia, teoricamente, ler *Guerra e Paz* através da linha de comando (deveria receber um prêmio por fazer isso.). Alguns comandos básicos de navegação rápidos são os seguintes:
 
