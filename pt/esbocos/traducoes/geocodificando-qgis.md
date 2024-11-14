@@ -27,7 +27,7 @@ activity: transforming
 topics: [mapping]
 abstract: Aprenda a usar o QGIS para converter listas de nomes de lugares em coordenadas geográficas, permitindo que você os mapeie.
 avatar_alt: Um jovem beijando uma jovem na bochecha
-doi: 10.46430/phpt0049
+doi: XX.XXXXX/phen0000
 ---
 
 {% include toc.html %}
