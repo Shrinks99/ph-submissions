@@ -1,5 +1,5 @@
 ---
-title: "Simulations in Historical Research: How to Create an Agent-Based Model of Communication Networks"
+title: "Simulations in Historical Research: How to Create an agent-based model of Communication Networks"
 slug: agent-based-model-communication-networks
 layout: lesson
 collection: lessons
@@ -26,122 +26,130 @@ doi: XX.XXXXX/phen0000
 {% include toc.html %}
 
 
-### Overview
-In this lesson, we will provide an introduction to the simulation method of Agent-based Modeling (often abbreviated ABM) via an Agent-based Model of a historical letter sending network, implemented with the python-package `mesa`.
+## Overview
 
-The historical case that inspires this lesson is the Republic of Letters, an early modern network of scholars who wrote to each other extensively, thereby fertilizing each other's thinking, which has been extensively studied with digital methods[^1][^2]. With our model, we want to better understand the social dynamics of these correspondence networks and how they were able to shape the scientific thought of the time.
+In this lesson, we will provide an introduction to a simulation method called 'agent-based modeling' (often abbreviated to ABM), via an agent-based model of a historical letter-sending network, implemented with the Python package `mesa`.
 
-The model we are building together will be relatively basic and will only feature simple interactions like sending letters. Those simple interactions will lead to correspondence networks that are structurally similar to those observed in actual, historical data-sets on letter sending.
+The historical case that inspired this lesson is the '[Republic of Letters](https://en.wikipedia.org/w/index.php?title=Republic_of_Letters&oldid=1240959647)', an [early modern](https://en.wikipedia.org/wiki/Early_modern_period) network of scholars who wrote to eachother extensively, thereby fertilizing each other's thinking. It has already been extensively studied with digital methods[^1][^2]. Using our agent-based model, we want to better understand the social dynamics of these correspondence networks and how they were able to shape scientific thought of the time.
 
-The model we build here will not be sufficiently complex to give genuinely valuable perspectives on this case study on its own, but it will highlight some key properties of Agent-based Modeling and ways to implement them. Crucially, by the end of this lesson, you will be able to extend the model further with more complex functionalities.
+The model we will building together is relatively basic, featuring only simple interactions like sending letters. Those simple interactions will lead to correspondence networks that are structurally similar to those observed in actual, historical datasets on letter sending.
 
-In the **first part**, you will learn what historical simulation methods are all about, their methodological and epistemological quirks, and how to start applying Agent-based Modeling to your research.
+The model we build here will not be sufficiently complex to give genuinely valuable perspectives on this case study on its own, but it will highlight some key properties of ABM, and various ways to implement them. Crucially, by the end of this lesson, you will be able to extend the model further with more complex functionalities.
 
-In the **second part**, you can follow a step-by-step guide to build your first Agent-based Model with `mesa`. This will be accompanied by further comments and reflections on the methodology of Agent-based Modeling.
+In the [first part](#Part-1:-Introduction-to-Simulations-and-Agent-based-Modeling), you will learn what historical simulation methods are all about, their methodological and epistemological quirks, and how to start applying agent-based modeling to your own research.
 
-In the **third part**, we will tell you about ways to extend the model and further enhance your expertise in building Agent-based Models.
+In the [second part](#Part-2:-Programming-Agent-based-Models-with-Mesa), you will follow a step-by-step guide to building your first agent-based model, using the Python package `mesa`. This will be accompanied by further comments and reflections on the methodology of agent-based modeling.
+
+In the [third part](#Part-3:-A-Summary,-Open-Questions-and-Next-Steps), you will explore ways to extend the model and further enhance your expertise in building agent-based models.
 
 
-### Lesson Goals Summarized
+## Lesson Goals
+
 This lesson intends to:
-- teach conceptual basics of simulation methods and 'Agent-based Modeling' for historians,
-- teach fundamentals of the python-package `mesa` for programming Agent-based Modeling,
-- give you guidance and resources for extending your Agent-based Modeling knowledge beyond this tutorial, as well as
-- give an overview over methodological and epistemological caveats, challenges, and things to think about when programming your own historical Agent-based Models.
+- teach conceptual basics of simulation methods and 'agent-based modeling' for historians
+- teach fundamentals of the Python package `mesa` for programming agent-based models
+- give you guidance and resources for extending your agent-based modeling knowledge beyond this tutorial
+- give an overview of methodological and epistemological caveats, challenges, and things to think about when programming your own historical agent-based model
 
 Users of different skill levels and interests will find this lesson useful, for example if:
-- you are completely unfamiliar with simulation methods and Agent-based Modeling and want a thorough introduction,
-- you already know about Agent-based Modeling conceptually and are wondering whether it can be useful for your own research project,
-- you already know that Agent-based Modeling might be useful for your research and now want to learn about how the process of modeling and technical implementation of an Agent-based Modeling can work,
-- you are familiar with all of the above and need a starting point for implementing Agent-based Models with `mesa`.
+- you are completely unfamiliar with simulation methods and agent-based modeling and want a thorough introduction
+- you already have a conceptual understanding of agent-based modeling, and are wondering whether it could be useful for your own research project
+- you already know that agent-based modeling might be useful for your research, and now want to learn the modeling and technical implementation processes
+- you are familiar with all of the above and need a starting point for implementing agent-based models with `mesa`
 
 
 ### Technical Requirements
 
-For this lesson, `mesa` and its dependencies are necessary. Additionally we will use matplotlib for visualizations and numpy for some calculations. Note that a solid understanding of Python is required for this lesson! If you are unfamiliar with features such as classes, tuples, list comprehension, and nested for-loops but do have previous python experience, you could head over to [w3schools](https://www.w3schools.com/python/python_classes.asp) to get up to speed. If you would like to have a more gentle and comprehensive introduction, head over to the tutorial introducing [Python](https://programminghistorian.org/en/lessons/introduction-and-installation). You could also follow this tutorial using Jupyter Notebooks and read the corresponding [introduction](https://programminghistorian.org/en/lessons/jupyter-notebooks).
+For this lesson, `mesa` and its dependencies are necessary. Additionally, we will use `matplotlib` for visualizations and `numpy` for some calculations. Note that a solid understanding of Python is required for this lesson! If you are unfamiliar with features such as classes, tuples, list comprehension, and nested for-loops, but you do have previous Python experience, you could head over to [w3schools](https://www.w3schools.com/Python/Python_classes.asp) to get up to speed. If you would like to have a more gentle and comprehensive introduction, head over to the [_Programming Historian_ introduction to Python](https://programminghistorian.org/en/lessons/introduction-and-installation). You could also follow this tutorial using Jupyter Notebooks and read the corresponding [introduction to Jupyter Notebooks](https://programminghistorian.org/en/lessons/jupyter-notebooks).
 
-Execute the code block below in a command line (or in a jupyter-notebook) to install `mesa` and its dependencies. If you want to follow through the tutorial on your local machine, you need to set up an environment with `mesa` installed. If you do not know how to do this, we have a simple [step-by-step instruction](https://gitlab.gwdg.de/modelsen/abm-workshop-setup-instructions), which we compiled for a workshop. If you have no Python installed on your local machine you could read up on its installation for [Linux](https://programminghistorian.org/en/lessons/linux-installation), [Mac](https://programminghistorian.org/en/lessons/mac-installation) or [Windows](https://programminghistorian.org/en/lessons/windows-installation) in the corresponding tutorials.
+If you want to follow through the tutorial on your local machine, you need to set up an environment with `mesa` installed. If you do not know how to do this, we have a simple [step-by-step guide](https://gitlab.gwdg.de/modelsen/abm-workshop-setup-instructions), which we compiled for a workshop. If you don't already have Python installed on your local machine, you could read up on its installation for [Linux](https://programminghistorian.org/en/lessons/linux-installation), [Mac](https://programminghistorian.org/en/lessons/mac-installation) or [Windows](https://programminghistorian.org/en/lessons/windows-installation) in the corresponding _Programming Historian_ lessons.
 
-
-Setup an environment:
-If you already have Python (version >=3.9) installed, running the following code in a terminal should give you a new virtual environment with the `mesa` package, that keeps this installation separate from your main system:
+Execute the code block below in a command line (or in a Jupyter Notebook) to install `mesa` and its dependencies. If you already have Python (version >=3.9) installed, running the following code in a terminal should give you a new virtual environment with the `mesa` package, keeping this installation separate from your main system:
 
 ```
-python3 -m venv env
+Python3 -m venv env
 source env/bin/activate
 pip install 'mesa>=2.4.0,<3.0'
 ```
+
 Note that this installs a specific `mesa` version, for which this tutorial was built. Future versions of `mesa` might require changes in the code.
 
-```python
+```Python
 try:
   import mesa
 except:
   !pip install 'mesa>=2.4.0,<3.0'
 ```
 
-## Part 1: Introduction to Simulations and Agent-based Modeling
+## Part 1: Introduction to Simulations and agent-based modeling
 
-### 1.1 Why use Historical Simulations for our case study?
+### 1.1 Why use Historical Simulations for our Case Study?
 
-In this lesson, we are motivated by trying to better understand the social, material and cognitive dynamics that might have shaped intellectual networks in the past, specifically during the early modern period. In this time in Europe, a primarily letter-based network of scholars of different nationalities emerged, often referred to as the 'Republic of Letters'. The effect of this network on the history of science in Europe and the world is deemed to be pivotal[^3]. To understand these networks, it is not enough to study their shape and speculate about the historical sources we have about them. It is also essential to ask ourselves how exactly these networks came to be shaped as they were.
+In this lesson, we want to better understand the social, material and cognitive dynamics that shaped intellectual networks in the past, specifically during the early modern period. In this time in Europe, a primarily letter-based network of scholars of different nationalities emerged, often referred to as the 'Republic of Letters'. The effect of this network on the history of science in Europe and the world is deemed to be pivotal.[^3] To understand these networks, it is not enough to study their shape and speculate about the historical sources we have about them. It is also essential to ask ourselves how exactly these networks came to be shaped as they were.
 
-Questions related to this are usually hard to answer in a systematic and methodologically sound way. Consider for example the following questions: Which social and intellectual dynamics led to some people being central in the network? How did people form and develop their connections in the network? What effect did simple limiting elements such as distance, infrastructure and technology have on the shape of the network?
+Questions related to this are usually hard to answer in a systematic and methodologically sound way. Consider for example the following questions: 
+- 'Which social and intellectual dynamics led to some people being central in the network?'
+- 'How did people form and develop their connections in the network?'
+- 'What effects did limiting elements such as distance, infrastructure and technology have on the shape of the network?'
 
-We can pose some limited hypotheses regarding those questions and might draw on network research for the sources for some hints and correlations, but it is hard to reliably test those hypotheses.
+We can pose some limited hypotheses regarding those questions, and we might draw on searching for network sources to find some hints and correlations, but it is hard to reliably test those hypotheses.
 
-**One of the main motivations for using historical simulation, or even simulations in general, is precisely this:** operationalizing hypotheses about the underlying reasons for (historical) phenomena, comparing them against what we observe in “reality”. For our network example, this means we create a simulated version based on our historical hypotheses, and then check how its structure compares to the actual historical network. That way, we can test if our hypotheses can explain the observed phenomena.
+One of the main motivations for using historical simulation, or even simulation in general, is precisely this: operationalizing hypotheses about the underlying reasons for (historical) phenomena, and comparing them against what we observe in reality. This means we'll create a simulated version of our netwerk example (based on our historical hypotheses), then check how its structure compares to the actual historical network. That way, we can test whether our hypotheses can explain the observed phenomena.
 
-We could for example assume that, in a particular historical letter network, more famous people receive a higher amount of letters, and that this effect gets stronger over time by being self-reinforcing. Or, we could consider it more likely that a person will send a letter to someone who is a rather close neighbor compared to someone far away. Another area of hypotheses arises if we consider the topic of a letter as well. Letters could more likely be sent if a sender agrees with a receiver's personal opinion, but it could also be the opposite. 
+We could for example assume that, in a particular historical letter network, more famous people receive a higher amount of letters, and that this is a self-reinforcing effect, which gets stronger over time. Or, we could consider it more likely that a person will prefer to send a letter to a close neighbor rather than to someone far away. Another area of hypotheses arises if we consider the topic of the letters. Letters might more likely be sent if a sender agrees with a receiver's personal opinion – although the opposite could arguably turn out to be true. 
 
-Building a simulation model of this letter network would allow us to represent different hypotheses about its dynamics and might help us gain a more thorough understanding of its workings. But what does it actually mean to build a simulation?
+Building a simulation model of this letter network will allow us to represent different hypotheses about its dynamics, giving us a more thorough understanding of its workings. But what does it actually mean to build a simulation?
 
 ### 1.2. What are Simulations?
 
-To start off with, we want to give you a very general definition of the term 'simulation', before we dive into what this actually means:
+To start off, we want to give you a very general definition of the term 'simulation':
 
->"The term 'simulation' describes a number of different methods of model-based, experimental reproduction of a real-world or hypothetical process or system[^4]."
+>"The term 'simulation' describes a number of different methods of model-based, experimental reproduction of a real-world or hypothetical process or system.[^4]"
 
+As the definition says, the basis of every simulation is an executable simulation model. This class of models - similar to data models - can be expressed conceptually (i.e. with more or less stringent language), logically (i.e. in logical terms of 'if-then' 'is/is not' etc.) or mathematically (i.e. through mathematical terms). To execute a simulation model, however, it must be formalized (i.e. converted into computer-readable form). Just as we would for a data model, we must formally describe the ideas of a person, place, or the event of a letter exchange. Additionally, however, we'll also need to describe triggers for certain actions, movements, and interaction rules.
 
-As the definition says, the basis of every simulation is an executable simulation model. This is a class of models - similar to data models - that can be expressed conceptually (i.e., with more or less stringent language), logically (i.e., in logical terms of 'if-then' 'is/is not' etc.) or mathematically (i.e., through mathematical terms). To execute a simulation model, however, it must be formalized, i.e., converted into computer-readable form. Just like what we would do in a data model, in a simulation model we formally describe our ideas of a person, place, or the event of a letter exchange, but additionally, we also describe triggers for certain actions, movements, and interaction rules.
+We can then run the simulation to see how these interaction rules play out together over time in our letter exchange model. Once we've noted these new pieces of information - essentially, the model outputs – our model can be revised and run again. The process of building a simulation model involves constant iteration, cycling between the phases of running the model, interpreting the results, and then adapting the model for further experiments. In this sense, simulation methodology is comparable to the hermeneutic circle of heuristics, critique, and interpretation, which historians are used to.[^5]
 
-We can then run this model, the actual simulation, to see how these rules, attributes, decisions, etc. in our letter exchange model play out together over time. Once we observe these new pieces of information - essentially the model outputs - of our simulation run, our model can be revised and then run again. The process of building a simulation model is constantly cycling between phases of running the model, interpreting the results, and then adapting the model for further experiments. In this sense, simulation methodology is comparable to the hermeneutic circle of heuristics, critique, and interpretation historians are used to[^5].
+Before we move on, let's come back to the part of the definition regarding 'real-world or hypothetical' subject matters. Many historians probably hold a cautious view of the nature of historical reality and - more importantly - our ability as scholars to describe it. Just as sources are king in traditional history, data is queen in Digital History.[^5a]
 
-Now to the last part of the definition regarding real-world or hypothetical subject matters. Many historians probably hold a cautious view of the nature of historical reality and - more importantly - our ability as scholars to describe it. Just as sources are king in traditional history, data is queen in Digital History[^5a].
+However, as we already tried to hint at, the objects of a simulation are not simply data: rather, they encompass all our hypotheses about history, i.e. all the assumptions we have about the past that we believe connect our data into a plausible narrative. By building a historical simulation model, we are automatically moving 'from the actual to the possible'.[^6]
 
-However, as we already tried to hint at, the objects of the simulation are not data alone, but our hypotheses about history, i.e. all the assumptions we have about the past that we believe connect our data into a plausible narrative. By building a historical simulation model, we are automatically moving 'from the actual to the possible'[^6].
+The alluring – yet tricky – opportunity afforded by historical simulations is therefore to move between and beyond the actual data we have at our disposal in a formalized way. One crucial difference between this and the epistemologically similar, traditional counterfactual approaches to history is the formalized, systematic and experimental/iterative nature of simulations.
 
-The alluring but at the same time tricky opportunity of historical simulations therefore is to go between and beyond the actual data we have at our disposal in a formalized way. One crucial difference here to epistemologically similar, traditional counterfactual approaches to history is the formalized, systematic and experimental/iterative nature of simulations.
+One last important caveat left to mention about definitions of simulation methods: there are many definitions, and discussions about which is the most suitable are currently in progress, especially in history! Definitions sometimes depend more on what its goals are (e.g. educational or scientific, see note below). Sometimes, definitions of simulations will exclude certain applications in order to avoid some of the epistemological challenges posed by historical studies.[^7] We have opted to present to you one of the more open and general definitions of simulations, for clarity's sake, and to avoid the epistemological controversies connected to some of those other definitions. In short, we do believe that 'simulation' is an appropriate general term for the method we are presenting here.
 
-There is also one last important caveat left to be mentioned about definitions of simulation methods: there are a lot, and especially in history the discussion about which is the most suitable is in progress! Definitions sometimes depend more on what its goals are (e.g., educational or scientific, see note below), sometimes they try to exclude certain applications of simulations from its definition to avoid some of the epistemological challenges posed by simulations for historical studies[^7]. We have opted to present to you one of the more open and general definitions of simulation, for clarity's sake and to avoid the epistemological controversies connected to some of those definitions. In short, we do believe that 'simulation' is a good general term for the method we are presenting here.
+<div class="alert alert-info">
+So far, we've talked about historical simulations as analytical tools for researching history, and this will remain our focus in this lesson. However, simulations can also be <a href='https://programminghistorian.org/en/lessons/designing-a-timeline-tabletop-simulator'>didactic tools for interactive and immersive teaching</a>. They are sometimes a synonym for more static 3D reconstructions which are used to visualize past spaces,[^8] and they are themselves the subject of research.[^9]
+</div>
 
-> Note: So far, we talked about historical simulations as analytical tools for researching history, and this will remain our focus in this lesson. However, simulations can also be [didactic tools for interactive and immersive teaching](https://programminghistorian.org/en/lessons/designing-a-timeline-tabletop-simulator), they are sometimes a synonym for more static 3D reconstructions which are used to visualize past spaces[^8], and they are themselves the subject of research[^9].
+Now that you have a general theoretical idea of historical simulations, we can dive into determining a good methodological approach for our case study. We want to model the interactions of individuals - people sending letters to each other. Thus, we need a modeling approach that emphasizes those one-on-one interactions: a so-called agent-based model.
 
-Now that you have a general idea of what historical simulations are about theoretically, we need to dive into what a good methodological approach for our case study is. We want to model the interactions of individuals - people sending letters to each other. Thus, we need a modeling approach that emphasizes those one-on-one interactions: a so-called Agent-based Model.
+### 1.3: What is Agent-Based Modeling?
 
-### 1.3: What is Agent-based Modeling?
+Agent-based modeling (sometimes ABM for short) is a method which simulates the relations and interactions of individual entities (for example humans, organizations, items, etc.) with each other and with their environment.[^10]
 
-Agent-based modeling (sometimes ABM for short) is a simulation method where relations and interactions of individual entities, for example humans, organizations, items, etc., with each other and with their environment are simulated[^10].
+Ideally, these interactions make some emergent patterns appear, meaning they are not prescribed by the researcher, but rather dynamically arise out of the system. In our case, for example, we actively *do not* want to prescribe how the letter network should look in the end. We would like to see what shapes emerge dynamically from the letter-sending rules we set up. If the shape differs wildly from what we observe in our historical data, we know we are probably way off with our hypotheses (or the way we formalized them).
 
-Ideally, these interactions make some emergent patterns appear, meaning they are not prescribed in the simulation by the researcher, but dynamically arise out of the system. In our case, for example, we actively *do not* want to prescribe in the model how the letter network should look in the end. We would like to see what shapes of the letter networks emerge dynamically from the letter-sending rules we have set up. If the shape differs wildly from what we observe in our historical data, we know we are probably way off with our hypotheses (or the way we formalized them).
+Agent-based models are especially suited to allow for those emergent processes to appear. In general, emergent phenomena in human activity and behavior pose a number of questions that are of central interest for historians and often feature in debates among them, such as: 
+- How and why did a society change?
+- Why did some states get the upper hand over others in some time frame?
+- How did some new technology or idea spread from one group of people to another?
 
-Agent-based Models are especially suited to allow for those emergent processes to appear. In general, emergent phenomena in human activity and behavior pose a number of questions that are of central interest for and feature much in debates among historians, such as: How and why did a society change? Why did some states get the upper hand over others in some time frame? How did some new technology or idea spread from one group of people to another?
+We must stress that these questions are structural, and are therefore different from questions we might have about specific individuals. In our case, for example, we would not be able to ask 'Why did Christiaan Huygens send this particular letter to Johannes Hevelius?, but rather 'Is there a reason behind the intellectual letter-sending pattern of that era?'
 
-These questions, it has to be stressed, are structural and therefore different from those we might have about specific individuals. For our case, for example, we would not be able to ask "Why did Christiaan Huygens send this particular letter to Johannes Hevelius?", but rather "Is there a reason and pattern in intellectuals of that era sending each other letters?".
+As a simulation method, agent-based modeling offers the opportunity to formally and systematically pursue these structural kinds of questions by building and experimenting with a model of the pertaining case study.
 
-As a simulation method, Agent-based Modeling offers the opportunity to formally and systematically pursue these kinds of questions by building models of the pertaining case study and experiment with that model.
+To summarize, the goal of this method is to link the emergent patterns and phenomena at the systemic macro-level with the individual micro-level behavior of interacting entities, the name-giving 'agents'. The focus is often on the patterns and underlying dynamics of history, rather than any unique case on its own.
 
-To summarize, the goal of this method is to link the emergent patterns and phenomena at the systemic macro-level with the individual micro-level behavior of interacting entities, the name-giving "Agents". The focus is often the patterns and underlying dynamics in history, rather than any unique case on its own.
+### 1.4: Historical Context of Agent-Based Modeling
 
-### 1.4: Historical Context of Agent-based Modeling
+The term 'agent-based modeling' was introduced during the 1990s, pioneered among others by political scientist Joshua M. Epstein and economist and social scientist Robert Axtell, who used the method to better understand social dynamics.[^14] Similar, individual-based simulation approaches have existed from at least the 1960s, though. Tim Gooding puts the origins of the agent-based modeling approach at 1933, when Enrico Fermi first used the so-called [Monte-Carlo Method](https://en.wikipedia.org/wiki/Monte_Carlo_method) - a statistical simulation approach - with mechanical computing machines to forecast and analyze results of physical experiments.[^15]
 
-Agent-based Modeling as a term for the kind of simulation approach we just described in the previous section was introduced during the 1990s, pioneered among others by political scientist Joshua M. Epstein and economist and social scientist Robert Axtell, who used the method to better understand social dynamics[^14]. Similar, individual-based simulation approaches have existed from at least the 1960s, though. Tim Gooding puts the origins of Agent-based Modeling as an approach at 1933, when Enrico Fermi first used the so-called Monte-Carlo-Method - a statistical simulation approach - with mechanical computing machines to forecast and analyze results of physical experiments[^15]. 
+In history, too, simulation approaches comparable to agent-based modeling were adopted rather early and were among the first digital methods applied in historical research. Some of the earlier historical simulation studies were even conducted by pioneering figures of the early Digital Humanities and Digital History, such as Michael Levison, who studied Polynesien voyages in the Pacific in the 1960s and 70s,[^11] or Peter Laslett from the Cambridge Group for the History of Population and Social Structure, who, together with anthropologist Eugene Hammel and computer scientist Kenneth W. Wachter, devised individual-based Monte-Carlo Simulations on household structures in early modern England, starting in 1971 and publishing a widely reviewed book on the project in 1978.[^12] Laslett later coined this simulative approach as 'experimental history', to underline the experimental and iterative nature of the process.[^13]
 
-In history, too, simulation approaches comparable to Agent-based modeling were adopted rather early and were among the first digital methods applied in historical research. Some of the earlier historical simulation studies were even conducted by pioneering figures of the early Digital Humanities and Digital History, such as Michael Levison, who studied Polynesien voyages in the Pacific in the 1960s and 70s[^11] or Peter Laslett from the Cambridge Group for the History of Population and Social Structure, who, together with anthropologist Eugene Hammel and computer scientist Kenneth W. Wachter, devised individual-based Monte-Carlo Simulations on household structures in early modern England, starting in 1971 and publishing a widely reviewed book on the project in 1978[^12]. Laslett later coined this simulative approach as "experimental history", to underline the experimental and iterative nature of the process[^13].
+Since then, a number of changes occurred that warrant a distinction between those efforts and newer, actual agent-based models. For one, changes in hardware, software and programming paradigms have greatly increased the performance and affordability of bigger, more complex models. Also, the epistemological framework of emergent properties in systems we described in [Section 1.2](#12-what-are-simulations) is heavily inspired by modern thinking on Complex Adaptive Systems.[^16] This itself has roots into the 1950s and before, but is mainly a product of recent scholarly activity (e.g. in the field of ecology, regarding natural and societal adaptations to climate change[^16b]). In newer agent-based modeling, the emphasis is on the principles of relevance of heterogeneous agents, processes of social learning, coupling of micro- and macro-level phenomena and on theory-agnosticism.
 
-Since then, a number of changes occurred that warrant a distinction between those efforts and the newer, actual Agent-based Models. For one, changes in hardware, software and programming paradigms have led to a much higher performance and affordability of bigger and more complex models. Also, the epistemological framework of emergent properties in systems we described in Sec. 1.2 is heavily inspired by modern thinking on Complex Adaptive Systems[^16], which itself has roots into the 1950s and before, but is mainly a product of recent scholarly activity (e.g., in the field of ecology regarding natural and societal adaptations to climate change[^16b]). In the newer Agent-based Modeling, there is a bigger principle emphasis on the relevance of heterogeneous agents, processes of social learning, coupling of micro- and macro-level phenomena and on theory-agnosticism.
-
-Today, Agent-based Modeling and simulations in general are starting to appear more frequently in historical research, most notably in Archaeology (e.g., in simulations of prehistoric settlement patterns[^16c] or in-depth methodological and epistemological discussions[^17]), but in the context of Digital History  (e.g., with simulations of different aspects of trade and production in ancient roman economies[^18]) and Digital Humanities (particularly in recent methodological discussions[^6]) as well.
+Today, agent-based modeling and simulations in general are starting to appear more frequently in historical research, most notably in archaeology (e.g. in simulations of prehistoric settlement patterns[^16c] or in-depth methodological and epistemological discussions[^17]), but also in digital history (e.g., with simulations of different aspects of trade and production in ancient roman economies[^18]) and digital humanities (particularly in recent methodological discussions[^6]) contexts as well.
 
 ## Part 2: Programming Agent-based Models with Mesa
 
