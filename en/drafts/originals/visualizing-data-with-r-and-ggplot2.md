@@ -1,5 +1,5 @@
 ---
-title: "Visualizing Data with R and ggplot2"
+title: "Exploring and Visualizing Data with R and ggplot2"
 slug: visualizing-data-with-r-and-ggplot2
 layout: lesson
 collection: lessons
@@ -89,13 +89,13 @@ For this tutorial, we will look at [sister cities](https://en.wikipedia.org/wiki
 
 As historians, we can leverage data on sister cities to explore new questions about international connections and their implications. By examining this data, we can investigate whether regional, cultural, economic, or religious factors influence the formation of sister-city partnerships. For instance, we can assess if geographic proximity, shared language, or similar population size play a role in the likelihood of two cities establishing a relationship. We can also explore whether historical tensions or alliances, such as those between Germany, France, and Poland, or the shared linguistic heritage of Spanish-speaking cities in the Americas, shape these partnerships. 
 
-Throughout this tutorial, we will use ggplot2 to illuminate some of these questions and others. Our approach will be largely [exploratory](https://en.wikipedia.org/wiki/Exploratory_data_analysis), aiming to identify patterns, trends, and relationships in the data. We hope that we can uncover new insights and generate hypotheses for further research by doing so. 
+Throughout this tutorial, we will use ggplot2 to illuminate some of these questions and others. Our approach will be largely [exploratory](https://en.wikipedia.org/wiki/Exploratory_data_analysis), aiming to identify patterns, trends, and relationships in the data. We hope that we can uncover new insights and generate hypotheses for further research by doing so. You can download the dataset at [this link](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/visualizing-data-with-r-and-ggplot2/sistercities.csv).
 
 ### Loading Data with readr
 
 Before importing data, it is important to understand how it may be formatted. Common spreadsheet applications, such as Microsoft Excel or Apple Numbers, place data in a proprietary format.  While there are packages to read in Excel data, such as [readxl](https://readxl.tidyverse.org/), it is recommended to use open formats, such as `.csv` (comma-separated values) or `.tsv` (tab-separated values) whenever possible. This has the advantage of being more accessible and compatible with a wider range of software tools. Additionally, these formats are more likely to be readable in the future as they are not tied to any specific application or version.
 
-R has built-in commands for reading in these files, but we will use the package [readr](https://readr.tidyverse.org/) from the tidyverse ecosystem. readr can read most of the common formats you will encounter. For our particular dataset, we will be reading in a `.csv` file. Let’s go ahead and [download the dataset](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/visualizing-data-with-r-and-ggplot2/sistercities.csv) and place it in our project's current working directory.  We will first need to load the readr library. Next, we can use the [`read_csv()`](https://readr.tidyverse.org/reference/read_delim.html) with the file path.
+R has built-in commands for reading in these files, but we will use the package [readr](https://readr.tidyverse.org/) from the tidyverse ecosystem. readr can read most of the common formats you will encounter. For our particular dataset, we will be reading in a `.csv` file. Let’s go ahead and [download the dataset](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/visualizing-data-with-r-and-ggplot2/sistercities.csv) and place it in our project's current working directory.  We will first need to load the readr library. Next, we can use the [`read_csv()`](https://readr.tidyverse.org/reference/read_delim.html) with the file path. Let’s go ahead and place the dataset in our project’s current working directory.
 
 ```
 
@@ -129,7 +129,7 @@ In addition to the city-specific data, the tibble provides two more variables th
 
 Let's begin by exploring a specific question: Do European cities tend to form stronger sister-city relationships with cities in the same country, cities in other EU countries, or cities outside the EU? To investigate this, we can create a bar plot that visualizes the percentage of destination cities falling into these three categories.
 
-In ggplot2,https://en.wikipedia.org/wiki/Exploratory_data_analysiswe begin with the following code:
+In ggplot2, we begin with the following code:
 
 ```
 
@@ -139,7 +139,7 @@ ggplot(eudata, aes(x = typecountry))
 
 ```
 
-{% include figure.html filename="en-or-visualizing-data-with-r-and-ggplot2-01.png" alt="A bar graph showing the total count of destination cities that are domestic, EU, and non-EU" caption="Figure 1. Bar graph showing the total percentage of destination cities that are domestic, EU, and non-EU)" %}
+{% include figure.html filename="en-or-visualizing-data-with-r-and-ggplot2-01.png" alt="A bar graph showing the total count of destination cities that are domestic, EU, and non-EU" caption="Figure 1. Bar graph showing the total count of destination cities that are domestic, EU, and non-EU)" %}
 
 The first parameter of the `ggplot()` function is the tibble or data frame containing the information we are exploring, while the second parameter reflects the “aesthetics” of the graph. Aesthetics, as you may recall from earlier, defines the variables in our data and how we want to map them to visual properties. These two are the basis of any plot.
 
@@ -149,7 +149,7 @@ Understanding the `ggplot()` syntax can be tricky at first, but once it makes se
 
 We now have our first plot! You may notice that ggplot2 has made some decisions on its own: background color, font size of the labels, etc. The default settings are usually sufficient, but we can customize these aspects if needed.
 
-Because we work within a consistent syntax, we can easily modify our plots to look different or display different data. For instance, let’s say we want to look at percentages rather than raw counts. Using the following code, we can create a new tibble that calculates the percentage and adds a new column named perc with the percentage values (again, see the [tutorial](https://programminghistorian.org/lessons/data_wrangling_and_management_in_R) about dplyr for details if this code does not make sense to you). Once we have done so, we only need to make a few changes :
+Because we work within a consistent syntax, we can easily modify our plots to look different or display different data. For instance, let’s say we want to look at percentages rather than raw counts. Using the following code, we can create a new tibble that calculates the percentage and adds a new column named perc with the percentage values (again, see the [tutorial Data Wrangling and Managment in R](https://programminghistorian.org/lessons/data_wrangling_and_management_in_R) about dplyr for details if this code does not make sense to you). Once we have done so, we only need to make a few changes :
 
 ```
 
@@ -195,7 +195,7 @@ ggplot(data = eudata.perc.country, aes(x = typecountry, y = perc, fill = originc
 
 {% include figure.html filename="en-or-visualizing-data-with-r-and-ggplot2-03.png" alt="Bar graph showing the percentage of destination cities that are domestic, EU, and non-EU with aggregated data per country and type of country." caption="Figure 3. Bar graph showing the percentage of destination cities that are domestic, EU, and non-EU with aggregated data per country and type of country." %}
 
-Again, we created a new tibble that contained data aggregating per country and destination city type (EU, non-EU, etc).  We passed a new parameter to the `ggplot()` command named `fill`, indicating the column for the bars. We also added the parameter position to `geom_bar(`) so that the bars do not get stacked (which is the default) but are instead placed side by side. Again, ggplot2 has chosen sensible defaults regarding colors and legend placement. 
+Again, we created a new tibble that contained data aggregating per country and destination city type (EU, non-EU, etc).  We mapped the origincountry column to the fill aesthetic in the ggplot() command, which defines the color range of the bars. We also added the parameter position to `geom_bar(`) so that the bars do not get stacked (which is the default) but are instead placed side by side. Again, ggplot2 has chosen sensible defaults regarding colors and legend placement. 
 
 Now that we have visualized the data, we can analyze the patterns and draw insights from the graph. The bar plot reveals that the majority of the countries in our analysis, such as Germany, France, and Hungary, strongly prefer to establish sister city relationships with other European Union countries. Approximately 70-80% of their partnerships are with cities in the EU.
 
@@ -217,7 +217,7 @@ To get practice with these geoms, let's create a histogram to visualize the dist
 
 # Filter the data and visualize it
 
-# Load tidyverse or dplyr, otherwise filter will throw an error
+# Load tidyverse or dplyr, otherwise filter will throw an error!
 
 eudata.filtered <- filter(eudata, dist < 5000)
 
@@ -237,7 +237,7 @@ The ECDF can also help us assess whether the skewness we observed in the histogr
 
 ```
 
-ggplot(eudata, aes(x=dist)) + stat_ecdf()
+ggplot(eudata.filtered, aes(x=dist)) + stat_ecdf()
 
 ```
 
@@ -249,7 +249,7 @@ Lastly, we can create a boxplot to compare the distribution of distances between
 
 ```
 
-ggplot(eudata, aes(x = origincountry, y = dist)) + geom_boxplot()
+ggplot(eudata.filtered, aes(x = origincountry, y = dist)) + geom_boxplot()
 
 ```
 
@@ -548,7 +548,7 @@ p3 + theme_bw()
 
 Several packages add additional themes, such as [ggthemes](https://github.com/jrnold/ggthemes) or [ggtech](https://github.com/ricardo-bion/ggtech). In these, you will find themes such as `theme_excel` (a theme replicating the classic charts in Excel) and `theme_wsj` (a theme based on the plots in The Wall Street Journal). Often, users believe that the "look" of a graph is more important than the data it represents. Consequently, they may try to make their graphs look like those in well-known publications. However, this is not always the best approach since the grammar of graphics specifies what elements of a graph are essential and how they map to data.
 
-Thus, using themes from packages that consider this when changing features, such as through ggthemes is better. For instance, to mimic graphs created by *The Wallstreet Journal*, we can do the following:
+Thus, using themes from packages that consider this when changing features, such as through ggthemes is better. For instance, to mimic graphs created by *The Wall Street Journal*, we can do the following:
 
 ```
 
