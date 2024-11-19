@@ -20,8 +20,8 @@ translator:
 translator-editor:
 - Joana Vieira Paulino
 translation-reviewers:
-- Forename Surname
-- Forename Surname
+- Diogo Paiva
+- Ângela Pité
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/566
 difficulty: 1
 activity: presenting
