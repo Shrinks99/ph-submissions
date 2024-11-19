@@ -214,7 +214,7 @@ print(df_ukr.head())
 
 You can also use the `shape()` function to find out how many columns and rows there are in the dataframe. Give it a try!
 
-Now, you have two dataframes: one for Ukraine and one for Russia. Both contain three columns: date (**date_col**), station (**Series**), and relative frequency of keyword mentions (**Value**).
+Now, you have two dataframes: one for Ukraine and one for Russia. Both contain three columns: date (**df_ukr/df_rus**), station (**Series**), and relative frequency of keyword mentions (**Value**).
 
 ### Cleaning Data for Further Use
 
