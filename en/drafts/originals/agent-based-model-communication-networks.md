@@ -1,5 +1,5 @@
 ---
-title: "Simulations in Historical Research: How to Create an agent-based model of Communication Networks"
+title: "Simulations in Historical Research: How to Create an Agent-Based Model of Communication Networks"
 slug: agent-based-model-communication-networks
 layout: lesson
 collection: lessons
@@ -28,34 +28,34 @@ doi: XX.XXXXX/phen0000
 
 ## Overview
 
-In this lesson, we will provide an introduction to a simulation method called 'agent-based modeling' (often abbreviated to ABM), via an agent-based model of a historical letter-sending network, implemented with the Python package `mesa`.
+In this lesson, we will provide an introduction to a simulation method called 'Agent-Based Modeling' (often abbreviated to ABM), via an Agent-Based Model of a historical letter-sending network, implemented with the Python package `mesa`.
 
-The historical case that inspired this lesson is the '[Republic of Letters](https://en.wikipedia.org/w/index.php?title=Republic_of_Letters&oldid=1240959647)', an [early modern](https://en.wikipedia.org/wiki/Early_modern_period) network of scholars who wrote to eachother extensively, thereby fertilizing each other's thinking. It has already been extensively studied with digital methods[^1][^2]. Using our agent-based model, we want to better understand the social dynamics of these correspondence networks and how they were able to shape scientific thought of the time.
+The historical case that inspired this lesson is the '[Republic of Letters](https://en.wikipedia.org/w/index.php?title=Republic_of_Letters&oldid=1240959647)', an [early modern](https://en.wikipedia.org/wiki/Early_modern_period) network of scholars who wrote to eachother extensively, thereby fertilizing each other's thinking. It has already been extensively studied with digital methods[^1][^2]. Using our Agent-Based Model, we want to better understand the social dynamics of these correspondence networks and how they were able to shape scientific thought of the time.
 
 The model we will building together is relatively basic, featuring only simple interactions like sending letters. Those simple interactions will lead to correspondence networks that are structurally similar to those observed in actual, historical datasets on letter sending.
 
 The model we build here will not be sufficiently complex to give genuinely valuable perspectives on this case study on its own, but it will highlight some key properties of ABM, and various ways to implement them. Crucially, by the end of this lesson, you will be able to extend the model further with more complex functionalities.
 
-In the [first part](#Part-1:-Introduction-to-Simulations-and-Agent-based-Modeling), you will learn what historical simulation methods are all about, their methodological and epistemological quirks, and how to start applying agent-based modeling to your own research.
+In the [first part](#Part-1:-Introduction-to-Simulations-and-Agent-based-Modeling), you will learn what historical simulation methods are all about, their methodological and epistemological quirks, and how to start applying Agent-Based Modeling to your own research.
 
-In the [second part](#Part-2:-Programming-Agent-based-Models-with-Mesa), you will follow a step-by-step guide to building your first agent-based model, using the Python package `mesa`. This will be accompanied by further comments and reflections on the methodology of agent-based modeling.
+In the [second part](#Part-2:-Programming-Agent-based-Models-with-Mesa), you will follow a step-by-step guide to building your first Agent-Based Model, using the Python package `mesa`. This will be accompanied by further comments and reflections on the methodology of Agent-Based Modeling.
 
-In the [third part](#Part-3:-A-Summary,-Open-Questions-and-Next-Steps), you will explore ways to extend the model and further enhance your expertise in building agent-based models.
+In the [third part](#Part-3:-A-Summary,-Open-Questions-and-Next-Steps), you will explore ways to extend the model and further enhance your expertise in building Agent-Based Models.
 
 
 ## Lesson Goals
 
 This lesson intends to:
-- teach conceptual basics of simulation methods and 'agent-based modeling' for historians
-- teach fundamentals of the Python package `mesa` for programming agent-based models
-- give you guidance and resources for extending your agent-based modeling knowledge beyond this tutorial
-- give an overview of methodological and epistemological caveats, challenges, and things to think about when programming your own historical agent-based model
+- teach conceptual basics of simulation methods and 'Agent-Based Modeling' for historians
+- teach fundamentals of the Python package `mesa` for programming Agent-Based Models
+- give you guidance and resources for extending your Agent-Based Modeling knowledge beyond this tutorial
+- give an overview of methodological and epistemological caveats, challenges, and things to think about when programming your own historical Agent-Based Model
 
 Users of different skill levels and interests will find this lesson useful, for example if:
-- you are completely unfamiliar with simulation methods and agent-based modeling and want a thorough introduction
-- you already have a conceptual understanding of agent-based modeling, and are wondering whether it could be useful for your own research project
-- you already know that agent-based modeling might be useful for your research, and now want to learn the modeling and technical implementation processes
-- you are familiar with all of the above and need a starting point for implementing agent-based models with `mesa`
+- you are completely unfamiliar with simulation methods and Agent-Based Modeling and want a thorough introduction
+- you already have a conceptual understanding of Agent-Based Modeling, and are wondering whether it could be useful for your own research project
+- you already know that Agent-Based Modeling might be useful for your research, and now want to learn the modeling and technical implementation processes
+- you are familiar with all of the above and need a starting point for implementing Agent-Based Models with `mesa`
 
 
 ### Technical Requirements
@@ -81,7 +81,7 @@ except:
   !pip install 'mesa>=2.4.0,<3.0'
 ```
 
-## Part 1: Introduction to Simulations and agent-based modeling
+## Part 1: Introduction to Simulations and Agent-Based Modeling
 
 ### 1.1 Why use Historical Simulations for our Case Study?
 
@@ -122,36 +122,36 @@ One last important caveat left to mention about definitions of simulation method
 So far, we've talked about historical simulations as analytical tools for researching history, and this will remain our focus in this lesson. However, simulations can also be <a href='https://programminghistorian.org/en/lessons/designing-a-timeline-tabletop-simulator'>didactic tools for interactive and immersive teaching</a>. They are sometimes a synonym for more static 3D reconstructions which are used to visualize past spaces,[^8] and they are themselves the subject of research.[^9]
 </div>
 
-Now that you have a general theoretical idea of historical simulations, we can dive into determining a good methodological approach for our case study. We want to model the interactions of individuals - people sending letters to each other. Thus, we need a modeling approach that emphasizes those one-on-one interactions: a so-called agent-based model.
+Now that you have a general theoretical idea of historical simulations, we can dive into determining a good methodological approach for our case study. We want to model the interactions of individuals - people sending letters to each other. Thus, we need a modeling approach that emphasizes those one-on-one interactions: a so-called Agent-Based Model.
 
 ### 1.3: What is Agent-Based Modeling?
 
-Agent-based modeling (sometimes ABM for short) is a method which simulates the relations and interactions of individual entities (for example humans, organizations, items, etc.) with each other and with their environment.[^10]
+Agent-Based Modeling (sometimes ABM for short) is a method which simulates the relations and interactions of individual entities (for example humans, organizations, items, etc.) with each other and with their environment.[^10]
 
 Ideally, these interactions make some emergent patterns appear, meaning they are not prescribed by the researcher, but rather dynamically arise out of the system. In our case, for example, we actively *do not* want to prescribe how the letter network should look in the end. We would like to see what shapes emerge dynamically from the letter-sending rules we set up. If the shape differs wildly from what we observe in our historical data, we know we are probably way off with our hypotheses (or the way we formalized them).
 
-Agent-based models are especially suited to allow for those emergent processes to appear. In general, emergent phenomena in human activity and behavior pose a number of questions that are of central interest for historians and often feature in debates among them, such as: 
+Agent-Based Models are especially suited to allow for those emergent processes to appear. In general, emergent phenomena in human activity and behavior pose a number of questions that are of central interest for historians and often feature in debates among them, such as: 
 - How and why did a society change?
 - Why did some states get the upper hand over others in some time frame?
 - How did some new technology or idea spread from one group of people to another?
 
 We must stress that these questions are structural, and are therefore different from questions we might have about specific individuals. In our case, for example, we would not be able to ask 'Why did Christiaan Huygens send this particular letter to Johannes Hevelius?, but rather 'Is there a reason behind the intellectual letter-sending pattern of that era?'
 
-As a simulation method, agent-based modeling offers the opportunity to formally and systematically pursue these structural kinds of questions by building and experimenting with a model of the pertaining case study.
+As a simulation method, Agent-Based Modeling offers the opportunity to formally and systematically pursue these structural kinds of questions by building and experimenting with a model of the pertaining case study.
 
 To summarize, the goal of this method is to link the emergent patterns and phenomena at the systemic macro-level with the individual micro-level behavior of interacting entities, the name-giving 'agents'. The focus is often on the patterns and underlying dynamics of history, rather than any unique case on its own.
 
 ### 1.4: Historical Context of Agent-Based Modeling
 
-The term 'agent-based modeling' was introduced during the 1990s, pioneered among others by political scientist Joshua M. Epstein and economist and social scientist Robert Axtell, who used the method to better understand social dynamics.[^14] Similar, individual-based simulation approaches have existed from at least the 1960s, though. Tim Gooding puts the origins of the agent-based modeling approach at 1933, when Enrico Fermi first used the so-called [Monte-Carlo Method](https://en.wikipedia.org/wiki/Monte_Carlo_method) - a statistical simulation approach - with mechanical computing machines to forecast and analyze results of physical experiments.[^15]
+The term 'Agent-Based Modeling' was introduced during the 1990s, pioneered among others by political scientist Joshua M. Epstein and economist and social scientist Robert Axtell, who used the method to better understand social dynamics.[^14] Similar, individual-based simulation approaches have existed from at least the 1960s, though. Tim Gooding puts the origins of the Agent-Based Modeling approach at 1933, when Enrico Fermi first used the so-called [Monte-Carlo Method](https://en.wikipedia.org/wiki/Monte_Carlo_method) - a statistical simulation approach - with mechanical computing machines to forecast and analyze results of physical experiments.[^15]
 
-In history, too, simulation approaches comparable to agent-based modeling were adopted rather early and were among the first digital methods applied in historical research. Some of the earlier historical simulation studies were even conducted by pioneering figures of the early Digital Humanities and Digital History, such as Michael Levison, who studied Polynesien voyages in the Pacific in the 1960s and 70s,[^11] or Peter Laslett from the Cambridge Group for the History of Population and Social Structure, who, together with anthropologist Eugene Hammel and computer scientist Kenneth W. Wachter, devised individual-based Monte-Carlo Simulations on household structures in early modern England, starting in 1971 and publishing a widely reviewed book on the project in 1978.[^12] Laslett later coined this simulative approach as 'experimental history', to underline the experimental and iterative nature of the process.[^13]
+In history, too, simulation approaches comparable to Agent-Based Modeling were adopted rather early and were among the first digital methods applied in historical research. Some of the earlier historical simulation studies were even conducted by pioneering figures of the early Digital Humanities and Digital History, such as Michael Levison, who studied Polynesien voyages in the Pacific in the 1960s and 70s,[^11] or Peter Laslett from the Cambridge Group for the History of Population and Social Structure, who, together with anthropologist Eugene Hammel and computer scientist Kenneth W. Wachter, devised individual-based Monte-Carlo Simulations on household structures in early modern England, starting in 1971 and publishing a widely reviewed book on the project in 1978.[^12] Laslett later coined this simulative approach as 'experimental history', to underline the experimental and iterative nature of the process.[^13]
 
-Since then, a number of changes occurred that warrant a distinction between those efforts and newer, actual agent-based models. For one, changes in hardware, software and programming paradigms have greatly increased the performance and affordability of bigger, more complex models. Also, the epistemological framework of emergent properties in systems we described in [Section 1.2](#12-what-are-simulations) is heavily inspired by modern thinking on Complex Adaptive Systems.[^16] This itself has roots into the 1950s and before, but is mainly a product of recent scholarly activity (e.g. in the field of ecology, regarding natural and societal adaptations to climate change[^16b]). In newer agent-based modeling, the emphasis is on the principles of relevance of heterogeneous agents, processes of social learning, coupling of micro- and macro-level phenomena and on theory-agnosticism.
+Since then, a number of changes occurred that warrant a distinction between those efforts and newer, actual Agent-Based Models. For one, changes in hardware, software and programming paradigms have greatly increased the performance and affordability of bigger, more complex models. Also, the epistemological framework of emergent properties in systems we described in [Section 1.2](#12-what-are-simulations) is heavily inspired by modern thinking on Complex Adaptive Systems.[^16] This itself has roots into the 1950s and before, but is mainly a product of recent scholarly activity (e.g. in the field of ecology, regarding natural and societal adaptations to climate change[^16b]). In newer Agent-Based Modeling, the emphasis is on the principles of relevance of heterogeneous agents, processes of social learning, coupling of micro- and macro-level phenomena and on theory-agnosticism.
 
-Today, agent-based modeling and simulations in general are starting to appear more frequently in historical research, most notably in archaeology (e.g. in simulations of prehistoric settlement patterns[^16c] or in-depth methodological and epistemological discussions[^17]), but also in digital history (e.g., with simulations of different aspects of trade and production in ancient roman economies[^18]) and digital humanities (particularly in recent methodological discussions[^6]) contexts as well.
+Today, Agent-Based Modeling and simulations in general are starting to appear more frequently in historical research, most notably in archaeology (e.g. in simulations of prehistoric settlement patterns[^16c] or in-depth methodological and epistemological discussions[^17]), but also in digital history (e.g., with simulations of different aspects of trade and production in ancient roman economies[^18]) and digital humanities (particularly in recent methodological discussions[^6]) contexts as well.
 
-## Part 2: Programming Agent-based Models with Mesa
+## Part 2: Programming Agent-Based Models with Mesa
 
 In this section, we will start to actually implement a simple simulation model of early modern letter exchange using the Python package `mesa`. Before we start, we will reiterate our exact goals for this model, which will guide the building process. We then proceed to clarify some key concepts about Agent-Based Models which might be unclear to a beginner.
 
@@ -187,35 +187,37 @@ We've already mentioned agents - they're even in the title! An agent is any enti
 
 #### Space (or Environment)
 
-These two terms are sometimes used interchangeably. Space is the second most important feature of an Agent-Based Model. This is not only the dimensional space in which Agents can move, but also may be filled with more static elements of the model (such as climate, or certain natural features). But space can also be understood very abstractly - for example, in a different model we built at ModelSEN, the space agents 'move' in is a representation of the knowledge they hold.
+Space (often used interchangeably with 'environment') is the second most important feature of an Agent-Based Model. It is the dimensional space in which Agents can move, which can be understood literally or very abstractly - for example, in a different model we built at ModelSEN, the space agents 'move' in is a representation of the knowledge they hold. This space may also be filled with static elements of the model (such as climate, natural features, or relevant abstract elements).
 
 #### Model
-We also already mentioned that a model and the process of modeling in Agent-based Modeling is somewhat different from other types of models. The model is the collection of agents and environment, but also their interactions and any other logics that tie everything together. The model is really only complete when it is running, which means all the interactions of agents and environment are computed.
+
+The model is the combination of the agents and their environment, as well as their interactions and any further logic that ties everything together. The model is really only complete when it is running, which is when all the interactions are computed.
 
 #### Time
-That of course means that each model needs to have a formal concept of how these steps are computed, or in other words: a concept of time. There are different ways to model the passage of time in an Agent-based Model, sometimes in discrete time steps (kind of like turns in a game), sometimes in a more continuous flow of time.
+
+In order to be able to compute interactions as a sequence of steps, models require a concept of time. There are different ways to model the passage of time in an Agent-Based Model: it could use discrete time steps (like turns in a game), or a more continuous flow of time.
 
 #### Experimentation
-The temporal nature of simulation models also means that you will have to run and tweak your model all the time. This practice of iteration and experimentation is not just a practical necessity, though, but in many ways a virtue of the method. We already likened that process to the hermeneutical circle. Similarly, here, your knowledge of the dynamics of the system, specifically what can and cannot work within the bounds of your assumptions, is growing over time. One important implication of this is that any simulation model provides at most an imperfect perspective on history.
+
+The temporal nature of simulation models also means that you will have to constantly run, tweak and rerun your model. This practice of iterative experimentation is not just a practical necessity, though, but a virtue of the method, because your knowledge of the system's dynamics, specifically what can or cannot work within the bounds of your assumptions, will grow over time. One important implication of this constant improvement is that any simulation model provides at most an imperfect perspective on history.
 
 ### 2.4 Overview of Mesa
 
-In this tutorial we will make use of `mesa`, an open-source Agent-based Modeling framework written in Python. `Mesa` offers predefined functions to implement the key ingredients of an Agent-based Modeling. The package has been in development since 2015 and has acquired a large community of users and contributors (see the [mesa Github repository](https://github.com/projectmesa/mesa)). Its relative longevity and popularity makes it a good choice to start using Agent-based Modeling.
+In this tutorial, we will use `mesa`, an open-source Agent-Based Modeling framework written in Python. `Mesa` offers predefined functions to implement the key ingredients of an Agent-Based Model. The package has been in development since 2015 and has acquired a large community of users and contributors (see the [mesa Github repository](https://github.com/projectmesa/mesa)). Its relative longevity and popularity makes it a good choice to begin with Agent-Based Modeling.
 
-If you are more familiar with other programming languages, you can consider applying the ideas of this tutorial, e.g., in the frameworks [NetLogo](https://ccl.northwestern.edu/netlogo/) (a dedicated Agent-based Modeling language) or [MASON](https://cs.gmu.edu/~eclab/projects/mason/) (based on Java).
+If you are more familiar with other programming languages, you can consider applying this tutorial to other frameworks, like [NetLogo](https://ccl.northwestern.edu/netlogo/) (a dedicated Agent-Based Modeling language) or [MASON](https://cs.gmu.edu/~eclab/projects/mason/) (based on Java).
 
-In `mesa` a minimal Agent-based Modeling implementation consists of a definition of an "agent" class and a "model" class. The "model" class holds the model-level attributes (for example attributes of the environment or other external factors), manages the agents, and generally handles the global processing level of our model.
+In `mesa`, a minimal Agent-Based Modeling implementation consists of defining an 'agent' class and a 'model' class. The model class holds the model-level attributes (for example, attributes of the environment or other external factors), manages the agents, and generally handles the global processing level of our model.
 
-Each instantiation of the model class will be a specific model run. Each model will contain multiple agents, all of which are instantiations of the agent class. Both the model and agent classes are child classes of `mesa`’s generic [Model and Agent classes](https://mesa.readthedocs.io/en/stable/apis/init.html). In line with the above introduced idea of *individual-based* modeling, each agent should have a unique id to allow tracking during the simulation.
+Each instantiation of the model class will be a specific model we run. Each model will contain multiple agents, all of which are instantiations of the agent class. We assign a unique ID to each agent to be able to track them during the simulation. Both the model and agent classes are child classes of `mesa`’s generic [Model and Agent classes](https://mesa.readthedocs.io/en/stable/apis/init.html). 
 
-Another important aspect of `mesa` is the `scheduler`. The scheduler keeps track of which agent should act when. This process is called "activation" in the terms of `mesa`, and there are a number of predefined activation procedures: random, simultaneous, or staged activation. For this tutorial we will make use of random activation, meaning that all agents act one after another, but the order is random at each new step of the model.
+Another important aspect of `mesa` is its 'scheduler', which keeps track of when each agent should act. `mesa` calls this process 'activation', and there are a number of predefined activation procedures: random, simultaneous, or staged. In this tutorial, we will use random activation, which means that all agents will act one after the other, in an order that is randomly reassigned at every step of the model.
 
-Some research questions might require the agents to interact in/with a `space`. This could be a geographical space or something more abstract. Sometimes, like in this tutorial, a simple abstract representation of relative distance is sufficient, for example in the form of a two-dimensional *grid*. `Mesa` also supports hexagonal, continuous or network grids, which are useful for e.g. covering a geographical space or simulating social relations, like in the aforementioned simulations of prehistoric settlement patterns or roman economic activity. If a simulation relies on geographical map projections, an additional package from the `mesa` project might be useful: [mesa-geo](https://github.com/projectmesa/mesa-geo).
+Some research questions might require the agents to interact in/with a `space`, which could either be a geographical space or something more abstract. Sometimes, like in this tutorial, a simple abstract representation of relative distance is sufficient, for example in the form of a two-dimensional grid. `Mesa` also supports hexagonal, continuous or network grids, which are useful for covering a geographical space or simulating social relations. If a simulation relies on geographical map projections, the additional [mesa-geo](https://github.com/projectmesa/mesa-geo) package from the `mesa` project might be useful.
 
 ### 2.5 Building the Model
 
-
-We are now ready to start with the actual modelling. For this we first introduce the agents, then a model, and then the activation of these agents. Let’s get started!
+We are now ready to start with the actual modelling. We'll first introduce the agents, then the model, and finally the agents' activation. Let’s get started!
 
 ```python
 """To start with, let's import the mesa module"""
@@ -223,10 +225,10 @@ import mesa
 ```
 
 #### 2.5.1 Setting up the model
-To begin writing the model code, we start with two core classes: one for the overall `model`, the other for the `agents`.
 
-Let's start with the new agent class: `class LetterAgent(mesa.Agent)`.
-For now, each agent has only two variables: how many letters it currently has sent and received. Each agent will also have a unique identifier (i.e., a name), stored in the `unique_id` variable. Giving each agent a unique id is a good practice when doing agent-based modeling.
+To begin writing the model code, we start with two core classes: one for the overall `model`, the other for the `agents`. Let's start with the new agent class: `class LetterAgent(mesa.Agent)`.
+
+For now, each agent only has two variables: the number of letters it has currently sent, and the number received. Each agent will also have a unique identifier (i.e. a name), stored in the `unique_id` variable. Giving each agent a unique ID is good practice when doing Agent-Based Modeling.
 
 ```python
 class LetterAgent(mesa.Agent):
@@ -238,7 +240,7 @@ class LetterAgent(mesa.Agent):
         self.letters_received = 0
 ```
 
-Next, we need to have a model: `class LetterModel(mesa.Model)`. There is only one model-level parameter: how many agents the model contains. When a new model is started, we want it to populate itself with the given amount of agents.
+Next, we need a model: `class LetterModel(mesa.Model)`. There is only one model-level parameter: the number of agents it contains. When a new model is started, we want it to populate itself with the given amount of agents.
 
 ```python
 class LetterModel(mesa.Model):
@@ -252,19 +254,19 @@ class LetterModel(mesa.Model):
             a = LetterAgent(i, self)
 ```
 
-#### 2.5.2 Adding time
+#### 2.5.2 Adding Time
 
-Time in most agent-based models moves in steps, sometimes also called ticks. At each step of the model, one or more of the agents – usually all of them – are activated and take their own step, changing internally and/or interacting with one another or the environment.
+In most Agent-Based Models, time moves in steps, sometimes called 'ticks'. At each step of the model, one or more of the agents – usually all of them – are activated and take their own step. This step could involve changing internally and/or interacting with one another or their environment.
 
-The scheduler is a special model component which controls the order in which agents are activated. For example, all the agents may activate in the same order every step, their order might be shuffled, we may try to simulate all the agents acting at the same time, and more. `Mesa` offers a few different built-in scheduler classes, with a common interface. That makes it easy to change the activation regime a given model uses, and see whether it changes the model behavior. This may not seem important, but scheduling patterns can have a big impact on your results. How severe those impacts depending on the type of activation method are is still a topic of research and debate, but at the very least, potential effects on your model should be considered and be made clear[^20].
+The scheduler is a special model component which controls the order in which agents are activated. For example, all the agents may activate in the same order at every step, their order might be shuffled, we may try to simulate all the agents acting at simultaneously, and more. `Mesa` offers a few different built-in scheduler classes, with a common interface. That makes it easy to change the activation regime a given model uses, and see whether it changes the model behavior. This may not seem important, but scheduling patterns can have a big impact on your results. The severity of those impacts, depending on the type of activation chosen, are is still a topic of research and debate – still, potential effects on your model should be considered and be made clear.[^20]
 
-For now, let's use one of the simplest ones: `RandomActivation`[^21], which activates all the agents once per step, in random order.
+For now, let's use one of the simplest ones: `RandomActivation`[^21], which activates all the agents once per step, in a random order.
 
 ```python
 self.schedule = mesa.time.RandomActivation(self)
 ```
 
-Every agent is expected to have a ``step`` method. The step method is the action the agent takes when it is activated by the model schedule. We add an agent to the schedule using the `add` method; when we call the schedule's `step` method `self.schedule.step()`, the model shuffles the order of the agents, then activates and executes each agent's ```step``` method.
+Every agent is expected to have a 'step' method. This is the action it takes when it is activated by the model schedule. We add an agent to the schedule using the `add` method; when we call the schedule's step method `self.schedule.step()`, the model shuffles the order of the agents, then activates and executes each agent's step.
 
 ```python
 def step(self):
@@ -273,8 +275,7 @@ def step(self):
     print("Hi, I am agent " + str(self.unique_id) + ".")
 ```
 
-Adding all parts together, the model code with the scheduler added looks like this.
-
+Let's add all these parts together:
 
 ```python
 class LetterAgent(mesa.Agent):
@@ -307,7 +308,7 @@ class LetterModel(mesa.Model):
         self.schedule.step()
 ```
 
-At this point, we have a model which runs – it just doesn’t do anything in terms of letter sending/receiving. You
+At this point, we have a model which runs – it just doesn’t do anything in terms of letter sending or receiving. You
 can see for yourself with a few easy lines:
 
 
@@ -316,18 +317,18 @@ empty_model = LetterModel(10) # create a model with 10 agents
 empty_model.step() # execute the step function once
 ```
 
-{% include figure.html filename="en-or-agent-based-model-communication-networks-01.png" alt="List of output of the model's agents, each printing the line 'Hi, I am agent X', with X ranging from 0 to 9." caption="Figure 1. Currently, the only thing our agents do is say Hi!" %}
+{% include figure.html filename="en-or-agent-based-model-communication-networks-01.png" alt="List of output of the model's agents, each printing the line 'Hi, I am agent X', with X ranging from 0 to 9." caption="Figure 1. Currently, the only thing our agents do is say 'Hi!'" %}
 
 > _Bonus Question 1_:
-Try changing the scheduler from RandomActivation to BaseScheduler. What do you observe at the agent's output? What would be necessary in the definition of the agents if you would like to use StagedActivation? *Hint*: Take a look in the source code of `mesa.time`!
+Try changing the scheduler from RandomActivation to BaseScheduler. What do you observe at the agent's output? How would you need to define your agents if you would like to use StagedActivation? *Hint*: Take a look at the source code of `mesa.time`!
 
 #### 2.5.3 Agent Step
 
-Now we just need to have the agents do what we intend them to do: send each other letters.
+Now, we just need to make the agents do what we intend them to do: send each other letters.
 
-To allow the agent to choose another agent for this at random, we use the `model.random` random-number generator. This works just like Python’s `random` module, but with a fixed seed set when the model is instantiated. This can be used to later replicate a specific model run.
+To allow each agent to choose another agent at random, we use the `model.random` random number generator. This works just like Python’s `random` module, but with a fixed seed set when the model is instantiated. You can use it to replicate a specific model run later.
 
-To pick an agent at random, we need a list of all agents. Notice that there isn’t such a list explicitly in the model. The scheduler, however, does have an internal list of all the agents it is scheduled to activate.
+To pick an agent at random, we need a list of all agents. Notice that such a list doesn't explicitly exist in the model. However, the scheduler does have an internal list of all the agents it is scheduled to activate.
 
 With that in mind, we rewrite the agent `step` method like this:
 
@@ -346,7 +347,7 @@ class LetterAgent(mesa.Agent):
         self.letters_sent += 1
 ```
 
-#### 2.5.4 Running your first model
+#### 2.5.4 Running your First Model
 
 With that last piece in hand, it’s time for the first rudimentary run of the model. Let’s create a model with 10 agents, and run it for 20 steps.
 
@@ -356,8 +357,7 @@ for i in range(20):
     model.step()
 ```
 
-Next, we need to get some data out of the model.
-Specifically, we want to see how many letters each agent sent or received. We can get the values with list comprehension, and then use `matplotlib` (or another graphics library) to visualize the data in a histogram.
+Next, we need to get some data out of the model. Specifically, we want to see how many letters each agent sent or received. We can get these values with list comprehension, and then use `matplotlib` (or another graphics library) to visualize the data in a histogram.
 
 ```python
 import matplotlib.pyplot as plt
@@ -373,11 +373,11 @@ plt.ylabel("Number of Agents")
 plt.show()
 ```
 
-{% include figure.html filename="en-or-agent-based-model-communication-networks-02.png" alt="A histogram of the agents and their letters received; the y-axis displays the amount of agents that have received a certain amount of letters, displayed on the x-axis. For example, only 1 agent received 12 letters (the lowest number) while 2 agents received 26 letters (the highest amount)." caption="Figure 2. Histogram of the letters received by all agents" %}
+{% include figure.html filename="en-or-agent-based-model-communication-networks-02.png" alt="A histogram of the agents and the number of letters they received. the y-axis displays the number of agents that have received a certain amount of letters, displayed on the x-axis. For example, only 1 agent received 12 letters (the lowest number) while 2 agents received 26 letters (the highest amount)." caption="Figure 2. Histogram of the letters received by all agents" %}
 
-You should see something like the distribution above. Yours will almost certainly look at least slightly different, since each run of the model is random and unique, after all.
+You should see something like the distribution above. Yours will almost certainly look at least slightly different, since each run of the model is random and unique.
 
-To get a better idea of how a model behaves, we can create multiple model runs and see the distribution that emerges from all of them. We can do this with a nested for loop:
+To get a better idea of how a model behaves, we can create multiple model runs and observe the distribution that emerges. We can do this with a nested `for` loop:
 
 ```python
 all_letters_rec = []
@@ -402,29 +402,26 @@ plt.ylabel("Number of Agents")
 plt.show()
 ```
 
-{% include figure.html filename="en-or-agent-based-model-communication-networks-03.png" alt="A histogram of the agents and their letters received. This time, with 100 model instantiations running 10 times each, and binned as integers. The y-axis displays the amount of agents that have received a certain amount of letters displayed on the x-axis. In this figure, the distribution is normal, i.e., most agents have an average number of letters received. This indicates that the decision to whom an agent sends a letter is currently random." caption="Figure 3. Histogram of the letters received by all agents after 100 model runs" %}
+{% include figure.html filename="en-or-agent-based-model-communication-networks-03.png" alt="A histogram of the agents and the number of letters they received. The y-axis displays the number of agents who have received a certain number of letters, displayed on the x-axis." caption="Figure 3. Histogram of the letters received by all agents after 100 model runs" %}
 
-This runs 100 instantiations of the model, and runs each for 10 steps. (Notice that we set the histogram bins to be integers, since agents can only have whole numbers of letters). By running the model 100 times, we smooth out some of the ‘noise’ of randomness, and get to the model’s overall expected behavior.
-
-For now, the letter distribution looks close to a normal distribution, or Bell curve, which is expected since the process is random. Let's add some more comparably realistic behavior by introducing space between the agents and let that influence the letter sending decision.
+This runs 100 instantiations of the model, each of which runs for 10 steps. (Notice that we set the histogram [bins](https://en.wikipedia.org/wiki/Data_binning) to integers, since agents can only have whole numbers of letters.) By running the model 100 times, we smooth out some of the 'noise' of randomness, and approach the model’s overall expected behavior. For now, the letter distribution looks close to a normal distribution, or Bell curve, which is expected since the process is random.
 
 > _Bonus question 2_:
-Can you rewrite the above function to plot the number of sent letters? What histogram do you expect for that? *Hint*: Are agents sending letters in every round?
+Can you rewrite the function above to plot the number of sent letters? What histogram do you expect for that? *Hint*: Are agents sending letters in every round?
 
-#### 2.5.5 Adding space
+#### 2.5.5 Adding Space
 
-Many ABMs have a spatial element, with agents moving around and interacting with neighbors. `Mesa` currently supports two overall kinds of spaces:
-`grid`, and `continuous`. Grids are divided into cells, and agents can only be on a particular cell, like pieces on a chess board. Continuous space, in contrast, allows agents to have any arbitrary position. Both grids and continuous spaces are frequently toroidal, meaning that the edges of this 'world' wrap around, with cells on the right edge connected to those on the left edge, and the top to the bottom. This prevents some cells having fewer neighbors than others, or agents being able to go off the edge of the environment.
+Let's add some more realistic behavior by introducing space between the agents, which should influence their letter sending decisions. `Mesa` currently supports two overall kinds of spaces: `grid` and `continuous`. Grids are divided into cells, and agents can only be on a particular cell, like pieces on a chess board. Continuous space, in contrast, allows agents to have any arbitrary position. Both grids and continuous spaces are frequently [toroidal](https://en.wikipedia.org/wiki/Toroid), meaning that the edges of this 'world' wrap around, with cells on the right edge connected to those on the left edge, and the top to the bottom. This prevents some cells having fewer neighbors than others, or agents being able to go off the edge of the environment.
 
-Let’s add a simple spatial element to our model by putting our agents on a grid and make them walk around at random. Instead of sending a letter to any random agent, they’ll give it to an agent on the same cell. We could imagine that this represents them being close enough to know of one another and have reason to send a letter in the first place.
+Let’s add a simple spatial element to our model by putting our agents on a grid, and making them move around it at random. Instead of sending a letter to any random agent, they’ll give it to an agent on the same cell. We could imagine that this represents them existing close enough to know each other and have reasons to send a letter in the first place.
 
-`Mesa` has two main types of grids: `SingleGrid` and `MultiGrid`[^22]. `SingleGrid` enforces at most one agent per cell; `MultiGrid` allows multiple agents to be in the same cell. Since we want agents to be able to share a cell, we use `MultiGrid`.
+`Mesa` has two main types of grids: `SingleGrid` and `MultiGrid`.[^22] `SingleGrid` enforces at most one agent per cell; `MultiGrid` allows multiple agents to be in the same cell. Since we want agents to be able to share a cell, we use `MultiGrid`, which we instatiate with width and height paramaters, and which will always be toroidal:
 
 ```python
 self.grid = mesa.space.MultiGrid(width, height, True)
 ```
 
-We instantiate a grid with width and height parameters (in this case as integers), and a boolean as to whether the grid is toroidal. Let’s make width and height model parameters, in addition to the amount of agents, and have the grid always be toroidal. We can place agents on a grid with the grid’s `place_agent` method, which takes an agent and an (x, y) tuple of the coordinates to place the agent.
+We can place agents on the grid with the `place_agent` method, which refers to an agent `a` and an (`x, y`) tuple of the coordinates on which to place the agent.
 
 ```python
 self.grid.place_agent(a, (x, y))
@@ -574,7 +571,7 @@ Letters are sent to direct neighbors. How could you implement sending letters on
 
 So far, at the end of every model run, we've had to go and write our own code to get the data out of the model. This has two problems: it isn't very efficient, and it only gives us end results. If we wanted to know the letter counts of each agent at each step, we'd have to add that to the loop of executing steps, and figure out some way to store the data.
 
-Since one of the main goals of Agent-based modeling is generating data for analysis, `mesa` provides a class which can handle data collection and storage for us and make it easier to analyze.
+Since one of the main goals of Agent-Based Modeling is generating data for analysis, `mesa` provides a class which can handle data collection and storage for us and make it easier to analyze.
 
 The data collector stores three categories of data: model-level variables, agent-level variables, and tables (which are a catch-all for everything else). Model- and agent-level variables are added to the data collector along with a function for collecting them. Model-level collection functions take a model object as an input, while agent-level collection functions take an agent object as an input.
 
@@ -681,7 +678,7 @@ If you do not specify a file path, the file will be saved in the local directory
 agent_letters.to_csv("agent_data.csv")
 ```
 
-Having exported the data we can then apply several approaches to test the hypotheses that we encoded in the model. The goal to systematically test - or validate - a model is to check if the model actually represents what it is supposed to. This can range from simple testing of your expectations versus the outputs, to analyzing the internal consistency of the model, over a detailed exploration of the possible parameters of your simulation (a so-called parameter space), to a detailed calibration to available empirical data. Mehdizadeh et al 2022, p. 8-9, coming from the discipline of mobility studies, offer a sensible differentiation of various validation methods as well as a good example into how Agent-based models are evaluated in other fields.[^23]
+Having exported the data we can then apply several approaches to test the hypotheses that we encoded in the model. The goal to systematically test - or validate - a model is to check if the model actually represents what it is supposed to. This can range from simple testing of your expectations versus the outputs, to analyzing the internal consistency of the model, over a detailed exploration of the possible parameters of your simulation (a so-called parameter space), to a detailed calibration to available empirical data. Mehdizadeh et al 2022, p. 8-9, coming from the discipline of mobility studies, offer a sensible differentiation of various validation methods as well as a good example into how Agent-Based Models are evaluated in other fields.[^23]
 
 In our case, we should check if changing the model parameters leads to data that corresponds to our expectations, e.g., if we would use a different random distribution for the letter sending, we would expect to see a different distribution of received letters.
 
@@ -895,7 +892,7 @@ As well as those bonus features:
 
 Of course, this model is still quite a distance away from being a plausible model of the Republic of Letters, but it has some of the most important base features you would expect from such a model.
 
-Now the question remains how you could go on with this model, but also how to go on with Agent-based Modeling in general!
+Now the question remains how you could go on with this model, but also how to go on with Agent-Based Modeling in general!
 
 ### 3.1 Suggestions for extending the model
 You already may have come up with your own ideas for extending the model, but we want to give you at least some inspiration for further extensions. Importantly, we want to suggest to you some features that have strong connections to the historical subject matter and which raise some interesting modelling challenges:
@@ -907,20 +904,20 @@ You already may have come up with your own ideas for extending the model, but we
 For more inspiration, you might also want to look at [our own extended version of this model](https://doi.org/10.5281/zenodo.11277767)!
 
 ### 3.2 Further Steps and Resources
-At this point, we are finished with the tutorial, but there is a lot more to learn not only about the technical side of things, but also the unique quirks as well as best practices of Agent-based modeling methodology.
+At this point, we are finished with the tutorial, but there is a lot more to learn not only about the technical side of things, but also the unique quirks as well as best practices of Agent-Based Modeling methodology.
 
 For any technical questions, we suggest you head over to [the documentation of mesa](https://mesa.readthedocs.io/), which also features tutorials on advanced features, especially built-in javascript-based visualization methods. You can also head to youtube [for a video tutorial](https://www.youtube.com/playlist?list=PLF0b3ThojznRpQOd7iFukqXybbMV_vwZn) similar to the official `mesa` tutorials.
 
 We also want to at least mention some of the key methodological aspects we cannot cover here.
 
-First of all, there is the aspect of documentation and publishing of Agent-based Models. There is a still developing, but already quite established method of formally documenting the complex beasts those models are, which is called ODD ('Overview, Design Concepts, Details').[^25] This is a document that lists all the features and design intentions of your model, with the explicit aim that others should be able to replicate a version of your model just from the ODD. Writing up an ODD can also help you understand your goals as well as possible gaps in your model, too!
+First of all, there is the aspect of documentation and publishing of Agent-Based Models. There is a still developing, but already quite established method of formally documenting the complex beasts those models are, which is called ODD ('Overview, Design Concepts, Details').[^25] This is a document that lists all the features and design intentions of your model, with the explicit aim that others should be able to replicate a version of your model just from the ODD. Writing up an ODD can also help you understand your goals as well as possible gaps in your model, too!
 
 Many models are published on [the website CoMSES](https://www.comses.net/about/), hosted by the Network for Computational Modeling in Social and Ecological Sciences. We recommend you to give their model library a browse, but also to publish your own models' code and ODD there. While it is not a platform geared towards historians (such a platform sadly does not exist, yet) it is a great place that encourages reproducibility, reusability and even gives the opportunity for peer review if desired.
 
 Many models are published in early, unfinished states to gather feedback. Models are often developed collaboratively in this way, and you should not hesitate to publish preliminary work in a non-peer review venue such as this. This strong tradition of collaboration and iterative, experimentative work can be a great asset to your own modeling.
 
 ### 3.3 Final Remarks
-Agent-based Modeling for historians is still in an early phase. There is still a small - albeit growing! - number of people who apply simulation methods to historical research questions and there are many open questions left regarding the methods' implications and prerequisites for historical inquiry.
+Agent-Based Modeling for historians is still in an early phase. There is still a small - albeit growing! - number of people who apply simulation methods to historical research questions and there are many open questions left regarding the methods' implications and prerequisites for historical inquiry.
 
 The methodological criticism, which is so important for today's Digital History, is still just unfolding, but this also leaves much room for exciting discussion and discoveries.
 
@@ -948,7 +945,7 @@ Do not hesitate to get in touch with us if you want to be part of this discussio
 
 [^9]: Winsberg, Eric (2019), “Computer Simulations in Science.” In The Stanford Encyclopedia of Philosophy, eds.: Edward N. Zalta. Metaphysics Research Lab, Stanford University. [https://plato.stanford.edu/archives/win2019/entries/simulations-science/](https://plato.stanford.edu/archives/win2019/entries/simulations-science/).
 
-[^10]: Schmitz, Jascha Merijn and Buarque, Bernardo Sousa. 2023. "Introduction to Agent-based modeling for Historians", ModelSEN Compendium. [https://modelsen.gea.mpg.de/jupyterbooks/book/abmintro/](https://modelsen.gea.mpg.de/jupyterbooks/book/abmintro/). Accessed: June 3rd, 2024.
+[^10]: Schmitz, Jascha Merijn and Buarque, Bernardo Sousa. 2023. "Introduction to Agent-Based Modeling for Historians", ModelSEN Compendium. [https://modelsen.gea.mpg.de/jupyterbooks/book/abmintro/](https://modelsen.gea.mpg.de/jupyterbooks/book/abmintro/). Accessed: June 3rd, 2024.
 
 [^11]: Levison, M, R Gerard Ward, and John W Webb,(1972), “The Settlement of Polynesia: A Report on a Computer Simulation.” Archaeology & Physical Anthropology in Oceania 7, no. 3 (1972): 234–45.
 
@@ -962,9 +959,9 @@ Do not hesitate to get in touch with us if you want to be part of this discussio
 
 [^16]: Mitchell, Melanie (2011), Complexity: A Guided Tour. Oxford: Oxford University Press.
 
-[^16b]: See for example Alexander, Sarah and Paul Block (2022), Integration of seasonal precipitation forecast information into local-level agricultural decision-making using an agent-based model to support community adaptation, in: Climate Risk Management 36, p.100417. [https://doi.org/10.1016/j.crm.2022.100417](https://doi.org/10.1016/j.crm.2022.100417).
+[^16b]: See for example Alexander, Sarah and Paul Block (2022), Integration of seasonal precipitation forecast information into local-level agricultural decision-making using an Agent-Based Model to support community adaptation, in: Climate Risk Management 36, p.100417. [https://doi.org/10.1016/j.crm.2022.100417](https://doi.org/10.1016/j.crm.2022.100417).
 
-[^16c]: Sikk, Kaarel and Geoffrey Caruso (2020), A spatially explicit agent-based model of central place foraging theory and its explanatory power for hunter-gatherers settlement patterns formation processes, in: Adaptive Behavior 28 (5), pp. 377-397. [https://doi.org/10.1177/1059712320922915](https://doi.org/10.1177/1059712320922915). 
+[^16c]: Sikk, Kaarel and Geoffrey Caruso (2020), A spatially explicit Agent-Based Model of central place foraging theory and its explanatory power for hunter-gatherers settlement patterns formation processes, in: Adaptive Behavior 28 (5), pp. 377-397. [https://doi.org/10.1177/1059712320922915](https://doi.org/10.1177/1059712320922915). 
 
 [^17]: Graham, Shawn. An Enchantment of Digital Archaeology: Raising the Dead with Agent-Based Models, Archaeogaming and Artificial Intelligence. Digital Archaeology: Documenting the Anthropocene 1. online: Berghahn Books, 2020. [https://doi.org/10.1515/9781789207873](https://doi.org/10.1515/9781789207873).
 
@@ -978,7 +975,7 @@ Do not hesitate to get in touch with us if you want to be part of this discussio
 
 [^22]: Other types of space available include `HexGrid`, `NetworkGrid`, and the previously mentioned `ContinuousSpace`. Similar to `mesa.time` context is retained with `mesa.space.[enter class]`. You can see the different classes at [`mesa.space`](https://github.com/projectmesa/mesa/blob/main/mesa/space.py).
 
-[^23]: Mehdizadeh, Milad, Trond Nordfjaern, und Christian A. Klöckner. (2022). “A systematic review of the agent-based modelling/simulation paradigm in mobility transition“. Technological Forecasting and Social Change 184:122011, p.8-9. [https://doi.org/10.1016/j.techfore.2022.122011](https://doi.org/10.1016/j.techfore.2022.122011).
+[^23]: Mehdizadeh, Milad, Trond Nordfjaern, und Christian A. Klöckner. (2022). “A systematic review of the Agent-Based Modelling/simulation paradigm in mobility transition“. Technological Forecasting and Social Change 184:122011, p.8-9. [https://doi.org/10.1016/j.techfore.2022.122011](https://doi.org/10.1016/j.techfore.2022.122011).
 
 [^24]: Avena-Koenigsberger, Andrea, Joaquín Goñi, Ricard Solé, and Olaf Sporns. “Network Morphospace.” Journal of The Royal Society Interface 12, no. 103 (2015): 20140881. <https://doi.org/10.1098/rsif.2014.0881>.
 
