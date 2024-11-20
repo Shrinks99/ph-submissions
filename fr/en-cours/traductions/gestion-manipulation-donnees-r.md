@@ -39,7 +39,7 @@ Cette leçon nécessite quelques prérequis sur votre compréhension de R. Si vo
 
 À la fin de cette leçon, vous serez en mesure de :
 
-  1. Comprendre comment organiser vos données pour qu'elles soient *propres* et pourquoi c'est important.   
+  1. Comprendre comment organiser vos données pour qu'elles soient *propres*, et pourquoi c'est important.   
   2. Comprendre le paquet *dplyr* et l'utiliser pour manipuler et administrer les données.
   3. Se familiariser avec l'opérateur pipe dans R et observer comment il peut vous aider à créer du code plus lisible. 
   4. Apprendre à travailler sur des exemples de base de manipulation de données pour acquérir les fondements de l'analyse exploratoire des données.  
@@ -53,14 +53,14 @@ Selon Wickham, la donnée est "propre" quand elle répond à ces trois critères
   1. Chaque observation dans une ligne.
   2. Chaque variable dans une colonne.
   3. Chaque valeur a sa propre cellule.
-  4. Les différents types d'observation réalisées sur un même objet doivent être présents dans le même tableau.
+  4. Les différents types d'observation réalisées sur un même objet doivent être présents dans un même tableau.
 
 Remplir ces critères nous permet de juger si la donnée est organisée ou pas. Ces critères nous fournissent également un schéma standard et un ensemble d'outils pour gérer les formes les plus communes de désordre dans les données :
 
-  1. les en-têtes de colonnes sont des valeurs et pas des noms de variables.   
-  2. plusieurs variables sont stockées dans une même colonne.
-  3. des variables sont présentes à la fois dans les colonnes et dans les lignes.
-  4. une seule unité d'observation est présente dans plusieurs tables.
+  1. Les en-têtes de colonnes sont des valeurs et pas des noms de variables.   
+  2. Plusieurs variables sont stockées dans une même colonne.
+  3. Des variables sont présentes à la fois dans les colonnes et dans les lignes.
+  4. Une même unité d'observation est présente dans plusieurs tables.
 
 Un avantage peut-être encore plus important est de garder nos données dans ce format propre, qui nous permet d'utiliser une galerie de paquets dans le ["tidyverse"](http://tidyverse.org/), spécifiquement conçus pour fonctionner avec des données bien structurées. En nous assurant que nos données en entrée et en sortie sont bien structurées, nous n'aurons qu'un nombre limité d'outils à utiliser pour répondre à un grand nombre de questions. De plus, nous pourrons combiner, manipuler et séparer des jeux de données comme bon nous semble.
 
@@ -119,9 +119,9 @@ library(tidyverse)
 ## ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
 ```
 
-## Un exemple du fonctionnement de dplyr
+## Un exemple du fonctionnement de *dplyr*
 
-Utilisons un exemple pour voir comment dplyr peut nous aider en tant qu'historien : importez les données de recensement décennal des États-Unis entre 1790 et 2010. Téléchargez les données en [cliquant ici](https://programminghistorian.org/assets/introductory_state_example.CSV) et placez le fichier téléchargé dans le dossier que vous utiliserez pour traiter les exemples présentés dans ce tutoriel.
+Utilisons un exemple pour voir comment *dplyr* peut nous aider en tant qu'historien : importez les données de recensement décennal des États-Unis entre 1790 et 2010. Téléchargez les données en [cliquant ici](https://programminghistorian.org/assets/introductory_state_example.csv) et placez le fichier téléchargé dans le dossier que vous utiliserez pour traiter les exemples présentés dans ce tutoriel.
 
 Comme les données sont stockées dans un fichier CSV, utilisez la commande *read_CSV()* incluse dans le paquet [*readr*](https://cran.r-project.org/web/packages/readr/vignettes/readr.html) du tidyverse.
 
@@ -172,7 +172,7 @@ La possibilité de faire des changements rapides dans le code et de visualiser n
 
 Avant d’aborder *dplyr*, nous devons examiner ce qu'est l'opérateur pipe (%>%) dans R, car nous l'utiliserons souvent dans nos exemples. Comme mentionné plus haut, l'opérateur pipe fait partie du paquet [magrittr](https://cran.r-project.org/web/packages/magrittr/vignettes/magrittr.html) mis au point par [Stefan Milton Bache](http://stefanbache.dk/) et [Hadley Wickham](http://hadley.nz/) et est inclus dans le tidyverse. Son nom rend hommage au peintre surréaliste René Magritte, connu pour son œuvre "La trahison des images" où l'on peut voir une pipe accompagnée de la légende “ceci n’est pas une pipe.
 
-L'opérateur pipe nous permet déclarer ce qui est à gauche du pipe comme le premier élément de la fonction qui est indiquée à droite. BCela peut sembler étrange au premier abord, mais une fois appris, vous trouverez qu'il rend votre code plus lisible en évitant l'imbrication des opérations. Ne vous inquiétez pas si tout cela vous semble encore confus pour le moment ; cela deviendra plus clair progressivement avec des exemples.
+L'opérateur pipe nous permet déclarer ce qui est à gauche du pipe comme le premier élément de la fonction qui est indiquée à droite. Cela peut sembler étrange au premier abord, mais une fois appris, vous trouverez qu'il rend votre code plus lisible en évitant l'imbrication des opérations. Ne vous inquiétez pas si tout cela vous semble encore confus pour le moment ; cela deviendra plus clair progressivement avec des exemples.
 
 Supposons que nous souhaitions calculer la racine carrée de la population de chaque État, puis en calculer la somme et enfin la moyenne. À l’évidence, cette mesure ne nous sert à rien, mais elle permet de montrer à quel point un code réalisé avec R peut rapidement devenir difficile à lire. Normalement, nous pourrions imbriquer ces opérations :
 
@@ -305,7 +305,7 @@ Comparé au langage R de base, utiliser *dplyr* est souvent plus rapide et vous 
 
 ### select
 
-Si on regarde les données comprises dans *early_colleges*, on peut observer qu'il y a un grand nombre de "NA" dans la colonne des noms originaux. NA (Not Available) signifie qu’on n’a aucune donnée correspondante. On pourrait donc vouloir visualiser nos données en soustrayant cette colonne. La fonction *select* de *dplyr* nous donne la possibilité de le faire. Nous prenons le tableau de données que nous voulons manipuler comme premier argument, suivi d'une liste qui indique quelles colonnes on souhaite conserver :
+Si on regarde les données comprises dans *early_colleges*, on peut observer qu'il y a un grand nombre de "NA" dans la colonne des noms originaux. NA (Not Available) signifie qu’on n’a aucune donnée correspondante. On pourrait donc vouloir visualiser nos données en soustrayant cette colonne. La fonction *select()* de *dplyr* nous donne la possibilité de le faire. Nous prenons le tableau de données que nous voulons manipuler comme premier argument, suivi d'une liste qui indique quelles colonnes on souhaite conserver :
 
 ```
 # Supprime la colonne des noms originaux en utiliser select()
@@ -317,7 +317,7 @@ select(early_colleges, college, city, state, established, sponsorship)
 ## # A tibble: 65 × 5
 ##    college                city          state established sponsorship      
 ##    <chr>                  <chr>         <chr>       <int> <chr>            
-##  1 Harvard                Cambridge     MA           1636 congregational   
+##  1 Harvard                Cambridge     MA           1636 Congregational   
 ##  2 William and Mary       Williamsburg  VA           1693 Anglican         
 ##  3 Yale                   New Haven     CT           1701 Congregational   
 ##  4 Pennsylvania, Univ. of Philadelphia  PA           1740 Nondenominational
@@ -481,7 +481,7 @@ early_colleges%>%
 
 ### summarise
 
-La dernière fonction clé de dplyr est *summarise()* (n'oubliez pas, avec un s comme dans la forme britannique).*summarise()* est une fonction habituellement utilisée pour créer un tableau de données statistiques récapitulatives destinées à fournir des graphiques. Nous allons l'utiliser pour calculer la date de fondation moyenne des universités avant 1848.
+La dernière fonction clé de dplyr est *summarise()* (n'oubliez pas, avec un s comme dans la forme britannique). *summarise()* est une fonction habituellement utilisée pour créer un tableau de données statistiques récapitulatives destinées à fournir des graphiques. Nous allons l'utiliser pour calculer la date de fondation moyenne des universités avant 1848.
 
 ```
 early_colleges%>%summarise(mean(established))
@@ -528,7 +528,7 @@ ggplot(secular_colleges_after_1812) +
 
 ## Conclusion
 
-Ce tutoriel devrait vous mettre sur la bonne voie pour bien concevoir l'organisation et la manipulation de vos données avec R. Plus tard, vous souhaiterez sans doute progresser en visualisation de vos données. Je vous recommande de regarder le paquet [ggplot2](https://ggplot2.tidyverse.org/) pour trouver des fonctions qui seront efficaces avec *dplyr*. De plus, vous pouvez être tenté d'examiner quelques autres fonctions accessibles dans dplyr pour améliorer vos compétences. Dans les deux cas, ce guide vous fournit une base approfondir pour vos connaissances et de couvrir les problèmes courants que vous pourriez rencontrer dans la gestion de données.
+Ce tutoriel devrait vous mettre sur la bonne voie pour bien concevoir l'organisation et la manipulation de vos données avec R. Plus tard, vous souhaiterez sans doute progresser en visualisation de vos données. Je vous recommande de regarder le paquet [ggplot2](https://ggplot2.tidyverse.org/) pour trouver des fonctions qui seront efficaces avec *dplyr*. De plus, vous pouvez être tenté d'examiner quelques autres fonctions accessibles dans *dplyr* pour améliorer vos compétences. Dans les deux cas, ce guide vous fournit une base pour approfondir vos connaissances et vous permet de couvrir les problèmes courants que vous pourriez rencontrer dans la gestion de données.
 
 ---
 [¹]: note du traducteur
