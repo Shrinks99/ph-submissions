@@ -38,10 +38,10 @@ Esta lección te muestra cómo crear, editar y publicar DAE de forma sencilla y 
 
 ### Objectivos de la lección
 
-Comprender los conceptos de metadatos y datos abiertos enlazados.
-Examinar el proceso de creación, edición y publicación de datos abiertos en Wikidata.
-Aplicar los procedimientos para crear, editar y publicar datos abiertos sobre revistas académicas y personas en Wikidata.
-Discutir las consideraciones éticas relacionadas a la representación de personas mediante datos abiertos en Wikidata.
+- Comprender los conceptos de metadatos y datos abiertos enlazados  
+- Examinar el proceso de creación, edición y publicación de datos abiertos en Wikidata  
+- Aplicar los procedimientos para crear, editar y publicar datos abiertos sobre revistas académicas y personas en Wikidata  
+- Discutir las consideraciones éticas relacionadas a la representación de personas mediante datos abiertos en Wikidata  
 
 ### Prerrequisitos 
 
