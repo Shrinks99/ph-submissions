@@ -33,26 +33,27 @@ doi: XX.XXXXX/phen0000
 
 ## Prérequis
 
-Cette leçon comporte quelques prérequis sur votre compréhension de R. Si vous n'avez pas été au bout des [bases de R avec des données tabulées](https://programminghistorian.org/lessons/r-basics-with-tabular-data), je vous suggère de le faire d'abord. Avoir une expérience dans un autre langage de programmation peut aussi vous aider. Si vous souhaitez savoir par où commencer, je vous recommande de parcourir les excellents tutoriels de *Programming Historian* sur Python.
+Cette leçon nécessite quelques prérequis sur votre compréhension de R. Si vous n'avez pas été au bout de la leçon sur les [bases de R avec des données tabulées](https://programminghistorian.org/lessons/r-basics-with-tabular-data), je vous suggère de le faire d'abord. Avoir une expérience dans un autre langage de programmation peut aussi vous aider. Si vous souhaitez savoir par où commencer, je vous recommande de parcourir les excellents tutoriels de *Programming Historian* sur Python.
 
 ## Objectifs de la leçon
 
 À la fin de cette leçon, vous serez en mesure de :
 
-  1. comprendre comment organiser vos données pour qu'elles soient *ordonnées* et pourquoi c'est important.   
-  2. comprendre le paquet dplyr et l'utiliser pour manipuler et administrer les données  
-  3. se familiariser avec l'opérateur pipe dans R et observer comment il peut vous aider à créer du code plus lisible  
-  4. apprendre à travailler sur des exemples de base de manipulation de données pour acquérir les fondements de l'analyse exploratoire des données  
+  1. Comprendre comment organiser vos données pour qu'elles soient *propres* et pourquoi c'est important.   
+  2. Comprendre le paquet *dplyr* et l'utiliser pour manipuler et administrer les données.
+  3. Se familiariser avec l'opérateur pipe dans R et observer comment il peut vous aider à créer du code plus lisible. 
+  4. Apprendre à travailler sur des exemples de base de manipulation de données pour acquérir les fondements de l'analyse exploratoire des données.  
 
 ## Introduction
 
-Les données que vous trouverez "dans la nature" sont rarement dans un format qui rend possible une analyse et vous aurez à les manipuler avant d'explorer les questions que vous souhaitez leur poser. Cette manipulation peut prendre plus de temps que l'analyse elle-même ! Dans ce tutoriel, nous apprendrons quelques techniques de base for manipuler, gérer et administrer nos données dans R. Nous nous fonderons notamment sur la philosophie des ["données propres"](https://www.jstatsoft.org/article/view/v059i10)(*tidy data*) telle que l'a présentée Hadley Wickham.
+Les données que vous rencontrerez "dans la nature" sont rarement présentées dans un format qui rend possible une analyse. Vous aurez donc à les traiter avant d'explorer les questions qui vous intéressent. Ce traitement peut prendre plus de temps que l'analyse elle-même ! Dans ce tutoriel, nous apprendrons quelques techniques de base pour manipuler, gérer et administrer nos données dans R. Nous nous fonderons notamment sur la philosophie des ["données propres"](https://www.jstatsoft.org/article/view/v059i10)(*tidy data*) telle que l'a présentée Hadley Wickham.
 
 Selon Wickham, la donnée est "propre" quand elle répond à ces trois critères :
 
-  1. chaque observation dans une ligne.
-  2. chaque variable dans une colonne.
-  3. chaque valeur a sa propre cellule.
+  1. Chaque observation dans une ligne.
+  2. Chaque variable dans une colonne.
+  3. Chaque valeur a sa propre cellule.
+  4. Les différents types d'observation réalisées sur un même objet doivent être présents dans le même tableau.
 
 Remplir ces critères nous permet de juger si la donnée est organisée ou pas. Ces critères nous fournissent également un schéma standard et un ensemble d'outils pour gérer les formes les plus communes de désordre dans les données :
 
