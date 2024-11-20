@@ -133,9 +133,8 @@ In ggplot2, we begin with the following code:
 
 ```
 
-ggplot(eudata, aes(x = typecountry)) 
-
-+ geom_bar()
+ggplot(eudata, aes(x = typecountry)) +
+   geom_bar()
 
 ```
 
@@ -267,9 +266,12 @@ To investigate this question, we can create a scatterplot that visualizes the po
 
 Since the data frame eudata has many points, this could lead to overplotting. Therefore, we will a random sample of 15% of the cities in our dataframe with the function [`sample_frac()`](http://dplyr.tidyverse.org/reference/sample.html). We also use the natural log of the population data to overcome skewness.
 
-Note that since we are looking at a random selection of the data, your plot may look slightly different from the one shown here.
+Since we are looking at a random selection of the data, we need to set a seed to ensure reproducibility. We can do this with the `set.seed()` function. Thus, if you run the code again, you will get the same random sample.
 
 ```
+# Set seed to assure reproducibility
+
+set.seed(123)
 
 # We extract a random sample of 15% of the cities
 
