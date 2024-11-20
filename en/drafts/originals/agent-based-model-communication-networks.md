@@ -153,39 +153,41 @@ Today, agent-based modeling and simulations in general are starting to appear mo
 
 ## Part 2: Programming Agent-based Models with Mesa
 
-In this section, we will start to actually implement a simple simulation model of early modern letter exchange using the python package `mesa`. Before we start, we will reiterate our exact goals for this model, which will guide the process of building it. We then proceed to clarify some key concepts of Agent-based Models that might be unclear to a newcomer to the method.
+In this section, we will start to actually implement a simple simulation model of early modern letter exchange using the Python package `mesa`. Before we start, we will reiterate our exact goals for this model, which will guide the building process. We then proceed to clarify some key concepts about Agent-Based Models which might be unclear to a beginner.
 
 ### 2.1 Goals
 
-In this lesson, we want to model the networks of letter exchange of scholars in and around the 17th century often referred to as Republic of Letters. For the purposes of this lesson, a very basic model will suffice, but there are some aspects we need at the very least to approach an actual model of the Republic of Letters.
+In this lesson, we want to model the networks of letters exchanged between European and American scholars around the 17th century – the 'Republic of Letters'. For the purposes of this lesson, a very basic model will suffice, but we still want to meet some minimum requirements in order to approach an actual model of the Republic of Letters.
 
-We want to have:
-- a space in which the scholars are situated and can move,
-- a number of scholars 'living' and moving in that space,
-- the ability of scholars to send each other letters,
-- the ability of the scholar in front of the screen - that's you! - to read and interpret the simulation run.
+We want:
+- A space in which the scholars are situated and can move
+- A number of scholars 'living' and moving in that space
+- The ability for scholars to send each other letters
+- The ability for the scholar in front of the screen - that's you! - to read and interpret the simulation
 
-You might already think of ways in which this simple shopping list for our lesson model would not be adequately representing the Republic of Letters. As we mentioned above, the result of this lesson will not yet be a plausible model, but perhaps the start of one. We will give you some ideas of how to extend the model and make it more historically plausible at the end.
+If you're worried that this simple list of features will not adequately represent the Republic of Letters, remember that we're not expecting this lesson to result in building a plausible model. Perhaps it will at least lead to the start of one! We will give you some ideas for extending the model to make it more historically plausible at the end.
 
 ### 2.2 What about Data?
 
-You might ask yourself where actual, empirical data comes into the mix. One peculiar thing about simulations is that not everything and sometimes even nothing in a simulation model is based 1-to-1 on empirical data. This is because with simulations, 'we are not trying to model the world [...] [w]e are trying to model ideas about the world.'[^19]. Each simulation run creates its own data, which then can be analyzed and brought into relation with empirical data.
+You might ask yourself where the actual, empirical data comes into play. One peculiar thing about simulations is that not everything – and sometimes even nothing – is based directly on empirical data. This is because simulations 'are not trying to model the world [...], [they] are trying to model ideas about the world.'[^19] Each simulation run creates its own data, which then can be analyzed and brought into relation with empirical data.
 
-Empirical data is thus still very important for historical simulations, but the role it plays is different to, say, network analysis, where it is the whole basis of a network in the first place.
+Thus, empirical data remains an essential element of historical simulations, but it plays a less central role than in network analysis, for example, where the network is entirely based around it.
 
-In historical simulations such as ours here, we could use data for different things. We could use empirical data on historical people of the Republic of Letters to inform the building of our agents. We can use surviving empirical data on the historical network to compare them to the results of our simulation in order to see how much the latter deviates from the empirical data. We could (and should) also use extended domain knowledge - be it quantitative data or qualitative scholarship - to make the properties of our agents, the decisions they can make and the environment they move in more historically plausible.
+In historical simulations like ours, we could use empirical data for various purposes. We could use empirical data on individuals of the Republic of Letters to build our agents. We could use surviving empirical data on the historical network to compare with the results of our simulation, in order to see how much they differ. We could (and should) also use extended domain knowledge - be it quantitative data or qualitative scholarship - to inform the properties of our agents, the decisions they can make and the environment they move in.
 
-At the stage of this simple initial model, we actually don't need any empirical data. For our own project, which essentially is a more complicated version of this model, we do use a dataset which you can read more about in the [documentation of the model we build in our research](https://zenodo.org/records/11277767). At the end of the lesson, we will also go into more depth about the methodological implications this has for historical research.
+At this stage of our simple model, we don't actually need any empirical data yet. For the authors' own project, which essentially is a more complicated version of this model, we do use a dataset, which you can read more about in [the model's documentation](https://zenodo.org/records/11277767). At the end of the lesson, we will also go into more depth about the methodological implications this has for historical research.
 
-### 2.3 Key concepts of Agent-based Models
+### 2.3 Key Concepts of Agent-Based Models
 
-Before we finally start coding, a last couple of remarks have to be made about key concepts in Agent-based Modeling that will reappear in the rest of this chapter.
+Before we finally start coding, you should familiarize yourself with some key concepts of Agent-Based Modeling which will reappear in the rest of this chapter.
 
 #### Agents
-We already mentioned agents a lot - it's in the name, after all! Agents are any entity in the model that can *act*: it can move, alter properties of itself, other agents or its environment. Agents do not have to be humans. According to the very wide conception of *acting* here, also animals, plants, organizations or even objects can be Agents within the logic of the model.
 
-#### Space and Environment
-Those two concepts are sometimes used interchangeably, but they are usually the, at least, second most important feature of an Agent-based Model. This is not only the dimensional space in which Agents can move, but also may be filled with more static elements of the model (such as climate, or certain natural features). But space can also be understood very abstractly - for example, in a different model we built at ModelSEN, the space agents 'move' in is a representation of the knowledge they hold.
+We've already mentioned agents - they're even in the title! An agent is any entity that can 'act' in the model: it can move, and alter properties of itself, other agents or its environment. Agents do not have to be humans: according to our very wide conception of 'acting' here, animals, plants, organizations or even objects can be Agents within the logic of the model.
+
+#### Space (or Environment)
+
+These two terms are sometimes used interchangeably. Space is the second most important feature of an Agent-Based Model. This is not only the dimensional space in which Agents can move, but also may be filled with more static elements of the model (such as climate, or certain natural features). But space can also be understood very abstractly - for example, in a different model we built at ModelSEN, the space agents 'move' in is a representation of the knowledge they hold.
 
 #### Model
 We also already mentioned that a model and the process of modeling in Agent-based Modeling is somewhat different from other types of models. The model is the collection of agents and environment, but also their interactions and any other logics that tie everything together. The model is really only complete when it is running, which means all the interactions of agents and environment are computed.
