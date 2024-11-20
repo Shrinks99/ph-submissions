@@ -57,26 +57,26 @@ Selon Wickham, la donnée est "propre" quand elle répond à ces trois critères
 
 Remplir ces critères nous permet de juger si la donnée est organisée ou pas. Ces critères nous fournissent également un schéma standard et un ensemble d'outils pour gérer les formes les plus communes de désordre dans les données :
 
-  1. les en-têtes de colonnes sont des valeurs et pas des noms de variables   
-  2. plusieurs variables sont stockées dans une même colonne
-  3. des variables sont présentes à la fois dans les colonnes et dans les lignes
-  4. une seule unité d'observation est présente dans plusieurs tables
+  1. les en-têtes de colonnes sont des valeurs et pas des noms de variables.   
+  2. plusieurs variables sont stockées dans une même colonne.
+  3. des variables sont présentes à la fois dans les colonnes et dans les lignes.
+  4. une seule unité d'observation est présente dans plusieurs tables.
 
-Avantage peut-être encore plus important, garder nos données dans ce format propre nous permet d'utiliser une galerie de paquets dans le ["tidyverse"](http://tidyverse.org/), qui ont été spécifiquement conçus pour fonctionner avec des données propres. En nous assurant que nos données en entrée et en sortie sont propres, nous n'aurons qu'un petit nombre d'outils à utiliser pour résoudre un grand nombre de questions. De plus, nous pouvons combiner, manipuler et scinder des jeux de données comme bon nous semble.
+Un avantage peut-être encore plus important est de garder nos données dans ce format propre, qui nous permet d'utiliser une galerie de paquets dans le ["tidyverse"](http://tidyverse.org/), spécifiquement conçus pour fonctionner avec des données bien structurées. En nous assurant que nos données en entrée et en sortie sont bien structurées, nous n'aurons qu'un nombre limité d'outils à utiliser pour répondre à un grand nombre de questions. De plus, nous pourrons combiner, manipuler et séparer des jeux de données comme bon nous semble.
 
-Dans ce tutoriel, nous traiterons particulièrement le paquet [*dplyr*](https://cran.r-project.org/web/packages/dplyr/index.html) du tidyverse. Mais cela vaut la peine de mentionner brièvement quelques autres paquets que nous utiliserons :
+Dans ce tutoriel, nous nous intéresserons particulièrement au paquet [*dplyr*](https://cran.r-project.org/web/packages/dplyr/index.html) du tidyverse. Mais cela vaut la peine de mentionner brièvement quelques autres paquets que nous utiliserons :
 
-- [**magittr**](http://magrittr.tidyverse.org/) : ce paquet donne accès à l'opérateur pipe et rendre le code plus facile à lire.   
+- [**magittr**](http://magrittr.tidyverse.org/) : donne accès à l'opérateur pipe et rend le code plus facile à lire.   
 
-- [**ggplot2**](http://ggplot2.tidyverse.org/) : ce paquet utilise la [*"grammaire des graphiques"*](http://www.springer.com/us/book/9780387245447) pour vous permettre de donner des visualisations simples à réaliser de vos données.    
+- [**ggplot2**](http://ggplot2.tidyverse.org/) : utilise la [*"grammaire des graphiques"*](http://www.springer.com/us/book/9780387245447) permettant de réaliser des visualisations simples de vos données.    
 
-- [**readr**](http://readr.tidyverse.org/) : ce paquet met à disposition un import plus rapide et intuitif de données tabulées, comme des fichiers CSV.     
+- [**readr**](http://readr.tidyverse.org/) : met à disposition un import plus rapide et intuitif de données tabulées, comme des fichiers CSV.     
 
-- [**tibble**](http://tibble.tidyverse.org/) : ce paquet nous donne accès à une nouvelle conceptualisation des tableaux de données qui seront plus simples à traiter et à imprimer.  
+- [**tibble**](http://tibble.tidyverse.org/) : donne accès à une nouvelle conceptualisation des tableaux de données qui seront plus simples à traiter et à imprimer.  
 
-Si vous ne l'avez pas déjà fait, vous devriez installer et charger le "tidyverse" avant de commencer. Assurez-vous en outre que vous disposez de la [dernière version de R](https://cran.rstudio.com/) et de la [dernière version de Rstudio](https://www.rstudio.com/products/rstudio/download/) installées sur votre système d'exploitation.
+Si vous ne l’avez pas déjà fait, vous devez installer et charger le “tidyverse” avant de commencer. Assurez-vous en outre que vous disposez de la [dernière version de R](https://cran.rstudio.com/) et de la [dernière version de Rstudio](https://www.rstudio.com/products/rstudio/download/) installées sur votre système d'exploitation (Windows, Mac OS, Linux).
 
-Copiez le code ci-dessous dans Rstudio. Pour les exécuter, il vous faut mettre ces lignes en surbrillance et presser Ctrl+enter (ou Cmd+enter sur Mac OS):
+Copiez le code ci-dessous dans la zone d’édition de fichiers de Rstudio. Pour l'exécuter, il faut mettre ces lignes en surbrillance et appuyer sur Ctrl+enter (ou Cmd+enter sur Mac OS) :
 
 ```
 # Installer les bibliothèques tidyverse et charger ces bibliothèques
@@ -121,11 +121,11 @@ library(tidyverse)
 
 ## Un exemple du fonctionnement de dplyr
 
-Utilisons un exemple pour voir comment dplyr peut nous aider en tant qu'historien : importons les données de recensement décennal des États-Unis entre 1790 et 2010. Téléchargez les données en [cliquant ici](https://programminghistorian.org/assets/introductory_state_example.CSV) et placez le fichier téléchargé dans le dossier que vous utiliserez pour traiter les exemples présentés dans ce tutoriel.
+Utilisons un exemple pour voir comment dplyr peut nous aider en tant qu'historien : importez les données de recensement décennal des États-Unis entre 1790 et 2010. Téléchargez les données en [cliquant ici](https://programminghistorian.org/assets/introductory_state_example.CSV) et placez le fichier téléchargé dans le dossier que vous utiliserez pour traiter les exemples présentés dans ce tutoriel.
 
-Étant donné que les données sont présentées dans un fichier CSV, nous allons utiliser la commande read_CSV() comprise dans le paquet [readr](https://cran.r-project.org/web/packages/readr/vignettes/readr.html) du tidyverse.
+Comme les données sont stockées dans un fichier CSV, utilisez la commande *read_CSV()* incluse dans le paquet [readr](https://cran.r-project.org/web/packages/readr/vignettes/readr.html) du tidyverse.
 
-La fonction read_csv doit comporter le chemin d'un fichier qu'on veut importer en tant que variable, par conséquent il faut s'assure que ce chemin soit correctement renseigné :
+La fonction *read_csv* doit comporter le chemin d'un fichier qu'on veut importer en tant que variable, par conséquent il faut s'assurer que ce chemin soit correctement renseigné :
 
 ```
 # Importer le fichier CSV et le sauvegarder dans la variable us_state_populations_import
