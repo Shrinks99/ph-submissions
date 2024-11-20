@@ -235,7 +235,7 @@ permanent_sqrt_and_sum_state_populations_vector
 
 ## Il nous faut un nouveau jeu de données
 
-Maintenant que nous comprenons comment fonctionne le pipe, nnous sommes en mesure d’examiner et manipuler des données. Malheureusement, pour les historiens, il n'y a que peu de jeux de données disponibles ; peut-être pourriez-vous contribuer à ce que cela change en diffusant vos propres données ! Nous allons partir du paquet de [données historiques](https://www.google.com/search?q=cran%20historydata) créé par [Lincoln Mullen](http://lincolnmullen.com/)
+Maintenant que nous comprenons comment fonctionne le pipe, nous sommes en mesure d’examiner et manipuler des données. Malheureusement, pour les historiens, il n'y a que peu de jeux de données disponibles ; peut-être pourriez-vous contribuer à ce que cela change en diffusant vos propres données ! Nous allons partir du paquet de [données historiques](https://www.google.com/search?q=cran%20historydata) créé par [Lincoln Mullen](http://lincolnmullen.com/)
 
 Allons-y, installons et chargeons ce paquet :
 
@@ -247,10 +247,10 @@ install.packages("historydata", repos = "http://cran.us.r-project.org")
 library(historydata)
 ```
 
-Ce paquet contient un échantillon de données historiques sur les États-Unis. Les données de recensement que nous avons utilisées précédemment font partie de cet échantillon. Jusqu'à la fin de ce tutoriel, on va particulièrement travailler avec le jeu de données early_colleges qui contient des données sur les *universités* (*colleges* dans le monde anglophone) fondées avant 1848. Commençons par charger les données et y jeter un coup d'œil :
+Ce paquet contient un échantillon de données historiques sur les États-Unis. Les données de recensement que nous avons utilisées précédemment font partie de cet échantillon. Jusqu'à la fin de ce tutoriel, nous allons surtout travailler avec un jeu de données en particulier : *early_colleges*, qui contient des données sur les *universités* (*colleges* dans le monde anglophone) fondées avant 1848. Commençons par charger les données et y regarder :
 
 ```
-# Vérifiez avant d'exécuter ce code que le paquet historydata a bien été installé et chargé
+# Vérifiez avant d'exécuter ce code que le paquet *historydata* a bien été installé et chargé
 
 data(early_colleges)
 early_colleges
@@ -276,7 +276,7 @@ Comme vous pouvez l'observer, ce jeu de données contient le nom actuel de chaqu
 Si vous avez répondu le parrainage de Harvard, vous avez la bonne réponse. En plus de mentionner le premier parrainage de cette université, la cellule comporte l'information de son changement de parrainage en 1805. Habituellement, on veut conserver dans nos données autant d'information que possible, mais pour rester dans la perspective de ce tutoriel, nous allons modifier la colonne pour ne conserver que les parrainages lors de la fondation.
 
 ```
-early_colleges[1,6] <- "congregational"
+early_colleges[1,6] <- "Congregational"
 early_colleges
 
 ## # A tibble: 65 × 6
@@ -295,20 +295,20 @@ early_colleges
 ## # ... with 55 more rows
 ```
 
-À présent que nos données se présentent dans un format propre, nous pouvons leur donner forme avec le paquet dplyr.
+À présent que nos données se présentent dans un format propre, nous pouvons leur donner forme avec le paquet *dplyr*.
 
-## Qu'est-ce que Dplyr ?
+## Qu'est-ce que *dplyr* ?
 
-[Dplyr](https://cran.rstudio.com/web/packages/dplyr/vignettes/dplyr.html) est un autre élément du tidyverse qui met à votre disposition des fonctions utiles pour manipuler et transformer des données. Parce que nous gardons nos données "propres", nous n'avons besoin que d'un nombre réduit d'outils pour les explorer.
+[*dplyr*](https://cran.rstudio.com/web/packages/dplyr/vignettes/dplyr.html) est un autre élément du tidyverse qui met à disposition des fonctions utiles pour manipuler et transformer des données. Parce que nous gardons nos données "propres", nous n'avons besoin que d'un nombre réduit d'outils pour les explorer.
 
-Comparé à R seul, utiliser dplyr est souvent plus rapide et vous garantit que si les données en entrée sont propres, les données transformées le seront aussi, et ce qui est peut-être encore plus important, dplyr facilite la lecture de votre code et utilise des "verbes" qui sont intuitifs la plupart du temps. Chaque fonction dans dplyr correspond à l'un de ces verbes, dont les plus importants sont : filtrer(*filter*), sélectionner(*select*), arranger(*arrange*), muter(*mutate*) et récapituler(*summarise*, avec le *s* de l'orthographe britannique). Parcourons-les un à un pour voir comment ils fonctionnent dans la pratique.
+Comparé au langage R de base, utiliser *dplyr* est souvent plus rapide et vous garantit que si les données en entrée sont propres, les données transformées le seront aussi, et ce qui est peut-être encore plus important, *dplyr* facilite la lecture de votre code et utilise des "verbes" qui sont intuitifs la plupart du temps. Chaque fonction dans *dplyr* correspond à l'un de ces verbes, dont les plus importants sont : filtrer(*filter*), sélectionner(*select*), arranger(*arrange*), recoder(*mutate*) et résumer(*summarise*, avec le *s* de l'orthographe britannique). Parcourons-les un à un pour voir comment ils fonctionnent dans la pratique.
 
 ### select
 
-Si on regarde les données comprises dans early_colleges, on peut observer qu'il y a un grand nombre de "NA" dans la colonne des noms originaux. NA (*Not Available*) signifie qu'on n'a aucune donnée correspondante et qu'on pourrait vouloir visualiser nos données en soustrayant cette colonne. La fonction *select* de dplyr nous donne la possibilité de le faire. On prend le tableau de données qu'on veut manipuler comme le premier argument, suivi d'une liste qui indique quelles colonnes on souhaite conserver :
+Si on regarde les données comprises dans *early_colleges*, on peut observer qu'il y a un grand nombre de "NA" dans la colonne des noms originaux. NA (Not Available) signifie qu’on n’a aucune donnée correspondante. On pourrait donc vouloir visualiser nos données en soustrayant cette colonne. La fonction *select* de *dplyr* nous donne la possibilité de le faire. Nous prenons le tableau de données que nous voulons manipuler comme premier argument, suivi d'une liste qui indique quelles colonnes on souhaite conserver :
 
 ```
-# supprime la colonne des noms originaux en utiliser select()
+# Supprime la colonne des noms originaux en utiliser select()
 # Notez que vous n'avez pas à préfixer le nom de la colonne par un $
 # dplyr traite automatiquement la virgule comme un AND
 
@@ -339,7 +339,7 @@ early_colleges%>%
 ## # A tibble: 65 × 5
 ##    college                city          state established sponsorship      
 ##    <chr>                  <chr>         <chr>       <int> <chr>            
-##  1 Harvard                Cambridge     MA           1636 congregational   
+##  1 Harvard                Cambridge     MA           1636 Congregational   
 ##  2 William and Mary       Williamsburg  VA           1693 Anglican         
 ##  3 Yale                   New Haven     CT           1701 Congregational   
 ##  4 Pennsylvania, Univ. of Philadelphia  PA           1740 Nondenominational
@@ -361,7 +361,7 @@ early_colleges%>%
 ## # A tibble: 65 × 5
 ##    college                city          state established sponsorship      
 ##    <chr>                  <chr>         <chr>       <int> <chr>            
-##  1 Harvard                Cambridge     MA           1636 congregational   
+##  1 Harvard                Cambridge     MA           1636 Congregational   
 ##  2 William and Mary       Williamsburg  VA           1693 Anglican         
 ##  3 Yale                   New Haven     CT           1701 Congregational   
 ##  4 Pennsylvania, Univ. of Philadelphia  PA           1740 Nondenominational
@@ -376,7 +376,7 @@ early_colleges%>%
 
 ### filter
 
-La fonction filter() réalise la même chose que la fonction select() à ceci près qu'au lieu de choisir le nom d'une colonne, on peut utiliser filter() pour filtrer les lignes qui réalisent une certaine condition. Par exemple, on peut visualiser toutes les universités qui ont existé avant la fin du 18e siècle.
+La fonction *filter()* réalise une opération similaire à la fonction *select()* à ceci près qu'au lieu de choisir une colonne, on peut utiliser *filter()* pour sélectionner les lignes qui remplissent une certaine condition. Par exemple, on peut visualiser toutes les universités qui ont existé avant la fin du 18e siècle.
 
 ```
 early_colleges%>%
@@ -409,7 +409,7 @@ early_colleges%>%
 
 ### mutate
 
-La commande *mutate* vous permet d'ajouter une commande à votre tableau de données. Ici nous avons la ville et l'État qui se trouvent dans deux colonnes séparées. Nous pouvons utiliser la commande "coller" pour combiner ces deux chaînes de caractères en une seule tout en gardant un séparateur. Plaçons ces deux informations dans une seule et même colonne intitulée "location".
+La commande mutate vous permet d’ajouter une colonne à votre tableau de données. Ici nous avons la ville et l'État qui se trouvent dans deux colonnes séparées. Nous pouvons utiliser la commande *paste* (coller) pour combiner ces deux chaînes de caractères en une seule tout en gardant un séparateur. Plaçons ces deux informations dans une seule et même colonne intitulée "location".
 
 ```
 early_colleges%>%mutate(location=paste(city,state,sep=","))
@@ -431,7 +431,7 @@ early_colleges%>%mutate(location=paste(city,state,sep=","))
 
 ```
 
-Encore une fois, il faut vous rappeler que dplyr ne conserve pas les données  ni ne manipule le document original. À la place, il crée un tableau de données temporaire à chaque étape. Si vous souhaitez le conserver, vous devez lui associer une variable permanente.
+Rappelez-vous que *dplyr* ne conserve pas les données ni ne transforme le document original. À la place, il crée un tableau de données temporaire à chaque étape. Si vous souhaitez le conserver, vous devez lui associer une variable permanente.
 
 ```
 early_colleges_with_location <- early_colleges%>%mutate(location=paste(city,state, sep=","))
@@ -457,7 +457,7 @@ early_colleges_with_location
 
 ### arrange
 
-La fonction *arrange()* nous permet d'ordonner nos colonnes d'une autre façon. Pour l'instant, les universités sont organisées par année de fondation en ordre croissant. Plaçons-les par ordre décroissant. Dans notre cas, à partir de la fin de la Guerre américano-mexicaine :
+La fonction *arrange()* permet de changer l'ordre des colonnes. Pour l'instant, les universités sont organisées par année de fondation en ordre croissant. Plaçons-les par ordre décroissant (*descending* en anglais). Dans notre cas, à partir de la fin de la Guerre américano-mexicaine :
 
 ```
 early_colleges%>%
@@ -479,9 +479,9 @@ early_colleges%>%
 ## # ... with 55 more rows
 ```
 
-### Summarise
+### summarise
 
-La dernière fonction clé de dplyr est *summarise()* (n'oubliez pas, avec un s comme dans la forme britannique). Summarise() occupe une fonction ou une opération et est habituellement utilisé pour créer un tableau de données qui contient des données statistiques récapitulatives destinées à fournir des graphiques. Nous allons l'utiliser pour calculer la date de fondation moyenne des universités avant 1848
+La dernière fonction clé de dplyr est *summarise()* (n'oubliez pas, avec un s comme dans la forme britannique).*summarise()* est une fonction habituellement utilisée pour créer un tableau de données statistiques récapitulatives destinées à fournir des graphiques. Nous allons l'utiliser pour calculer la date de fondation moyenne des universités avant 1848.
 
 ```
 early_colleges%>%summarise(mean(established))
@@ -494,7 +494,7 @@ early_colleges%>%summarise(mean(established))
 
 ### Et si nous compilions ces fonctions ?
 
-Maintenant que nous avons parcouru les cinq principaux verbes de dplyr, nous pouvons les utiliser pour créer rapidement une visualisation de nos données. Allons-y,  créons un graphique en barres pour afficher le nombre d'universités laïques ou religieuses fondées avant la guerre de 1812:
+Maintenant que nous avons exploré les cinq verbes principaux de *dplyr*, nous pouvons les utiliser pour créer rapidement une visualisation de nos données. Créons un graphique en barres pour représenter le nombre d’universités laïques ou religieuses fondées avant la guerre de 1812 :
 
 ```
 secular_colleges_before_1812<-early_colleges%>%
@@ -509,9 +509,9 @@ ggplot(secular_colleges_before_1812) +
 
 {% include figure.html filename="fr-tr-gestion-manipulation-donnees-r-03.png" alt="Graphique comportant deux barres indiquant la proportion d'universités religieuses par rapport aux universités laïques fondées avant la guerre de 1812. Le graphique montre une prééminence des universités laïques sur les universités religieuses (environ 3 pour 1)" caption="Figure 3. Nombre d'universités religieuses et laïques avant la guerre de 1812" %}
 
-Noter ici que la variable *est laïque* est mise entre *apostrophes arrière* (backtick). Cela permet à la fois de gérer le fait qu'elle occupe au lieu d'un seul deux termes séparés par une espace, ainsi que le i *trema* présent dans le mot "laïque", caractère qui ne fait pas partie des 128 présents dans la table ASCII et peut donc poser problème dans l'exécution de certains programmes.
+[Notez ici que la variable *est laïque* est mise entre *apostrophes arrière* (backtick). Cela permet à la fois de gérer le fait qu’elle occupe deux termes séparés par un espace, au lieu d’un seul, et le i trema présent dans le mot “laïque”. Ce caractère ne fait pas partie des 128 présents dans la table ASCII et peut donc poser problème dans l’exécution de certains programmes][¹].
 
-Encore une fois, en n'apportant qu'une modification rapide à notre code, nous pouvons aussi visualiser le nombre de *colleges* laïques par rapport au nombre d'universités religieuses fondées depuis le début de la Guerre de 1812 :
+Encore une fois, en n'apportant qu'une modification rapide à notre code, nous pouvons aussi visualiser le nombre d'universités laïques par rapport au nombre d'universités religieuses fondées depuis le début de la Guerre de 1812 :
 
 ```
 secular_colleges_after_1812<-early_colleges%>%
@@ -528,4 +528,7 @@ ggplot(secular_colleges_after_1812) +
 
 ## Conclusion
 
-Ce tutoriel devrait vous mettre sur la bonne voie pour bien concevoir l'organisation et la manipulation de vos données avec R. Plus tard, vous souhaiterez sans doute progresser en visualisation de vos données. Je vous recommande de regarder le paquet [ggplot2](https://ggplot2.tidyverse.org/) pour trouver des outils qui fonctionneront bien avec dplyr. De plus vous pouvez être tenté d'examiner quelques autres fonctions accessibles dans dplyr pour affiner vos compétences. Dans les deux cas, ce guide vous permet de disposer d'une bonne base pour aller plus loin et couvrir les problèmes courants que vous pourriez rencontrer dans la gestion de données.
+Ce tutoriel devrait vous mettre sur la bonne voie pour bien concevoir l'organisation et la manipulation de vos données avec R. Plus tard, vous souhaiterez sans doute progresser en visualisation de vos données. Je vous recommande de regarder le paquet [ggplot2](https://ggplot2.tidyverse.org/) pour trouver des fonctions qui seront efficaces avec *dplyr*. De plus, vous pouvez être tenté d'examiner quelques autres fonctions accessibles dans dplyr pour améliorer vos compétences. Dans les deux cas, ce guide vous fournit une base approfondir pour vos connaissances et de couvrir les problèmes courants que vous pourriez rencontrer dans la gestion de données.
+
+---
+[¹]: note du traducteur
