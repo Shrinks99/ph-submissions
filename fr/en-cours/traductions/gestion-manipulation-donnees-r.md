@@ -123,7 +123,7 @@ library(tidyverse)
 
 Utilisons un exemple pour voir comment dplyr peut nous aider en tant qu'historien : importez les données de recensement décennal des États-Unis entre 1790 et 2010. Téléchargez les données en [cliquant ici](https://programminghistorian.org/assets/introductory_state_example.CSV) et placez le fichier téléchargé dans le dossier que vous utiliserez pour traiter les exemples présentés dans ce tutoriel.
 
-Comme les données sont stockées dans un fichier CSV, utilisez la commande *read_CSV()* incluse dans le paquet [readr](https://cran.r-project.org/web/packages/readr/vignettes/readr.html) du tidyverse.
+Comme les données sont stockées dans un fichier CSV, utilisez la commande *read_CSV()* incluse dans le paquet [*readr*](https://cran.r-project.org/web/packages/readr/vignettes/readr.html) du tidyverse.
 
 La fonction *read_csv* doit comporter le chemin d'un fichier qu'on veut importer en tant que variable, par conséquent il faut s'assurer que ce chemin soit correctement renseigné :
 
@@ -131,19 +131,19 @@ La fonction *read_csv* doit comporter le chemin d'un fichier qu'on veut importer
 # Importer le fichier CSV et le sauvegarder dans la variable us_state_populations_import
 # Assurez-vous que le chemin vers le fichier est bien défini
 library(tidyverse)
-us_state_populations_import<-read_csv("introductory_state_example.CSV")
+us_state_populations_import<-read_csv("introductory_state_example.csv")
 ```
 
 Après avoir importé les données, vous remarquerez qu'elles sont disposées en trois colonnes : une pour la population, une pour l'année et une pour l'État. Ces données sont d'emblée dans un format propre, ce qui nous permet de nous livrer à une multitude d'explorations.
 
-Pour cet exemple, créons une visualisation de la croissance de la population en Californie et dans l'État de New York afin d'avoir une meilleure compréhension des migrations vers l'Ouest. On va utiliser dplyr pour filtrer nos données, de telle sorte qu'elles ne contiennent que les informations relatives aux États qui nous intéressent et on va utiliser ggplot2 pour visualiser cette information. Cet exercice n'a d'autre but que de nous donner une idée de ce que dplyr peut faire, ne vous en faites pas si vous ne comprenez pas le code utilisé à ce stade :
+Pour cet exemple, nous voulons visualiser la croissance de la population en Californie et dans l'État de New York afin d'avoir une meilleure compréhension des migrations vers l'Ouest. Nous allons utiliser *dplyr* pour filtrer nos données, de telle sorte qu’elles ne contiennent que les informations relatives aux États qui nous intéressent et nous aurons recours à ggplot2 pour visualiser cette information. Cet exercice a pour but de nous donner une idée de ce que *dplyr* peut faire, ne vous en faites pas si vous ne comprenez pas le code utilisé à ce stade :
 
 ```
 # Filtrer le jeu pour ne traiter que les données relatives à la Californie et à l'État de New York
 california_and_new_york_state_populations<-us_state_populations_import %>%
   filter(state %in% c("California", "New York"))
 
-# Editer le graphique des courbes de population de la Californie et de l'État de New York
+# Éditer le graphique des courbes de population de la Californie et de l'État de New York
 ggplot(data=california_and_new_york_state_populations, aes(x=year, y=population, color=state)) +
   geom_line() +
   geom_point()
@@ -151,7 +151,7 @@ ggplot(data=california_and_new_york_state_populations, aes(x=year, y=population,
 
 {% include figure.html filename="en-or-data-wrangling-and-management-in-R-01.png" alt="Courbe graphique des évolutions des populations de la Californie et de l'État de New-York. Les deux courbes sont ascendantes à partir de la première valeur (avant 1800 pour l'État de New-York, à partir de 1850 pour la Californie). La population de l'État de New-York reste supérieure à celle de la Californie, jusqu'à ce que les deux courbes se croisent et que le rapport s'inverse autour de 1960 ; après quoi la population californienne croît de façon très rapide, tandis que la population de New-York a une croissance beaucoup plus faible" caption="Figure 1. Vue graphique de la population de la Californie et de l’État de New York" %}
 
-Comme on peut le voir, la population de la Californie a cru de façon considérable comparée à celle de l'État de New York. Cet exemple en particulier peut sembler évident, compte tenu de l'histoire des migrations aux États-Unis, mais le code en lui-même nous procure une base à partir de laquelle poser une foule de questions semblables. Par exemple, avec une modification rapide du code, on peut créer un graphique équivalent pour deux autres États comme le Mississippi et la Virginie.
+Comme nous pouvons le voir, la population de la Californie a augmenté de façon considérable si nous la comparons à celle de l'État de New York. Cet exemple en particulier peut sembler évident au regard de l’histoire des migrations aux États-Unis, mais le code en lui-même nous fournit une base pour poser de nombreuses questions similaires. Ainsi, avec une modification rapide du code, on peut créer un graphique équivalent pour deux autres États comme le Mississippi et la Virginie.
 
 ```
 # Filtrer le jeu pour ne traiter que les données relatives au Mississippi et à la Virginie
@@ -166,16 +166,15 @@ ggplot(data=mississippi_and_virginia_state_populations, aes(x=year, y=population
 
 {% include figure.html filename="en-or-data-wrangling-and-management-in-R-02.png" alt="Courbe graphique des évolutions des populations du Mississippi et de la Virginie. Les courbes de croissance des populations de ces deux États suivent un rythme comparable jusqu'aux années 30 (avec une population globalement un peu plus nombreuse en Virginie que dans le Mississippi). A partir des années 30, la croissance de la population du Mississippi fléchit un peu, tandis que celle de la Virginie augmente à un rythme beaucoup plus rapide." caption="Figure 2. Vue graphique de la population du Mississippi et de la Virginie" %}
 
-La possibilité de faire des changements rapides dans le code et de réanalyser nos données est un élément fondamental de l'analyse exploratoire de données (AED). Plutôt que d'essayer de "prouver" une hypothèse, l'analyse exploratoire de données nous aide à mieux comprendre nos données et à les interroger. Pour les Historiens, l'AED nous apporte un moyen aisé de savoir quand on peut approfondir un sujet ou bien quand on doit reprendre de la hauteur, et c'est un sujet sur lequel R excelle.
+La possibilité de faire des changements rapides dans le code et de visualiser nos données est un élément fondamental de l'analyse exploratoire de données (AED). Plutôt que d'essayer de "prouver" une hypothèse, l'analyse exploratoire de données nous aide à mieux comprendre nos données et à les interroger. L'AED fournit aux historiens un moyen simple de déterminer quand approfondir un sujet ou quand prendre du recul, et c'est un domaine dans lequel R excelle.
 
 ## L'opérateur Pipe
 
-Avant de jeter un coup d'œil à dplyr, nous devons examiner ce qu'est l'opérateur pipe (%>%) dans R, car nous l'utiliserons souvent dans nos exemples. Comme mentionné plus haut, l'opérateur pipe fait partie du paquet [magrittr](https://cran.r-project.org/web/packages/magrittr/vignettes/magrittr.html) mis au point par [Stefan Milton Bache](http://stefanbache.dk/) et [Hadley Wickham](http://hadley.nz/) et est inclus dans le tidyverse. Son nom rend hommage au peintre surréaliste René Magritte qui, dans son œuvre "La trahison des images", a représenté une pipe célèbre en plaçant en dessous la légende "ceci n'est pas une pipe".
+Avant d’aborder *dplyr*, nous devons examiner ce qu'est l'opérateur pipe (%>%) dans R, car nous l'utiliserons souvent dans nos exemples. Comme mentionné plus haut, l'opérateur pipe fait partie du paquet [magrittr](https://cran.r-project.org/web/packages/magrittr/vignettes/magrittr.html) mis au point par [Stefan Milton Bache](http://stefanbache.dk/) et [Hadley Wickham](http://hadley.nz/) et est inclus dans le tidyverse. Son nom rend hommage au peintre surréaliste René Magritte, connu pour son œuvre "La trahison des images" où l'on peut voir une pipe accompagnée de la légende “ceci n’est pas une pipe.
 
-L'opérateur pipe nous permet de passer ce qui est à gauche du pipe comme la première variable de la fonction qui est donnée à droite. Bien que cela puisse paraître étrange au premier abord, une fois que vous l'aurez appris, vous trouverez qu'il rend votre code plus lisible en vous évitant d'enchâsser vos opérations les unes dans les autres. Ne vous inquiétez pas si tout cela vous semble encore confus pour l'instant ; ça va s'éclairer progressivement avec des exemples.
+L'opérateur pipe nous permet déclarer ce qui est à gauche du pipe comme le premier élément de la fonction qui est indiquée à droite. BCela peut sembler étrange au premier abord, mais une fois appris, vous trouverez qu'il rend votre code plus lisible en évitant l'imbrication des opérations. Ne vous inquiétez pas si tout cela vous semble encore confus pour le moment ; cela deviendra plus clair progressivement avec des exemples.
 
-Supposons que nous ayons un intérêt à obtenir la racine carrée de la valeur pour la population de chaque État, puis d'en faire la somme et finalement la moyenne. À l'évidence, cette mesure ne nous sert à rien, mais cela permet de montrer à quel point un code  réalisé avec R peut rapidement devenir difficile à lire.
-Normalement, nous pourrions enchâsser ces opérations :
+Supposons que nous souhaitions calculer la racine carrée de la population de chaque État, puis en calculer la somme et enfin la moyenne. À l’évidence, cette mesure ne nous sert à rien, mais elle permet de montrer à quel point un code réalisé avec R peut rapidement devenir difficile à lire. Normalement, nous pourrions imbriquer ces opérations :
 
 ```
 mean(sum(sqrt(us_state_populations_import$population)))
@@ -183,7 +182,7 @@ mean(sum(sqrt(us_state_populations_import$population)))
 ## [1] 1256925
 ```
 
-Comme on peut le voir, avec des commandes enchâssées, il est difficile de se rappeler combien de parenthèses doivent être fournies et cela donne un code assez pataud. Pour minimiser cela, certains vont créer des vecteurs temporaires entre chaque appel de commandes.
+Comme on peut le voir, l'utilisation de commandes imbriquées rend difficile de se rappeler combien de parenthèses doivent être fournies et cela donne un code assez pataud. Pour minimiser cela, certains vont créer des vecteurs temporaires entre chaque appel de commandes.
 
 ```
 # Obtenir la racine carrée de la population de chaque État
@@ -194,7 +193,7 @@ sqrt_state_populations_vector<-sqrt(us_state_populations_import$population)
 
 sum_sqrt_state_populations_vector<-sum(sqrt_state_populations_vector)
 
-# obtenir la moyenne de la variable temporaire
+# Obtenir la moyenne de la variable temporaire
 
 mean_sum_sqrt_state_populations_vector<-mean(sum_sqrt_state_populations_vector)
 
@@ -216,7 +215,7 @@ us_state_populations_import$population%>%sqrt%>%sum%>%mean
 C'est bien plus simple à lire, et vous pourriez même rendre cette commande encore plus claire en l'écrivant sur plusieurs lignes :
 
 ```
-# assurez-vous que l'opérateur soit à la fin de la ligne
+# Assurez-vous que l'opérateur soit à la fin de la ligne
 us_state_populations_import$population%>%
     sqrt%>%
     sum%>%
@@ -236,15 +235,15 @@ permanent_sqrt_and_sum_state_populations_vector
 
 ## Il nous faut un nouveau jeu de données
 
-Maintenant que nous comprenons comment fonctionne le pipe, nous sommes en mesure de commencer à examiner et manipuler des données. Malheureusement, pour les historiens, il n'y a que peu de jeux de données disponibles ; peut-être pourriez-vous contribuer à ce que cela change en diffusant vos propres données ! Nous allons partir du paquet de [données historiques](https://www.google.com/search?q=cran%20historydata) créé par [Lincoln Mullen](http://lincolnmullen.com/)
+Maintenant que nous comprenons comment fonctionne le pipe, nnous sommes en mesure d’examiner et manipuler des données. Malheureusement, pour les historiens, il n'y a que peu de jeux de données disponibles ; peut-être pourriez-vous contribuer à ce que cela change en diffusant vos propres données ! Nous allons partir du paquet de [données historiques](https://www.google.com/search?q=cran%20historydata) créé par [Lincoln Mullen](http://lincolnmullen.com/)
 
 Allons-y, installons et chargeons ce paquet :
 
 ```
-# installer le paquet historydata
+# Installer le paquet historydata
 install.packages("historydata", repos = "http://cran.us.r-project.org")
 
-# charger le paquet historydata
+# Charger le paquet historydata
 library(historydata)
 ```
 
