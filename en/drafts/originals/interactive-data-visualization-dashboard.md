@@ -305,7 +305,7 @@ Row 1:
 dbc.Col([html.H1('US National Television News Coverage of the War in Ukraine')], className="text-center mt-3 mb-1")
 ```
 
-This just mean that we only want one column in Row 1, and we use the `H1` HTML element to enclose the dashboard's title. `className` sets the [CSS](https://en.wikipedia.org/wiki/CSS) styling for the `H1` HTML element: the title is centered, with margins set on top and bottom.
+This just means that we only want one column in Row 1, and we use the `H1` HTML element to enclose the dashboard's title. `className` sets the [CSS](https://en.wikipedia.org/wiki/CSS) styling for the `H1` HTML element: the title is centered, with margins set on top and bottom.
 
 In Row 2, you create a text box to direct users to select a date range:
 
