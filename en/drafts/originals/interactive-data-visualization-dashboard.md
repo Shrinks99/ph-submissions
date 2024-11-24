@@ -505,7 +505,7 @@ On the next screen, you will enter several pieces of information. In addition to
 
 First, change the **Start Command** input to `gunicorn app:server`. The `server` name after the colon should match the object name you set for your server in your Python script. The `app` name before the colon should match the `.py` filename in the repository.
 
-Second, scroll down to find the section called **Environment Variables**. Click _Add Environment Variable_ and input `PYTHON_VERSION` as the key, with the Python version that you use on your machine as the value (use `$python -V` in the command line to check your Python version). If you don't explicitly specify the Python version this way, Render will use Python 3.7 as default, which may cause conflicts with the library versions you've specified in `requirements.txt`.
+Second, scroll down to find the section called **Environment Variables**. Click _Add Environment Variable_ and input `PYTHON_VERSION` as the key, with the Python version that you use on your machine as the value (use `$python -V` in the command line to check your Python version). If you don't explicitly specify the Python version this way, Render will use [a default Python version](https://render.com/docs/python-version#history-of-default-python-versions), which may cause conflicts with the library versions you've specified in `requirements.txt`.
 
 Third, click _Create Web Service_ and wait for several minutes for the application to build. When finished, you'll be able to see your dashboard via a URL, like this: `https://ph-dash-demo.onrender.com/`.
 
