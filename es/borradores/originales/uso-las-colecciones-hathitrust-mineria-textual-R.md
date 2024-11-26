@@ -12,11 +12,11 @@ reviewers:
 editors:
 - Joshua G. Ortiz Baco
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/579
-difficulty: 
-activity: 
-topics: 
-abstract: Short abstract of this lesson
-avatar_alt: Visual description of lesson image
+difficulty: 2
+activity: acquiring
+topics: [data-manipulation, r]
+abstract: Esta lección demustra los pasos para crear un conjunto de datos de textos usando la API de la biblioteca digital HathiTrust. Los datos obtenidos permitirán aplicar técnicas de minería textual para estudiar los textos.
+avatar_alt: Abejas obreras fabricando miel.
 doi: XX.XXXXX/phen0000
 ---
 
@@ -37,7 +37,7 @@ Esta lección se compone de dos secciones principales: la primera es una introdu
 
 ## Introducción
 
-Uno de los mayores obstáculos para avanzar en el estudio de las humanidades digitales fuera del mundo anglosajón es la escasez de textos digitalizados a escala masiva. De los más de 15 millones de volúmenes que posee [HathiTrust](https://www.hathitrust.org/) sólo una pequeña fracción [no está en inglés](https://perma.cc/N9T6-9PYN). Pese a ello, estos números pueden representar para muchos investigadores, más de lo que hay disponible en su idioma en otros sitios. Por ejemplo, un 6% de los volúmenes en HathiTrust están en español, lo que significa que hay más de medio millón de textos disponibles. En el caso de la literatura, esto significa que existen miles de volúmenes de diferentes géneros literarios producidos en los diferentes países de habla hispana. 
+Uno de los mayores obstáculos para avanzar en el estudio de las humanidades digitales fuera del mundo anglosajón es la escasez de textos digitalizados a escala masiva. De los más de 15 millones de volúmenes que posee [HathiTrust](https://www.hathitrust.org/) más de la mitad [no está en inglés](https://perma.cc/N9T6-9PYN). Estos números pueden representar para muchos investigadores, más de lo que hay disponible en su idioma en otros sitios. Pese a ello, estos números pueden representar para muchos investigadores, más de lo que hay disponible en su idioma en otros sitios. Por ejemplo, un 6% de los volúmenes en HathiTrust están en español, lo que significa que hay más de medio millón de textos disponibles. En el caso de la literatura, esto significa que existen miles de volúmenes de diferentes géneros literarios producidos en los diferentes países de habla hispana. 
 
 El Centro de Investigación ha puesto a tu alcance los datos de todos los volúmenes que posee, gratis y ya pre-procesados. Esto incluye tanto los volúmenes cuyos derechos de autor han expirado como los que aún no. Es decir, aunque no puedas tener acceso directo a muchos de los textos debido a la ley de derechos de autor, el Centro te proporcionará conjuntos de datos que contienen los atributos extraídos ("extracted features") de esos volúmenes, incluyendo las frecuencias con las que aparecen los "tokens" (palabras y símbolos) en cada página. 
 
@@ -82,7 +82,7 @@ Cada libro o volumen en HathiTrust posee un número de identificación único (o
 
 {% include figure.html filename="es-or-uso-las-colecciones-hathitrust-mineria-textual-R-01.png" alt="Ejemplar de la novela María en el sitio HathiTrust" caption="Figura 1. 'María' de Jorge Isaacs" %}
 
-Si estás buscando un libro escribiendo su título o autor en el cuadro de búsqueda de HathiTrust, tienes que asegurarte de seleccionar la opción de "Full View" para encontrar su número de identificación. El mismo número de identificación te permite utilizar `hathiTools` para acceder a los atributos extraídos. El comando `get_hathi_counts` va a guardar en la variable `maria` un `tibble`, que es un `dataframe` (o marco de datos) y que contiene varios tipos de datos sobre la novela. 
+Si estás buscando un libro escribiendo su título o autor en el cuadro de búsqueda de HathiTrust, tienes que asegurarte de seleccionar la opción de "Full View" (vista completa) para encontrar su número de identificación. El mismo número de identificación te permite utilizar `hathiTools` para acceder a los atributos extraídos. El comando `get_hathi_counts` va a guardar en la variable `maria` un `tibble`, que es un `dataframe` (o marco de datos) y que contiene varios tipos de datos sobre la novela. 
 
 ```{r}
 maria<-get_hathi_counts("uc1.31175010656638")
@@ -295,7 +295,7 @@ head(enfermedad_maria)
 
 Aventurarse en el mundo de estudiar tendencias culturales o literarias requiere que uses mucho más que un par de volúmenes. Si vas a sacar provecho de los recursos de HathiTrust, necesitarás una manera eficaz de obtener los libros que quieras para tu estudio, sus números de identificación y los metadatos correspondientes. En inglés, existen conjuntos de datos que ya contienen los números de identificación de HathiTrust para varios grupos de textos, tanto dentro de este sitio web, como en otros lugares de internet. Véase por ejemplo [este conjunto de datos](https://view.data.post45.org/mlphathi) que contiene los libros de ficción en inglés que han ganado premios literarios importantes desde principios del siglo XX, o [este otro](https://view.data.post45.org/nytfull), exclusivamente enfocado en las listas de libros más vendidos publicadas por el [*New York Times*](https://en.wikipedia.org/wiki/The_New_York_Times). En español, lamentablemente, todavía no contamos con colecciones similares. 
 
-La escasez de recursos hace indispensable que crees tus propias listas de volúmenes y sus números de identificación. Por eso, recomiendo que empieces tu investigación creando una colección de los libros que te interese estudiar. El primer paso consiste en crear una cuenta en el portal de [HathiTrust](https://www.hathitrust.org/). En la página principal vas a ir a la sección de **Log in**, en la parte superior derecha, y allí encontrarás dos opciones: 
+La escasez de recursos hace indispensable que crees tus propias listas de volúmenes y sus números de identificación. Por eso, recomiendo que empieces tu investigación creando una colección de los libros que te interese estudiar. El primer paso consiste en crear una cuenta en el portal de [HathiTrust](https://www.hathitrust.org/). En la página principal vas a ir a la sección de **Log in** (Iniciar sesión), en la parte superior derecha, y allí encontrarás dos opciones: 
 1. Si perteneces a una de las instituciones afiliadas a HathiTrust puedes seleccionar esa opción y continuar.
 2. Crear una cuenta como usuario invitado siguiendo el enlace [**See options to log in as guest**](https://babel.hathitrust.org/cgi/wayf?) que aparece en el mensaje. Esa es la opción que usaremos en esta lección.
 
