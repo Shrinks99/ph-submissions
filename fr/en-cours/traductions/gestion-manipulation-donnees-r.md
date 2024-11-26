@@ -509,7 +509,9 @@ ggplot(secular_colleges_before_1812) +
 
 {% include figure.html filename="fr-tr-gestion-manipulation-donnees-r-03.png" alt="Graphique comportant deux barres indiquant la proportion d'universités religieuses par rapport aux universités laïques fondées avant la guerre de 1812. Le graphique montre une prééminence des universités laïques sur les universités religieuses (environ 3 pour 1)" caption="Figure 3. Nombre d'universités religieuses et laïques avant la guerre de 1812" %}
 
-[Notez ici que la variable *est laïque* est mise entre *apostrophes arrière* (backtick). Cela permet à la fois de gérer le fait qu’elle occupe deux termes séparés par un espace, au lieu d’un seul, et le i trema présent dans le mot “laïque”. Ce caractère ne fait pas partie des 128 présents dans la table ASCII et peut donc poser problème dans l’exécution de certains programmes][¹].
+<div class="alert alert-info">
+Note du traducteur : la variable <code>est laïque</code> est mise entre apostrophes arrière (backticks). Cela permet à la fois de gérer le fait qu’elle occupe deux termes séparés par un espace, au lieu d’un seul, et le i trema présent dans le mot <i>laïque</i>. Ce caractère ne fait pas partie des 128 présents dans la table ASCII et peut donc poser problème dans l’exécution de certains programmes.
+</div>
 
 Encore une fois, en n'apportant qu'une modification rapide à notre code, nous pouvons aussi visualiser le nombre d'universités laïques par rapport au nombre d'universités religieuses fondées depuis le début de la Guerre de 1812 :
 
@@ -529,6 +531,3 @@ ggplot(secular_colleges_after_1812) +
 ## Conclusion
 
 Ce tutoriel devrait vous mettre sur la bonne voie pour bien concevoir l'organisation et la manipulation de vos données avec R. Plus tard, vous souhaiterez sans doute progresser en visualisation de vos données. Je vous recommande de regarder le paquet [ggplot2](https://ggplot2.tidyverse.org/) pour trouver des fonctions qui seront efficaces avec *dplyr*. De plus, vous pouvez être tenté d'examiner quelques autres fonctions accessibles dans *dplyr* pour améliorer vos compétences. Dans les deux cas, ce guide vous fournit une base pour approfondir vos connaissances et vous permet de couvrir les problèmes courants que vous pourriez rencontrer dans la gestion de données.
-
----
-[¹]: note du traducteur
