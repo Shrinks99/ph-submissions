@@ -15,7 +15,7 @@ review-ticket: https://github.com/programminghistorian/ph-submissions/issues/609
 difficulty: 3
 activity: presentation
 topics: data visualization, web development
-abstract: Short abstract of this lesson
+abstract: This lesson shows how to create interactive web-based dashboards using Python's Dash library. Using two media case studies, this lesson provides a practical guide for making digital humanities research outputs more accessible and engaging.
 avatar_alt: Visual description of lesson image
 doi: XX.XXXXX/phen0000
 ---
