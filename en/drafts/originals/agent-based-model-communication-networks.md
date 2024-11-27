@@ -407,7 +407,7 @@ plt.show()
 This runs 100 instantiations of the model, each of which runs for 10 steps. (Notice that we set the histogram [bins](https://en.wikipedia.org/wiki/Data_binning) to integers, since agents can only receive whole numbers of letters.) By running the model 100 times, we smooth out some of the 'noise' of randomness, and approach the model’s overall expected behavior. For now, the letter distribution looks close to a [normal distribution (or bell curve)](https://en.wikipedia.org/wiki/Normal_distribution), which is expected since the process is random.
 
 > _Bonus question 2_:
-Can you rewrite the function above to plot the number of sent letters? What histogram do you expect for that? *Hint*: Are agents sending letters in every round?
+Can you rewrite the last code block to plot the number of sent letters instead? What histogram do you expect for that? *Hint*: Are agents sending letters in every round?
 
 #### 2.5.5 Adding Space
 
@@ -415,7 +415,7 @@ Let's add some more realistic behavior by introducing space between the agents, 
 
 Let’s add a simple spatial element to our model by putting our agents on a grid, and making them move around it at random. Instead of sending a letter to any random agent, they’ll give it to an agent on the same cell. We could imagine that this represents them existing close enough to know each other and have reasons to send a letter in the first place.
 
-`Mesa` offers two main types of grids: `SingleGrid` and `MultiGrid`.[^22] `SingleGrid` enforces at most one agent per cell; `MultiGrid` allows multiple agents in the same cell. Since we want agents to be able to share a cell, we use `MultiGrid`, which we instatiate with width and height paramaters, and which will always be toroidal:
+`Mesa` offers two main types of grids: `SingleGrid` and `MultiGrid`.[^22] `SingleGrid` enforces at most one agent per cell; `MultiGrid` allows multiple agents in the same cell. Since we want agents to be able to share a cell, we use `MultiGrid`, which we instatiate with width and height paramaters, and which will always be toroidal (hence the `True` designation):
 
 ```python
 self.grid = mesa.space.MultiGrid(width, height, True)
@@ -675,7 +675,7 @@ If you do not specify a file path, the file will be saved in the local directory
 agent_letters.to_csv("agent_data.csv")
 ```
 
-Having exported the data, we can now follow several approaches to test the hypotheses that we initially encoded in the model. The goal to systematically test - or validate - a model is to check if the model actually represents what it is supposed to. This can range from simply comparing your expectations to the outputs; to analyzing the internal consistency of the model over a detailed exploration of the possible parameters of your simulation (a so-called 'parameter space'); all the way to a detailed calibration to available empirical data. Mehdizadeh et al 2022, p. 8-9, writing from the perspective of mobility studies, offer a sensible differentiation of various validation methods, as well as good examples of how to evaluate Agent-Based Models in other fields.[^23]
+Having exported the data, we can now follow several approaches to test the hypotheses that we initially encoded in the model. The goal to systematically test - or validate - a model is to check if the model actually represents what it is supposed to. This can range from simply comparing your expectations with the outputs, to systematically analyzing the internal consistency of the model. Calibrating your model to available empirical data is one of the most simple and robust methods of testing, but of course this might be challenging due to data availability. A more involved method is to explore in detail the effects of a wide range of possible simulation parameters (a so-called 'parameter space'). Mehdizadeh et al 2022, p. 8-9, writing from the perspective of mobility studies, offer a sensible differentiation of various validation methods, as well as good examples of how to evaluate Agent-Based Models in other fields.[^23]
 
 In our case, we're interested in whether changing the model parameters leads to results that correspond to our expectations. For example, if we were to use a different random distribution to guide the letter sending, we would expect to see a different distribution of letters received.
 
