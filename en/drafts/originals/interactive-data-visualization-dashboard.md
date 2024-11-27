@@ -24,7 +24,7 @@ doi: XX.XXXXX/phen0000
 
 ## Introduction
 
-To advance open scholarship in the humanities, it is important to make research outputs more accessible to other scholars, as well as the general public. Creating a web-based interactive dashboard to visualize data results has become a popular method to achieve this goal. There are a wide range of examples, like [this project that tracks social media data](https://perma.cc/Y886-8MB5), [a study that recreates W. E. B. Du Bois' study of black residents in Philadelphia](https://perma.cc/VE92-T796), and [a project that visualizes the narrative structure in William Faulkner's work](https://perma.cc/Y3C5-XS79). 
+To advance open scholarship in the humanities, it is important to make research outputs more accessible to other scholars, as well as the general public. Creating a web-based interactive dashboard to visualize data results has become a popular method to achieve this goal. There are a wide range of examples, like [this project](https://perma.cc/Y886-8MB5) that tracks social media data, [this study](https://perma.cc/VE92-T796) that recreates W. E. B. Du Bois' study of black residents in Philadelphia, and [this project](https://perma.cc/Y3C5-XS79) that visualizes the narrative structure in William Faulkner's work. 
 
 Unlike static graphs, interactive dashboards allow readers to explore patterns in the data based on their specific interests by filtering, sorting, or changing views. Features like hover-over tooltips can also provide additional information without cluttering the main display. This lesson will walk you through the process of creating interactive dashboards based on publicly available datasets, using the open-source [Dash library in Python](https://dash.plotly.com/). Here is an example of the kind of data visualization dashboard that can be created with Dash[^1]:
 
@@ -80,12 +80,12 @@ In this lesson, you will write code in a `.py` file stored in a folder on your l
 
 ## Prerequisites
 
-  * Python 3 (3.7.13 or later). See [Mac Installation](/en/lessons/mac-installation), [Windows Installation](en/lessons/windows-installation), or [Linux Installation](en/lessons/linux-installation)
-  * Command line. For introductions, see [Windows](/en/lessons/intro-to-powershell) and [macOS/Linux](/en/lessons/intro-to-bash)
+  * Python 3 (3.7.13 or later) (see [Mac Installation](/en/lessons/mac-installation), [Windows Installation](en/lessons/windows-installation), or [Linux Installation](en/lessons/linux-installation))
+  * Command line (see introduction for [Windows](/en/lessons/intro-to-powershell) or [macOS/Linux](/en/lessons/intro-to-bash))
   * A text editor to write Python code (e.g. [Atom](https://atom.io/), [Notepad++](https://notepad-plus-plus.org/), [Visual Studio Code](https://code.visualstudio.com/))
   * A web browser
   * A [GitHub](https://github.com) account
-  * Have [git](https://git-scm.com/doc) ready to use in command line. You could also use either of the following (not covered in this lesson):
+  * Have [git](https://git-scm.com/doc) ready to use in command line, or use either of the following (not covered in this lesson):
     * [GitHub Desktop](https://desktop.github.com/)
     * [GitHub CLI](https://cli.github.com/)
     * [GitHub Codespaces](https://github.com/features/codespaces) ([costs may be incurred after you exceed the free quota](https://docs.github.com/en/billing/managing-billing-for-github-codespaces/about-billing-for-github-codespaces))
@@ -145,10 +145,9 @@ import dash_bootstrap_components as dbc
 import plotly.express as px
 ```
 
-* The `datetime` library is needed to manipulate date and time objects in Python.
-* The `StringIO` library is needed to treat a string object as a file-like object. This will be useful when you need to convert the output from an HTML request to a pandas dataframe.
-* The `plotly.express` library is needed to draw basic graphs, like a line graph.
-* `dcc`, `html`, `Input`, and `Output` are the specific modules within the `dash` library that are needed in various parts of the code below. `dcc` (Dash Core Components) provides a set of popular components like text-input boxes, sliders, and dropdowns; `html` contains components that represent standard HTML elements, allowing you to structure a layout using HTML tags; and `Input`/`Output` are used for defining the interactivity in a Dash app. They allow you to specify how changes in one component (Input) should affect another component (Output).
+The `datetime` library is needed to manipulate date and time objects in Python. The `StringIO` library is needed to treat a string object as a file-like object. This will be useful when you need to convert the output from an HTML request to a pandas dataframe. The `plotly.express` library is needed to draw basic graphs, like a line graph. 
+
+`dcc`, `html`, `Input`, and `Output` are the specific modules within the `dash` library that are needed in various parts of the code below. `dcc` (Dash Core Components) provides a set of popular components like text-input boxes, sliders, and dropdowns; `html` contains components that represent standard HTML elements, allowing you to structure a layout using HTML tags; and `Input`/`Output` are used for defining the interactivity in a Dash app. They allow you to specify how changes in one component (Input) should affect another component (Output).
 
 ### Retrieving Data Using an API
 
@@ -331,7 +330,7 @@ dbc.Row([ # row 3
     ])
 ```
 
-{% include figure.html filename="en-or-interactive-data-visualization-dashboard-03.png" alt="A screenshot showing what the date range picker looks like" caption="Figure 3. Interactive feature: the date range picker." %}
+{% include figure.html filename="en-or-interactive-data-visualization-dashboard-03.png" alt="A screenshot showing what the date range picker looks like" caption="Figure 3. The interactive date range picker feature." %}
 
 By default (when the dashboard is first loaded), we set the date range from the earliest date to the latest date in the `date_col` column of the dataframe. Remember that those two dates are 365 days apart (the actual difference shown in the date picker could be shorter due to the fact that the most recent data may not be available yet).
 
@@ -495,7 +494,7 @@ You will need to upload the `ph-dash` folder to GitHub, as a repository. You can
 
 Then, install one more library for deployment by entering `$pip install gunicorn`. The [`gunicorn`](https://gunicorn.org/) library allows Render to set up a web server for you.
 
-In the repository, you need two essential files: a `.py` file that contains all of your Python code, and a file called `requirements.txt` that lists all the required Python libraries. When you deploy the app, Render will read this file to install the required Python libraries. You can easily create this requirements file in the command line, using `$pip freeze > requirements.txt`. I have also provided a [sample repository in this link, for your reference](https://github.com/hluling/ph-dash).
+In the repository, you need two essential files: a `.py` file that contains all of your Python code, and a file called `requirements.txt` that lists all the required Python libraries. When you deploy the app, Render will read this file to install the required Python libraries. You can easily create this requirements file in the command line, using `$pip freeze > requirements.txt`. I have also provided a [sample repository](https://github.com/hluling/ph-dash) for your reference.
 
 ### Setting up in Render
 
@@ -567,7 +566,7 @@ You have learned:
 
 * How to retrieve publicly available data using an API using the `requests` library
 
->The data owner may have a restriction on the amount of data to be requested. You need to respect such a policy. As shown in the non-English >newspaper case, something you could do is to time your requests (e.g. resend a request after a certain time). 
+>The data owner may have a restriction on the amount of data to be requested. You need to respect such a policy. As shown in the non-English newspaper case, something you could do is to time your requests (e.g. resend a request after a certain time). 
 
 * How to create the frontend of a dashboard
   
@@ -575,7 +574,7 @@ You have learned:
 
 * How to create the backend of a dashboard
   
->One takeaway regarding the backend: any changes in the user input will trigger changes in the output. There are two things to keep in mind: the `id` you specified in the frontend component helps you to define the input and output variables in the callback decorator; the dataframe needs to be updated based on the changes in the input variables.
+>One takeaway regarding the backend: any changes in the user input will trigger changes in the output. There are two things to keep in mind: the `id` you specified in the frontend component helps you to define the input and output variables in the callback decorator; and the dataframe needs to be updated based on the changes in the input variables.
 
 * How to deploy a dashboard for free
 
