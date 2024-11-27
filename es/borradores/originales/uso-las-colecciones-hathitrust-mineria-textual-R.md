@@ -7,8 +7,8 @@ date: YYYY-MM-DD
 authors:
 - José Eduardo González
 reviewers:
-- Forename Surname
-- Forename Surname
+- Jennifer Isasi
+- Riva Quiroga
 editors:
 - Joshua G. Ortiz Baco
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/579
