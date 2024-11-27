@@ -14,7 +14,7 @@ editors:
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/609
 difficulty: 3
 activity: presentation
-topics: data visualization, web development
+topics: [data-visualization, website]
 abstract: This lesson shows how to create interactive web-based dashboards using Python's Dash library. Using two media case studies, this lesson provides a practical guide for making digital humanities research outputs more accessible and engaging.
 avatar_alt: Visual description of lesson image
 doi: XX.XXXXX/phen0000
@@ -331,7 +331,7 @@ dbc.Row([ # row 3
     ])
 ```
 
-{% include figure.html filename="en-or-interactive-data-visualization-dashboard-03.png" alt="A screenshot showing what the date range picker looks like" caption="Figure 3. Interactive feature: The date range picker of the dashboard." %}
+{% include figure.html filename="en-or-interactive-data-visualization-dashboard-03.png" alt="A screenshot showing what the date range picker looks like" caption="Figure 3. Interactive feature: the date range picker." %}
 
 By default (when the dashboard is first loaded), we set the date range from the earliest date to the latest date in the `date_col` column of the dataframe. Remember that those two dates are 365 days apart (the actual difference shown in the date picker could be shorter due to the fact that the most recent data may not be available yet).
 
@@ -515,7 +515,7 @@ To demonstrate the wide applicability of the approach used in the case study abo
 
 Whereas non-English Native American newspapers serve as a crucial medium for preserving cultural values, teaching about the Euro-American society, and negotiating tribal sovereignty,[^7] [^8] non-English immigrant newspapers help newcomers track the latest events in their home countries, provide ways to learn about the local country, and facilitate the transition.[^9] Examining the top non-English U.S. newspapers helps to investigate Native American history, immigration history, the sociolinguistics and ideological landscapes in the U.S.,[^10] and various functions of ethnic media.[^11] 
 
-### Dataset
+### Dataset (Second Example)
 
 The dashboard for the second example relies on a publicly available dataset from [the Chronicling America project](https://chroniclingamerica.loc.gov/). Specifically, the data from [the U.S. Newspaper Directory, 1690-Present](https://chroniclingamerica.loc.gov/search/titles/). This dataset tracks the metadata of historic U.S newspapers, including what language they were written in. 
 
@@ -564,6 +564,7 @@ Each pie chart shows the top 10 languages of non-English newspapers in a given d
 Interactive visualization contributes to digital humanities by facilitating knowledge discovery and making research outputs more accessible to the public. In this lesson, we've demonstrated the key steps for creating and deploying an interactive dashboard, using the open-source library Dash in Python, and two examples from the field of media studies. As with the lesson using [Shiny in R](/en/lessons/shiny-leaflet-newspaper-map-tutorial), this approach can be adapted to a wide range of research applications in the digital humanities.
 
 You have learned:
+
 * How to retrieve publicly available data using an API using the `requests` library
 
 >The data owner may have a restriction on the amount of data to be requested. You need to respect such a policy. As shown in the non-English >newspaper case, something you could do is to time your requests (e.g. resend a request after a certain time). 
