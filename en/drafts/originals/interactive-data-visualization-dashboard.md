@@ -514,7 +514,7 @@ To demonstrate the wide applicability of the approach used in the case study abo
 
 Whereas non-English Native American newspapers serve as a crucial medium for preserving cultural values, teaching about the Euro-American society, and negotiating tribal sovereignty,[^7] [^8] non-English immigrant newspapers help newcomers track the latest events in their home countries, provide ways to learn about the local country, and facilitate the transition.[^9] Examining the top non-English U.S. newspapers helps to investigate Native American history, immigration history, the sociolinguistics and ideological landscapes in the U.S.,[^10] and various functions of ethnic media.[^11] 
 
-### Dataset (Second Example)
+### Dataset
 
 The dashboard for the second example relies on a publicly available dataset from [the Chronicling America project](https://chroniclingamerica.loc.gov/). Specifically, the data from [the U.S. Newspaper Directory, 1690-Present](https://chroniclingamerica.loc.gov/search/titles/). This dataset tracks the metadata of historic U.S newspapers, including what language they were written in. 
 
@@ -528,7 +528,7 @@ You can use the cell values to calculate the proportion (percentage) of newspape
 
 Our dashboard will then visualize the top 10 non-English languages used by newspapers in a certain decade.
 
-### Planning the Dashboard (Second Example)
+### Planning the Dashboard
 
 Let's create two pie charts, side by side. Both pie charts will show the top 10 non-English languages with their percentage – users will be able to specify a certain decade for each pie chart using a dropdown menu, allowing them to compare the results for any two decades.
 
@@ -540,7 +540,7 @@ The following are the same as we've described in the TV airtime case study above
 
 The differences will be in the data downloading procedure, as well as the specific code used to build the dashboard's frontend and backend. However, the underlying logic remains the same: you start with data retrieval, prepare the data for visualization, code the dashboard frontend, then code the dashboard backend.
 
-### Downloading the Data (Second Example)
+### Downloading the Data
 
 Because the download can take a long time, it may be more helpful to simply focus on the dashboard coding part directly. Thus, I've provided [the downloaded data in a CSV file](/assets/interactive-data-visualization-dashboard/data_lang_asrow.csv). Feel free to download this dataset directly and move on to the next section.
 
@@ -548,7 +548,7 @@ If you're wondering how to download the data yourself, I have provided [the nece
 
 >No matter what your data demand is, always follow the rule set by the server and respect other users.
 
-### Coding the Dashboard (Second Example)
+### Coding the Dashboard
 
 [This is the script for coding the dashboard](/assets/interactive-data-visualization-dashboard/app-rq2.py). 
 
