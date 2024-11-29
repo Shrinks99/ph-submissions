@@ -643,7 +643,7 @@ for i in range(100):
     model.step()
 ```
 
-The `DataCollector` can export the data it has collected as a pandas `DataFrame`, allowing for easy interactive analysis. We can get the `agent_letters` data like this:
+The `DataCollector` can export the data it has collected as a pandas `DataFrame`, allowing for easy interactive analysis. We can get the `agent_letters` data (the combined agent-level and model-level data) like this:
 
 ```python
 agent_letters = model.datacollector.get_agent_vars_dataframe()
