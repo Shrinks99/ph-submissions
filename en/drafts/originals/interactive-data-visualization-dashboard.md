@@ -16,7 +16,7 @@ difficulty: 3
 activity: presentation
 topics: [data-visualization, website]
 abstract: This lesson shows how to create interactive web-based dashboards using Python's Dash library. Using two media case studies, this lesson provides a practical guide for making digital humanities research outputs more accessible and engaging.
-avatar_alt: Visual description of lesson image
+avatar_alt: Drawing of a young woman teaching arithmetic to a child, sitting in front of a blackboard.
 doi: XX.XXXXX/phen0000
 ---
 
