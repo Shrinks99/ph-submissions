@@ -478,7 +478,7 @@ class LetterAgent(mesa.Agent):
         self.model.grid.move_agent(self, new_position)
 ```
 
-Next, we need to find all the other agents present in our agent's new cell, and send one of them a letter. We can get the contents of one or more cells using the grid's `get_cell_list_contents` method, or by accessing a cell directly. The method accepts either a single coordinate tuple, or a list of tuples.
+Next, we need to find all the other agents present in our agent's new cell, and send one of them a letter. We can get the contents of one or more cells using the grid's `get_cell_list_contents` method. The method accepts either a single coordinate tuple, or a list of tuples.
 
 ```python
 class LetterAgent(mesa.Agent):
