@@ -562,7 +562,7 @@ plt.colorbar(label="Number of Agents present in Cell")
 {% include figure.html filename="en-or-agent-based-model-communication-networks-04.png" alt="Two-dimensional grid where each cell is colored based on how many agents are present on it, on a scale of 0 to 3, with lighter yellow colors indicating more agents and darker blue colors indicating fewer agents." caption="Figure 4. Color mesh showing the number of agents present on each cell of our grid space" %}
 
 > _Bonus question 3_:
-Letters are sent to direct neighbors. How could you implement sending letters only to agents far apart, e.g. with at least a distance of three cells? *Hint*: You will have to define a distance measure on grids. See for example this [_Programming Historian_ lesson on similarity measures](https://programminghistorian.org/en/lessons/common-similarity-measures#city-block-manhattan-distance).
+Letters are currently sent to agents in the same cell, representing direct neighbors. How could you implement sending letters only to agents who 'live' further away, e.g. with at least a distance of three cells? *Hint*: You will have to define a distance measure on grids. See for example this [_Programming Historian_ lesson on similarity measures](https://programminghistorian.org/en/lessons/common-similarity-measures#city-block-manhattan-distance).
 
 #### 2.5.6 Collecting Data
 
@@ -712,6 +712,8 @@ We want to be able to control the number of agents that are generated. This is a
 
 Additionally, we introduce the option to switch between two ways in which agents select a neighbor to whom to send their letter. While both methods involve randomly selecting an agent from a list, when `reinforce` is set to `True`, the selection is weighted by the neighbors' number of letters received. This means that agents who have already received letters are more likely to keep receiving even more. In this way, we can allow agents to become, in a sense, more 'famous'. This is one simple possible mechanism for modeling why well-known people like [Christiaan Huygens](https://en.wikipedia.org/wiki/Christiaan_Huygens) received many more letters than other members of the Republic of Letters.
 
+To initialize the agents with this new option, we'll also add a model parameter which allows us to switch the `reinforce` parameter on (True) or off (False).
+
 ```python
 if self.reinforce == False:
     other_agent = self.random.choice(cellmates)
@@ -734,7 +736,7 @@ if self.random.choices([0,1], weights=[0.8, 0.2], k=1)[0] == 1:
     self.model.grid.move_agent(self, new_position)
 ```
 
-To initialize the agents with this new option, we have to add a final parameter to the model itself. All together, we get the following new definitions for agents and model:
+All together, we get the following new definitions for agents and model:
 
 ```python
 class LetterAgent(mesa.Agent):
